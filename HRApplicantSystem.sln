@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37314.3 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRApplicantSystem", "HRApplicantSystem.csproj", "{ACFF499C-CFA8-4ADA-8278-FE2012CF5F5A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ACFF499C-CFA8-4ADA-8278-FE2012CF5F5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACFF499C-CFA8-4ADA-8278-FE2012CF5F5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACFF499C-CFA8-4ADA-8278-FE2012CF5F5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACFF499C-CFA8-4ADA-8278-FE2012CF5F5A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1A8AC37B-8D3E-4E7A-8C0E-7247E2CEA705}
+	EndGlobalSection
+EndGlobal
