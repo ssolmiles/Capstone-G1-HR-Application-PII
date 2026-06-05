@@ -1,20 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace HRApplicantSystem.Forms.Maintenance
+﻿namespace HRApplicantSystem.Forms.Maintenance
 {
-    public partial class frmMaintenance : Form
+    partial class frmMaintenance
     {
-        public frmMaintenance()
+        private System.ComponentModel.IContainer components = null;
+
+        protected override void Dispose(bool disposing)
         {
-            InitializeComponent();
+            if (disposing && (components != null)) components.Dispose();
+            base.Dispose(disposing);
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Name = "frmMaintenance";
+            this.Text = "Maintenance";
+            this.ResumeLayout(false);
         }
     }
 }
