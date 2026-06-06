@@ -94,6 +94,7 @@
       <HintPath>packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Common, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Data.Common.4.3.0\lib\net451\System.Data.Common.dll</HintPath>
@@ -152,8 +153,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\HR\frmHRApplicantreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HR\frmHRApplicantreview.Designer.cs">
+      <DependentUpon>frmHRApplicantreview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HR\frmJobVacancy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HR\frmJobVacancy.Designer.cs">
+      <DependentUpon>frmJobVacancy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HR\frmHRDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HR\frmHRDashboard.Designer.cs">
+      <DependentUpon>frmHRDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HR\frmHRLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HR\frmHRLogin.Designer.cs">
+      <DependentUpon>frmHRLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\HR\frmJobVacancy.resx">
+      <DependentUpon>frmJobVacancy.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -163,7 +191,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Database\db_config.ini" />
+    <None Include="Database\db_config.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -180,7 +210,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Forms\Applicant\" />
-    <Folder Include="Forms\HR\" />
     <Folder Include="Forms\Maintenance\" />
     <Folder Include="Helpers\" />
     <Folder Include="Models\" />
