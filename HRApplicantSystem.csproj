@@ -328,6 +328,7 @@
     <Folder Include="Forms\Applicant\" />
     <Folder Include="Forms\HR\" />
     <Folder Include="Helpers\" />
+    <Folder Include="Forms\Maintenance\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
