@@ -1,6 +1,6 @@
 ﻿namespace HRApplicantSystem.Forms.HR
 {
-    partial class frmHiringDecision
+    partial class frmFinalDecision
     {
         private System.ComponentModel.IContainer components = null;
 
@@ -10,6 +10,8 @@
         private System.Windows.Forms.TextBox txtFinalRemarks;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnNext;
+
 
         protected override void Dispose(bool disposing)
         {
@@ -66,7 +68,7 @@
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(272, 198);
+            this.lblStatus.Location = new System.Drawing.Point(272, 194);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(100, 16);
             this.lblStatus.TabIndex = 4;
@@ -74,13 +76,13 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(297, 233);
+            this.btnSave.Location = new System.Drawing.Point(191, 191);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save";
             // 
-            // frmHiringDecision
+            // frmFinalDecision
             // 
             this.ClientSize = new System.Drawing.Size(400, 280);
             this.Controls.Add(this.lblDecision);
@@ -89,10 +91,21 @@
             this.Controls.Add(this.txtFinalRemarks);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnSave);
-            this.Name = "frmHiringDecision";
+            this.Name = "frmFinalDecision";
             this.Text = "Final Hiring Decision";
             this.ResumeLayout(false);
             this.PerformLayout();
+
+            //
+            // next button
+            //
+            this.Controls.Add(this.btnNext);
+            this.btnNext = new System.Windows.Forms.Button();
+            this.btnNext.Location = new System.Drawing.Point(20, 230);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(150, 23);
+            this.btnNext.TabIndex = 6;
+            this.btnNext.Text = "Next → Dashboard";
 
         }
         #endregion

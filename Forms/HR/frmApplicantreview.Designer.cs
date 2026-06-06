@@ -11,13 +11,12 @@
         private System.Windows.Forms.Button btnViewProfile;
         private System.Windows.Forms.Button btnViewDocuments;
         private System.Windows.Forms.Button btnLockReview;
+        private System.Windows.Forms.Button btnNext;
 
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
-            {
                 components.Dispose();
-            }
             base.Dispose(disposing);
         }
 
@@ -30,6 +29,7 @@
             this.btnViewProfile = new System.Windows.Forms.Button();
             this.btnViewDocuments = new System.Windows.Forms.Button();
             this.btnLockReview = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtSearch
@@ -79,10 +79,16 @@
             this.btnLockReview.TabIndex = 5;
             this.btnLockReview.Text = "Lock Application";
             // 
+            // btnNext
+            // 
+            this.btnNext.Location = new System.Drawing.Point(450, 180);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(126, 23);
+            this.btnNext.TabIndex = 6;
+            this.btnNext.Text = "Next → Screening";
+            // 
             // frmHRApplicantReview
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnSearch);
@@ -90,11 +96,11 @@
             this.Controls.Add(this.btnViewProfile);
             this.Controls.Add(this.btnViewDocuments);
             this.Controls.Add(this.btnLockReview);
+            this.Controls.Add(this.btnNext);
             this.Name = "frmHRApplicantReview";
             this.Text = "Applicant Review";
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
         #endregion
     }

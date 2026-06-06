@@ -20,20 +20,27 @@ namespace HRApplicantSystem.Forms.HR
             lstRecruitmentSummary.Items.Add("Accepted: 2 | Rejected: 3");
         }
 
+   
         private void btnApplicants_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Navigate to Applicants Module.");
+            frmApplicantList applicantListForm = new frmApplicantList();
+            applicantListForm.Show();
+            this.Hide();
         }
 
+      
         private void btnInterviews_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Navigate to Interviews Module.");
+            frmInterviewScheduling interviewScheduleForm = new frmInterviewScheduling();
+            interviewScheduleForm.Show();
+            this.Hide();
         }
 
-             private void btnReports_Click(object sender, EventArgs e)
+        private void btnReports_Click(object sender, EventArgs e)
         {
-            frmHRReports reportsForm = new frmHRReports();
+            frmReports reportsForm = new frmReports();
             reportsForm.Show();
+            this.Hide();
         }
     }
 }

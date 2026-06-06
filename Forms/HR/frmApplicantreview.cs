@@ -14,6 +14,7 @@ namespace HRApplicantSystem.Forms.HR
             btnViewProfile.Click += btnViewProfile_Click;
             btnViewDocuments.Click += btnViewDocuments_Click;
             btnLockReview.Click += btnLockReview_Click;
+            btnNext.Click += btnNext_Click;   // ✅ added Next button event
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -45,6 +46,13 @@ namespace HRApplicantSystem.Forms.HR
                 MessageBox.Show("Application locked for: " + lstApplicants.SelectedItem.ToString());
             else
                 MessageBox.Show("Please select an applicant first.");
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            frmScreening screeningForm = new frmScreening();
+            screeningForm.Show();
+            this.Hide();
         }
     }
 }
