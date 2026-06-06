@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-
-namespace HRApplicantSystem.Forms.Maintenance
+﻿namespace HRApplicantSystem.Forms.Maintenance
 {
     partial class frmPositions
     {
@@ -25,33 +23,28 @@ namespace HRApplicantSystem.Forms.Maintenance
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
             this.SuspendLayout();
 
-           
             this.dgvList.Location = new System.Drawing.Point(12, 80);
             this.dgvList.Name = "dgvList";
             this.dgvList.Size = new System.Drawing.Size(760, 350);
             this.dgvList.TabIndex = 0;
             this.dgvList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvList_CellClick);
 
-           
             this.lblName.Text = "Position Title:";
             this.lblName.Location = new System.Drawing.Point(12, 20);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(90, 23);
 
-          
             this.txtName.Location = new System.Drawing.Point(110, 17);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(250, 23);
             this.txtName.TabIndex = 1;
 
-            
             this.btnAdd.Location = new System.Drawing.Point(380, 16);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(80, 25);
             this.btnAdd.Text = "Add";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
 
-            
             this.btnUpdate.Location = new System.Drawing.Point(470, 16);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(80, 25);
@@ -64,14 +57,12 @@ namespace HRApplicantSystem.Forms.Maintenance
             this.btnDelete.Text = "Delete";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
 
-            
             this.btnClear.Location = new System.Drawing.Point(650, 16);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(80, 25);
             this.btnClear.Text = "Clear";
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
 
-          
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dgvList);
             this.Controls.Add(this.lblName);
@@ -82,7 +73,6 @@ namespace HRApplicantSystem.Forms.Maintenance
             this.Controls.Add(this.btnClear);
             this.Name = "frmPositions";
             this.Text = "Positions";
-            this.Load += new System.EventHandler((s, e) => LoadData());
 
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             this.ResumeLayout(false);

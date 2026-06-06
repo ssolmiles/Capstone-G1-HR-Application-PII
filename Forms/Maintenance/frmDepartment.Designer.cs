@@ -42,21 +42,25 @@
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(80, 25);
             this.btnAdd.Text = "Add";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
 
             this.btnUpdate.Location = new System.Drawing.Point(470, 16);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(80, 25);
             this.btnUpdate.Text = "Update";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
 
             this.btnDelete.Location = new System.Drawing.Point(560, 16);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(80, 25);
             this.btnDelete.Text = "Delete";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
 
             this.btnClear.Location = new System.Drawing.Point(650, 16);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(80, 25);
             this.btnClear.Text = "Clear";
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
 
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dgvList);
@@ -68,6 +72,7 @@
             this.Controls.Add(this.btnClear);
             this.Name = "frmDepartments";
             this.Text = "Departments";
+            this.Load += new System.EventHandler(this.frmDepartments_Load);
 
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             this.ResumeLayout(false);

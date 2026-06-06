@@ -19,24 +19,26 @@ namespace HRApplicantSystem.Forms.Maintenance
 
         private void LoadData()
         {
-            try
             {
-                using (var conn = DatabaseHelper.GetConnection())
+                try
                 {
-                    conn.Open();
-                    string query = "SELECT department_id AS ID, name AS Name FROM departments";
-                    var adapter = new MySqlDataAdapter(query, conn);
-                    var table = new DataTable();
-                    adapter.Fill(table);
-                    dgvList.DataSource = table;
-                    dgvList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    dgvList.ReadOnly = true;
-                    dgvList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                    using (var conn = DatabaseHelper.GetConnection())
+                    {
+                        conn.Open();
+                        string query = "SELECT department_id AS ID, name AS Name FROM departments";
+                        var adapter = new MySqlDataAdapter(query, conn);
+                        var table = new DataTable();
+                        adapter.Fill(table);
+                        dgvList.DataSource = table;
+                        dgvList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        dgvList.ReadOnly = true;
+                        dgvList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loading data: " + ex.Message);
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading data: " + ex.Message);
+                }
             }
         }
 

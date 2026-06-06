@@ -181,9 +181,6 @@
   <ItemGroup>
     <Compile Include="DatabaseHelper.cs" />
     <Compile Include="Forms\Maintenance\frmAssessmentType.Designer.cs" />
-    <Compile Include="Forms\Maintenance\frmAssessmentType.Designer.Designer.cs">
-      <DependentUpon>frmAssessmentType.Designer.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Maintenance\frmAssessmentTypes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,14 +217,44 @@
     <Compile Include="Forms\Maintenance\frmPositions.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Maintenance\frmPositions.Designers.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Forms\Maintenance\frmPositions.Designer.cs">
+      <DependentUpon>frmPositions.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Maintenance\frmRequirementTypes.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Maintenance\frmRequirementTypes.Designer.cs">
       <DependentUpon>frmRequirementTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Maintenance\frmRequirementTypes.Designer.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>frmRequirementTypes.Designer.resx</DependentUpon>
+    </Compile>
+    <Compile Include="frmAssessmentTypes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>frmAssessmentTypes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="frmDepartment.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>frmDepartment.resx</DependentUpon>
+    </Compile>
+    <Compile Include="frmMaintenance.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>frmMaintenance.resx</DependentUpon>
+    </Compile>
+    <Compile Include="frmPositions.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>frmPositions.resx</DependentUpon>
+    </Compile>
+    <Compile Include="frmRequirementTypes.Designer.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>frmRequirementTypes.Designer.resx</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -238,30 +265,36 @@
     <EmbeddedResource Include="Forms\Maintenance\frmDepartment.resx">
       <DependentUpon>frmDepartment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Maintenance\frmEmploymentTypes.Designer.resx">
-      <DependentUpon>frmEmploymentTypes.Designer.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Maintenance\frmJobVacancyManagement.resx">
       <DependentUpon>frmJobVacancyManagement.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Maintenance\frmMaintenance.Designer.resx">
-      <DependentUpon>frmMaintenance.Designer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Maintenance\frmMaintenance.resx">
       <DependentUpon>frmMaintenance.cs</DependentUpon>
       <SubType>Form</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Maintenance\frmPositions.Designer.resx" />
     <EmbeddedResource Include="Forms\Maintenance\frmPositions.resx">
       <DependentUpon>frmPositions.cs</DependentUpon>
-      <SubType>Form</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Maintenance\frmRequirementTypes.Designer.resx">
       <DependentUpon>frmRequirementTypes.Designer.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>frmRequirementTypes.Designer.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Maintenance\frmRequirementTypes.resx">
-      <DependentUpon>frmRequirementTypes.cs</DependentUpon>
-      <SubType>Form</SubType>
+    <EmbeddedResource Include="frmAssessmentTypes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>frmAssessmentTypes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDepartment.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>frmDepartment.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMaintenance.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>frmMaintenance.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRequirementTypes.Designer.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>frmRequirementTypes.Designer.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -272,6 +305,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmPositions.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>frmPositions.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="Database\db_config.ini" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
