@@ -113,11 +113,9 @@
     <Reference Include="System.Configuration.ConfigurationManager, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Configuration.ConfigurationManager.8.0.0\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
     </Reference>
-b25e3ecda80535cca6999a1fd548b62551a4c251
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Common, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Data.Common.4.3.0\lib\net451\System.Data.Common.dll</HintPath>
-      <Private>True</Private>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=10.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -142,7 +140,6 @@ b25e3ecda80535cca6999a1fd548b62551a4c251
     </Reference>
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
-      <Private>True</Private>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Security" />
@@ -177,6 +174,26 @@ b25e3ecda80535cca6999a1fd548b62551a4c251
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseHelper.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <!-- Helpers -->
+    <Compile Include="Helpers\SystemHelpers.cs" />
+    <!-- Models -->
+    <Compile Include="Models\ApplicantModels.cs" />
+    <Compile Include="Models\EvaluationModels.cs" />
+    <Compile Include="Models\JobModels.cs" />
+    <Compile Include="Models\SystemModels.cs" />
+    <!-- HR Forms -->
     <Compile Include="Forms\HR\frmHRApplicantreview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -201,11 +218,7 @@ b25e3ecda80535cca6999a1fd548b62551a4c251
     <Compile Include="Forms\HR\frmHRLogin.Designer.cs">
       <DependentUpon>frmHRLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\ApplicantModels.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\HR\frmJobVacancy.resx">
-      <DependentUpon>frmJobVacancy.cs</DependentUpon>
+    <!-- Applicant Forms -->
     <Compile Include="Forms\Applicant\frmApplicantDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -260,14 +273,7 @@ b25e3ecda80535cca6999a1fd548b62551a4c251
     <Compile Include="Forms\Applicant\frmMyProfile.Designer.cs">
       <DependentUpon>frmMyProfile.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\Applicant\frmApplicantLogin.resx">
-      <DependentUpon>frmApplicantLogin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Applicant\frmApplicantRegister.resx">
-      <DependentUpon>frmApplicantRegister.cs</DependentUpon>
-    <Compile Include="DatabaseHelper.cs" />
+    <!-- Maintenance Forms -->
     <Compile Include="Forms\Maintenance\frmAssessmentType.Designer.cs" />
     <Compile Include="Forms\Maintenance\frmAssessmentTypes.cs">
       <SubType>Form</SubType>
@@ -299,9 +305,6 @@ b25e3ecda80535cca6999a1fd548b62551a4c251
     <Compile Include="Forms\Maintenance\frmMaintenance.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Maintenance\frmMaintenance.Designer.cs">
-      <DependentUpon>frmMaintenance.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Maintenance\frmPositions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -319,42 +322,18 @@ b25e3ecda80535cca6999a1fd548b62551a4c251
       <DesignTime>True</DesignTime>
       <DependentUpon>frmRequirementTypes.Designer.resx</DependentUpon>
     </Compile>
-    <Compile Include="frmAssessmentTypes.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>frmAssessmentTypes.resx</DependentUpon>
-    </Compile>
-    <Compile Include="frmDepartment.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>frmDepartment.resx</DependentUpon>
-    </Compile>
-    <Compile Include="frmMaintenance.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>frmMaintenance.resx</DependentUpon>
-    </Compile>
-    <Compile Include="frmPositions.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>frmPositions.resx</DependentUpon>
-    </Compile>
-    <Compile Include="frmRequirementTypes.Designer.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>frmRequirementTypes.Designer.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Helpers\SystemHelpers.cs" />
-    <Compile Include="Models\ApplicantModels.cs" />
-    <Compile Include="Models\EvaluationModels.cs" />
-    <Compile Include="Models\JobModels.cs" />
-    <Compile Include="Models\SystemModels.cs" />
-    <Compile Include="Helpers\ApplicantModels.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <!-- Embedded Resources -->
+    <EmbeddedResource Include="Forms\HR\frmJobVacancy.resx">
+      <DependentUpon>frmJobVacancy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Applicant\frmApplicantLogin.resx">
+      <DependentUpon>frmApplicantLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Applicant\frmApplicantRegister.resx">
+      <DependentUpon>frmApplicantRegister.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Maintenance\frmAssessmentTypes.resx">
       <DependentUpon>frmAssessmentTypes.cs</DependentUpon>
-      <SubType>Form</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Maintenance\frmDepartment.resx">
       <DependentUpon>frmDepartment.cs</DependentUpon>
@@ -364,7 +343,6 @@ b25e3ecda80535cca6999a1fd548b62551a4c251
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Maintenance\frmMaintenance.resx">
       <DependentUpon>frmMaintenance.cs</DependentUpon>
-      <SubType>Form</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Maintenance\frmPositions.resx">
       <DependentUpon>frmPositions.cs</DependentUpon>
@@ -374,62 +352,23 @@ b25e3ecda80535cca6999a1fd548b62551a4c251
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>frmRequirementTypes.Designer.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAssessmentTypes.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>frmAssessmentTypes.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmDepartment.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>frmDepartment.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMaintenance.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>frmMaintenance.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmRequirementTypes.Designer.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>frmRequirementTypes.Designer.Designer.cs</LastGenOutput>
-b25e3ecda80535cca6999a1fd548b62551a4c251
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
+    <!-- None -->
+    <None Include="App.config" />
     <None Include="Database\db_config.ini">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <EmbeddedResource Include="frmPositions.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>frmPositions.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <None Include="Database\db_config.ini" />
-b25e3ecda80535cca6999a1fd548b62551a4c251
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\Applicant\" />
-    <Folder Include="Forms\HR\" />
-    <Folder Include="Helpers\" />b25e3ecda80535cca6999a1fd548b62551a4c251
-    <Folder Include="Forms\Maintenance\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Database\schema.sql" />
     <Content Include="Database\seed.sql" />
