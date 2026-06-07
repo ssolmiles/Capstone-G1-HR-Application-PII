@@ -1,14 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Drawing.Text;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HRApplicantSystem.Forms.Applicant
@@ -18,6 +11,7 @@ namespace HRApplicantSystem.Forms.Applicant
         SqlConnection conn;
         SqlCommand cmd;
         SqlDataReader dr;
+
         public frmApplicantLogin()
         {
             InitializeComponent();
@@ -28,26 +22,37 @@ namespace HRApplicantSystem.Forms.Applicant
 
         private void btnLogIn_Click(object sender, EventArgs e)
         {
-            conn.Open();
-            string login = "SELECT * FROM tbl_users WHERE username = '" + txtEmail.Text + "' and password = '" + txtPassword.Text + "'";
-            cmd.Connection = conn;
-            cmd.CommandText = login;
-
-            cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
-            cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
-            dr = cmd.ExecuteReader();
-
-            if (dr.Read() == true)
+            try
             {
-                frmApplicantDashboard dash = new
-                frmApplicantDashboard(txtEmail.Text);
+                conn.Open();
+                cmd.Connection = conn;
+                cmd.CommandText = "SELECT * FROM applicants WHERE email = @Email AND password = @Password";
+                cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
+                cmd.Parameters.AddWithValue("@Password", txtPassword.Text.Trim());
+                dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    frmApplicantDashboard dash = new frmApplicantDashboard(txtEmail.Text.Trim());
+                    dash.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Email or Password, Please Try Again", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtEmail.Text = "";
+                    txtPassword.Text = "";
+                    txtEmail.Focus();
+                }
+                dr.Close();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Invalid Email or Password, Please Try Again", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtEmail.Text = "";
-                txtPassword.Text = "";
-                txtEmail.Focus();
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+                cmd.Parameters.Clear();
             }
         }
 
@@ -61,14 +66,9 @@ namespace HRApplicantSystem.Forms.Applicant
         private void CheckbxShowPas_CheckedChanged(object sender, EventArgs e)
         {
             if (CheckbxShowPas.Checked)
-            {
                 txtPassword.PasswordChar = '\0';
-
-            }
             else
-            {
                 txtPassword.PasswordChar = '•';
-            }
         }
 
         private void lblCreateAcc_Click(object sender, EventArgs e)
@@ -79,8 +79,7 @@ namespace HRApplicantSystem.Forms.Applicant
 
         private void linklblFgtPass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmChangePassword cp = new
-            frmChangePassword(txtEmail.Text);
+            frmChangePassword cp = new frmChangePassword(txtEmail.Text);
             cp.Show();
             this.Hide();
         }

@@ -174,6 +174,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Maintenance\frmDepartments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Maintenance\frmDepartments.Designer.cs">
+      <DependentUpon>frmDepartments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Maintenance\frmRequirementTypes.Designer.cs">
+      <DependentUpon>frmRequirementTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -193,17 +202,11 @@
     <Compile Include="Models\JobModels.cs" />
     <Compile Include="Models\SystemModels.cs" />
     <!-- HR Forms -->
-    <Compile Include="Forms\HR\frmHRApplicantreview.cs">
+    <Compile Include="Forms\HR\frmHRLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\HR\frmHRApplicantreview.Designer.cs">
-      <DependentUpon>frmHRApplicantreview.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\HR\frmJobVacancy.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\HR\frmJobVacancy.Designer.cs">
-      <DependentUpon>frmJobVacancy.cs</DependentUpon>
+    <Compile Include="Forms\HR\frmHRLogin.Designer.cs">
+      <DependentUpon>frmHRLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\HR\frmHRDashboard.cs">
       <SubType>Form</SubType>
@@ -211,19 +214,49 @@
     <Compile Include="Forms\HR\frmHRDashboard.Designer.cs">
       <DependentUpon>frmHRDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\HR\frmHRLogin.cs">
+    <Compile Include="Forms\HR\frmApplicantReview.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\HR\frmHRLogin.Designer.cs">
-      <DependentUpon>frmHRLogin.cs</DependentUpon>
+    <Compile Include="Forms\HR\frmApplicantReview.Designer.cs">
+      <DependentUpon>frmApplicantReview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HR\frmApplicantList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HR\frmApplicantList.Designer.cs">
+      <DependentUpon>frmApplicantList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HR\frmScreening.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HR\frmScreening.Designer.cs">
+      <DependentUpon>frmScreening.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HR\frmInterviewSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HR\frmInterviewSchedule.Designer.cs">
+      <DependentUpon>frmInterviewSchedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HR\frmInterviewEvaluation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HR\frmInterviewEvaluation.Designer.cs">
+      <DependentUpon>frmInterviewEvaluation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HR\frmHiringDecision.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HR\frmHiringDecision.Designer.cs">
+      <DependentUpon>frmHiringDecision.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HR\frmReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HR\frmReports.Designer.cs">
+      <DependentUpon>frmReports.cs</DependentUpon>
     </Compile>
     <!-- Applicant Forms -->
-    <Compile Include="Forms\Applicant\frmApplicantDashboard.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Applicant\frmApplicantDashboard.Designer.cs">
-      <DependentUpon>frmApplicantDashboard.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Applicant\frmApplicantLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,6 +268,12 @@
     </Compile>
     <Compile Include="Forms\Applicant\frmApplicantRegister.Designer.cs">
       <DependentUpon>frmApplicantRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Applicant\frmApplicantDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Applicant\frmApplicantDashboard.Designer.cs">
+      <DependentUpon>frmApplicantDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Applicant\frmApplicationStatus.cs">
       <SubType>Form</SubType>
@@ -273,27 +312,11 @@
       <DependentUpon>frmMyProfile.cs</DependentUpon>
     </Compile>
     <!-- Maintenance Forms -->
-    <Compile Include="Forms\Maintenance\frmAssessmentType.Designer.cs" />
-    <Compile Include="Forms\Maintenance\frmAssessmentTypes.cs">
+    <Compile Include="Forms\Maintenance\frmMaintenance.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Maintenance\frmDepartment.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Maintenance\frmDepartment.Designer.cs">
-      <DependentUpon>frmDepartment.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Maintenance\frmEmploymentTypes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Maintenance\frmEmploymentTypes.Designer.cs">
-      <DependentUpon>frmEmploymentTypes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Maintenance\frmInterviewTypes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Maintenance\frmInterviewTypes.Designer.cs">
-      <DependentUpon>frmInterviewTypes.cs</DependentUpon>
+    <Compile Include="Forms\Maintenance\frmMaintenance.Designer.cs">
+      <DependentUpon>frmMaintenance.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Maintenance\frmJobVacancyManagement.cs">
       <SubType>Form</SubType>
@@ -301,29 +324,60 @@
     <Compile Include="Forms\Maintenance\frmJobVacancyManagement.Designer.cs">
       <DependentUpon>frmJobVacancyManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Maintenance\frmMaintenance.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Forms\Maintenance\frmPositions.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Maintenance\frmPositions.Designer.cs">
       <DependentUpon>frmPositions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Maintenance\frmEmploymentTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Maintenance\frmEmploymentTypes.Designer.cs">
+      <DependentUpon>frmEmploymentTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Maintenance\frmRequirementTypes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Maintenance\frmRequirementTypes.Designer.cs">
-      <DependentUpon>frmRequirementTypes.cs</DependentUpon>
+    <Compile Include="Forms\Maintenance\frmInterviewTypes.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Maintenance\frmRequirementTypes.Designer.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>frmRequirementTypes.Designer.resx</DependentUpon>
+    <Compile Include="Forms\Maintenance\frmInterviewTypes.Designer.cs">
+      <DependentUpon>frmInterviewTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Maintenance\frmAssessmentTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Maintenance\frmAssessmentTypes.Designer.cs">
+      <DependentUpon>frmAssessmentTypes.cs</DependentUpon>
     </Compile>
     <!-- Embedded Resources -->
-    <EmbeddedResource Include="Forms\HR\frmJobVacancy.resx">
-      <DependentUpon>frmJobVacancy.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\HR\frmHRLogin.resx">
+      <DependentUpon>frmHRLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HR\frmHRDashboard.resx">
+      <DependentUpon>frmHRDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HR\frmApplicantReview.resx">
+      <DependentUpon>frmApplicantReview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HR\frmApplicantList.resx">
+      <DependentUpon>frmApplicantList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HR\frmScreening.resx">
+      <DependentUpon>frmScreening.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HR\frmInterviewSchedule.resx">
+      <DependentUpon>frmInterviewSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HR\frmInterviewEvaluation.resx">
+      <DependentUpon>frmInterviewEvaluation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HR\frmHiringDecision.resx">
+      <DependentUpon>frmHiringDecision.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HR\frmReports.resx">
+      <DependentUpon>frmReports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Applicant\frmApplicantLogin.resx">
       <DependentUpon>frmApplicantLogin.cs</DependentUpon>
@@ -331,25 +385,50 @@
     <EmbeddedResource Include="Forms\Applicant\frmApplicantRegister.resx">
       <DependentUpon>frmApplicantRegister.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Maintenance\frmAssessmentTypes.resx">
-      <DependentUpon>frmAssessmentTypes.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Applicant\frmApplicantDashboard.resx">
+      <DependentUpon>frmApplicantDashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Maintenance\frmDepartment.resx">
-      <DependentUpon>frmDepartment.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Applicant\frmApplicationStatus.resx">
+      <DependentUpon>frmApplicationStatus.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Maintenance\frmJobVacancyManagement.resx">
-      <DependentUpon>frmJobVacancyManagement.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Applicant\frmChangePassword.resx">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Applicant\frmJobVacancies.resx">
+      <DependentUpon>frmJobVacancies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Applicant\frmMyApplication.resx">
+      <DependentUpon>frmMyApplication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Applicant\frmMyDocuments.resx">
+      <DependentUpon>frmMyDocuments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Applicant\frmMyProfile.resx">
+      <DependentUpon>frmMyProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Maintenance\frmDepartments.resx">
+      <DependentUpon>frmDepartments.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Maintenance\frmMaintenance.resx">
       <DependentUpon>frmMaintenance.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Maintenance\frmJobVacancyManagement.resx">
+      <DependentUpon>frmJobVacancyManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Maintenance\frmPositions.resx">
       <DependentUpon>frmPositions.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Maintenance\frmRequirementTypes.Designer.resx">
-      <DependentUpon>frmRequirementTypes.Designer.cs</DependentUpon>
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>frmRequirementTypes.Designer.Designer.cs</LastGenOutput>
+    <EmbeddedResource Include="Forms\Maintenance\frmEmploymentTypes.resx">
+      <DependentUpon>frmEmploymentTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Maintenance\frmRequirementTypes.resx">
+      <DependentUpon>frmRequirementTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Maintenance\frmInterviewTypes.resx">
+      <DependentUpon>frmInterviewTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Maintenance\frmAssessmentTypes.resx">
+      <DependentUpon>frmAssessmentTypes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

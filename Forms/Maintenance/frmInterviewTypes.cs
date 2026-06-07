@@ -3,7 +3,7 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 using System.Xml.Linq;
-
+using HRApplicantSystem.Helpers;
 namespace HRApplicantSystem.Forms.Maintenance
 {
     public partial class frmInterviewTypes : Form

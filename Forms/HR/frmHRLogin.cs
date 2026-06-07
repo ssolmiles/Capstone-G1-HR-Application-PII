@@ -1,94 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.Data.SqlClient;
+using System;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace HRApplicantSystem.Forms.HR
 {
     public partial class frmHRLogin : Form
     {
-        // Simple in-memory account store (replace with DB later)
-        private static List<UserAccount> accounts = new List<UserAccount>();
-
-        private UserAccount loggedInUser = null;
+        SqlConnection conn;
+        SqlCommand cmd;
 
         public frmHRLogin()
         {
             InitializeComponent();
+            string connString = "Server=g1-hr-processing-server.database.windows.net;Database=HR_Applicant_Processing_System;User ID=hradmin;Password=@Ssolshine2006;";
+            conn = new SqlConnection(connString);
+            cmd = new SqlCommand();
         }
 
-        // LOGIN
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string email = txtEmail.Text.Trim();
-            string password = txtPassword.Text.Trim();
-
-            var account = accounts.FirstOrDefault(a => a.Email == email);
-
-            if (account == null)
+            try
             {
-                MessageBox.Show("Account not found.", "Login Failed",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                conn.Open();
+                cmd.Connection = conn;
+                cmd.CommandText = "SELECT * FROM users WHERE email = @Email AND password = @Password AND is_active = 1";
+                cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
+                cmd.Parameters.AddWithValue("@Password", txtPassword.Text.Trim());
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    dr.Close();
+                    frmHRDashboard dashboard = new frmHRDashboard();
+                    dashboard.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    dr.Close();
+                    MessageBox.Show("Account not found or inactive.", "Login Failed",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-
-            if (!account.IsActive)
+            catch (Exception ex)
             {
-                MessageBox.Show("Account is inactive. Contact admin.", "Login Failed",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                MessageBox.Show("Error: " + ex.Message);
             }
-
-            if (account.Password == password)
+            finally
             {
-                loggedInUser = account;
-                MessageBox.Show("Login successful!", "Welcome",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // ✅ Navigate to Dashboard
-                frmHRDashboard dashboard = new frmHRDashboard();
-                dashboard.Show();
-
-                // Hide the login form
-                this.Hide();
-            }
-            else
-            {
-                MessageBox.Show("Invalid password.", "Login Failed",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                conn.Close();
+                cmd.Parameters.Clear();
             }
         }
-
-        // REGISTER
-        private void btnRegister_Click(object sender, EventArgs e)
-        {
-            string email = txtEmail.Text.Trim();
-            string password = txtPassword.Text.Trim();
-
-            if (accounts.Any(a => a.Email == email))
-            {
-                MessageBox.Show("Email already exists.", "Registration Failed",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            accounts.Add(new UserAccount
-            {
-                Email = email,
-                Password = password,
-                IsActive = true
-            });
-
-            MessageBox.Show("Account registered successfully!", "Registration",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-    }
-
-    // Simple account model
-    public class UserAccount
-    {
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public bool IsActive { get; set; }
     }
 }

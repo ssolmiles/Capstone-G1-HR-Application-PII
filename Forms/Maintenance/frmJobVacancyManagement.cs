@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using HRApplicantSystem.Helpers;
 namespace HRApplicantSystem.Forms.Maintenance
 {
     public partial class frmJobVacancyManagement : Form

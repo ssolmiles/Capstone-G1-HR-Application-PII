@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
 
 namespace HRApplicantSystem.Forms.Applicant
 {
@@ -16,6 +10,7 @@ namespace HRApplicantSystem.Forms.Applicant
     {
         SqlConnection conn;
         SqlCommand cmd;
+
         public frmApplicantRegister()
         {
             InitializeComponent();
@@ -23,16 +18,14 @@ namespace HRApplicantSystem.Forms.Applicant
             conn = new SqlConnection(connString);
             cmd = new SqlCommand();
         }
-        
+
         private void frmApplicantRegister_Load(object sender, EventArgs e)
         {
             txtFN.Text = "e.g. Juan";
             txtMI.Text = "e.g. Santos";
             txtLN.Text = "e.g. Dela Cruz";
-
             txtEmail.ReadOnly = true;
             txtEmail.BackColor = System.Drawing.Color.LightGray;
-
             cboCountry.Items.Add("Philippines (+63)");
             cboCountry.Items.Add("United States (+1)");
             cboCountry.Items.Add("Australia (+61)");
@@ -40,9 +33,9 @@ namespace HRApplicantSystem.Forms.Applicant
             cboCountry.Items.Add("Singapore (+65)");
             cboCountry.Items.Add("Canada (+1)");
             cboCountry.Items.Add("United Kingdom (+44)");
-
             cboCountry.Text = "Philippines (+63)";
         }
+
         private void btnRegister_Click(object sender, EventArgs e)
         {
             if (!chkAgree.Checked)
@@ -53,32 +46,35 @@ namespace HRApplicantSystem.Forms.Applicant
             try
             {
                 conn.Open();
+                cmd.Connection = conn;
 
-                cmd.CommandText = "SELECT COUNT(*) FROM ApplicantRegister WHERE Email = @Email";
-                cmd.Parameters.AddWithValue("Email", txtEmail.Text);
+                // Check if email already exists
+                cmd.CommandText = "SELECT COUNT(*) FROM applicants WHERE email = @Email";
+                cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
                 int count = Convert.ToInt32(cmd.ExecuteScalar());
                 if (count > 0)
                 {
                     MessageBox.Show("Email is already registered!");
+                    conn.Close();
+                    cmd.Parameters.Clear();
                     return;
                 }
+                cmd.Parameters.Clear();
 
-                cmd.Connection = conn;
-                cmd.CommandText = @"INSERT INTO Applicant Register (FirstName, Middle Name, LastName, BirthDate, Email, 
-                                  CountryCode, PhoneNumber, Status) VALUES (@FN, @MI, @LN, @Bday, @Email, @Country, @Phone, @Status)";
-
-                cmd.Parameters.AddWithValue("@FN", txtFN.Text);
-                cmd.Parameters.AddWithValue("@MI", txtMI.Text);
-                cmd.Parameters.AddWithValue("@LN", txtLN.Text);
+                // Insert new applicant using correct column names
+                cmd.CommandText = @"INSERT INTO applicants 
+                    (full_name, email, password, phone, birthdate, is_active) 
+                    VALUES (@FullName, @Email, @Password, @Phone, @Bday, @IsActive)";
+                cmd.Parameters.AddWithValue("@FullName", txtFN.Text.Trim() + " " + txtMI.Text.Trim() + " " + txtLN.Text.Trim());
+                cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
+                cmd.Parameters.AddWithValue("@Password", txtPassword.Text.Trim());
+                cmd.Parameters.AddWithValue("@Phone", txtPhone.Text.Trim());
                 cmd.Parameters.AddWithValue("@Bday", dtpBirthday.Value);
-                cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
-                cmd.Parameters.AddWithValue("@Country", cboCountry.Text);
-                cmd.Parameters.AddWithValue("@Phone", txtPhone.Text);
-                cmd.Parameters.AddWithValue("@Status", "Inactive");
+                cmd.Parameters.AddWithValue("@IsActive", false);
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Registration Successful!");
 
-                frmMyProfile profile = new frmMyProfile();
+                MessageBox.Show("Registration Successful!");
+                frmMyProfile profile = new frmMyProfile(txtEmail.Text.Trim());
                 profile.Show();
                 this.Hide();
             }

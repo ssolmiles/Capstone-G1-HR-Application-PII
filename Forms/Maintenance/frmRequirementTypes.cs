@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-
+using HRApplicantSystem.Helpers;
 namespace HRApplicantSystem.Forms.Maintenance
 {
     public partial class frmRequirementTypes : Form

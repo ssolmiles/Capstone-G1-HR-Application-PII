@@ -1,4 +1,5 @@
-﻿namespace HRApplicantSystem.Forms.Applicant
+﻿using HRApplicantSystem.Helpers;
+namespace HRApplicantSystem.Forms.Applicant
 {
     partial class frmApplicantDashboard
     {
@@ -41,44 +42,49 @@
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(50, 60);
+            this.lblStatus.Location = new System.Drawing.Point(67, 74);
+            this.lblStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(37, 13);
+            this.lblStatus.Size = new System.Drawing.Size(44, 16);
             this.lblStatus.TabIndex = 0;
             this.lblStatus.Text = "Status";
             // 
             // lblMissingDocs
             // 
             this.lblMissingDocs.AutoSize = true;
-            this.lblMissingDocs.Location = new System.Drawing.Point(111, 60);
+            this.lblMissingDocs.Location = new System.Drawing.Point(148, 74);
+            this.lblMissingDocs.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMissingDocs.Name = "lblMissingDocs";
-            this.lblMissingDocs.Size = new System.Drawing.Size(99, 13);
+            this.lblMissingDocs.Size = new System.Drawing.Size(124, 16);
             this.lblMissingDocs.TabIndex = 1;
             this.lblMissingDocs.Text = "Missing Documents";
             // 
             // lblSchedule
             // 
             this.lblSchedule.AutoSize = true;
-            this.lblSchedule.Location = new System.Drawing.Point(227, 60);
+            this.lblSchedule.Location = new System.Drawing.Point(303, 74);
+            this.lblSchedule.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSchedule.Name = "lblSchedule";
-            this.lblSchedule.Size = new System.Drawing.Size(52, 13);
+            this.lblSchedule.Size = new System.Drawing.Size(64, 16);
             this.lblSchedule.TabIndex = 2;
             this.lblSchedule.Text = "Schedule";
             // 
             // lblUpdates
             // 
             this.lblUpdates.AutoSize = true;
-            this.lblUpdates.Location = new System.Drawing.Point(298, 60);
+            this.lblUpdates.Location = new System.Drawing.Point(397, 74);
+            this.lblUpdates.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUpdates.Name = "lblUpdates";
-            this.lblUpdates.Size = new System.Drawing.Size(47, 13);
+            this.lblUpdates.Size = new System.Drawing.Size(59, 16);
             this.lblUpdates.TabIndex = 3;
             this.lblUpdates.Text = "Updates";
             // 
             // btnProfile
             // 
-            this.btnProfile.Location = new System.Drawing.Point(477, 60);
+            this.btnProfile.Location = new System.Drawing.Point(636, 74);
+            this.btnProfile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnProfile.Name = "btnProfile";
-            this.btnProfile.Size = new System.Drawing.Size(75, 23);
+            this.btnProfile.Size = new System.Drawing.Size(100, 28);
             this.btnProfile.TabIndex = 4;
             this.btnProfile.Text = "My Profile";
             this.btnProfile.UseVisualStyleBackColor = true;
@@ -86,9 +92,10 @@
             // 
             // btnChangePass
             // 
-            this.btnChangePass.Location = new System.Drawing.Point(362, 60);
+            this.btnChangePass.Location = new System.Drawing.Point(483, 74);
+            this.btnChangePass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnChangePass.Name = "btnChangePass";
-            this.btnChangePass.Size = new System.Drawing.Size(109, 23);
+            this.btnChangePass.Size = new System.Drawing.Size(145, 28);
             this.btnChangePass.TabIndex = 5;
             this.btnChangePass.Text = "Change Password";
             this.btnChangePass.UseVisualStyleBackColor = true;
@@ -96,9 +103,10 @@
             // 
             // btnLogout
             // 
-            this.btnLogout.Location = new System.Drawing.Point(558, 60);
+            this.btnLogout.Location = new System.Drawing.Point(744, 74);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(75, 23);
+            this.btnLogout.Size = new System.Drawing.Size(100, 28);
             this.btnLogout.TabIndex = 6;
             this.btnLogout.Text = "LOGOUT";
             this.btnLogout.UseVisualStyleBackColor = true;
@@ -106,9 +114,10 @@
             // 
             // btnViewStatus
             // 
-            this.btnViewStatus.Location = new System.Drawing.Point(53, 103);
+            this.btnViewStatus.Location = new System.Drawing.Point(70, 435);
+            this.btnViewStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnViewStatus.Name = "btnViewStatus";
-            this.btnViewStatus.Size = new System.Drawing.Size(75, 23);
+            this.btnViewStatus.Size = new System.Drawing.Size(100, 28);
             this.btnViewStatus.TabIndex = 7;
             this.btnViewStatus.Text = "View Status";
             this.btnViewStatus.UseVisualStyleBackColor = true;
@@ -116,9 +125,9 @@
             // 
             // frmApplicantDashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.btnViewStatus);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnChangePass);
@@ -127,6 +136,7 @@
             this.Controls.Add(this.lblSchedule);
             this.Controls.Add(this.lblMissingDocs);
             this.Controls.Add(this.lblStatus);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmApplicantDashboard";
             this.Text = "frmApplicantDashboard";
             this.ResumeLayout(false);

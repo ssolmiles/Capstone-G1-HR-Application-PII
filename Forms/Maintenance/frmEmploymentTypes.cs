@@ -3,7 +3,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Data;
 using System.Windows.Forms;
-
+using HRApplicantSystem.Helpers;
 namespace HRApplicantSystem.Forms.Maintenance
 {
     public partial class frmEmploymentTypes : Form
