@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HRApplicantSystem.Forms.Applicant;
 
 namespace HRApplicantSystem
 {
@@ -17,7 +18,7 @@ namespace HRApplicantSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form());
+            Application.Run(new frmApplicantLogin());
         }
     }
 }
