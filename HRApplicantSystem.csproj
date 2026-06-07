@@ -154,6 +154,7 @@
     <Compile Include="Models\EvaluationModels.cs" />
     <Compile Include="Models\JobModels.cs" />
     <Compile Include="Models\SystemModels.cs" />
+    <Compile Include="Helpers\ApplicantModels.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -184,6 +185,7 @@
     <Folder Include="Forms\Applicant\" />
     <Folder Include="Forms\HR\" />
     <Folder Include="Forms\Maintenance\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database\schema.sql" />
