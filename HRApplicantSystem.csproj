@@ -177,6 +177,7 @@
     <Compile Include="Forms\HR\frmHRLogin.Designer.cs">
       <DependentUpon>frmHRLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ApplicantModels.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\HR\frmJobVacancy.resx">
@@ -211,7 +212,6 @@
   <ItemGroup>
     <Folder Include="Forms\Applicant\" />
     <Folder Include="Forms\Maintenance\" />
-    <Folder Include="Helpers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
