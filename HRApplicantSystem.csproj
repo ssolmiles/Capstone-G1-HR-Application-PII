@@ -113,6 +113,7 @@
     <Reference Include="System.Configuration.ConfigurationManager, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Configuration.ConfigurationManager.8.0.0\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
     </Reference>
+b25e3ecda80535cca6999a1fd548b62551a4c251
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Common, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Data.Common.4.3.0\lib\net451\System.Data.Common.dll</HintPath>
@@ -176,6 +177,35 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\HR\frmHRApplicantreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HR\frmHRApplicantreview.Designer.cs">
+      <DependentUpon>frmHRApplicantreview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HR\frmJobVacancy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HR\frmJobVacancy.Designer.cs">
+      <DependentUpon>frmJobVacancy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HR\frmHRDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HR\frmHRDashboard.Designer.cs">
+      <DependentUpon>frmHRDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HR\frmHRLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HR\frmHRLogin.Designer.cs">
+      <DependentUpon>frmHRLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\ApplicantModels.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\HR\frmJobVacancy.resx">
+      <DependentUpon>frmJobVacancy.cs</DependentUpon>
     <Compile Include="Forms\Applicant\frmApplicantDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -359,6 +389,7 @@
     <EmbeddedResource Include="frmRequirementTypes.Designer.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>frmRequirementTypes.Designer.Designer.cs</LastGenOutput>
+b25e3ecda80535cca6999a1fd548b62551a4c251
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -369,11 +400,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Database\db_config.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <EmbeddedResource Include="frmPositions.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>frmPositions.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Database\db_config.ini" />
+b25e3ecda80535cca6999a1fd548b62551a4c251
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -389,8 +424,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Forms\Applicant\" />
     <Folder Include="Forms\HR\" />
-    <Folder Include="Helpers\" />
+    <Folder Include="Helpers\" />b25e3ecda80535cca6999a1fd548b62551a4c251
     <Folder Include="Forms\Maintenance\" />
     <Folder Include="Models\" />
   </ItemGroup>
