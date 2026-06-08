@@ -39,17 +39,20 @@
             // listViewApps
             // 
             this.listViewApps.HideSelection = false;
-            this.listViewApps.Location = new System.Drawing.Point(52, 35);
+            this.listViewApps.Location = new System.Drawing.Point(69, 43);
+            this.listViewApps.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listViewApps.Name = "listViewApps";
-            this.listViewApps.Size = new System.Drawing.Size(121, 97);
+            this.listViewApps.Size = new System.Drawing.Size(160, 118);
             this.listViewApps.TabIndex = 0;
             this.listViewApps.UseCompatibleStateImageBehavior = false;
             // 
             // btnSaveDraft
             // 
-            this.btnSaveDraft.Location = new System.Drawing.Point(52, 158);
+            this.btnSaveDraft.Font = new System.Drawing.Font("Verdana", 14F);
+            this.btnSaveDraft.Location = new System.Drawing.Point(69, 194);
+            this.btnSaveDraft.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSaveDraft.Name = "btnSaveDraft";
-            this.btnSaveDraft.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveDraft.Size = new System.Drawing.Size(133, 47);
             this.btnSaveDraft.TabIndex = 1;
             this.btnSaveDraft.Text = "Save Draft";
             this.btnSaveDraft.UseVisualStyleBackColor = true;
@@ -57,9 +60,11 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(52, 187);
+            this.btnSubmit.Font = new System.Drawing.Font("Verdana", 14F);
+            this.btnSubmit.Location = new System.Drawing.Point(69, 249);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
+            this.btnSubmit.Size = new System.Drawing.Size(133, 42);
             this.btnSubmit.TabIndex = 2;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
@@ -67,9 +72,11 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(52, 216);
+            this.btnEdit.Font = new System.Drawing.Font("Verdana", 14F);
+            this.btnEdit.Location = new System.Drawing.Point(69, 299);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.Size = new System.Drawing.Size(133, 39);
             this.btnEdit.TabIndex = 3;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -77,9 +84,11 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(52, 245);
+            this.btnDelete.Font = new System.Drawing.Font("Verdana", 14F);
+            this.btnDelete.Location = new System.Drawing.Point(69, 346);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.Size = new System.Drawing.Size(133, 41);
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -87,9 +96,11 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(52, 274);
+            this.btnBack.Font = new System.Drawing.Font("Verdana", 14F);
+            this.btnBack.Location = new System.Drawing.Point(69, 395);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(75, 23);
+            this.btnBack.Size = new System.Drawing.Size(133, 41);
             this.btnBack.TabIndex = 5;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
@@ -97,15 +108,16 @@
             // 
             // frmMyApplication
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.btnSaveDraft);
             this.Controls.Add(this.listViewApps);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmMyApplication";
             this.Text = "frmMyApplication";
             this.ResumeLayout(false);

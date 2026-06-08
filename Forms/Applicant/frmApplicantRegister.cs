@@ -88,5 +88,10 @@ namespace HRApplicantSystem.Forms.Applicant
                 cmd.Parameters.Clear();
             }
         }
+
+        private void dtpBirthday_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

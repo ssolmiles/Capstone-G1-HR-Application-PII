@@ -44,9 +44,10 @@
             // lblCreateAcc
             // 
             this.lblCreateAcc.AutoSize = true;
-            this.lblCreateAcc.Location = new System.Drawing.Point(362, 347);
+            this.lblCreateAcc.Location = new System.Drawing.Point(483, 427);
+            this.lblCreateAcc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCreateAcc.Name = "lblCreateAcc";
-            this.lblCreateAcc.Size = new System.Drawing.Size(81, 13);
+            this.lblCreateAcc.Size = new System.Drawing.Size(98, 16);
             this.lblCreateAcc.TabIndex = 23;
             this.lblCreateAcc.Text = "Create Account";
             this.lblCreateAcc.Click += new System.EventHandler(this.lblCreateAcc_Click);
@@ -54,18 +55,20 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(342, 329);
+            this.label5.Location = new System.Drawing.Point(456, 405);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(119, 13);
+            this.label5.Size = new System.Drawing.Size(143, 16);
             this.label5.TabIndex = 22;
             this.label5.Text = "Don\'t Have an Account";
             // 
             // btnClear
             // 
             this.btnClear.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClear.Location = new System.Drawing.Point(295, 291);
+            this.btnClear.Location = new System.Drawing.Point(393, 358);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(216, 35);
+            this.btnClear.Size = new System.Drawing.Size(288, 43);
             this.btnClear.TabIndex = 21;
             this.btnClear.Text = "CLEAR";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -74,9 +77,10 @@
             // btnLogIn
             // 
             this.btnLogIn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLogIn.Location = new System.Drawing.Point(295, 251);
+            this.btnLogIn.Location = new System.Drawing.Point(393, 309);
+            this.btnLogIn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLogIn.Name = "btnLogIn";
-            this.btnLogIn.Size = new System.Drawing.Size(216, 35);
+            this.btnLogIn.Size = new System.Drawing.Size(288, 43);
             this.btnLogIn.TabIndex = 20;
             this.btnLogIn.Text = "LOGIN";
             this.btnLogIn.UseVisualStyleBackColor = true;
@@ -87,9 +91,10 @@
             this.CheckbxShowPas.AutoSize = true;
             this.CheckbxShowPas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CheckbxShowPas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CheckbxShowPas.Location = new System.Drawing.Point(412, 210);
+            this.CheckbxShowPas.Location = new System.Drawing.Point(549, 258);
+            this.CheckbxShowPas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CheckbxShowPas.Name = "CheckbxShowPas";
-            this.CheckbxShowPas.Size = new System.Drawing.Size(99, 17);
+            this.CheckbxShowPas.Size = new System.Drawing.Size(121, 20);
             this.CheckbxShowPas.TabIndex = 19;
             this.CheckbxShowPas.Text = "Show Password";
             this.CheckbxShowPas.UseVisualStyleBackColor = true;
@@ -99,18 +104,20 @@
             // 
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPassword.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(295, 183);
+            this.txtPassword.Location = new System.Drawing.Point(393, 225);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '•';
-            this.txtPassword.Size = new System.Drawing.Size(216, 21);
+            this.txtPassword.Size = new System.Drawing.Size(288, 27);
             this.txtPassword.TabIndex = 16;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(292, 167);
+            this.label3.Location = new System.Drawing.Point(389, 206);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 13);
+            this.label3.Size = new System.Drawing.Size(70, 16);
             this.label3.TabIndex = 15;
             this.label3.Text = "Password:";
             // 
@@ -118,17 +125,19 @@
             // 
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtEmail.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(295, 143);
+            this.txtEmail.Location = new System.Drawing.Point(393, 176);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(216, 21);
+            this.txtEmail.Size = new System.Drawing.Size(288, 27);
             this.txtEmail.TabIndex = 14;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(292, 127);
+            this.label2.Location = new System.Drawing.Point(389, 156);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.Size = new System.Drawing.Size(44, 16);
             this.label2.TabIndex = 13;
             this.label2.Text = "Email:";
             // 
@@ -136,18 +145,20 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(290, 67);
+            this.label1.Location = new System.Drawing.Point(387, 82);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 27);
+            this.label1.Size = new System.Drawing.Size(107, 34);
             this.label1.TabIndex = 12;
             this.label1.Text = "Log In";
             // 
             // linklblFgtPass
             // 
             this.linklblFgtPass.AutoSize = true;
-            this.linklblFgtPass.Location = new System.Drawing.Point(292, 211);
+            this.linklblFgtPass.Location = new System.Drawing.Point(389, 260);
+            this.linklblFgtPass.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linklblFgtPass.Name = "linklblFgtPass";
-            this.linklblFgtPass.Size = new System.Drawing.Size(92, 13);
+            this.linklblFgtPass.Size = new System.Drawing.Size(116, 16);
             this.linklblFgtPass.TabIndex = 24;
             this.linklblFgtPass.TabStop = true;
             this.linklblFgtPass.Text = "Forgot Password?";
@@ -155,9 +166,9 @@
             // 
             // frmApplicantLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1133, 569);
             this.Controls.Add(this.linklblFgtPass);
             this.Controls.Add(this.lblCreateAcc);
             this.Controls.Add(this.label5);
@@ -169,6 +180,7 @@
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmApplicantLogin";
             this.Text = "frmApplicantLogin";
             this.ResumeLayout(false);

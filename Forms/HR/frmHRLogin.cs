@@ -52,5 +52,10 @@ namespace HRApplicantSystem.Forms.HR
                 cmd.Parameters.Clear();
             }
         }
+
+        private void lblPassword_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

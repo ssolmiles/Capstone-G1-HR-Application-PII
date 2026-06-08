@@ -137,9 +137,47 @@ namespace HRApplicantSystem.Forms.Applicant
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            frmApplicantDashboard dash = new frmApplicantDashboard(userEmail);
-            dash.Show();
-            this.Hide();
+            this.Close();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmMyProfile_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblEducationBg_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

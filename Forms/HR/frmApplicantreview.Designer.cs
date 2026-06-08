@@ -34,62 +34,69 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(20, 20);
+            this.txtSearch.Font = new System.Drawing.Font("Verdana", 14F);
+            this.txtSearch.Location = new System.Drawing.Point(45, 228);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(250, 22);
+            this.txtSearch.Size = new System.Drawing.Size(378, 36);
             this.txtSearch.TabIndex = 0;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(280, 20);
+            this.btnSearch.Font = new System.Drawing.Font("Verdana", 14F);
+            this.btnSearch.Location = new System.Drawing.Point(305, 228);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.Size = new System.Drawing.Size(203, 52);
             this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "Search";
             // 
             // lstApplicants
             // 
-            this.lstApplicants.ItemHeight = 16;
-            this.lstApplicants.Location = new System.Drawing.Point(20, 60);
+            this.lstApplicants.Font = new System.Drawing.Font("Verdana", 14F);
+            this.lstApplicants.ItemHeight = 28;
+            this.lstApplicants.Location = new System.Drawing.Point(45, 268);
             this.lstApplicants.Name = "lstApplicants";
-            this.lstApplicants.Size = new System.Drawing.Size(400, 196);
+            this.lstApplicants.Size = new System.Drawing.Size(400, 172);
             this.lstApplicants.TabIndex = 2;
             // 
             // btnViewProfile
             // 
-            this.btnViewProfile.Location = new System.Drawing.Point(450, 60);
+            this.btnViewProfile.Font = new System.Drawing.Font("Verdana", 14F);
+            this.btnViewProfile.Location = new System.Drawing.Point(1056, 406);
             this.btnViewProfile.Name = "btnViewProfile";
-            this.btnViewProfile.Size = new System.Drawing.Size(126, 23);
+            this.btnViewProfile.Size = new System.Drawing.Size(174, 34);
             this.btnViewProfile.TabIndex = 3;
             this.btnViewProfile.Text = "View Profile";
             // 
             // btnViewDocuments
             // 
-            this.btnViewDocuments.Location = new System.Drawing.Point(450, 100);
+            this.btnViewDocuments.Font = new System.Drawing.Font("Verdana", 14F);
+            this.btnViewDocuments.Location = new System.Drawing.Point(1056, 446);
             this.btnViewDocuments.Name = "btnViewDocuments";
-            this.btnViewDocuments.Size = new System.Drawing.Size(126, 23);
+            this.btnViewDocuments.Size = new System.Drawing.Size(174, 34);
             this.btnViewDocuments.TabIndex = 4;
             this.btnViewDocuments.Text = "View Documents";
             // 
             // btnLockReview
             // 
-            this.btnLockReview.Location = new System.Drawing.Point(450, 140);
+            this.btnLockReview.Font = new System.Drawing.Font("Verdana", 14F);
+            this.btnLockReview.Location = new System.Drawing.Point(1056, 486);
             this.btnLockReview.Name = "btnLockReview";
-            this.btnLockReview.Size = new System.Drawing.Size(126, 23);
+            this.btnLockReview.Size = new System.Drawing.Size(174, 34);
             this.btnLockReview.TabIndex = 5;
             this.btnLockReview.Text = "Lock Application";
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(450, 180);
+            this.btnNext.Font = new System.Drawing.Font("Verdana", 14F);
+            this.btnNext.Location = new System.Drawing.Point(1056, 526);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(126, 23);
+            this.btnNext.Size = new System.Drawing.Size(174, 34);
             this.btnNext.TabIndex = 6;
             this.btnNext.Text = "Next → Screening";
             // 
             // frmHRApplicantReview
             // 
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1329, 650);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.lstApplicants);
@@ -101,6 +108,7 @@
             this.Text = "Applicant Review";
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
         #endregion
     }

@@ -121,6 +121,7 @@
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=10.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Diagnostics.DiagnosticSource.10.0.3\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.IdentityModel.Tokens.Jwt, Version=8.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\System.IdentityModel.Tokens.Jwt.8.16.0\lib\net472\System.IdentityModel.Tokens.Jwt.dll</HintPath>
     </Reference>
@@ -174,15 +175,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\Maintenance\frmDepartments.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Maintenance\frmDepartments.Designer.cs">
-      <DependentUpon>frmDepartments.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Maintenance\frmRequirementTypes.Designer.cs">
-      <DependentUpon>frmRequirementTypes.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -336,8 +328,17 @@
     <Compile Include="Forms\Maintenance\frmEmploymentTypes.Designer.cs">
       <DependentUpon>frmEmploymentTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Maintenance\frmDepartments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Maintenance\frmDepartments.Designer.cs">
+      <DependentUpon>frmDepartments.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Maintenance\frmRequirementTypes.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Maintenance\frmRequirementTypes.Designer.cs">
+      <DependentUpon>frmRequirementTypes.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Maintenance\frmInterviewTypes.cs">
       <SubType>Form</SubType>
@@ -351,7 +352,9 @@
     <Compile Include="Forms\Maintenance\frmAssessmentTypes.Designer.cs">
       <DependentUpon>frmAssessmentTypes.cs</DependentUpon>
     </Compile>
-    <!-- Embedded Resources -->
+  </ItemGroup>
+  <ItemGroup>
+    <!-- HR Embedded Resources -->
     <EmbeddedResource Include="Forms\HR\frmHRLogin.resx">
       <DependentUpon>frmHRLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -379,6 +382,7 @@
     <EmbeddedResource Include="Forms\HR\frmReports.resx">
       <DependentUpon>frmReports.cs</DependentUpon>
     </EmbeddedResource>
+    <!-- Applicant Embedded Resources -->
     <EmbeddedResource Include="Forms\Applicant\frmApplicantLogin.resx">
       <DependentUpon>frmApplicantLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -406,6 +410,7 @@
     <EmbeddedResource Include="Forms\Applicant\frmMyProfile.resx">
       <DependentUpon>frmMyProfile.cs</DependentUpon>
     </EmbeddedResource>
+    <!-- Maintenance Embedded Resources -->
     <EmbeddedResource Include="Forms\Maintenance\frmDepartments.resx">
       <DependentUpon>frmDepartments.cs</DependentUpon>
     </EmbeddedResource>
@@ -435,7 +440,8 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <!-- None -->
+  </ItemGroup>
+  <ItemGroup>
     <None Include="App.config" />
     <None Include="Database\db_config.ini">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -446,7 +452,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Database\schema.sql" />
     <Content Include="Database\seed.sql" />

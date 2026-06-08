@@ -179,5 +179,10 @@ namespace HRApplicantSystem.Forms.Applicant
             profile.Show();
             this.Hide();
         }
+
+        private void lblIDStatus_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

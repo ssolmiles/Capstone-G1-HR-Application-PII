@@ -45,16 +45,18 @@
             // 
             this.txtRemarks.Location = new System.Drawing.Point(20, 60);
             this.txtRemarks.Multiline = true;
+            this.txtRemarks.Name = "txtRemarks";
             this.txtRemarks.Size = new System.Drawing.Size(300, 80);
             this.txtRemarks.TabIndex = 1;
-            this.txtRemarks.Text = "(Interviewer remarks and notes about the candidate's performance during the interview)";
+            this.txtRemarks.Text = "(Interviewer remarks and notes about the candidate\'s performance during the inter" +
+    "view)";
             // 
             // lblResult
             // 
             this.lblResult.AutoSize = true;
             this.lblResult.Location = new System.Drawing.Point(20, 150);
             this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(120, 16);
+            this.lblResult.Size = new System.Drawing.Size(125, 16);
             this.lblResult.TabIndex = 2;
             this.lblResult.Text = "Result: Not decided";
             // 
@@ -78,6 +80,7 @@
             // 
             this.txtRecommendation.Location = new System.Drawing.Point(20, 220);
             this.txtRecommendation.Multiline = true;
+            this.txtRecommendation.Name = "txtRecommendation";
             this.txtRecommendation.Size = new System.Drawing.Size(300, 80);
             this.txtRecommendation.TabIndex = 5;
             this.txtRecommendation.Text = "Recommendation for next steps (e.g. second interview, reference check, etc.)";
@@ -100,7 +103,7 @@
             // 
             // frmEvaluation
             // 
-            this.ClientSize = new System.Drawing.Size(400, 380);
+            this.ClientSize = new System.Drawing.Size(1332, 653);
             this.Controls.Add(this.txtScore);
             this.Controls.Add(this.txtRemarks);
             this.Controls.Add(this.lblResult);
@@ -113,6 +116,7 @@
             this.Text = "Interview Evaluation";
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
         #endregion
     }

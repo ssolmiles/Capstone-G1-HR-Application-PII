@@ -97,8 +97,8 @@ namespace HRApplicantSystem.Forms.Applicant
         private void btnProfile_Click(object sender, EventArgs e)
         {
             frmMyProfile profile = new frmMyProfile(userEmail);
-            profile.Show();
-            this.Hide();
+            profile.ShowDialog(); // ← use ShowDialog instead of Show
+                                  // No need to hide dashboard, it stays open behind
         }
 
         private void btnChangePass_Click(object sender, EventArgs e)
@@ -118,6 +118,41 @@ namespace HRApplicantSystem.Forms.Applicant
         {
             frmApplicationStatus statusForm = new frmApplicationStatus(userEmail);
             statusForm.Show();
+        }
+
+        private void frmApplicantDashboard_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblStatus_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblMissingDocs_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblSchedule_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
