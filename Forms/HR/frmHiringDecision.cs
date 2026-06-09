@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace HRApplicantSystem.Forms.HR
 {
-    public partial class frmFinalDecision : Form
+    public partial class frmHiringDecision : Form
     {
-        public frmFinalDecision()
+        public frmHiringDecision()
         {
             InitializeComponent();
             btnHire.Click += btnHire_Click;

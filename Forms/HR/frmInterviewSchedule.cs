@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace HRApplicantSystem.Forms.HR
 {
-    public partial class frmInterviewScheduling : Form
+    public partial class frmInterviewSchedule : Form
     {
-        public frmInterviewScheduling()
+        public frmInterviewSchedule()
         {
             InitializeComponent();
             btnSchedule.Click += btnSchedule_Click;
@@ -39,7 +39,7 @@ namespace HRApplicantSystem.Forms.HR
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            frmEvaluation evalForm = new frmEvaluation();
+            frmInterviewEvaluation evalForm = new frmInterviewEvaluation();
             evalForm.Show();
             this.Hide();
         }

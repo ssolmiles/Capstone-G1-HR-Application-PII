@@ -24,7 +24,7 @@ namespace HRApplicantSystem.Forms.HR
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            frmInterviewScheduling interviewForm = new frmInterviewScheduling();
+            frmInterviewSchedule interviewForm = new frmInterviewSchedule();
             interviewForm.Show();
             this.Hide();
         }
