@@ -5,3 +5,7 @@ obj/
 .vs/
 *.user
 *.suo
+
+*.htm
+packages/
+Form1.cs.txt
