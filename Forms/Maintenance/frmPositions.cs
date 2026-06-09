@@ -21,7 +21,7 @@ namespace HRApplicantSystem.Forms.Maintenance
                     conn.Open();
 
                     string query = "SELECT position_id AS ID, title AS Name FROM positions";
-
+                    
                     var adapter = new MySqlDataAdapter(query, conn);
                     var table = new DataTable();
                     adapter.Fill(table);
