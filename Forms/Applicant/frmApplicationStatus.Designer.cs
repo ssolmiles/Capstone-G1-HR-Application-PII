@@ -248,9 +248,10 @@
             this.Controls.Add(this.lblStep3);
             this.Controls.Add(this.lblStep2);
             this.Controls.Add(this.lblStep1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmApplicationStatus";
             this.Text = "frmApplicationStatus";
+            this.Load += new System.EventHandler(this.frmApplicationStatus_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 

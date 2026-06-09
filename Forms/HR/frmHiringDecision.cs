@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using HRApplicantSystem.Helpers;
+
 namespace HRApplicantSystem.Forms.HR
 {
     public partial class frmFinalDecision : Form
@@ -8,7 +8,6 @@ namespace HRApplicantSystem.Forms.HR
         public frmFinalDecision()
         {
             InitializeComponent();
-
             btnHire.Click += btnHire_Click;
             btnReject.Click += btnReject_Click;
             btnSave.Click += btnSave_Click;
@@ -33,5 +32,7 @@ namespace HRApplicantSystem.Forms.HR
             string summary = $"Decision: {lblDecision.Text}\nStatus: {lblStatus.Text}\nRemarks: {txtFinalRemarks.Text}";
             MessageBox.Show("Final decision saved:\n" + summary);
         }
+
+        private void txtFinalRemarks_TextChanged(object sender, EventArgs e) { }
     }
 }

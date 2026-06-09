@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using HRApplicantSystem.Helpers;
+
 namespace HRApplicantSystem.Forms.HR
 {
     public partial class frmReports : Form
@@ -8,7 +8,6 @@ namespace HRApplicantSystem.Forms.HR
         public frmReports()
         {
             InitializeComponent();
-
             btnGenerateReport.Click += btnGenerateReport_Click;
             btnNext.Click += btnNext_Click;
         }
@@ -24,5 +23,7 @@ namespace HRApplicantSystem.Forms.HR
             dashboard.Show();
             this.Hide();
         }
+
+        private void frmReports_Load(object sender, EventArgs e) { }
     }
 }

@@ -75,7 +75,7 @@
             // 
             this.dtpBirthday.Font = new System.Drawing.Font("Verdana", 11F);
             this.dtpBirthday.Location = new System.Drawing.Point(143, 143);
-            this.dtpBirthday.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpBirthday.Margin = new System.Windows.Forms.Padding(4);
             this.dtpBirthday.Name = "dtpBirthday";
             this.dtpBirthday.Size = new System.Drawing.Size(265, 30);
             this.dtpBirthday.TabIndex = 1;
@@ -84,7 +84,7 @@
             // 
             this.txtSkills.Font = new System.Drawing.Font("Verdana", 11F);
             this.txtSkills.Location = new System.Drawing.Point(799, 247);
-            this.txtSkills.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSkills.Margin = new System.Windows.Forms.Padding(4);
             this.txtSkills.Name = "txtSkills";
             this.txtSkills.Size = new System.Drawing.Size(132, 30);
             this.txtSkills.TabIndex = 3;
@@ -93,7 +93,7 @@
             // 
             this.txtEducation.Font = new System.Drawing.Font("Verdana", 11F);
             this.txtEducation.Location = new System.Drawing.Point(191, 517);
-            this.txtEducation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEducation.Margin = new System.Windows.Forms.Padding(4);
             this.txtEducation.Name = "txtEducation";
             this.txtEducation.Size = new System.Drawing.Size(132, 30);
             this.txtEducation.TabIndex = 4;
@@ -102,7 +102,7 @@
             // 
             this.txtEmail.Font = new System.Drawing.Font("Verdana", 11F);
             this.txtEmail.Location = new System.Drawing.Point(799, 194);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(132, 30);
             this.txtEmail.TabIndex = 5;
@@ -111,7 +111,7 @@
             // 
             this.txtPhone.Font = new System.Drawing.Font("Verdana", 11F);
             this.txtPhone.Location = new System.Drawing.Point(799, 148);
-            this.txtPhone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPhone.Margin = new System.Windows.Forms.Padding(4);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(132, 30);
             this.txtPhone.TabIndex = 6;
@@ -120,7 +120,7 @@
             // 
             this.txtCountry.Font = new System.Drawing.Font("Verdana", 11F);
             this.txtCountry.Location = new System.Drawing.Point(163, 344);
-            this.txtCountry.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCountry.Margin = new System.Windows.Forms.Padding(4);
             this.txtCountry.Name = "txtCountry";
             this.txtCountry.Size = new System.Drawing.Size(132, 30);
             this.txtCountry.TabIndex = 7;
@@ -129,7 +129,7 @@
             // 
             this.txtAddress.Font = new System.Drawing.Font("Verdana", 11F);
             this.txtAddress.Location = new System.Drawing.Point(163, 225);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(4);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(132, 30);
             this.txtAddress.TabIndex = 8;
@@ -138,7 +138,7 @@
             // 
             this.btnEdit.Font = new System.Drawing.Font("Verdana", 11F);
             this.btnEdit.Location = new System.Drawing.Point(1191, 481);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(4);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(100, 28);
             this.btnEdit.TabIndex = 9;
@@ -150,7 +150,7 @@
             // 
             this.btnSave.Font = new System.Drawing.Font("Verdana", 11F);
             this.btnSave.Location = new System.Drawing.Point(1191, 517);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(100, 28);
             this.btnSave.TabIndex = 10;
@@ -162,7 +162,7 @@
             // 
             this.btnBack.Font = new System.Drawing.Font("Verdana", 11F);
             this.btnBack.Location = new System.Drawing.Point(1191, 552);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(100, 28);
             this.btnBack.TabIndex = 11;
@@ -263,7 +263,7 @@
             // 
             this.txtFN.Font = new System.Drawing.Font("Verdana", 11F);
             this.txtFN.Location = new System.Drawing.Point(143, 87);
-            this.txtFN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFN.Margin = new System.Windows.Forms.Padding(4);
             this.txtFN.Name = "txtFN";
             this.txtFN.Size = new System.Drawing.Size(220, 30);
             this.txtFN.TabIndex = 21;
@@ -272,7 +272,7 @@
             // 
             this.txtLN.Font = new System.Drawing.Font("Verdana", 11F);
             this.txtLN.Location = new System.Drawing.Point(799, 87);
-            this.txtLN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLN.Margin = new System.Windows.Forms.Padding(4);
             this.txtLN.Name = "txtLN";
             this.txtLN.Size = new System.Drawing.Size(225, 30);
             this.txtLN.TabIndex = 22;
@@ -281,7 +281,7 @@
             // 
             this.txtMI.Font = new System.Drawing.Font("Verdana", 11F);
             this.txtMI.Location = new System.Drawing.Point(526, 90);
-            this.txtMI.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMI.Margin = new System.Windows.Forms.Padding(4);
             this.txtMI.Name = "txtMI";
             this.txtMI.Size = new System.Drawing.Size(132, 30);
             this.txtMI.TabIndex = 23;
@@ -446,6 +446,7 @@
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(132, 30);
             this.textBox6.TabIndex = 38;
+            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // label8
             // 
@@ -545,7 +546,7 @@
             this.Controls.Add(this.txtEducation);
             this.Controls.Add(this.txtSkills);
             this.Controls.Add(this.dtpBirthday);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMyProfile";
             this.Text = "frmMyProfile";
             this.Load += new System.EventHandler(this.frmMyProfile_Load_1);

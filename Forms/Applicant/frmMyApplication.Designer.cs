@@ -40,7 +40,7 @@
             // 
             this.listViewApps.HideSelection = false;
             this.listViewApps.Location = new System.Drawing.Point(69, 43);
-            this.listViewApps.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listViewApps.Margin = new System.Windows.Forms.Padding(4);
             this.listViewApps.Name = "listViewApps";
             this.listViewApps.Size = new System.Drawing.Size(160, 118);
             this.listViewApps.TabIndex = 0;
@@ -50,7 +50,7 @@
             // 
             this.btnSaveDraft.Font = new System.Drawing.Font("Verdana", 14F);
             this.btnSaveDraft.Location = new System.Drawing.Point(69, 194);
-            this.btnSaveDraft.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSaveDraft.Margin = new System.Windows.Forms.Padding(4);
             this.btnSaveDraft.Name = "btnSaveDraft";
             this.btnSaveDraft.Size = new System.Drawing.Size(133, 47);
             this.btnSaveDraft.TabIndex = 1;
@@ -62,7 +62,7 @@
             // 
             this.btnSubmit.Font = new System.Drawing.Font("Verdana", 14F);
             this.btnSubmit.Location = new System.Drawing.Point(69, 249);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(4);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(133, 42);
             this.btnSubmit.TabIndex = 2;
@@ -74,7 +74,7 @@
             // 
             this.btnEdit.Font = new System.Drawing.Font("Verdana", 14F);
             this.btnEdit.Location = new System.Drawing.Point(69, 299);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(4);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(133, 39);
             this.btnEdit.TabIndex = 3;
@@ -86,7 +86,7 @@
             // 
             this.btnDelete.Font = new System.Drawing.Font("Verdana", 14F);
             this.btnDelete.Location = new System.Drawing.Point(69, 346);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(133, 41);
             this.btnDelete.TabIndex = 4;
@@ -98,7 +98,7 @@
             // 
             this.btnBack.Font = new System.Drawing.Font("Verdana", 14F);
             this.btnBack.Location = new System.Drawing.Point(69, 395);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(133, 41);
             this.btnBack.TabIndex = 5;
@@ -117,9 +117,10 @@
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.btnSaveDraft);
             this.Controls.Add(this.listViewApps);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMyApplication";
             this.Text = "frmMyApplication";
+            this.Load += new System.EventHandler(this.frmMyApplication_Load);
             this.ResumeLayout(false);
 
         }

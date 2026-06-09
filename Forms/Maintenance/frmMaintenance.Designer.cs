@@ -23,7 +23,9 @@ namespace HRApplicantSystem.Forms.Maintenance
             this.ClientSize = new System.Drawing.Size(800, 500);
             this.Name = "frmMaintenance";
             this.Text = "Maintenance";
+            this.Load += new System.EventHandler(this.frmMaintenance_Load);
             this.ResumeLayout(false);
+
         }
         #endregion
     }

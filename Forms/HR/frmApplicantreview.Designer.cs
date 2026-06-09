@@ -35,7 +35,7 @@
             // txtSearch
             // 
             this.txtSearch.Font = new System.Drawing.Font("Verdana", 14F);
-            this.txtSearch.Location = new System.Drawing.Point(45, 228);
+            this.txtSearch.Location = new System.Drawing.Point(97, 141);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(378, 36);
             this.txtSearch.TabIndex = 0;
@@ -43,7 +43,7 @@
             // btnSearch
             // 
             this.btnSearch.Font = new System.Drawing.Font("Verdana", 14F);
-            this.btnSearch.Location = new System.Drawing.Point(305, 228);
+            this.btnSearch.Location = new System.Drawing.Point(496, 99);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(203, 52);
             this.btnSearch.TabIndex = 1;
@@ -106,6 +106,7 @@
             this.Controls.Add(this.btnNext);
             this.Name = "frmHRApplicantReview";
             this.Text = "Applicant Review";
+            this.Load += new System.EventHandler(this.frmHRApplicantReview_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

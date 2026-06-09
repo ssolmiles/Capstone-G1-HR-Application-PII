@@ -1,137 +1,149 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using HRApplicantSystem.Helpers;
 using Microsoft.Data.SqlClient;
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace HRApplicantSystem.Forms.Applicant
 {
     public partial class frmApplicationStatus : Form
     {
-        SqlConnection conn;
-        SqlCommand cmd;
-        SqlDataReader dr;
-        string userEmail;
+        private string userEmail;
+
         public frmApplicationStatus(string email)
         {
             InitializeComponent();
             userEmail = email;
-            string connString = "Server=g1-hr-processing-server.database.windows.net;Database=HR_Applicant_Processing_System;User ID=hradmin;Password=@Ssolshine2006;";
-            conn = new SqlConnection(connString);
-            cmd = new SqlCommand();
         }
-        private void frmApplicationStatus_Load(object sender, EventArgs e)
+
+        private void frmApplicationStatus_Load_1(object sender, EventArgs e)
         {
             LoadStatusDetails();
         }
+
         private void LoadStatusDetails()
         {
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
-                cmd.CommandText = @"SELECT Status, HR_Remarks, Interview_Date, Interview_Time, Interview_Location, Final_Result
-                                    FROM ApplicantRegister WHERE Email = @Email";
-                cmd.Parameters.AddWithValue("@Email", userEmail);
-                dr = cmd.ExecuteReader();
-                if (dr.Read())
+                using (SqlConnection conn = DatabaseHelper.GetConnection())
                 {
-                    // 1. CURRENT STATUS
-                    string currentStatus = dr["Status"].ToString();
-                    lblCurrentStatus.Text = "Current Status: " + currentStatus;
-                    if (currentStatus == "Pending")
+                    conn.Open();
+
+                    using (SqlCommand cmd = new SqlCommand(
+                        @"SELECT 
+                            a.status,
+                            s.scheduled_date,
+                            s.scheduled_time,
+                            s.location,
+                            hd.final_decision,
+                            sr.remarks
+                          FROM applications a
+                          INNER JOIN applicants ap ON a.applicant_id = ap.applicant_id
+                          LEFT JOIN interview_schedules s ON s.application_id = a.application_id
+                          LEFT JOIN hiring_decisions hd ON hd.application_id = a.application_id
+                          LEFT JOIN screening_results sr ON sr.application_id = a.application_id
+                          WHERE ap.email = @Email
+                          ORDER BY a.last_updated DESC
+                          OFFSET 0 ROWS FETCH NEXT 1 ROWS ONLY", conn))
                     {
-                        lblStep1.BackColor = System.Drawing.Color.Green;
-                        lblStep2.BackColor = System.Drawing.Color.Gray;
-                        lblStep3.BackColor = System.Drawing.Color.Gray;
-                        lblStep4.BackColor = System.Drawing.Color.Gray;
-                    }
-                    else if (currentStatus == "Under Review")
-                    {
-                        lblStep1.BackColor = System.Drawing.Color.Green;
-                        lblStep2.BackColor = System.Drawing.Color.Orange;
-                        lblStep3.BackColor = System.Drawing.Color.Gray;
-                        lblStep4.BackColor = System.Drawing.Color.Gray;
-                    }
-                    else if (currentStatus == "Scheduled")
-                    {
-                        lblStep1.BackColor = System.Drawing.Color.Green;
-                        lblStep2.BackColor = System.Drawing.Color.Green;
-                        lblStep3.BackColor = System.Drawing.Color.Orange;
-                        lblStep4.BackColor = System.Drawing.Color.Gray;
-                    }
-                    else if (currentStatus == "Approved" || currentStatus == "Rejected")
-                    {
-                        lblStep1.BackColor = System.Drawing.Color.Green;
-                        lblStep2.BackColor = System.Drawing.Color.Green;
-                        lblStep3.BackColor = System.Drawing.Color.Green;
-                        lblStep4.BackColor = System.Drawing.Color.Blue;
-                    }
-                    // 2. HR REMARKS
-                    string remarks = dr["HR_Remarks"].ToString();
-                    if (string.IsNullOrEmpty(remarks))
-                        lblRemarks.Text = "Remarks: No remarks yet.";
-                    else
-                        lblRemarks.Text = "Remarks: " + remarks;
-                    // 3. INTERVIEW SCHEDULE DETAILS
-                    if (dr["Interview_Date"] != DBNull.Value)
-                    {
-                        DateTime date = Convert.ToDateTime(dr["Interview_Date"]);
-                        string time = dr["Interview_Time"].ToString();
-                        string venue = dr["Interview_Location"].ToString();
-                        lblSchedule.Text = $"Schedule: {date:MMMM dd, yyyy}\n Time: {time}\n Where: {venue}";
-                    }
-                    else
-                    {
-                        lblSchedule.Text = "Schedule: Not yet scheduled";
-                    }
-                    // 4. FINAL RESULT
-                    string result = dr["Final_Result"].ToString();
-                    if (string.IsNullOrEmpty(result) || result == "Pending")
-                    {
-                        lblResult.Text = "Final Result: PENDING";
-                        lblResult.ForeColor = System.Drawing.Color.Orange;
-                    }
-                    else
-                    {
-                        lblResult.Text = "Final Result: " + result.ToUpper();
-                        if (result.ToLower() == "passed" || result.ToLower() == "approved")
-                            lblResult.ForeColor = System.Drawing.Color.Green;
-                        else
-                            lblResult.ForeColor = System.Drawing.Color.Red;
+                        cmd.Parameters.AddWithValue("@Email", userEmail);
+
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                // 1. CURRENT STATUS
+                                string currentStatus = dr["status"].ToString();
+                                lblCurrentStatus.Text = "Current Status: " + currentStatus;
+
+                                ResetStepColors();
+
+                                switch (currentStatus)
+                                {
+                                    case "submitted":
+                                    case "draft":
+                                        lblStep1.BackColor = Color.Green;
+                                        break;
+                                    case "under_review":
+                                    case "screened":
+                                        lblStep1.BackColor = Color.Green;
+                                        lblStep2.BackColor = Color.Orange;
+                                        break;
+                                    case "interview_scheduled":
+                                    case "interviewed":
+                                        lblStep1.BackColor = Color.Green;
+                                        lblStep2.BackColor = Color.Green;
+                                        lblStep3.BackColor = Color.Orange;
+                                        break;
+                                    case "accepted":
+                                    case "rejected":
+                                        lblStep1.BackColor = Color.Green;
+                                        lblStep2.BackColor = Color.Green;
+                                        lblStep3.BackColor = Color.Green;
+                                        lblStep4.BackColor = Color.Blue;
+                                        break;
+                                }
+
+                                // 2. REMARKS
+                                string remarks = dr["remarks"] == DBNull.Value ? "" : dr["remarks"].ToString();
+                                lblRemarks.Text = string.IsNullOrEmpty(remarks)
+                                    ? "Remarks: No remarks yet."
+                                    : "Remarks: " + remarks;
+
+                                // 3. INTERVIEW SCHEDULE
+                                if (dr["scheduled_date"] != DBNull.Value)
+                                {
+                                    string date = Convert.ToDateTime(dr["scheduled_date"]).ToString("MMMM dd, yyyy");
+                                    string time = dr["scheduled_time"].ToString();
+                                    string venue = dr["location"].ToString();
+                                    lblSchedule.Text = $"Schedule: {date}\n Time: {time}\n Where: {venue}";
+                                }
+                                else
+                                {
+                                    lblSchedule.Text = "Schedule: Not yet scheduled";
+                                }
+
+                                // 4. FINAL RESULT
+                                string result = dr["final_decision"] == DBNull.Value ? "" : dr["final_decision"].ToString();
+                                if (string.IsNullOrEmpty(result))
+                                {
+                                    lblResult.Text = "Final Result: PENDING";
+                                    lblResult.ForeColor = Color.Orange;
+                                }
+                                else
+                                {
+                                    lblResult.Text = "Final Result: " + result.ToUpper();
+                                    lblResult.ForeColor = result == "accepted" ? Color.Green : Color.Red;
+                                }
+                            }
+                            else
+                            {
+                                lblCurrentStatus.Text = "No application found.";
+                            }
+                        }
                     }
                 }
-                dr.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
-            finally
-            {
-                conn.Close();
-            }
         }
 
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void ResetStepColors()
         {
-
+            lblStep1.BackColor = Color.Gray;
+            lblStep2.BackColor = Color.Gray;
+            lblStep3.BackColor = Color.Gray;
+            lblStep4.BackColor = Color.Gray;
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e) { }
+        private void checkBox1_CheckedChanged(object sender, EventArgs e) { }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
     }
 }

@@ -54,5 +54,10 @@ namespace HRApplicantSystem.Forms.HR
             screeningForm.Show();
             this.Hide();
         }
+
+        private void frmHRApplicantReview_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

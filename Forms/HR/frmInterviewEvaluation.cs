@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using HRApplicantSystem.Helpers;
+
 namespace HRApplicantSystem.Forms.HR
 {
     public partial class frmEvaluation : Form
@@ -8,7 +8,6 @@ namespace HRApplicantSystem.Forms.HR
         public frmEvaluation()
         {
             InitializeComponent();
-
             btnPass.Click += btnPass_Click;
             btnFail.Click += btnFail_Click;
             btnSave.Click += btnSave_Click;
@@ -37,7 +36,9 @@ namespace HRApplicantSystem.Forms.HR
         {
             frmFinalDecision finalForm = new frmFinalDecision();
             finalForm.Show();
-            this.Hide(); // optional
+            this.Hide();
         }
+
+        private void frmEvaluation_Load(object sender, EventArgs e) { }
     }
 }

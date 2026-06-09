@@ -108,6 +108,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "frmHRLogin";
             this.Text = "HR Login ";
+            this.Load += new System.EventHandler(this.frmHRLogin_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

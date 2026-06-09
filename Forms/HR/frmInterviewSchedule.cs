@@ -3,13 +3,11 @@ using System.Windows.Forms;
 
 namespace HRApplicantSystem.Forms.HR
 {
-    public partial class frmInterviewScheduling : Form  
+    public partial class frmInterviewScheduling : Form
     {
         public frmInterviewScheduling()
         {
             InitializeComponent();
-
-            // Wire up events
             btnSchedule.Click += btnSchedule_Click;
             btnComplete.Click += btnComplete_Click;
             btnCancel.Click += btnCancel_Click;
@@ -41,10 +39,11 @@ namespace HRApplicantSystem.Forms.HR
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-       
             frmEvaluation evalForm = new frmEvaluation();
             evalForm.Show();
-            this.Hide(); 
+            this.Hide();
         }
+
+        private void frmInterviewScheduling_Load(object sender, EventArgs e) { }
     }
 }

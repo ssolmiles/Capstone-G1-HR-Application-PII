@@ -1,31 +1,23 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using HRApplicantSystem.Helpers;
+using Microsoft.Data.SqlClient;
 using System;
-using System.Data;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace HRApplicantSystem.Forms.Applicant
 {
     public partial class frmApplicantRegister : Form
     {
-        SqlConnection conn;
-        SqlCommand cmd;
-
         public frmApplicantRegister()
         {
             InitializeComponent();
-            string connString = "Server=g1-hr-processing-server.database.windows.net;Database=HR_Applicant_Processing_System;User ID=hradmin;Password=@Ssolshine2006;";
-            conn = new SqlConnection(connString);
-            cmd = new SqlCommand();
         }
 
-        private void frmApplicantRegister_Load(object sender, EventArgs e)
+        private void frmApplicantRegister_Load_1(object sender, EventArgs e)
         {
             txtFN.Text = "e.g. Juan";
             txtMI.Text = "e.g. Santos";
             txtLN.Text = "e.g. Dela Cruz";
-            txtEmail.ReadOnly = true;
-            txtEmail.BackColor = System.Drawing.Color.LightGray;
+            txtEmail.ReadOnly = false;
             cboCountry.Items.Add("Philippines (+63)");
             cboCountry.Items.Add("United States (+1)");
             cboCountry.Items.Add("Australia (+61)");
@@ -43,35 +35,45 @@ namespace HRApplicantSystem.Forms.Applicant
                 MessageBox.Show("Please check the box if you understand the terms.");
                 return;
             }
+
+            string fullName = $"{txtFN.Text.Trim()} {txtMI.Text.Trim()} {txtLN.Text.Trim()}";
+
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
-
-                // Check if email already exists
-                cmd.CommandText = "SELECT COUNT(*) FROM applicants WHERE email = @Email";
-                cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
-                int count = Convert.ToInt32(cmd.ExecuteScalar());
-                if (count > 0)
+                using (SqlConnection conn = DatabaseHelper.GetConnection())
                 {
-                    MessageBox.Show("Email is already registered!");
-                    conn.Close();
-                    cmd.Parameters.Clear();
-                    return;
-                }
-                cmd.Parameters.Clear();
+                    conn.Open();
 
-                // Insert new applicant using correct column names
-                cmd.CommandText = @"INSERT INTO applicants 
-                    (full_name, email, password, phone, birthdate, is_active) 
-                    VALUES (@FullName, @Email, @Password, @Phone, @Bday, @IsActive)";
-                cmd.Parameters.AddWithValue("@FullName", txtFN.Text.Trim() + " " + txtMI.Text.Trim() + " " + txtLN.Text.Trim());
-                cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
-                cmd.Parameters.AddWithValue("@Password", txtPassword.Text.Trim());
-                cmd.Parameters.AddWithValue("@Phone", txtPhone.Text.Trim());
-                cmd.Parameters.AddWithValue("@Bday", dtpBirthday.Value);
-                cmd.Parameters.AddWithValue("@IsActive", false);
-                cmd.ExecuteNonQuery();
+                    // Check if email already exists
+                    using (SqlCommand checkCmd = new SqlCommand(
+                        "SELECT COUNT(*) FROM applicants WHERE email = @Email", conn))
+                    {
+                        checkCmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
+                        int count = Convert.ToInt32(checkCmd.ExecuteScalar());
+                        if (count > 0)
+                        {
+                            MessageBox.Show("Email is already registered!");
+                            return;
+                        }
+                    }
+
+                    // Insert new applicant
+                    using (SqlCommand insertCmd = new SqlCommand(
+                        @"INSERT INTO applicants 
+                            (full_name, email, password, phone, birthdate, is_active) 
+                          VALUES 
+                            (@FullName, @Email, @Password, @Phone, @Bday, @IsActive)",
+                        conn))
+                    {
+                        insertCmd.Parameters.AddWithValue("@FullName", fullName);
+                        insertCmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
+                        insertCmd.Parameters.AddWithValue("@Password", txtPassword.Text.Trim());
+                        insertCmd.Parameters.AddWithValue("@Phone", txtPhone.Text.Trim());
+                        insertCmd.Parameters.AddWithValue("@Bday", dtpBirthday.Value.Date);
+                        insertCmd.Parameters.AddWithValue("@IsActive", false);
+                        insertCmd.ExecuteNonQuery();
+                    }
+                }
 
                 MessageBox.Show("Registration Successful!");
                 frmMyProfile profile = new frmMyProfile(txtEmail.Text.Trim());
@@ -82,16 +84,8 @@ namespace HRApplicantSystem.Forms.Applicant
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
-            finally
-            {
-                conn.Close();
-                cmd.Parameters.Clear();
-            }
         }
 
-        private void dtpBirthday_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
+        private void dtpBirthday_ValueChanged(object sender, EventArgs e) { }
     }
 }

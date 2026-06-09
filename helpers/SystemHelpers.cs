@@ -1,9 +1,9 @@
-﻿using System;
+﻿using HRApplicantSystem.Models;
+using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
-using MySql.Data.MySqlClient;
-using HRApplicantSystem.Models;
 
 namespace HRApplicantSystem.Helpers
 {
@@ -12,8 +12,7 @@ namespace HRApplicantSystem.Helpers
     // ─────────────────────────────────────────
     public static class DatabaseHelper
     {
-        private static string _connectionString =
-            "Server=localhost;Database=HRApplicantDB;Uid=root;Pwd=YOUR_PASSWORD;";
+        private static string _connectionString;
 
         public static void LoadConfig(string iniPath)
         {
@@ -22,22 +21,34 @@ namespace HRApplicantSystem.Helpers
             {
                 if (line.Contains("="))
                 {
-                    var parts = line.Split('=');
+                    var parts = line.Split('=', 2);
                     config[parts[0].Trim()] = parts[1].Trim();
                 }
             }
+
             _connectionString =
-                $"Server={config["server"]};" +
-                $"Database={config["database"]};" +
-                $"Uid={config["user"]};" +
-                $"Pwd={config["password"]};";
+                $"Server=tcp:{config["server"]},1433;" +
+                $"Initial Catalog={config["database"]};" +
+                $"Persist Security Info=False;" +
+                $"User ID={config["user"]};" +
+                $"Password={config["password"]};" +
+                $"MultipleActiveResultSets=False;" +
+                $"Encrypt=True;" +
+                $"TrustServerCertificate=False;" +
+                $"Connection Timeout=30;";
         }
 
-        public static MySqlConnection GetConnection()
+        /// <summary>
+        /// Returns an UNOPENED SqlConnection.
+        /// Callers must call conn.Open() themselves (or use using + Open).
+        /// </summary>
+        public static SqlConnection GetConnection()
         {
-            var conn = new MySqlConnection(_connectionString);
-            conn.Open();
-            return conn;
+            if (string.IsNullOrEmpty(_connectionString))
+                throw new InvalidOperationException(
+                    "Database config not loaded. Call DatabaseHelper.LoadConfig() first.");
+
+            return new SqlConnection(_connectionString);
         }
     }
 
@@ -98,11 +109,14 @@ namespace HRApplicantSystem.Helpers
             try
             {
                 using (var conn = DatabaseHelper.GetConnection())
-                using (var cmd = new MySqlCommand(
-                    "SELECT COUNT(1) FROM users WHERE email = @Email", conn))
                 {
-                    cmd.Parameters.AddWithValue("@Email", email.Trim().ToLower());
-                    return Convert.ToInt32(cmd.ExecuteScalar()) > 0;
+                    conn.Open();
+                    using (var cmd = new SqlCommand(
+                        "SELECT COUNT(1) FROM users WHERE email = @Email", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Email", email.Trim().ToLower());
+                        return Convert.ToInt32(cmd.ExecuteScalar()) > 0;
+                    }
                 }
             }
             catch
@@ -118,26 +132,26 @@ namespace HRApplicantSystem.Helpers
     public static class AuditLogger
     {
         public static void LogAction(int userId, string action,
-            string tableAffected, int? recordId = null, string details = null)
+            string target, int? targetId = null)
         {
             try
             {
                 using (var conn = DatabaseHelper.GetConnection())
                 {
+                    conn.Open();
                     string sql = @"
                         INSERT INTO audit_logs
-                            (user_id, action, table_affected, record_id, details, logged_at)
+                            (user_id, action, target, target_id, performed_at)
                         VALUES
-                            (@userId, @action, @table, @recordId, @details, @loggedAt)";
+                            (@userId, @action, @target, @targetId, @performedAt)";
 
-                    using (var cmd = new MySqlCommand(sql, conn))
+                    using (var cmd = new SqlCommand(sql, conn))
                     {
                         cmd.Parameters.AddWithValue("@userId", userId);
                         cmd.Parameters.AddWithValue("@action", action ?? (object)DBNull.Value);
-                        cmd.Parameters.AddWithValue("@table", tableAffected ?? (object)DBNull.Value);
-                        cmd.Parameters.AddWithValue("@recordId", (object)recordId ?? DBNull.Value);
-                        cmd.Parameters.AddWithValue("@details", (object)details ?? DBNull.Value);
-                        cmd.Parameters.AddWithValue("@loggedAt", DateTime.Now);
+                        cmd.Parameters.AddWithValue("@target", target ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@targetId", (object)targetId ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@performedAt", DateTime.Now);
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -158,22 +172,23 @@ namespace HRApplicantSystem.Helpers
             {
                 using (var conn = DatabaseHelper.GetConnection())
                 {
+                    conn.Open();
                     var tx = conn.BeginTransaction();
                     try
                     {
                         string insertSql = @"
                             INSERT INTO status_history
-                                (application_id, changed_by_user_id, previous_status,
+                                (application_id, changed_by, old_status,
                                  new_status, remarks, changed_at)
                             VALUES
-                                (@appId, @changedBy, @prevStatus,
+                                (@appId, @changedBy, @oldStatus,
                                  @newStatus, @remarks, @changedAt)";
 
-                        using (var cmd = new MySqlCommand(insertSql, conn, tx))
+                        using (var cmd = new SqlCommand(insertSql, conn, tx))
                         {
                             cmd.Parameters.AddWithValue("@appId", applicationId);
                             cmd.Parameters.AddWithValue("@changedBy", changedByUserId);
-                            cmd.Parameters.AddWithValue("@prevStatus", previousStatus ?? (object)DBNull.Value);
+                            cmd.Parameters.AddWithValue("@oldStatus", previousStatus ?? (object)DBNull.Value);
                             cmd.Parameters.AddWithValue("@newStatus", newStatus);
                             cmd.Parameters.AddWithValue("@remarks", (object)remarks ?? DBNull.Value);
                             cmd.Parameters.AddWithValue("@changedAt", DateTime.Now);
@@ -182,10 +197,10 @@ namespace HRApplicantSystem.Helpers
 
                         string updateSql = @"
                             UPDATE applications
-                            SET status = @newStatus, updated_at = @now
+                            SET status = @newStatus, last_updated = @now
                             WHERE application_id = @appId";
 
-                        using (var cmd = new MySqlCommand(updateSql, conn, tx))
+                        using (var cmd = new SqlCommand(updateSql, conn, tx))
                         {
                             cmd.Parameters.AddWithValue("@newStatus", newStatus);
                             cmd.Parameters.AddWithValue("@now", DateTime.Now);
@@ -197,10 +212,9 @@ namespace HRApplicantSystem.Helpers
 
                         AuditLogger.LogAction(
                             changedByUserId,
-                            $"Status changed to '{newStatus}'",
+                            $"Status changed from '{previousStatus}' to '{newStatus}'",
                             "applications",
-                            applicationId,
-                            $"From: {previousStatus} -> To: {newStatus}"
+                            applicationId
                         );
                     }
                     catch

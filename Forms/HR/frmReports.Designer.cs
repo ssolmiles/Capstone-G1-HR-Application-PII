@@ -25,23 +25,35 @@
             // 
             // lblTitle
             // 
-            this.lblTitle.Text = "HR Reports";
             this.lblTitle.Location = new System.Drawing.Point(20, 20);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(100, 23);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "HR Reports";
             // 
             // btnGenerateReport
             // 
-            this.btnGenerateReport.Text = "Generate Report";
             this.btnGenerateReport.Location = new System.Drawing.Point(20, 60);
+            this.btnGenerateReport.Name = "btnGenerateReport";
+            this.btnGenerateReport.Size = new System.Drawing.Size(75, 23);
+            this.btnGenerateReport.TabIndex = 1;
+            this.btnGenerateReport.Text = "Generate Report";
             // 
             // lstReports
             // 
+            this.lstReports.ItemHeight = 16;
             this.lstReports.Location = new System.Drawing.Point(20, 100);
-            this.lstReports.Size = new System.Drawing.Size(300, 150);
+            this.lstReports.Name = "lstReports";
+            this.lstReports.Size = new System.Drawing.Size(300, 148);
+            this.lstReports.TabIndex = 2;
             // 
             // btnNext
             // 
-            this.btnNext.Text = "Next → Dashboard";
             this.btnNext.Location = new System.Drawing.Point(20, 270);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(75, 23);
+            this.btnNext.TabIndex = 3;
+            this.btnNext.Text = "Next → Dashboard";
             // 
             // frmReports
             // 
@@ -50,8 +62,11 @@
             this.Controls.Add(this.btnGenerateReport);
             this.Controls.Add(this.lstReports);
             this.Controls.Add(this.btnNext);
+            this.Name = "frmReports";
             this.Text = "Reports";
+            this.Load += new System.EventHandler(this.frmReports_Load);
             this.ResumeLayout(false);
+
         }
     }
 }

@@ -104,7 +104,7 @@
             // 
             this.txtRemarks.Font = new System.Drawing.Font("Verdana", 14F);
             this.txtRemarks.Location = new System.Drawing.Point(731, 145);
-            this.txtRemarks.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtRemarks.Margin = new System.Windows.Forms.Padding(4);
             this.txtRemarks.Name = "txtRemarks";
             this.txtRemarks.Size = new System.Drawing.Size(278, 36);
             this.txtRemarks.TabIndex = 5;
@@ -124,7 +124,7 @@
             // 
             this.btnUploadResume.Font = new System.Drawing.Font("Verdana", 14F);
             this.btnUploadResume.Location = new System.Drawing.Point(343, 139);
-            this.btnUploadResume.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUploadResume.Margin = new System.Windows.Forms.Padding(4);
             this.btnUploadResume.Name = "btnUploadResume";
             this.btnUploadResume.Size = new System.Drawing.Size(154, 41);
             this.btnUploadResume.TabIndex = 7;
@@ -136,7 +136,7 @@
             // 
             this.btnUploadID.Font = new System.Drawing.Font("Verdana", 14F);
             this.btnUploadID.Location = new System.Drawing.Point(341, 199);
-            this.btnUploadID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUploadID.Margin = new System.Windows.Forms.Padding(4);
             this.btnUploadID.Name = "btnUploadID";
             this.btnUploadID.Size = new System.Drawing.Size(154, 43);
             this.btnUploadID.TabIndex = 8;
@@ -148,7 +148,7 @@
             // 
             this.btnUploadTranscipt.Font = new System.Drawing.Font("Verdana", 14F);
             this.btnUploadTranscipt.Location = new System.Drawing.Point(341, 262);
-            this.btnUploadTranscipt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUploadTranscipt.Margin = new System.Windows.Forms.Padding(4);
             this.btnUploadTranscipt.Name = "btnUploadTranscipt";
             this.btnUploadTranscipt.Size = new System.Drawing.Size(156, 39);
             this.btnUploadTranscipt.TabIndex = 9;
@@ -160,7 +160,7 @@
             // 
             this.btnUploadCerts.Font = new System.Drawing.Font("Verdana", 14F);
             this.btnUploadCerts.Location = new System.Drawing.Point(341, 323);
-            this.btnUploadCerts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUploadCerts.Margin = new System.Windows.Forms.Padding(4);
             this.btnUploadCerts.Name = "btnUploadCerts";
             this.btnUploadCerts.Size = new System.Drawing.Size(156, 37);
             this.btnUploadCerts.TabIndex = 10;
@@ -172,7 +172,7 @@
             // 
             this.btnSaveRemarks.Font = new System.Drawing.Font("Verdana", 14F);
             this.btnSaveRemarks.Location = new System.Drawing.Point(1015, 491);
-            this.btnSaveRemarks.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSaveRemarks.Margin = new System.Windows.Forms.Padding(4);
             this.btnSaveRemarks.Name = "btnSaveRemarks";
             this.btnSaveRemarks.Size = new System.Drawing.Size(110, 36);
             this.btnSaveRemarks.TabIndex = 11;
@@ -184,7 +184,7 @@
             // 
             this.btnBack.Font = new System.Drawing.Font("Verdana", 14F);
             this.btnBack.Location = new System.Drawing.Point(13, 524);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(110, 35);
             this.btnBack.TabIndex = 12;
@@ -214,9 +214,10 @@
             this.Controls.Add(this.lblTranscriptStatus);
             this.Controls.Add(this.lblIDStatus);
             this.Controls.Add(this.lblResumeStatus);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMyDocuments";
             this.Text = "frmMyDocuments";
+            this.Load += new System.EventHandler(this.frmMyDocuments_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 

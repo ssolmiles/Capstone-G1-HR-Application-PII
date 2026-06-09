@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using HRApplicantSystem.Forms.HR;
-using HRApplicantSystem.Helpers;
+
 namespace HRApplicantSystem.Forms.HR
 {
     public partial class frmScreening : Form
@@ -26,9 +25,10 @@ namespace HRApplicantSystem.Forms.HR
         private void btnNext_Click(object sender, EventArgs e)
         {
             frmInterviewScheduling interviewForm = new frmInterviewScheduling();
-
             interviewForm.Show();
             this.Hide();
         }
+
+        private void frmScreening_Load(object sender, EventArgs e) { }
     }
 }

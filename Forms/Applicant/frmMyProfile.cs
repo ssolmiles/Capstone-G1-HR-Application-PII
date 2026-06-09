@@ -1,7 +1,6 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using HRApplicantSystem.Helpers;
+using Microsoft.Data.SqlClient;
 using System;
-using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -9,20 +8,15 @@ namespace HRApplicantSystem.Forms.Applicant
 {
     public partial class frmMyProfile : Form
     {
-        SqlConnection conn;
-        SqlCommand cmd;
-        string userEmail;
+        private string userEmail;
 
         public frmMyProfile(string email)
         {
             InitializeComponent();
             userEmail = email;
-            string connString = "Server=g1-hr-processing-server.database.windows.net;Database=HR_Applicant_Processing_System;User ID=hradmin;Password=@Ssolshine2006;";
-            conn = new SqlConnection(connString);
-            cmd = new SqlCommand();
         }
 
-        private void frmMyProfile_Load(object sender, EventArgs e)
+        private void frmMyProfile_Load_1(object sender, EventArgs e)
         {
             LoadProfileData();
             SetReadOnly(true);
@@ -32,38 +26,42 @@ namespace HRApplicantSystem.Forms.Applicant
         {
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
-                cmd.CommandText = @"SELECT full_name, birthdate, address, phone, email,
-                                    school, skills, company FROM applicants WHERE email = @Email";
-                cmd.Parameters.AddWithValue("@Email", userEmail);
-                SqlDataReader dr = cmd.ExecuteReader();
-                if (dr.Read())
+                using (SqlConnection conn = DatabaseHelper.GetConnection())
                 {
-                    string fullName = dr["full_name"].ToString();
-                    string[] nameParts = fullName.Split(' ');
-                    txtFN.Text = nameParts.Length > 0 ? nameParts[0] : "";
-                    txtMI.Text = nameParts.Length > 2 ? nameParts[1] : "";
-                    txtLN.Text = nameParts.Length > 1 ? nameParts[nameParts.Length - 1] : "";
-                    if (dr["birthdate"] != DBNull.Value)
-                        dtpBirthday.Value = Convert.ToDateTime(dr["birthdate"]);
-                    txtAddress.Text = dr["address"].ToString();
-                    txtPhone.Text = dr["phone"].ToString();
-                    txtEmail.Text = dr["email"].ToString();
-                    txtEducation.Text = dr["school"].ToString();
-                    txtSkills.Text = dr["skills"].ToString();
-                    txtWorkExp.Text = dr["company"].ToString();
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(
+                        @"SELECT full_name, birthdate, address, phone, email,
+                                 school, skills, company
+                          FROM applicants WHERE email = @Email", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Email", userEmail);
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                string fullName = dr["full_name"].ToString();
+                                string[] nameParts = fullName.Split(' ');
+                                txtFN.Text = nameParts.Length > 0 ? nameParts[0] : "";
+                                txtMI.Text = nameParts.Length > 2 ? nameParts[1] : "";
+                                txtLN.Text = nameParts.Length > 1 ? nameParts[nameParts.Length - 1] : "";
+
+                                if (dr["birthdate"] != DBNull.Value)
+                                    dtpBirthday.Value = Convert.ToDateTime(dr["birthdate"]);
+
+                                txtAddress.Text = dr["address"].ToString();
+                                txtPhone.Text = dr["phone"].ToString();
+                                txtEmail.Text = dr["email"].ToString();
+                                txtEducation.Text = dr["school"].ToString();
+                                txtSkills.Text = dr["skills"].ToString();
+                                txtWorkExp.Text = dr["company"].ToString();
+                            }
+                        }
+                    }
                 }
-                dr.Close();
-                cmd.Parameters.Clear();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error loading profile: " + ex.Message);
-            }
-            finally
-            {
-                conn.Close();
             }
         }
 
@@ -77,37 +75,38 @@ namespace HRApplicantSystem.Forms.Applicant
         {
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
-                cmd.CommandText = @"UPDATE applicants SET 
-                                    full_name = @FullName,
-                                    birthdate = @Bday, 
-                                    address = @Address, 
-                                    phone = @Phone,
-                                    school = @Edu, 
-                                    skills = @Skills, 
-                                    company = @WorkExp 
-                                    WHERE email = @OriginalEmail";
-                cmd.Parameters.AddWithValue("@FullName", txtFN.Text + " " + txtMI.Text + " " + txtLN.Text);
-                cmd.Parameters.AddWithValue("@Bday", dtpBirthday.Value);
-                cmd.Parameters.AddWithValue("@Address", txtAddress.Text);
-                cmd.Parameters.AddWithValue("@Phone", txtPhone.Text);
-                cmd.Parameters.AddWithValue("@Edu", txtEducation.Text);
-                cmd.Parameters.AddWithValue("@Skills", txtSkills.Text);
-                cmd.Parameters.AddWithValue("@WorkExp", txtWorkExp.Text);
-                cmd.Parameters.AddWithValue("@OriginalEmail", userEmail);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Profile Updated Successfully");
+                using (SqlConnection conn = DatabaseHelper.GetConnection())
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(
+                        @"UPDATE applicants SET 
+                            full_name = @FullName,
+                            birthdate = @Bday,
+                            address   = @Address,
+                            phone     = @Phone,
+                            school    = @Edu,
+                            skills    = @Skills,
+                            company   = @WorkExp
+                          WHERE email = @OriginalEmail", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@FullName", $"{txtFN.Text.Trim()} {txtMI.Text.Trim()} {txtLN.Text.Trim()}");
+                        cmd.Parameters.AddWithValue("@Bday", dtpBirthday.Value.Date);
+                        cmd.Parameters.AddWithValue("@Address", txtAddress.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Phone", txtPhone.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Edu", txtEducation.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Skills", txtSkills.Text.Trim());
+                        cmd.Parameters.AddWithValue("@WorkExp", txtWorkExp.Text.Trim());
+                        cmd.Parameters.AddWithValue("@OriginalEmail", userEmail);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("Profile Updated Successfully!");
                 SetReadOnly(true);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error saving: " + ex.Message);
-            }
-            finally
-            {
-                conn.Close();
-                cmd.Parameters.Clear();
             }
         }
 
@@ -135,49 +134,16 @@ namespace HRApplicantSystem.Forms.Applicant
             txtWorkExp.BackColor = c;
         }
 
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        private void btnBack_Click(object sender, EventArgs e) => this.Close();
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void frmMyProfile_Load_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblEducationBg_Click(object sender, EventArgs e)
-        {
-
-        }
+        // --- Stub handlers wired in Designer ---
+        private void label1_Click(object sender, EventArgs e) { }
+        private void label2_Click(object sender, EventArgs e) { }
+        private void label5_Click(object sender, EventArgs e) { }
+        private void label10_Click(object sender, EventArgs e) { }
+        private void lblEducationBg_Click(object sender, EventArgs e) { }
+        private void textBox1_TextChanged(object sender, EventArgs e) { }
+        private void textBox4_TextChanged(object sender, EventArgs e) { }
+        private void textBox6_TextChanged(object sender, EventArgs e) { }
     }
 }

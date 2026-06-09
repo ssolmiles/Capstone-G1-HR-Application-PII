@@ -1,6 +1,8 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 using HRApplicantSystem.Forms.Applicant;
+using HRApplicantSystem.Helpers;
 
 namespace HRApplicantSystem
 {
@@ -11,6 +13,27 @@ namespace HRApplicantSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            // Load Azure DB config before any form opens
+            string iniPath = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "Database",
+                "db_config.ini");
+
+            try
+            {
+                DatabaseHelper.LoadConfig(iniPath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Failed to load database config:\n{ex.Message}\n\nMake sure Database\\db_config.ini exists.",
+                    "Startup Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+
             Application.Run(new frmApplicantLogin());
         }
     }

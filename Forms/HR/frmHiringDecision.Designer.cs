@@ -29,6 +29,7 @@
             this.txtFinalRemarks = new System.Windows.Forms.TextBox();
             this.lblStatus = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblDecision
@@ -64,6 +65,7 @@
             this.txtFinalRemarks.Size = new System.Drawing.Size(300, 100);
             this.txtFinalRemarks.TabIndex = 3;
             this.txtFinalRemarks.Text = "Enter final remarks here...";
+            this.txtFinalRemarks.TextChanged += new System.EventHandler(this.txtFinalRemarks_TextChanged);
             // 
             // lblStatus
             // 
@@ -82,6 +84,14 @@
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save";
             // 
+            // btnNext
+            // 
+            this.btnNext.Location = new System.Drawing.Point(20, 230);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(150, 23);
+            this.btnNext.TabIndex = 6;
+            this.btnNext.Text = "Next → Dashboard";
+            // 
             // frmFinalDecision
             // 
             this.ClientSize = new System.Drawing.Size(400, 280);
@@ -91,21 +101,12 @@
             this.Controls.Add(this.txtFinalRemarks);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnNext);
             this.Name = "frmFinalDecision";
             this.Text = "Final Hiring Decision";
+            this.Load += new System.EventHandler(this.frmFinalDecision_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
-
-            //
-            // next button
-            //
-            this.Controls.Add(this.btnNext);
-            this.btnNext = new System.Windows.Forms.Button();
-            this.btnNext.Location = new System.Drawing.Point(20, 230);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(150, 23);
-            this.btnNext.TabIndex = 6;
-            this.btnNext.Text = "Next → Dashboard";
 
         }
         #endregion

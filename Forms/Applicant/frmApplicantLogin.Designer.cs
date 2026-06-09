@@ -66,7 +66,7 @@
             // 
             this.btnClear.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClear.Location = new System.Drawing.Point(393, 358);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(288, 43);
             this.btnClear.TabIndex = 21;
@@ -78,7 +78,7 @@
             // 
             this.btnLogIn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogIn.Location = new System.Drawing.Point(393, 309);
-            this.btnLogIn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLogIn.Margin = new System.Windows.Forms.Padding(4);
             this.btnLogIn.Name = "btnLogIn";
             this.btnLogIn.Size = new System.Drawing.Size(288, 43);
             this.btnLogIn.TabIndex = 20;
@@ -92,7 +92,7 @@
             this.CheckbxShowPas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CheckbxShowPas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CheckbxShowPas.Location = new System.Drawing.Point(549, 258);
-            this.CheckbxShowPas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CheckbxShowPas.Margin = new System.Windows.Forms.Padding(4);
             this.CheckbxShowPas.Name = "CheckbxShowPas";
             this.CheckbxShowPas.Size = new System.Drawing.Size(121, 20);
             this.CheckbxShowPas.TabIndex = 19;
@@ -105,7 +105,7 @@
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPassword.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(393, 225);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '•';
             this.txtPassword.Size = new System.Drawing.Size(288, 27);
@@ -126,7 +126,7 @@
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtEmail.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(393, 176);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(288, 27);
             this.txtEmail.TabIndex = 14;
@@ -180,9 +180,10 @@
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmApplicantLogin";
             this.Text = "frmApplicantLogin";
+            this.Load += new System.EventHandler(this.frmApplicantLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

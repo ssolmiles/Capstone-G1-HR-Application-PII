@@ -75,7 +75,7 @@
             // 
             this.txtFN.Font = new System.Drawing.Font("Verdana", 14F);
             this.txtFN.Location = new System.Drawing.Point(198, 133);
-            this.txtFN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFN.Margin = new System.Windows.Forms.Padding(4);
             this.txtFN.Name = "txtFN";
             this.txtFN.Size = new System.Drawing.Size(265, 36);
             this.txtFN.TabIndex = 37;
@@ -84,7 +84,7 @@
             // 
             this.txtMI.Font = new System.Drawing.Font("Verdana", 14F);
             this.txtMI.Location = new System.Drawing.Point(198, 187);
-            this.txtMI.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMI.Margin = new System.Windows.Forms.Padding(4);
             this.txtMI.Name = "txtMI";
             this.txtMI.Size = new System.Drawing.Size(265, 36);
             this.txtMI.TabIndex = 38;
@@ -93,7 +93,7 @@
             // 
             this.txtLN.Font = new System.Drawing.Font("Verdana", 14F);
             this.txtLN.Location = new System.Drawing.Point(750, 158);
-            this.txtLN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLN.Margin = new System.Windows.Forms.Padding(4);
             this.txtLN.Name = "txtLN";
             this.txtLN.Size = new System.Drawing.Size(265, 36);
             this.txtLN.TabIndex = 39;
@@ -103,7 +103,7 @@
             this.dtpBirthday.CalendarFont = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpBirthday.Font = new System.Drawing.Font("Verdana", 14F);
             this.dtpBirthday.Location = new System.Drawing.Point(198, 266);
-            this.dtpBirthday.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpBirthday.Margin = new System.Windows.Forms.Padding(4);
             this.dtpBirthday.Name = "dtpBirthday";
             this.dtpBirthday.Size = new System.Drawing.Size(305, 36);
             this.dtpBirthday.TabIndex = 40;
@@ -113,7 +113,7 @@
             // 
             this.txtEmail.Font = new System.Drawing.Font("Verdana", 14F);
             this.txtEmail.Location = new System.Drawing.Point(198, 414);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(265, 36);
             this.txtEmail.TabIndex = 41;
@@ -123,7 +123,7 @@
             this.cboCountry.Font = new System.Drawing.Font("Verdana", 14F);
             this.cboCountry.FormattingEnabled = true;
             this.cboCountry.Location = new System.Drawing.Point(803, 263);
-            this.cboCountry.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboCountry.Margin = new System.Windows.Forms.Padding(4);
             this.cboCountry.Name = "cboCountry";
             this.cboCountry.Size = new System.Drawing.Size(57, 36);
             this.cboCountry.TabIndex = 42;
@@ -132,7 +132,7 @@
             // 
             this.txtPhone.Font = new System.Drawing.Font("Verdana", 14F);
             this.txtPhone.Location = new System.Drawing.Point(882, 263);
-            this.txtPhone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPhone.Margin = new System.Windows.Forms.Padding(4);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(177, 36);
             this.txtPhone.TabIndex = 43;
@@ -142,7 +142,7 @@
             this.chkAgree.AutoSize = true;
             this.chkAgree.Font = new System.Drawing.Font("Verdana", 14F);
             this.chkAgree.Location = new System.Drawing.Point(581, 414);
-            this.chkAgree.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkAgree.Margin = new System.Windows.Forms.Padding(4);
             this.chkAgree.Name = "chkAgree";
             this.chkAgree.Size = new System.Drawing.Size(277, 33);
             this.chkAgree.TabIndex = 44;
@@ -153,7 +153,7 @@
             // 
             this.btnRegister.Font = new System.Drawing.Font("Verdana", 14F);
             this.btnRegister.Location = new System.Drawing.Point(642, 486);
-            this.btnRegister.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRegister.Margin = new System.Windows.Forms.Padding(4);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(153, 45);
             this.btnRegister.TabIndex = 45;
@@ -242,7 +242,7 @@
             // 
             this.txtPassword.Font = new System.Drawing.Font("Verdana", 14F);
             this.txtPassword.Location = new System.Drawing.Point(198, 467);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(265, 36);
             this.txtPassword.TabIndex = 53;
@@ -272,9 +272,10 @@
             this.Controls.Add(this.txtFN);
             this.Controls.Add(this.lblPersonalInformation);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmApplicantRegister";
             this.Text = "frmApplicantRegister";
+            this.Load += new System.EventHandler(this.frmApplicantRegister_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 

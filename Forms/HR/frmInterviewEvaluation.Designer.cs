@@ -114,6 +114,7 @@
             this.Controls.Add(this.btnNext);
             this.Name = "frmEvaluation";
             this.Text = "Interview Evaluation";
+            this.Load += new System.EventHandler(this.frmEvaluation_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

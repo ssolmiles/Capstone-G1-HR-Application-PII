@@ -55,19 +55,20 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(72, 66);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(916, 383);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Change Password";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // chkShowPass
             // 
             this.chkShowPass.AutoSize = true;
             this.chkShowPass.Location = new System.Drawing.Point(583, 259);
-            this.chkShowPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkShowPass.Margin = new System.Windows.Forms.Padding(4);
             this.chkShowPass.Name = "chkShowPass";
             this.chkShowPass.Size = new System.Drawing.Size(125, 20);
             this.chkShowPass.TabIndex = 9;
@@ -78,7 +79,7 @@
             // btnChangePass
             // 
             this.btnChangePass.Location = new System.Drawing.Point(401, 296);
-            this.btnChangePass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnChangePass.Margin = new System.Windows.Forms.Padding(4);
             this.btnChangePass.Name = "btnChangePass";
             this.btnChangePass.Size = new System.Drawing.Size(307, 28);
             this.btnChangePass.TabIndex = 8;
@@ -90,17 +91,18 @@
             // 
             this.txtNewPass.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNewPass.Location = new System.Drawing.Point(403, 158);
-            this.txtNewPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNewPass.Margin = new System.Windows.Forms.Padding(4);
             this.txtNewPass.Name = "txtNewPass";
             this.txtNewPass.PasswordChar = '•';
             this.txtNewPass.Size = new System.Drawing.Size(305, 34);
             this.txtNewPass.TabIndex = 7;
+            this.txtNewPass.TextChanged += new System.EventHandler(this.txtNewPass_TextChanged);
             // 
             // txtConfirmPass
             // 
             this.txtConfirmPass.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConfirmPass.Location = new System.Drawing.Point(403, 201);
-            this.txtConfirmPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtConfirmPass.Margin = new System.Windows.Forms.Padding(4);
             this.txtConfirmPass.Name = "txtConfirmPass";
             this.txtConfirmPass.PasswordChar = '•';
             this.txtConfirmPass.Size = new System.Drawing.Size(305, 34);
@@ -110,7 +112,7 @@
             // 
             this.txtCurrentPass.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCurrentPass.Location = new System.Drawing.Point(403, 115);
-            this.txtCurrentPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCurrentPass.Margin = new System.Windows.Forms.Padding(4);
             this.txtCurrentPass.Name = "txtCurrentPass";
             this.txtCurrentPass.PasswordChar = '•';
             this.txtCurrentPass.Size = new System.Drawing.Size(305, 34);
@@ -120,7 +122,7 @@
             // 
             this.txtEmail.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(403, 72);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(305, 34);
             this.txtEmail.TabIndex = 4;
@@ -146,6 +148,7 @@
             this.label3.Size = new System.Drawing.Size(235, 29);
             this.label3.TabIndex = 2;
             this.label3.Text = "Current Password:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -175,9 +178,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmChangePassword";
             this.Text = "frmChangePassword";
+            this.Load += new System.EventHandler(this.frmChangePassword_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
