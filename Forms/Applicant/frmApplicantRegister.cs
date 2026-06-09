@@ -87,5 +87,20 @@ namespace HRApplicantSystem.Forms.Applicant
         }
 
         private void dtpBirthday_ValueChanged(object sender, EventArgs e) { }
+
+        private void lblPassword_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPhone_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

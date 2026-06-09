@@ -39,13 +39,14 @@ namespace HRApplicantSystem.Forms.Applicant
             this.btnViewStatus = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
             this.lblStatus.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.Location = new System.Drawing.Point(31, 153);
+            this.lblStatus.Location = new System.Drawing.Point(13, 139);
             this.lblStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(93, 28);
@@ -58,7 +59,7 @@ namespace HRApplicantSystem.Forms.Applicant
             // 
             this.lblMissingDocs.AutoSize = true;
             this.lblMissingDocs.Font = new System.Drawing.Font("Verdana", 14F);
-            this.lblMissingDocs.Location = new System.Drawing.Point(31, 319);
+            this.lblMissingDocs.Location = new System.Drawing.Point(13, 319);
             this.lblMissingDocs.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMissingDocs.Name = "lblMissingDocs";
             this.lblMissingDocs.Size = new System.Drawing.Size(342, 29);
@@ -82,7 +83,7 @@ namespace HRApplicantSystem.Forms.Applicant
             // 
             this.lblUpdates.AutoSize = true;
             this.lblUpdates.Font = new System.Drawing.Font("Verdana", 14F);
-            this.lblUpdates.Location = new System.Drawing.Point(31, 510);
+            this.lblUpdates.Location = new System.Drawing.Point(13, 510);
             this.lblUpdates.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUpdates.Name = "lblUpdates";
             this.lblUpdates.Size = new System.Drawing.Size(111, 29);
@@ -141,10 +142,11 @@ namespace HRApplicantSystem.Forms.Applicant
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox1.Font = new System.Drawing.Font("Verdana", 30F);
+            this.textBox1.Font = new System.Drawing.Font("Verdana", 18F);
+            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
             this.textBox1.Location = new System.Drawing.Point(18, 31);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(780, 68);
+            this.textBox1.Size = new System.Drawing.Size(780, 44);
             this.textBox1.TabIndex = 8;
             this.textBox1.Text = "Welcome Applicant [Name]!";
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
@@ -161,11 +163,24 @@ namespace HRApplicantSystem.Forms.Applicant
             this.label1.Text = "Upcoming Interview [count]";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Verdana", 11F);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.label2.Location = new System.Drawing.Point(14, 79);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(605, 23);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "This is your Dashboard. Check your Dashboard for more info!";
+            // 
             // frmApplicantDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1306, 586);
+            this.ClientSize = new System.Drawing.Size(1366, 696);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnViewStatus);
@@ -198,5 +213,6 @@ namespace HRApplicantSystem.Forms.Applicant
         private System.Windows.Forms.Button btnViewStatus;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

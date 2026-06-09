@@ -91,5 +91,10 @@ namespace HRApplicantSystem.Forms.Applicant
         private void txtEmail_TextChanged(object sender, EventArgs e)
         {
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
     }
 }
