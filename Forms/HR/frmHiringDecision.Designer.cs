@@ -1,6 +1,8 @@
-﻿namespace HRApplicantSystem.Forms.HR
+﻿using System;
+
+namespace HRApplicantSystem.Forms.HR
 {
-    partial class frmFinalDecision
+    partial class frmHiringDecision
     {
         private System.ComponentModel.IContainer components = null;
 
@@ -92,7 +94,7 @@
             this.btnNext.TabIndex = 6;
             this.btnNext.Text = "Next → Dashboard";
             // 
-            // frmFinalDecision
+            // frmHiringDecision
             // 
             this.ClientSize = new System.Drawing.Size(400, 280);
             this.Controls.Add(this.lblDecision);
@@ -102,13 +104,15 @@
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnNext);
-            this.Name = "frmFinalDecision";
+            this.Name = "frmHiringDecision";
             this.Text = "Final Hiring Decision";
-            this.Load += new System.EventHandler(this.frmFinalDecision_Load);
+            this.Load += new System.EventHandler(this.frmHiringDecision_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
+
+       
         #endregion
     }
 }

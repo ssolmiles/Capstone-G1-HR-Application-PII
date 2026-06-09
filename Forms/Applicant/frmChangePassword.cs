@@ -64,7 +64,7 @@ namespace HRApplicantSystem.Forms.Applicant
                             return;
                         }
 
-                        if (result.ToString() != txtCurrentPass.Text)
+                        if (!BCrypt.Net.BCrypt.Verify(txtCurrentPass.Text, result.ToString()))
                         {
                             MessageBox.Show("Current Password is incorrect.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
@@ -75,7 +75,7 @@ namespace HRApplicantSystem.Forms.Applicant
                     using (SqlCommand updateCmd = new SqlCommand(
                         "UPDATE applicants SET password = @NewPass WHERE email = @Email", conn))
                     {
-                        updateCmd.Parameters.AddWithValue("@NewPass", txtNewPass.Text);
+                        updateCmd.Parameters.AddWithValue("@NewPass", BCrypt.Net.BCrypt.HashPassword(txtNewPass.Text));
                         updateCmd.Parameters.AddWithValue("@Email", currentUserEmail);
                         updateCmd.ExecuteNonQuery();
                     }

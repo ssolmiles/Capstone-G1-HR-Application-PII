@@ -5,44 +5,26 @@ namespace HRApplicantSystem.Models
     public class Applicant
     {
         public int ApplicantID { get; set; }
-        public int UserID { get; set; }
-
-        // Personal Info
-        public string FirstName { get; set; }
-        public string MiddleName { get; set; }
-        public string LastName { get; set; }
-        public DateTime? DateOfBirth { get; set; }
+        public string FullName { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
+        public string Address { get; set; }
+        public DateTime? Birthdate { get; set; }
         public string Gender { get; set; }
-        public string CivilStatus { get; set; }
-        public string Nationality { get; set; }
-
-        // Address
-        public string Street { get; set; }
-        public string Barangay { get; set; }
         public string City { get; set; }
         public string Province { get; set; }
         public string ZipCode { get; set; }
-
-        // Contact
-        public string Email { get; set; }
-        public string PhoneNumber { get; set; }
-
-        // Education (most recent)
-        public string SchoolName { get; set; }
+        public string School { get; set; }
         public string Degree { get; set; }
-        public string FieldOfStudy { get; set; }
-        public int? GraduationYear { get; set; }
-
-        // Skills & Work Experience (stored as text or JSON string)
+        public string YearGrad { get; set; }
         public string Skills { get; set; }
-        public string WorkExperience { get; set; }
-
+        public string Company { get; set; }
+        public string Position { get; set; }
+        public string Duration { get; set; }
+        public bool IsActive { get; set; }
         public DateTime CreatedAt { get; set; }
-        public DateTime? UpdatedAt { get; set; }
-
-        // Computed / display helper
-        public string FullName => $"{FirstName} {MiddleName} {LastName}".Replace("  ", " ").Trim();
     }
+
 
     public class Application
     {

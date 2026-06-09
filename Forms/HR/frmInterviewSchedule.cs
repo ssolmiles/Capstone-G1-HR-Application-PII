@@ -44,6 +44,6 @@ namespace HRApplicantSystem.Forms.HR
             this.Hide();
         }
 
-        private void frmInterviewScheduling_Load(object sender, EventArgs e) { }
+        private void frmInterviewSchedule_Load(object sender, EventArgs e) { }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace HRApplicantSystem.Forms.HR
 {
-    partial class frmInterviewScheduling
+    partial class frmInterviewSchedule
     {
         private System.ComponentModel.IContainer components = null;
 
@@ -123,7 +123,7 @@
             this.btnNext.TabIndex = 9;
             this.btnNext.Text = "Next → Evaluation";
             // 
-            // frmInterviewScheduling
+            // frmInterviewSchedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -138,9 +138,9 @@
             this.Controls.Add(this.btnComplete);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnNext);
-            this.Name = "frmInterviewScheduling";
+            this.Name = "frmInterviewSchedule";
             this.Text = "Interview Scheduling";
-            this.Load += new System.EventHandler(this.frmInterviewScheduling_Load);
+            this.Load += new System.EventHandler(this.frmInterviewSchedule_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,7 +1,7 @@
-﻿using HRApplicantSystem.Helpers;
-using Microsoft.Data.SqlClient;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using HRApplicantSystem.Helpers;
+using Microsoft.Data.SqlClient;
 
 namespace HRApplicantSystem.Forms.Applicant
 {
@@ -14,7 +14,6 @@ namespace HRApplicantSystem.Forms.Applicant
 
         private void frmApplicantLogin_Load(object sender, EventArgs e)
         {
-            // Initialization on form load if needed
         }
 
         private void btnLogIn_Click(object sender, EventArgs e)
@@ -24,19 +23,23 @@ namespace HRApplicantSystem.Forms.Applicant
                 using (SqlConnection conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
+
                     using (SqlCommand cmd = new SqlCommand(
-                        "SELECT COUNT(*) FROM applicants WHERE email = @Email AND password = @Password",
+                        "SELECT password FROM applicants WHERE email = @Email AND is_active = 1",
                         conn))
                     {
                         cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
-                        cmd.Parameters.AddWithValue("@Password", txtPassword.Text.Trim());
 
-                        int result = (int)cmd.ExecuteScalar();
+                        object result = cmd.ExecuteScalar();
 
-                        if (result > 0)
+                        if (result != null &&
+                            BCrypt.Net.BCrypt.Verify(
+                                txtPassword.Text.Trim(),
+                                result.ToString()))
                         {
                             frmApplicantDashboard dash =
                                 new frmApplicantDashboard(txtEmail.Text.Trim());
+
                             dash.Show();
                             this.Hide();
                         }
@@ -48,9 +51,8 @@ namespace HRApplicantSystem.Forms.Applicant
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
 
-                            txtEmail.Clear();
                             txtPassword.Clear();
-                            txtEmail.Focus();
+                            txtPassword.Focus();
                         }
                     }
                 }
@@ -84,6 +86,10 @@ namespace HRApplicantSystem.Forms.Applicant
             frmChangePassword cp = new frmChangePassword(txtEmail.Text);
             cp.Show();
             this.Hide();
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
         }
     }
 }

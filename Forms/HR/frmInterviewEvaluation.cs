@@ -39,6 +39,6 @@ namespace HRApplicantSystem.Forms.HR
             this.Hide();
         }
 
-        private void frmEvaluation_Load(object sender, EventArgs e) { }
+        private void frmInterviewEvaluation_Load(object sender, EventArgs e) { }
     }
 }

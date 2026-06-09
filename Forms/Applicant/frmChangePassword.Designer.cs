@@ -148,7 +148,6 @@
             this.label3.Size = new System.Drawing.Size(235, 29);
             this.label3.TabIndex = 2;
             this.label3.Text = "Current Password:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 

@@ -42,6 +42,7 @@
             this.lblEmail.Size = new System.Drawing.Size(100, 40);
             this.lblEmail.TabIndex = 0;
             this.lblEmail.Text = "Email:";
+            this.lblEmail.Click += new System.EventHandler(this.lblEmail_Click);
             // 
             // lblPassword
             // 
@@ -66,6 +67,7 @@
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(200, 36);
             this.txtPassword.TabIndex = 3;
+            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // btnLogin
             // 

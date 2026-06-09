@@ -20,25 +20,57 @@ namespace HRApplicantSystem.Forms.HR
                 using (SqlConnection conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
+
                     using (SqlCommand cmd = new SqlCommand(
-                        "SELECT role FROM users WHERE email = @Email AND password = @Password AND is_active = 1",
+                        "SELECT password, role FROM users WHERE email = @Email AND is_active = 1",
                         conn))
                     {
                         cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
-                        cmd.Parameters.AddWithValue("@Password", txtPassword.Text.Trim());
 
                         using (SqlDataReader dr = cmd.ExecuteReader())
                         {
                             if (dr.Read())
                             {
-                                frmHRDashboard dashboard = new frmHRDashboard();
-                                dashboard.Show();
-                                this.Hide();
+                                string storedHash = dr["password"].ToString();
+                                string role = dr["role"].ToString();
+
+                                if (BCrypt.Net.BCrypt.Verify(
+                                    txtPassword.Text.Trim(),
+                                    storedHash))
+                                {
+                                    SessionManager.Login(
+                                        new HRApplicantSystem.Models.User
+                                        {
+                                            Email = txtEmail.Text.Trim(),
+                                            Role = role
+                                        });
+
+                                    frmHRDashboard dashboard = new frmHRDashboard();
+                                    dashboard.Show();
+                                    this.Hide();
+                                }
+                                else
+                                {
+                                    MessageBox.Show(
+                                        "Invalid Email or Password",
+                                        "Login Failed",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Error);
+
+                                    txtPassword.Clear();
+                                    txtPassword.Focus();
+                                }
                             }
                             else
                             {
-                                MessageBox.Show("Account not found or inactive.", "Login Failed",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show(
+                                    "Invalid Email or Password",
+                                    "Login Failed",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+
+                                txtPassword.Clear();
+                                txtPassword.Focus();
                             }
                         }
                     }
@@ -51,5 +83,15 @@ namespace HRApplicantSystem.Forms.HR
         }
 
         private void lblPassword_Click(object sender, EventArgs e) { }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblEmail_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

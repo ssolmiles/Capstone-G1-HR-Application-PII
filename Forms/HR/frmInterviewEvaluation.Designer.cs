@@ -1,6 +1,6 @@
 ﻿namespace HRApplicantSystem.Forms.HR
 {
-    partial class frmEvaluation
+    partial class frmInterviewEvaluation
     {
         private System.ComponentModel.IContainer components = null;
 
@@ -101,7 +101,7 @@
             this.btnNext.TabIndex = 7;
             this.btnNext.Text = "Next → Final Decision";
             // 
-            // frmEvaluation
+            // frmInterviewEvaluation
             // 
             this.ClientSize = new System.Drawing.Size(1332, 653);
             this.Controls.Add(this.txtScore);
@@ -112,9 +112,9 @@
             this.Controls.Add(this.txtRecommendation);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnNext);
-            this.Name = "frmEvaluation";
+            this.Name = "frmInterviewEvaluation";
             this.Text = "Interview Evaluation";
-            this.Load += new System.EventHandler(this.frmEvaluation_Load);
+            this.Load += new System.EventHandler(this.frmInterviewEvaluation_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

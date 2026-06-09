@@ -21,7 +21,8 @@ namespace HRApplicantSystem.Helpers
             {
                 if (line.Contains("="))
                 {
-                    var parts = line.Split('=', 2);
+                    var parts = line.Split(new char[] { '=' }, 2);
+
                     config[parts[0].Trim()] = parts[1].Trim();
                 }
             }
@@ -156,7 +157,10 @@ namespace HRApplicantSystem.Helpers
                     }
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException("Database operation failed.", ex);
+            }
         }
     }
 
