@@ -3,9 +3,9 @@ using System.Windows.Forms;
 using HRApplicantSystem.Helpers;
 namespace HRApplicantSystem.Forms.HR
 {
-    public partial class frmHRApplicantReview : Form
+    public partial class frmApplicantReview : Form
     {
-        public frmHRApplicantReview()
+        public frmApplicantReview()
         {
             InitializeComponent();
 
