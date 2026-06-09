@@ -70,7 +70,7 @@ namespace HRApplicantSystem.Forms.Applicant
                         insertCmd.Parameters.AddWithValue("@Password", txtPassword.Text.Trim());
                         insertCmd.Parameters.AddWithValue("@Phone", txtPhone.Text.Trim());
                         insertCmd.Parameters.AddWithValue("@Bday", dtpBirthday.Value.Date);
-                        insertCmd.Parameters.AddWithValue("@IsActive", false);
+                        insertCmd.Parameters.AddWithValue("@IsActive", true);
                         insertCmd.ExecuteNonQuery();
                     }
                 }
