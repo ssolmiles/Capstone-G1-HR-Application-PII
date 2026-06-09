@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+using MySql.Data.MySqlClient;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -11,6 +11,7 @@ namespace HRApplicantSystem.Forms.Maintenance
         {
             InitializeComponent();
         }
+
         private void frmAssessmentTypes_Load(object sender, EventArgs e)
         {
             LoadData();
