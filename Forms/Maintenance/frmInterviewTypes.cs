@@ -1,8 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace HRApplicantSystem.Forms.Maintenance
 {
@@ -15,7 +15,66 @@ namespace HRApplicantSystem.Forms.Maintenance
 
         private void frmInterviewTypes_Load(object sender, EventArgs e)
         {
+            ApplyUniversalUITheme();
             LoadData();
+        }
+
+        private void ApplyUniversalUITheme()
+        {
+            try
+            {
+                // Font Base Rule (Verdana)
+                this.Font = new Font("Verdana", 10);
+
+                // Form Title Customization
+                if (this.Controls.ContainsKey("lblTitle"))
+                {
+                    this.Controls["lblTitle"].Font = new Font("Verdana", 17, FontStyle.Bold);
+                    this.Controls["lblTitle"].ForeColor = ColorTranslator.FromHtml("#1F3864");
+                }
+
+                // Subtitle Customization
+                if (this.Controls.ContainsKey("lblSubtitle"))
+                {
+                    this.Controls["lblSubtitle"].Font = new Font("Verdana", 11, FontStyle.Italic);
+                    this.Controls["lblSubtitle"].ForeColor = ColorTranslator.FromHtml("#888888");
+                }
+
+                // Inputs and Buttons Setup
+                if (this.Controls.ContainsKey("txtName"))
+                {
+                    ((TextBox)this.Controls["txtName"]).BorderStyle = BorderStyle.FixedSingle;
+                }
+
+                if (this.Controls.ContainsKey("btnAdd"))
+                {
+                    this.Controls["btnAdd"].BackColor = ColorTranslator.FromHtml("#1F5C99");
+                    this.Controls["btnAdd"].ForeColor = Color.White;
+                    this.Controls["btnAdd"].Font = new Font("Verdana", 10, FontStyle.Bold);
+                }
+
+                if (this.Controls.ContainsKey("btnUpdate"))
+                {
+                    this.Controls["btnUpdate"].BackColor = ColorTranslator.FromHtml("#1F5C99");
+                    this.Controls["btnUpdate"].ForeColor = Color.White;
+                    this.Controls["btnUpdate"].Font = new Font("Verdana", 10, FontStyle.Bold);
+                }
+
+                if (this.Controls.ContainsKey("btnDelete"))
+                {
+                    this.Controls["btnDelete"].BackColor = ColorTranslator.FromHtml("#C0392B");
+                    this.Controls["btnDelete"].ForeColor = Color.White;
+                    this.Controls["btnDelete"].Font = new Font("Verdana", 10, FontStyle.Bold);
+                }
+
+                if (this.Controls.ContainsKey("btnClear"))
+                {
+                    var btn = (Button)this.Controls["btnClear"];
+                    btn.FlatStyle = FlatStyle.Flat;
+                    btn.ForeColor = ColorTranslator.FromHtml("#555555");
+                }
+            }
+            catch { }
         }
 
         private void LoadData()

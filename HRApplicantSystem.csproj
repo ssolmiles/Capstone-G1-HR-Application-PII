@@ -283,6 +283,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>frmRequirementTypes.Designer.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Maintenance\frmRequirementTypes.resx">
+      <DependentUpon>frmRequirementTypes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAssessmentTypes.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>frmAssessmentTypes.Designer.cs</LastGenOutput>
@@ -330,9 +333,6 @@
   <ItemGroup>
     <Folder Include="Forms\Applicant\" />
     <Folder Include="Forms\HR\" />
-    <Folder Include="Helpers\" />
-    <Folder Include="Forms\Maintenance\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database\schema.sql" />
