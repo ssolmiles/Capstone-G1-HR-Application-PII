@@ -159,5 +159,15 @@ namespace HRApplicantSystem.Forms.Maintenance
             txtName.Text = "";
             dgvList.ClearSelection();
         }
+
+        private void lblName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
