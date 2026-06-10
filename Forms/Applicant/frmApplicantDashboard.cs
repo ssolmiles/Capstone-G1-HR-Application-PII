@@ -114,12 +114,6 @@ namespace HRApplicantSystem.Forms.Applicant
             this.Close();
         }
 
-        private void btnViewStatus_Click(object sender, EventArgs e)
-        {
-            frmApplicationStatus statusForm = new frmApplicationStatus(userEmail);
-            statusForm.Show();
-        }
-
         private void frmApplicantDashboard_Load_1(object sender, EventArgs e)
         {
 
@@ -127,22 +121,134 @@ namespace HRApplicantSystem.Forms.Applicant
 
         private void lblStatus_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                conn.Open();
+                cmd.Connection = conn;
+                cmd.CommandText = "SELECT is_active FROM applicants WHERE email = @Email";
+                cmd.Parameters.AddWithValue("@Email", userEmail);
+                object result = cmd.ExecuteScalar();
+                if (result != null && result != DBNull.Value)
+                {
+                    bool isActive = Convert.ToBoolean(result);
+                    if (isActive)
+                    {
+                        lblStatus.Text = "Status: Active";
+                        lblStatus.ForeColor = System.Drawing.Color.Green;
+                    }
+                    else
+                    {
+                        lblStatus.Text = "Status: Inactive";
+                        lblStatus.ForeColor = System.Drawing.Color.Red;
+                    }
+                }
+                else
+                {
+                    lblStatus.Text = "Status: Unknown";
+                    lblStatus.ForeColor = System.Drawing.Color.Gray;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+                cmd.Parameters.Clear();
+            }
         }
 
         private void lblMissingDocs_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                conn.Open();
+                cmd.Connection = conn;
+                cmd.CommandText = "SELECT COUNT(*) FROM applicant_documents WHERE applicant_id = (SELECT id FROM applicants WHERE email = @Email)";
+                cmd.Parameters.AddWithValue("@Email", userEmail);
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+                int totalRequired = 4;
+                int missing = totalRequired - count;
+                if (missing > 0)
+                {
+                    lblMissingDocs.Text = $"Missing Documents: {missing} item(s)";
+                    lblMissingDocs.ForeColor = System.Drawing.Color.Red;
+                }
+                else
+                {
+                    lblMissingDocs.Text = "Missing Documents: None";
+                    lblMissingDocs.ForeColor = System.Drawing.Color.Green;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+                cmd.Parameters.Clear();
+            }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void txtWelcome_TextChanged(object sender, EventArgs e)
         {
+            string userEmail = "";
+            try
+            {
+                conn.Open();
+                cmd.Connection = conn;
+                cmd.CommandText = "SELECT Firstname, LastName FROM applicants WHERE email = @Email";
+                cmd.Parameters.AddWithValue("@Email", userEmail);
+                SqlDataReader dr = cmd.ExecuteReader();
 
+                if (dr.Read())
+                {
+                    string fullName = dr["FirstName"].ToString() + "" + dr["LastName"].ToString();
+                    txtWelcome.Text = "Welcome Applicant " + fullName + "!";
+                }
+                dr.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+                cmd.Parameters.Clear();
+            }
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e) // lblUpcomingInterview
         {
-
+            try
+            {
+                conn.Open();
+                cmd.Connection = conn;
+                cmd.CommandText = "SELECT interview_date, interview_time FROM applicaants WHERE email = @Email AND interview_date IS NOT NULL";
+                cmd.Parameters.AddWithValue("@Email", userEmail);
+                object result = cmd.ExecuteScalar();
+                if (result != null && result != DBNull.Value)
+                {
+                    DateTime interviewDate = Convert.ToDateTime(result);
+                    lblUpcomingInterview.Text = $"Upcoming Interview: {interviewDate: MMMM dd, yyyy}";
+                }
+                else
+                {
+                    lblUpcomingInterview.Text = "Upcoming Interview: None yet";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+                cmd.Parameters.Clear();
+            }
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -152,7 +258,72 @@ namespace HRApplicantSystem.Forms.Applicant
 
         private void lblSchedule_Click(object sender, EventArgs e)
         {
+            try
+            {
+                conn.Open();
+                cmd.Connection = conn;
+                cmd.CommandText = "SELECT interview_date, interview_time FROM applicants WHERE email = @Email";
+                cmd.Parameters.AddWithValue("@Email", userEmail);
+                SqlDataReader dr = cmd.ExecuteReader();
 
+                if (dr.Read())
+                {
+                    if (dr["interview_date"] != DBNull.Value)
+                    {
+                        DateTime date = Convert.ToDateTime(dr["interview_date"]);
+                        string time = dr["interview_time"].ToString();
+                        lblSchedule.Text = $"Schedule: {date:MMMM dd, yyyy} at {time}";
+                    }
+                    else
+                    {
+                        lblSchedule.Text = "Schedule: Not yet scheduled";
+                    }
+                }
+                dr.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+                cmd.Parameters.Clear();
+            }
+        }
+
+        private void btnViewStatus_Click(object sender, EventArgs e)
+        {
+            frmApplicationStatus statusForm = new frmApplicationStatus(userEmail);
+            statusForm.Show();
+        }
+
+        private void lblUpdates_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                conn.Open();
+                cmd.Connection = conn;
+                cmd.CommandText = "SELECT TOP 1 update_message FROM system_updates ORDER BY update_date DESC";
+                object result = cmd.ExecuteScalar();
+                if(result != null && result != DBNull.Value)
+                {
+                    lblUpdates.Text = "Updates: " + result.ToString();
+                }
+                else
+                {
+                    lblUpdates.Text = "Updates: System is up to date";
+                }
+            }
+            catch (Exception ex)
+            {
+                lblUpdates.Text = "Updates: Welcome to HR Applicant System";
+            }
+            finally
+            {
+                conn.Close();
+                cmd.Parameters.Clear();
+            }
         }
     }
 }

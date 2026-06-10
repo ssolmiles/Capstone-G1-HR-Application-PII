@@ -93,5 +93,10 @@ namespace HRApplicantSystem.Forms.Applicant
         {
 
         }
+
+        private void frmApplicantRegister_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

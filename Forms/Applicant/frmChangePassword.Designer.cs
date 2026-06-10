@@ -39,6 +39,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,11 +55,11 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(72, 66);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
+            this.groupBox1.Location = new System.Drawing.Point(58, 90);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox1.Size = new System.Drawing.Size(916, 383);
+            this.groupBox1.Size = new System.Drawing.Size(687, 311);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Change Password";
@@ -66,10 +67,10 @@
             // chkShowPass
             // 
             this.chkShowPass.AutoSize = true;
-            this.chkShowPass.Location = new System.Drawing.Point(583, 259);
-            this.chkShowPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkShowPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.chkShowPass.Location = new System.Drawing.Point(347, 179);
             this.chkShowPass.Name = "chkShowPass";
-            this.chkShowPass.Size = new System.Drawing.Size(125, 20);
+            this.chkShowPass.Size = new System.Drawing.Size(129, 20);
             this.chkShowPass.TabIndex = 9;
             this.chkShowPass.Text = "Show Password";
             this.chkShowPass.UseVisualStyleBackColor = true;
@@ -77,110 +78,124 @@
             // 
             // btnChangePass
             // 
-            this.btnChangePass.Location = new System.Drawing.Point(401, 296);
-            this.btnChangePass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnChangePass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
+            this.btnChangePass.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChangePass.ForeColor = System.Drawing.Color.White;
+            this.btnChangePass.Location = new System.Drawing.Point(246, 231);
             this.btnChangePass.Name = "btnChangePass";
-            this.btnChangePass.Size = new System.Drawing.Size(307, 28);
+            this.btnChangePass.Size = new System.Drawing.Size(230, 45);
             this.btnChangePass.TabIndex = 8;
             this.btnChangePass.Text = "Change Password";
-            this.btnChangePass.UseVisualStyleBackColor = true;
+            this.btnChangePass.UseVisualStyleBackColor = false;
             this.btnChangePass.Click += new System.EventHandler(this.btnChangePass_Click);
             // 
             // txtNewPass
             // 
-            this.txtNewPass.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNewPass.Location = new System.Drawing.Point(403, 158);
-            this.txtNewPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNewPass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNewPass.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNewPass.Location = new System.Drawing.Point(246, 121);
             this.txtNewPass.Name = "txtNewPass";
             this.txtNewPass.PasswordChar = '•';
-            this.txtNewPass.Size = new System.Drawing.Size(305, 34);
+            this.txtNewPass.Size = new System.Drawing.Size(230, 23);
             this.txtNewPass.TabIndex = 7;
             // 
             // txtConfirmPass
             // 
-            this.txtConfirmPass.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConfirmPass.Location = new System.Drawing.Point(403, 201);
-            this.txtConfirmPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtConfirmPass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtConfirmPass.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtConfirmPass.Location = new System.Drawing.Point(246, 150);
             this.txtConfirmPass.Name = "txtConfirmPass";
             this.txtConfirmPass.PasswordChar = '•';
-            this.txtConfirmPass.Size = new System.Drawing.Size(305, 34);
+            this.txtConfirmPass.Size = new System.Drawing.Size(230, 23);
             this.txtConfirmPass.TabIndex = 6;
             // 
             // txtCurrentPass
             // 
-            this.txtCurrentPass.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCurrentPass.Location = new System.Drawing.Point(403, 115);
-            this.txtCurrentPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCurrentPass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCurrentPass.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCurrentPass.Location = new System.Drawing.Point(246, 92);
             this.txtCurrentPass.Name = "txtCurrentPass";
             this.txtCurrentPass.PasswordChar = '•';
-            this.txtCurrentPass.Size = new System.Drawing.Size(305, 34);
+            this.txtCurrentPass.Size = new System.Drawing.Size(230, 23);
             this.txtCurrentPass.TabIndex = 5;
             // 
             // txtEmail
             // 
-            this.txtEmail.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(403, 72);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEmail.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(246, 63);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(305, 34);
+            this.txtEmail.Size = new System.Drawing.Size(230, 23);
             this.txtEmail.TabIndex = 4;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Verdana", 14F);
-            this.label4.Location = new System.Drawing.Point(148, 206);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.label4.Location = new System.Drawing.Point(111, 152);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(239, 29);
+            this.label4.Size = new System.Drawing.Size(129, 16);
             this.label4.TabIndex = 3;
             this.label4.Text = "Confirm Password:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Verdana", 14F);
-            this.label3.Location = new System.Drawing.Point(148, 120);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.label3.Location = new System.Drawing.Point(111, 94);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(235, 29);
+            this.label3.Size = new System.Drawing.Size(129, 16);
             this.label3.TabIndex = 2;
             this.label3.Text = "Current Password:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Verdana", 14F);
-            this.label2.Location = new System.Drawing.Point(186, 163);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.label2.Location = new System.Drawing.Point(132, 123);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(197, 29);
+            this.label2.Size = new System.Drawing.Size(108, 16);
             this.label2.TabIndex = 1;
             this.label2.Text = "New Password:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Verdana", 14F);
-            this.label1.Location = new System.Drawing.Point(295, 77);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.label1.Location = new System.Drawing.Point(194, 65);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 29);
+            this.label1.Size = new System.Drawing.Size(46, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Email:";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
+            this.label5.Location = new System.Drawing.Point(53, 34);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(228, 29);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Reset Password";
+            // 
             // frmChangePassword
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmChangePassword";
             this.Text = "frmChangePassword";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -197,5 +212,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnChangePass;
         private System.Windows.Forms.CheckBox chkShowPass;
+        private System.Windows.Forms.Label label5;
     }
 }

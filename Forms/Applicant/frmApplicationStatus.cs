@@ -133,5 +133,10 @@ namespace HRApplicantSystem.Forms.Applicant
         {
 
         }
+
+        private void lblStep1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
