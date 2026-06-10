@@ -3,90 +3,97 @@
     partial class frmScreening
     {
         private System.ComponentModel.IContainer components = null;
-
-        // Controls for Screening
-        private System.Windows.Forms.TextBox txtRemarks;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.ListBox lstApplicants;
         private System.Windows.Forms.Button btnQualified;
         private System.Windows.Forms.Button btnNotQualified;
-        private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Button btnNext;
 
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
-            {
                 components.Dispose();
-            }
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
         private void InitializeComponent()
         {
-            this.txtRemarks = new System.Windows.Forms.TextBox();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.lstApplicants = new System.Windows.Forms.ListBox();
             this.btnQualified = new System.Windows.Forms.Button();
             this.btnNotQualified = new System.Windows.Forms.Button();
-            this.lblStatus = new System.Windows.Forms.Label();
             this.btnNext = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // txtRemarks
+            // lblTitle
             // 
-            this.txtRemarks.Location = new System.Drawing.Point(20, 65);
-            this.txtRemarks.Multiline = true;
-            this.txtRemarks.Name = "txtRemarks";
-            this.txtRemarks.Size = new System.Drawing.Size(300, 41);
-            this.txtRemarks.TabIndex = 0;
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Verdana", 16F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
+            this.lblTitle.Location = new System.Drawing.Point(20, 20);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(315, 32);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "Applicant Screening";
+            // 
+            // lstApplicants
+            // 
+            this.lstApplicants.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lstApplicants.Font = new System.Drawing.Font("Verdana", 10F);
+            this.lstApplicants.ItemHeight = 20;
+            this.lstApplicants.Location = new System.Drawing.Point(20, 60);
+            this.lstApplicants.Name = "lstApplicants";
+            this.lstApplicants.Size = new System.Drawing.Size(340, 142);
+            this.lstApplicants.TabIndex = 1;
             // 
             // btnQualified
             // 
-            this.btnQualified.Location = new System.Drawing.Point(23, 131);
+            this.btnQualified.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
+            this.btnQualified.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
+            this.btnQualified.ForeColor = System.Drawing.Color.White;
+            this.btnQualified.Location = new System.Drawing.Point(20, 230);
             this.btnQualified.Name = "btnQualified";
-            this.btnQualified.Size = new System.Drawing.Size(94, 23);
-            this.btnQualified.TabIndex = 1;
+            this.btnQualified.Size = new System.Drawing.Size(120, 35);
+            this.btnQualified.TabIndex = 2;
             this.btnQualified.Text = "Qualified";
+            this.btnQualified.UseVisualStyleBackColor = false;
             // 
             // btnNotQualified
             // 
-            this.btnNotQualified.Location = new System.Drawing.Point(141, 131);
+            this.btnNotQualified.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.btnNotQualified.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
+            this.btnNotQualified.ForeColor = System.Drawing.Color.White;
+            this.btnNotQualified.Location = new System.Drawing.Point(146, 230);
             this.btnNotQualified.Name = "btnNotQualified";
-            this.btnNotQualified.Size = new System.Drawing.Size(119, 23);
-            this.btnNotQualified.TabIndex = 2;
+            this.btnNotQualified.Size = new System.Drawing.Size(161, 35);
+            this.btnNotQualified.TabIndex = 3;
             this.btnNotQualified.Text = "Not Qualified";
-            // 
-            // lblStatus
-            // 
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(17, 30);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(100, 16);
-            this.lblStatus.TabIndex = 3;
-            this.lblStatus.Text = "Status: Pending";
+            this.btnNotQualified.UseVisualStyleBackColor = false;
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(461, 227);
+            this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNext.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
+            this.btnNext.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.btnNext.Location = new System.Drawing.Point(247, 282);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(75, 23);
+            this.btnNext.Size = new System.Drawing.Size(113, 35);
             this.btnNext.TabIndex = 4;
             this.btnNext.Text = "Next → Interview Scheduling";
             // 
-            // Form1
+            // frmScreening
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 300);
-            this.Controls.Add(this.txtRemarks);
+            this.ClientSize = new System.Drawing.Size(400, 340);
+            this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.lstApplicants);
             this.Controls.Add(this.btnQualified);
             this.Controls.Add(this.btnNotQualified);
-            this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnNext);
-            this.Name = "Form1";
-            this.Text = "Screening";
+            this.Name = "frmScreening";
+            this.Text = "Applicant Screening";
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
-        #endregion
     }
 }

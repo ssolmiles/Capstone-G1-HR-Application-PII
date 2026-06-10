@@ -30,7 +30,7 @@ namespace HRApplicantSystem.Forms.HR
         {
             frmInterviewScheduling interviewForm = new frmInterviewScheduling();
             interviewForm.Show();
-            this.Hide(); // optional
+            this.Hide(); 
         }
     }
 }
