@@ -268,6 +268,12 @@
     <EmbeddedResource Include="Forms\Maintenance\frmDepartment.resx">
       <DependentUpon>frmDepartment.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Maintenance\frmEmploymentTypes.resx">
+      <DependentUpon>frmEmploymentTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Maintenance\frmInterviewTypes.resx">
+      <DependentUpon>frmInterviewTypes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Maintenance\frmJobVacancyManagement.resx">
       <DependentUpon>frmJobVacancyManagement.cs</DependentUpon>
     </EmbeddedResource>
