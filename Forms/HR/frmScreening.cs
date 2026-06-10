@@ -26,7 +26,7 @@ namespace HRApplicantSystem.Forms.HR
         {
             frmInterviewSchedule interviewForm = new frmInterviewSchedule();
             interviewForm.Show();
-            this.Hide();
+            this.Hide(); 
         }
 
         private void frmScreening_Load(object sender, EventArgs e) { }
