@@ -8,10 +8,6 @@ namespace HRApplicantSystem.Forms.HR
         public frmScreening()
         {
             InitializeComponent();
-
-            btnQualified.Click += btnQualified_Click;
-            btnNotQualified.Click += btnNotQualified_Click;
-            btnNext.Click += btnNext_Click;
         }
 
         private void btnQualified_Click(object sender, EventArgs e)
@@ -28,9 +24,11 @@ namespace HRApplicantSystem.Forms.HR
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            frmInterviewScheduling interviewForm = new frmInterviewScheduling();
+            frmInterviewSchedule interviewForm = new frmInterviewSchedule();
             interviewForm.Show();
             this.Hide(); 
         }
+
+        private void frmScreening_Load(object sender, EventArgs e) { }
     }
 }

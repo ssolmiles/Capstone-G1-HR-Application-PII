@@ -1,105 +1,150 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using HRApplicantSystem.Helpers;
 using Microsoft.Data.SqlClient;
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace HRApplicantSystem.Forms.Applicant
 {
     public partial class frmApplicantDashboard : Form
     {
-        SqlConnection conn;
-        SqlCommand cmd;
-        SqlDataReader dr;
+        private string userEmail;
 
-        string userEmail;
         public frmApplicantDashboard(string email)
         {
             InitializeComponent();
-            string connString = "Server=g1-hr-processing-server.database.windows.net;Database=HR_Applicant_Processing_System;User ID=hradmin;Password=@Ssolshine2006;";
-            conn = new SqlConnection(connString);
-            cmd = new SqlCommand();
+            userEmail = email;
         }
-        private void frmApplicantDashboard_Load(object sender, EventArgs e)
+
+        private void frmApplicantDashboard_Load_1(object sender, EventArgs e)
         {
             LoadDashboardData();
+            LoadWelcomeName();
         }
+
+        private void LoadWelcomeName()
+        {
+            try
+            {
+                using (SqlConnection conn = DatabaseHelper.GetConnection())
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(
+                        "SELECT full_name FROM applicants WHERE email = @Email", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Email", userEmail);
+                        object result = cmd.ExecuteScalar();
+                        if (result != null)
+                            textBox1.Text = $"Welcome, {result}!";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading name: " + ex.Message);
+            }
+        }
+
         private void LoadDashboardData()
         {
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
-                cmd.CommandText = "SELECT Status FROM ApplicantRegister WHERE Email = @Email";
-                cmd.Parameters.AddWithValue("@Email", userEmail);
-                dr = cmd.ExecuteReader();
-                if (dr.Read())
+                using (SqlConnection conn = DatabaseHelper.GetConnection())
                 {
-                    string status = dr["Status"].ToString();
-                    lblStatus.Text = "Status: " + status;
-                    if (status == "Active")
-                        lblStatus.ForeColor = System.Drawing.Color.Green;
-                    else if (status == "Inactive")
-                        lblStatus.ForeColor = System.Drawing.Color.Red;
-                    else
-                        lblStatus.ForeColor = System.Drawing.Color.Orange;
-                }
-                dr.Close();
-                cmd.Parameters.Clear();
-                cmd.CommandText = "SELECT DocumentsSubmitted FROM ApplicantRegister WHERE Email = @Email";
-                cmd.Parameters.AddWithValue("@Email", userEmail);
-                var docs = cmd.ExecuteScalar();
-                if (docs == null || string.IsNullOrEmpty(docs.ToString()))
-                {
-                    lblMissingDocs.Text = "ALERT: Documents are missing!";
-                    lblMissingDocs.ForeColor = System.Drawing.Color.Red;
-                }
-                else
-                {
-                    lblMissingDocs.Text = "Documents Complete";
-                    lblMissingDocs.ForeColor = System.Drawing.Color.Green;
-                }
-                cmd.Parameters.Clear();
-                cmd.CommandText = "SELECT ScheduleDate, Time FROM InterviewSchedule WHERE Email = @Email";
-                cmd.Parameters.AddWithValue("@Email", userEmail);
-                dr = cmd.ExecuteReader();
-                if (dr.Read())
-                {
-                    string date = Convert.ToDateTime(dr["ScheduleDate"]).ToString("MMMM dd, yyyy");
-                    string time = dr["Time"].ToString();
-                    lblSchedule.Text = $"Interview Schedule: {date} at {time}";
-                }
-                else
-                {
-                    lblSchedule.Text = "No schedule yet. Please wait.";
-                }
-                dr.Close();
-                cmd.Parameters.Clear();
+                    conn.Open();
 
-                lblUpdates.Text = "RECENT UPDATES:\n" + "- Application review is ongoing.\n" + "- Please check your email regularly.\n"
-                    + "- New requirements posted.";
+                    // 1. Applicant status
+                    using (SqlCommand cmd = new SqlCommand(
+                        "SELECT is_active FROM applicants WHERE email = @Email", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Email", userEmail);
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                bool isActive = dr["is_active"] != DBNull.Value && (bool)dr["is_active"];
+                                lblStatus.Text = "Status: " + (isActive ? "Active" : "Inactive");
+                                lblStatus.ForeColor = isActive ? Color.Green : Color.Red;
+                            }
+                        }
+                    }
+
+                    // 2. Document count
+                    using (SqlCommand cmd = new SqlCommand(
+                        @"SELECT COUNT(*) 
+                          FROM applicant_documents 
+                          WHERE applicant_id = 
+                          (SELECT applicant_id FROM applicants WHERE email = @Email)", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Email", userEmail);
+                        int docCount = Convert.ToInt32(cmd.ExecuteScalar());
+
+                        if (docCount == 0)
+                        {
+                            lblMissingDocs.Text = "ALERT: Documents are missing!";
+                            lblMissingDocs.ForeColor = Color.Red;
+                        }
+                        else
+                        {
+                            lblMissingDocs.Text = "Documents Complete";
+                            lblMissingDocs.ForeColor = Color.Green;
+                        }
+                    }
+
+                    // 3. Interview schedule
+                    using (SqlCommand cmd = new SqlCommand(
+                        @"SELECT TOP 1 s.scheduled_date, s.scheduled_time
+                          FROM interview_schedules s
+                          INNER JOIN applications a ON s.application_id = a.application_id
+                          INNER JOIN applicants ap ON a.applicant_id = ap.applicant_id
+                          WHERE ap.email = @Email", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Email", userEmail);
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                string date = Convert.ToDateTime(dr["scheduled_date"]).ToString("MMMM dd, yyyy");
+                                string time = dr["scheduled_time"].ToString();
+                                lblSchedule.Text = $"Interview Schedule: {date} at {time}";
+                            }
+                            else
+                            {
+                                lblSchedule.Text = "No schedule yet. Please wait.";
+                            }
+                        }
+                    }
+
+                    // 4. Upcoming interview count
+                    using (SqlCommand cmd = new SqlCommand(
+                        @"SELECT COUNT(*) 
+                          FROM interview_schedules s
+                          INNER JOIN applications a ON s.application_id = a.application_id
+                          INNER JOIN applicants ap ON a.applicant_id = ap.applicant_id
+                          WHERE ap.email = @Email AND s.status = 'scheduled'", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Email", userEmail);
+                        int count = Convert.ToInt32(cmd.ExecuteScalar());
+                        label1.Text = $"Upcoming Interview: {count}";
+                    }
+
+                    lblUpdates.Text =
+                        "RECENT UPDATES:\n" +
+                        "- Application review is ongoing.\n" +
+                        "- Please check your email regularly.\n" +
+                        "- New requirements posted.";
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error loading dashboard: " + ex.Message);
-            }
-            finally
-            {
-                conn.Close();
             }
         }
 
         private void btnProfile_Click(object sender, EventArgs e)
         {
             frmMyProfile profile = new frmMyProfile(userEmail);
-            profile.Show();
-            this.Hide();
+            profile.ShowDialog();
         }
 
         private void btnChangePass_Click(object sender, EventArgs e)
@@ -117,9 +162,15 @@ namespace HRApplicantSystem.Forms.Applicant
 
         private void btnViewStatus_Click(object sender, EventArgs e)
         {
-            frmApplicationStatus statusForm = new
-            frmApplicationStatus(userEmail);
+            frmApplicationStatus statusForm = new frmApplicationStatus(userEmail);
             statusForm.Show();
         }
+
+        // --- Stub handlers ---
+        private void lblStatus_Click(object sender, EventArgs e) { }
+        private void lblMissingDocs_Click(object sender, EventArgs e) { }
+        private void lblSchedule_Click(object sender, EventArgs e) { }
+        private void label1_Click(object sender, EventArgs e) { }
+        private void textBox1_TextChanged(object sender, EventArgs e) { }
     }
 }

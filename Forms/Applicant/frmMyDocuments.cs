@@ -1,176 +1,154 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using HRApplicantSystem.Helpers;
+using Microsoft.Data.SqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HRApplicantSystem.Forms.Applicant
 {
     public partial class frmMyDocuments : Form
     {
-        SqlConnection conn;
-        SqlCommand cmd;
-        string userEmail;
+        private string userEmail;
+
         public frmMyDocuments(string email)
         {
             InitializeComponent();
             userEmail = email;
-            string connString = "Server=g1-hr-processing-server.database.windows.net;Database=HR_Applicant_Processing_System;User ID=hradmin;Password=@Ssolshine2006;";
-            conn = new SqlConnection(connString);
-            cmd = new SqlCommand();
         }
-        private void frmMyDocuments_Load(object sender, EventArgs e)
+
+        private void frmMyDocuments_Load_1(object sender, EventArgs e)
         {
             LoadDocumentStatus();
         }
+
         private void LoadDocumentStatus()
         {
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
-                cmd.CommandText = @"SELECT Resume, ID_Card, Transcript, Certificates, Remarks, Doc_Status FROM ApplicantRegister
-                                    WHERE Email = @Email";
-                cmd.Parameters.AddWithValue("@Email", userEmail);
-                SqlDataReader dr = cmd.ExecuteReader();
-                if (dr.Read())
+                using (SqlConnection conn = DatabaseHelper.GetConnection())
                 {
-                    lblResumeStatus.Text = string.IsNullOrEmpty(dr["Resume"].ToString()) ? "Missing" : "Submitted";
-                    lblIDStatus.Text = string.IsNullOrEmpty(dr["ID_Card"].ToString()) ? "Missing" : "Submitted";
-                    lblTranscriptStatus.Text = string.IsNullOrEmpty(dr["Transcript"].ToString()) ? "Missing" : "Submitted";
-                    lblCertStatus.Text = string.IsNullOrEmpty(dr["Certificates"].ToString()) ? "Missing" : "Submitted";
+                    conn.Open();
 
-                    txtRemarks.Text = dr["Remarks"].ToString();
-                    string overall = dr["Doc_Status"].ToString();
-                    lblOverallStatus.Text = "Overall Status: " + overall;
-                    if (overall == "Complete")
-                        lblOverallStatus.ForeColor = System.Drawing.Color.Green;
-                    else
-                        lblOverallStatus.ForeColor = System.Drawing.Color.Red;
+                    int applicantId = GetApplicantId(conn);
+                    if (applicantId == -1)
+                    {
+                        MessageBox.Show("Applicant not found.");
+                        return;
+                    }
+
+                    using (SqlCommand cmd = new SqlCommand(
+                        @"SELECT rt.label, ad.file_path, ad.status
+                          FROM applicant_documents ad
+                          INNER JOIN requirement_types rt ON ad.req_type_id = rt.req_type_id
+                          WHERE ad.applicant_id = @ApplicantId", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@ApplicantId", applicantId);
+
+                        bool hasResume = false, hasID = false, hasTranscript = false, hasCert = false;
+
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                string label = dr["label"].ToString().ToLower();
+                                string status = dr["status"].ToString();
+                                bool submitted = status == "submitted" && !string.IsNullOrEmpty(dr["file_path"].ToString());
+
+                                if (label.Contains("resume")) { lblResumeStatus.Text = submitted ? "Submitted" : "Missing"; hasResume = submitted; }
+                                else if (label.Contains("id")) { lblIDStatus.Text = submitted ? "Submitted" : "Missing"; hasID = submitted; }
+                                else if (label.Contains("transcript")) { lblTranscriptStatus.Text = submitted ? "Submitted" : "Missing"; hasTranscript = submitted; }
+                                else if (label.Contains("cert")) { lblCertStatus.Text = submitted ? "Submitted" : "Missing"; hasCert = submitted; }
+                            }
+                        }
+
+                        bool allComplete = hasResume && hasID && hasTranscript && hasCert;
+                        lblOverallStatus.Text = "Overall Status: " + (allComplete ? "Complete" : "Incomplete");
+                        lblOverallStatus.ForeColor = allComplete ? Color.Green : Color.Red;
+                    }
+
+                    using (SqlCommand cmd = new SqlCommand(
+                        @"SELECT TOP 1 sr.remarks 
+                          FROM screening_results sr
+                          INNER JOIN applications a ON sr.application_id = a.application_id
+                          WHERE a.applicant_id = @ApplicantId
+                          ORDER BY sr.reviewed_at DESC", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@ApplicantId", applicantId);
+                        object result = cmd.ExecuteScalar();
+                        txtRemarks.Text = result != null && result != DBNull.Value ? result.ToString() : "";
+                    }
                 }
-                dr.Close();
-                cmd.Parameters.Clear();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
-            finally
+        }
+
+        private int GetApplicantId(SqlConnection conn)
+        {
+            using (SqlCommand cmd = new SqlCommand(
+                "SELECT applicant_id FROM applicants WHERE email = @Email", conn))
             {
-                conn.Close();
+                cmd.Parameters.AddWithValue("@Email", userEmail);
+                object result = cmd.ExecuteScalar();
+                return result != null ? Convert.ToInt32(result) : -1;
             }
         }
 
-        private void btnUploadResume_Click(object sender, EventArgs e)
+        private void UploadDocument(string docTypeKeyword, Label statusLabel)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                string filePath = openFileDialog1.FileName;
-                UpdateDataBase("Resume", filePath);
-                lblResumeStatus.Text = "Submitted";
-            }
-        }
+            if (openFileDialog1.ShowDialog() != DialogResult.OK) return;
 
-        private void btnUploadID_Click(object sender, EventArgs e)
-        {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                string filePath = openFileDialog1.FileName;
-                UpdateDataBase("ID_Card", filePath);
-                lblIDStatus.Text = "Submitted";
-            }
-        }
+            string filePath = openFileDialog1.FileName;
 
-        private void btnUploadTranscipt_Click(object sender, EventArgs e)
-        {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                string filePath = openFileDialog1.FileName;
-                UpdateDataBase("Transcript", filePath);
-                lblTranscriptStatus.Text = "Submitted";
-            }
-        }
-
-        private void btnUploadCerts_Click(object sender, EventArgs e)
-        {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                string filePath = openFileDialog1.FileName;
-                UpdateDataBase("Certificates", filePath);
-                lblCertStatus.Text = "Submitted";
-            }
-        }
-        private void UpdateDataBase(string columnName, string value)
-        {
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
-                cmd.CommandText = $"UPDATE ApplicantRegister SET [{columnName}] = @Value WHERE Email = @Email";
-                cmd.Parameters.AddWithValue("@Value", value);
-                cmd.Parameters.AddWithValue("@Email", userEmail);
-                cmd.ExecuteNonQuery();
+                using (SqlConnection conn = DatabaseHelper.GetConnection())
+                {
+                    conn.Open();
+                    int applicantId = GetApplicantId(conn);
+                    if (applicantId == -1) return;
 
-                CheckAndUpdateOverallStatus();
+                    using (SqlCommand cmd = new SqlCommand(
+                        @"UPDATE applicant_documents 
+                          SET file_path = @FilePath, status = 'submitted', uploaded_at = GETDATE()
+                          WHERE applicant_id = @ApplicantId
+                            AND req_type_id = (
+                              SELECT TOP 1 req_type_id FROM requirement_types 
+                              WHERE label LIKE @Keyword)", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@FilePath", filePath);
+                        cmd.Parameters.AddWithValue("@ApplicantId", applicantId);
+                        cmd.Parameters.AddWithValue("@Keyword", "%" + docTypeKeyword + "%");
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                statusLabel.Text = "Submitted";
+                statusLabel.ForeColor = Color.Green;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error saving: " + ex.Message);
             }
-            finally
-            {
-                conn.Close();
-                cmd.Parameters.Clear();
-            }
         }
-        private void CheckAndUpdateOverallStatus()
-        {
-            cmd.Connection = conn;
-            cmd.CommandText = "SELECT Resume, ID_Card, Transcript, Certificates FROM ApplicantRegister WHERE Email = @Email";
-            cmd.Parameters.AddWithValue("@Email", userEmail);
-            SqlDataReader dr = cmd.ExecuteReader();
-            if(dr.Read()){
-                bool allComplete =! string.IsNullOrEmpty(dr["Resume"].ToString()) && !
-                                    string.IsNullOrEmpty(dr["ID_Card"].ToString()) && !
-                                    string.IsNullOrEmpty(dr["Transcript"].ToString()) && !
-                                    string.IsNullOrEmpty(dr["Certificates"].ToString());
-                dr.Close();
-                string status = allComplete ? "Complete" : "Missing";
-                cmd.CommandText = "UPDATE ApplicantRegister SET Doc_Status = @Status WHERE Email = @Email";
-                cmd.Parameters.AddWithValue("@Status", status);
-                cmd.ExecuteNonQuery();
-                lblOverallStatus.Text = "Overall Status: " + status;
-                lblOverallStatus.ForeColor = allComplete ? System.Drawing.Color.Green : System.Drawing.Color.Red;
-            }
-        }
+
+        private void btnUploadResume_Click(object sender, EventArgs e)
+            => UploadDocument("resume", lblResumeStatus);
+
+        private void btnUploadID_Click(object sender, EventArgs e)
+            => UploadDocument("id", lblIDStatus);
+
+        private void btnUploadTranscipt_Click(object sender, EventArgs e)
+            => UploadDocument("transcript", lblTranscriptStatus);
+
+        private void btnUploadCerts_Click(object sender, EventArgs e)
+            => UploadDocument("cert", lblCertStatus);
 
         private void btnSaveRemarks_Click(object sender, EventArgs e)
         {
-            try
-            {
-                conn.Open();
-                cmd.Connection = conn;
-                cmd.CommandText = "UPDATE ApplicantRegister SET Remarks = @Remarks HGERE Email = @Email";
-                cmd.Parameters.AddWithValue("@Remarks", txtRemarks.Text);
-                cmd.Parameters.AddWithValue("@Email", userEmail);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Remarks Saved!");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-            finally
-            {
-                conn.Close();
-                cmd.Parameters.Clear();
-            }
+            MessageBox.Show("Remarks are set by HR and cannot be edited by applicants.");
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -179,5 +157,7 @@ namespace HRApplicantSystem.Forms.Applicant
             profile.Show();
             this.Hide();
         }
+
+        private void lblIDStatus_Click(object sender, EventArgs e) { }
     }
 }

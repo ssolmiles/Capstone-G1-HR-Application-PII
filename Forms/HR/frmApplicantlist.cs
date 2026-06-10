@@ -1,20 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using HRApplicantSystem.Helpers;
 
 namespace HRApplicantSystem.Forms.HR
 {
-    public partial class Form3 : Form
+    public partial class frmApplicantList : Form
     {
-        public Form3()
+        public frmApplicantList()
         {
             InitializeComponent();
+        }
+
+        private void frmApplicantList_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -6,14 +6,14 @@ using System.Windows.Forms;
 
 namespace HRApplicantSystem.Forms.Maintenance
 {
-    public partial class frmInterviewTypes : Form
+    public partial class frmDepartments : Form
     {
-        public frmInterviewTypes()
+        public frmDepartments()
         {
             InitializeComponent();
         }
 
-        private void frmInterviewTypes_Load(object sender, EventArgs e)
+        private void frmDepartments_Load(object sender, EventArgs e)
         {
             LoadData();
         }
@@ -25,8 +25,7 @@ namespace HRApplicantSystem.Forms.Maintenance
                 using (var conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
-                    // Schema column is 'label', aliased to 'Name' for dgv display
-                    string query = "SELECT interview_type_id AS ID, label AS Name FROM interview_types";
+                    string query = "SELECT department_id AS ID, name AS Name FROM departments";
                     var adapter = new SqlDataAdapter(query, conn);
                     var table = new DataTable();
                     adapter.Fill(table);
@@ -36,24 +35,28 @@ namespace HRApplicantSystem.Forms.Maintenance
                     dgvList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 }
             }
-            catch (Exception ex) { MessageBox.Show("Error loading data: " + ex.Message); }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading data: " + ex.Message);
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             string name = txtName.Text.Trim();
-            if (string.IsNullOrEmpty(name)) { MessageBox.Show("Please enter an interview type."); return; }
+            if (string.IsNullOrEmpty(name)) { MessageBox.Show("Please enter a department name."); return; }
             try
             {
                 using (var conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
-                    using (var cmd = new SqlCommand("INSERT INTO interview_types (label) VALUES (@name)", conn))
+                    using (var cmd = new SqlCommand("INSERT INTO departments (name) VALUES (@name)", conn))
                     {
                         cmd.Parameters.AddWithValue("@name", name);
                         cmd.ExecuteNonQuery();
                     }
-                    MessageBox.Show("Interview type added!"); ClearFields(); LoadData();
+                    MessageBox.Show("Department added!");
+                    ClearFields(); LoadData();
                 }
             }
             catch (Exception ex) { MessageBox.Show("Error adding: " + ex.Message); }
@@ -70,7 +73,7 @@ namespace HRApplicantSystem.Forms.Maintenance
                 using (var conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
-                    using (var cmd = new SqlCommand("UPDATE interview_types SET label = @name WHERE interview_type_id = @id", conn))
+                    using (var cmd = new SqlCommand("UPDATE departments SET name = @name WHERE department_id = @id", conn))
                     {
                         cmd.Parameters.AddWithValue("@name", name);
                         cmd.Parameters.AddWithValue("@id", id);
@@ -93,7 +96,7 @@ namespace HRApplicantSystem.Forms.Maintenance
                 using (var conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
-                    using (var cmd = new SqlCommand("DELETE FROM interview_types WHERE interview_type_id = @id", conn))
+                    using (var cmd = new SqlCommand("DELETE FROM departments WHERE department_id = @id", conn))
                     {
                         cmd.Parameters.AddWithValue("@id", id);
                         cmd.ExecuteNonQuery();

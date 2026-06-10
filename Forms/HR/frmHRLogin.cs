@@ -1,94 +1,97 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using HRApplicantSystem.Helpers;
+using Microsoft.Data.SqlClient;
+using System;
 using System.Windows.Forms;
 
 namespace HRApplicantSystem.Forms.HR
 {
     public partial class frmHRLogin : Form
     {
-        // Simple in-memory account store (replace with DB later)
-        private static List<UserAccount> accounts = new List<UserAccount>();
-
-        private UserAccount loggedInUser = null;
-
         public frmHRLogin()
         {
             InitializeComponent();
         }
+        private void frmHRLogin_Load(object sender, EventArgs e) { }
 
-        // LOGIN
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string email = txtEmail.Text.Trim();
-            string password = txtPassword.Text.Trim();
-
-            var account = accounts.FirstOrDefault(a => a.Email == email);
-
-            if (account == null)
+            try
             {
-                MessageBox.Show("Account not found.", "Login Failed",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                using (SqlConnection conn = DatabaseHelper.GetConnection())
+                {
+                    conn.Open();
+
+                    using (SqlCommand cmd = new SqlCommand(
+                        "SELECT password, role FROM users WHERE email = @Email AND is_active = 1",
+                        conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
+
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                string storedHash = dr["password"].ToString();
+                                string role = dr["role"].ToString();
+
+                                if (BCrypt.Net.BCrypt.Verify(
+                                    txtPassword.Text.Trim(),
+                                    storedHash))
+                                {
+                                    SessionManager.Login(
+                                        new HRApplicantSystem.Models.User
+                                        {
+                                            Email = txtEmail.Text.Trim(),
+                                            Role = role
+                                        });
+
+                                    frmHRDashboard dashboard = new frmHRDashboard();
+                                    dashboard.Show();
+                                    this.Hide();
+                                }
+                                else
+                                {
+                                    MessageBox.Show(
+                                        "Invalid Email or Password",
+                                        "Login Failed",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Error);
+
+                                    txtPassword.Clear();
+                                    txtPassword.Focus();
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show(
+                                    "Invalid Email or Password",
+                                    "Login Failed",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+
+                                txtPassword.Clear();
+                                txtPassword.Focus();
+                            }
+                        }
+                    }
+                }
             }
-
-            if (!account.IsActive)
+            catch (Exception ex)
             {
-                MessageBox.Show("Account is inactive. Contact admin.", "Login Failed",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (account.Password == password)
-            {
-                loggedInUser = account;
-                MessageBox.Show("Login successful!", "Welcome",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // ✅ Navigate to Dashboard
-                frmHRDashboard dashboard = new frmHRDashboard();
-                dashboard.Show();
-
-                // Hide the login form
-                this.Hide();
-            }
-            else
-            {
-                MessageBox.Show("Invalid password.", "Login Failed",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
 
-        // REGISTER
-        private void btnRegister_Click(object sender, EventArgs e)
+        private void lblPassword_Click(object sender, EventArgs e) { }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
         {
-            string email = txtEmail.Text.Trim();
-            string password = txtPassword.Text.Trim();
 
-            if (accounts.Any(a => a.Email == email))
-            {
-                MessageBox.Show("Email already exists.", "Registration Failed",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            accounts.Add(new UserAccount
-            {
-                Email = email,
-                Password = password,
-                IsActive = true
-            });
-
-            MessageBox.Show("Account registered successfully!", "Registration",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-    }
 
-    // Simple account model
-    public class UserAccount
-    {
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public bool IsActive { get; set; }
+        private void lblEmail_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -5,12 +5,6 @@
         private System.ComponentModel.IContainer components = null;
 
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Label lblRecruitmentSummary;
-        private System.Windows.Forms.ListBox lstRecruitmentSummary;
-        private System.Windows.Forms.GroupBox grpQuickLinks;
-        private System.Windows.Forms.Button btnApplicants;
-        private System.Windows.Forms.Button btnInterviews;
-        private System.Windows.Forms.Button btnReports;
 
         protected override void Dispose(bool disposing)
         {
@@ -26,93 +20,156 @@
         private void InitializeComponent()
         {
             this.lblTitle = new System.Windows.Forms.Label();
-            this.lblRecruitmentSummary = new System.Windows.Forms.Label();
-            this.lstRecruitmentSummary = new System.Windows.Forms.ListBox();
-            this.grpQuickLinks = new System.Windows.Forms.GroupBox();
-            this.btnApplicants = new System.Windows.Forms.Button();
-            this.btnInterviews = new System.Windows.Forms.Button();
-            this.btnReports = new System.Windows.Forms.Button();
-            this.grpQuickLinks.SuspendLayout();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitle
             // 
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.Location = new System.Drawing.Point(20, 23);
+            this.lblTitle.Font = new System.Drawing.Font("Verdana", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(26, 34);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(100, 47);
+            this.lblTitle.Size = new System.Drawing.Size(458, 58);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "HR Dashboard";
+            this.lblTitle.Text = "Welcome [Name] HR!";
+            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
-            // lblRecruitmentSummary
+            // monthCalendar1
             // 
-            this.lblRecruitmentSummary.Location = new System.Drawing.Point(20, 70);
-            this.lblRecruitmentSummary.Name = "lblRecruitmentSummary";
-            this.lblRecruitmentSummary.Size = new System.Drawing.Size(100, 23);
-            this.lblRecruitmentSummary.TabIndex = 1;
-            this.lblRecruitmentSummary.Text = "Recruitment Summary:";
+            this.monthCalendar1.Font = new System.Drawing.Font("Verdana", 14F);
+            this.monthCalendar1.Location = new System.Drawing.Point(1089, 18);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 4;
             // 
-            // lstRecruitmentSummary
+            // groupBox1
             // 
-            this.lstRecruitmentSummary.ItemHeight = 16;
-            this.lstRecruitmentSummary.Location = new System.Drawing.Point(20, 100);
-            this.lstRecruitmentSummary.Name = "lstRecruitmentSummary";
-            this.lstRecruitmentSummary.Size = new System.Drawing.Size(300, 148);
-            this.lstRecruitmentSummary.TabIndex = 2;
+            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Font = new System.Drawing.Font("Verdana", 14F);
+            this.groupBox1.Location = new System.Drawing.Point(93, 136);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(343, 434);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Summary";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // grpQuickLinks
+            // textBox1
             // 
-            this.grpQuickLinks.Controls.Add(this.btnApplicants);
-            this.grpQuickLinks.Controls.Add(this.btnInterviews);
-            this.grpQuickLinks.Controls.Add(this.btnReports);
-            this.grpQuickLinks.Location = new System.Drawing.Point(350, 70);
-            this.grpQuickLinks.Name = "grpQuickLinks";
-            this.grpQuickLinks.Size = new System.Drawing.Size(200, 180);
-            this.grpQuickLinks.TabIndex = 3;
-            this.grpQuickLinks.TabStop = false;
-            this.grpQuickLinks.Text = "Quick Links";
+            this.textBox1.Location = new System.Drawing.Point(22, 51);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(280, 36);
+            this.textBox1.TabIndex = 6;
+            this.textBox1.Text = "Total Applicants:";
             // 
-            // btnApplicants
+            // textBox2
             // 
-            this.btnApplicants.Location = new System.Drawing.Point(20, 30);
-            this.btnApplicants.Name = "btnApplicants";
-            this.btnApplicants.Size = new System.Drawing.Size(75, 23);
-            this.btnApplicants.TabIndex = 0;
-            this.btnApplicants.Text = "Applicants";
-            this.btnApplicants.Click += new System.EventHandler(this.btnApplicants_Click);
+            this.textBox2.Location = new System.Drawing.Point(22, 145);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(280, 36);
+            this.textBox2.TabIndex = 7;
+            this.textBox2.Text = "Interview Schedule";
             // 
-            // btnInterviews
+            // textBox3
             // 
-            this.btnInterviews.Location = new System.Drawing.Point(20, 70);
-            this.btnInterviews.Name = "btnInterviews";
-            this.btnInterviews.Size = new System.Drawing.Size(75, 23);
-            this.btnInterviews.TabIndex = 1;
-            this.btnInterviews.Text = "Interviews";
-            this.btnInterviews.Click += new System.EventHandler(this.btnInterviews_Click);
+            this.textBox3.Location = new System.Drawing.Point(22, 241);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(280, 36);
+            this.textBox3.TabIndex = 8;
+            this.textBox3.Text = "Accepted";
             // 
-            // btnReports
+            // textBox4
             // 
-            this.btnReports.Location = new System.Drawing.Point(20, 110);
-            this.btnReports.Name = "btnReports";
-            this.btnReports.Size = new System.Drawing.Size(75, 23);
-            this.btnReports.TabIndex = 2;
-            this.btnReports.Text = "Reports";
-            this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
+            this.textBox4.Location = new System.Drawing.Point(22, 334);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(280, 36);
+            this.textBox4.TabIndex = 9;
+            this.textBox4.Text = "Rejected";
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Verdana", 14F);
+            this.button1.Location = new System.Drawing.Point(617, 206);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(203, 41);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Applicant Review";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Verdana", 14F);
+            this.button2.Location = new System.Drawing.Point(617, 277);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(203, 41);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Reports";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Verdana", 14F);
+            this.button3.Location = new System.Drawing.Point(617, 355);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(203, 41);
+            this.button3.TabIndex = 9;
+            this.button3.Text = "Vacancy Management";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Verdana", 14F);
+            this.button4.Location = new System.Drawing.Point(1131, 532);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(201, 38);
+            this.button4.TabIndex = 10;
+            this.button4.Text = "Log Out";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // frmHRDashboard
             // 
-            this.ClientSize = new System.Drawing.Size(600, 300);
+            this.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.ClientSize = new System.Drawing.Size(1358, 600);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.lblRecruitmentSummary);
-            this.Controls.Add(this.lstRecruitmentSummary);
-            this.Controls.Add(this.grpQuickLinks);
             this.Name = "frmHRDashboard";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HR Dashboard";
-            this.grpQuickLinks.ResumeLayout(false);
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmHRDashboard_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace HRApplicantSystem.Forms.HR
 {
-    partial class frmInterviewScheduling
+    partial class frmInterviewSchedule
     {
         private System.ComponentModel.IContainer components = null;
 
@@ -64,17 +64,15 @@
             // 
             // cmbMode
             // 
+            this.cmbMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMode.Items.AddRange(new object[] {
+            "Select Mode",
+            "Online",
+            "Onsite"});
             this.cmbMode.Location = new System.Drawing.Point(20, 140);
             this.cmbMode.Name = "cmbMode";
             this.cmbMode.Size = new System.Drawing.Size(153, 24);
             this.cmbMode.TabIndex = 3;
-            this.cmbMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMode.Items.AddRange(new object[] {
-                "Online",
-                "Onsite"
-            });
-            this.cmbMode.Items.Insert(0, "Select Mode");
-            this.cmbMode.SelectedIndex = 0;
             // 
             // txtLocation
             // 
@@ -125,7 +123,7 @@
             this.btnNext.TabIndex = 9;
             this.btnNext.Text = "Next → Evaluation";
             // 
-            // frmInterviewScheduling
+            // frmInterviewSchedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -140,10 +138,12 @@
             this.Controls.Add(this.btnComplete);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnNext);
-            this.Name = "frmInterviewScheduling";
+            this.Name = "frmInterviewSchedule";
             this.Text = "Interview Scheduling";
+            this.Load += new System.EventHandler(this.frmInterviewSchedule_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
         #endregion
     }

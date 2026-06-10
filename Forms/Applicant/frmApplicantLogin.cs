@@ -1,74 +1,78 @@
-﻿using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Drawing.Text;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
+using HRApplicantSystem.Helpers;
+using Microsoft.Data.SqlClient;
 
 namespace HRApplicantSystem.Forms.Applicant
 {
     public partial class frmApplicantLogin : Form
     {
-        SqlConnection conn;
-        SqlCommand cmd;
-        SqlDataReader dr;
         public frmApplicantLogin()
         {
             InitializeComponent();
-            string connString = "Server=g1-hr-processing-server.database.windows.net;Database=HR_Applicant_Processing_System;User ID=hradmin;Password=@Ssolshine2006;";
-            conn = new SqlConnection(connString);
-            cmd = new SqlCommand();
+        }
+
+        private void frmApplicantLogin_Load(object sender, EventArgs e)
+        {
         }
 
         private void btnLogIn_Click(object sender, EventArgs e)
         {
-            conn.Open();
-            string login = "SELECT * FROM tbl_users WHERE username = '" + txtEmail.Text + "' and password = '" + txtPassword.Text + "'";
-            cmd.Connection = conn;
-            cmd.CommandText = login;
-
-            cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
-            cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
-            dr = cmd.ExecuteReader();
-
-            if (dr.Read() == true)
+            try
             {
-                frmApplicantDashboard dash = new
-                frmApplicantDashboard(txtEmail.Text);
+                using (SqlConnection conn = DatabaseHelper.GetConnection())
+                {
+                    conn.Open();
+
+                    using (SqlCommand cmd = new SqlCommand(
+                        "SELECT password FROM applicants WHERE email = @Email AND is_active = 1",
+                        conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null &&
+                            BCrypt.Net.BCrypt.Verify(
+                                txtPassword.Text.Trim(),
+                                result.ToString()))
+                        {
+                            frmApplicantDashboard dash =
+                                new frmApplicantDashboard(txtEmail.Text.Trim());
+
+                            dash.Show();
+                            this.Hide();
+                        }
+                        else
+                        {
+                            MessageBox.Show(
+                                "Invalid Email or Password",
+                                "Login Failed",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+
+                            txtPassword.Clear();
+                            txtPassword.Focus();
+                        }
+                    }
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Invalid Email or Password, Please Try Again", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtEmail.Text = "";
-                txtPassword.Text = "";
-                txtEmail.Focus();
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            txtEmail.Text = "";
-            txtPassword.Text = "";
+            txtEmail.Clear();
+            txtPassword.Clear();
             txtEmail.Focus();
         }
 
         private void CheckbxShowPas_CheckedChanged(object sender, EventArgs e)
         {
-            if (CheckbxShowPas.Checked)
-            {
-                txtPassword.PasswordChar = '\0';
-
-            }
-            else
-            {
-                txtPassword.PasswordChar = '•';
-            }
+            txtPassword.PasswordChar = CheckbxShowPas.Checked ? '\0' : '•';
         }
 
         private void lblCreateAcc_Click(object sender, EventArgs e)
@@ -79,10 +83,18 @@ namespace HRApplicantSystem.Forms.Applicant
 
         private void linklblFgtPass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmChangePassword cp = new
-            frmChangePassword(txtEmail.Text);
+            frmChangePassword cp = new frmChangePassword(txtEmail.Text);
             cp.Show();
             this.Hide();
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
         }
     }
 }

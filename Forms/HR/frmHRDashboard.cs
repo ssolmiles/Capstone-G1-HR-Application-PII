@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HRApplicantSystem.Helpers;
+using Microsoft.Data.SqlClient;
+using System;
 using System.Windows.Forms;
 
 namespace HRApplicantSystem.Forms.HR
@@ -8,19 +10,56 @@ namespace HRApplicantSystem.Forms.HR
         public frmHRDashboard()
         {
             InitializeComponent();
+        }
+
+        private void frmHRDashboard_Load(object sender, EventArgs e)
+        {
             LoadRecruitmentSummary();
         }
 
         private void LoadRecruitmentSummary()
         {
-            lstRecruitmentSummary.Items.Clear();
-            lstRecruitmentSummary.Items.Add("Applicants Submitted: 25");
-            lstRecruitmentSummary.Items.Add("Pending Applications: 8");
-            lstRecruitmentSummary.Items.Add("Interviews Scheduled: 5");
-            lstRecruitmentSummary.Items.Add("Accepted: 2 | Rejected: 3");
+            try
+            {
+                using (SqlConnection conn = DatabaseHelper.GetConnection())
+                {
+                    conn.Open();
+
+                    using (SqlCommand cmd = new SqlCommand(
+                        "SELECT COUNT(*) FROM applicants", conn))
+                    {
+                        textBox1.Text = "Total Applicants: " + cmd.ExecuteScalar();
+                    }
+
+                    using (SqlCommand cmd = new SqlCommand(
+                        "SELECT COUNT(*) FROM interview_schedules WHERE status = 'scheduled'", conn))
+                    {
+                        textBox2.Text = "Interviews Scheduled: " + cmd.ExecuteScalar();
+                    }
+
+                    using (SqlCommand cmd = new SqlCommand(
+                        "SELECT COUNT(*) FROM hiring_decisions WHERE final_decision = 'accepted'", conn))
+                    {
+                        textBox3.Text = "Accepted: " + cmd.ExecuteScalar();
+                    }
+
+                    using (SqlCommand cmd = new SqlCommand(
+                        "SELECT COUNT(*) FROM hiring_decisions WHERE final_decision = 'rejected'", conn))
+                    {
+                        textBox4.Text = "Rejected: " + cmd.ExecuteScalar();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                textBox1.Text = "Total Applicants: —";
+                textBox2.Text = "Interviews Scheduled: —";
+                textBox3.Text = "Accepted: —";
+                textBox4.Text = "Rejected: —";
+                MessageBox.Show("Error loading summary: " + ex.Message);
+            }
         }
 
-   
         private void btnApplicants_Click(object sender, EventArgs e)
         {
             frmApplicantList applicantListForm = new frmApplicantList();
@@ -28,10 +67,9 @@ namespace HRApplicantSystem.Forms.HR
             this.Hide();
         }
 
-      
         private void btnInterviews_Click(object sender, EventArgs e)
         {
-            frmInterviewScheduling interviewScheduleForm = new frmInterviewScheduling();
+            frmInterviewSchedule interviewScheduleForm = new frmInterviewSchedule();
             interviewScheduleForm.Show();
             this.Hide();
         }
@@ -42,5 +80,10 @@ namespace HRApplicantSystem.Forms.HR
             reportsForm.Show();
             this.Hide();
         }
+
+        // --- Stub handlers wired in Designer ---
+        private void grpQuickLinks_Enter(object sender, EventArgs e) { }
+        private void lblTitle_Click(object sender, EventArgs e) { }
+        private void groupBox1_Enter(object sender, EventArgs e) { }
     }
 }

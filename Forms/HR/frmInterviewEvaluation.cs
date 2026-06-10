@@ -3,12 +3,11 @@ using System.Windows.Forms;
 
 namespace HRApplicantSystem.Forms.HR
 {
-    public partial class frmEvaluation : Form
+    public partial class frmInterviewEvaluation : Form
     {
-        public frmEvaluation()
+        public frmInterviewEvaluation()
         {
             InitializeComponent();
-
             btnPass.Click += btnPass_Click;
             btnFail.Click += btnFail_Click;
             btnSave.Click += btnSave_Click;
@@ -35,9 +34,11 @@ namespace HRApplicantSystem.Forms.HR
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            frmFinalDecision finalForm = new frmFinalDecision();
+            frmHiringDecision finalForm = new frmHiringDecision();
             finalForm.Show();
-            this.Hide(); // optional
+            this.Hide();
         }
+
+        private void frmInterviewEvaluation_Load(object sender, EventArgs e) { }
     }
 }

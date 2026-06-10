@@ -1,6 +1,6 @@
 ﻿namespace HRApplicantSystem.Forms.Maintenance
 {
-    partial class frmPositions
+    partial class frmAssessmentTypes
     {
         private System.ComponentModel.IContainer components = null;
 
@@ -34,9 +34,9 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(110, 17);
+            this.txtName.Location = new System.Drawing.Point(130, 17);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(250, 22);
+            this.txtName.Size = new System.Drawing.Size(230, 22);
             this.txtName.TabIndex = 1;
             // 
             // btnAdd
@@ -79,11 +79,11 @@
             // 
             this.lblName.Location = new System.Drawing.Point(12, 20);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(90, 23);
+            this.lblName.Size = new System.Drawing.Size(110, 23);
             this.lblName.TabIndex = 1;
-            this.lblName.Text = "Position Title:";
+            this.lblName.Text = "Assessment Type:";
             // 
-            // frmPositions
+            // frmAssessmentTypes
             // 
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dgvList);
@@ -93,8 +93,9 @@
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnClear);
-            this.Name = "frmPositions";
-            this.Text = "Positions";
+            this.Name = "frmAssessmentTypes";
+            this.Text = "Assessment Types";
+            this.Load += new System.EventHandler(this.frmAssessmentTypes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

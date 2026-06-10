@@ -1,79 +1,72 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using HRApplicantSystem.Helpers;
+using Microsoft.Data.SqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HRApplicantSystem.Forms.Applicant
 {
     public partial class frmMyProfile : Form
     {
-        SqlConnection conn;
-        SqlCommand cmd;
-        string userEmail;
+        private string userEmail;
+
         public frmMyProfile(string email)
         {
             InitializeComponent();
             userEmail = email;
-            string connString = "Server=g1-hr-processing-server.database.windows.net;Database=HR_Applicant_Processing_System;User ID=hradmin;Password=@Ssolshine2006;";
-            conn = new SqlConnection(connString);
-            cmd = new SqlCommand();
         }
-        private void frmMyProfile_Load(object sender, EventArgs e)
+
+        private void frmMyProfile_Load_1(object sender, EventArgs e)
         {
             LoadProfileData();
             SetReadOnly(true);
         }
+
         private void LoadProfileData()
         {
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
-                cmd.CommandText = @"SELECT FirstName, MiddleName, LastName, Birthdate, Address, Country, PhoneNumber, Email,
-                                    Education, Skills, WorkExperience FROM ApplicantRegister WHERE Email = @Email";
-                cmd.Parameters.AddWithValue("@Email", userEmail);
-                SqlDataReader dr = cmd.ExecuteReader();
-                if (dr.Read())
+                using (SqlConnection conn = DatabaseHelper.GetConnection())
                 {
-                    // PERSONAL INFOS
-                    txtFN.Text = dr["FirstName"].ToString();
-                    txtMI.Text = dr["MiddleName"].ToString();
-                    txtLN.Text = dr["LastName"].ToString();
-                    dtpBirthday.Value = Convert.ToDateTime(dr["BirthDate"]);
-                    // ADDRESS & CONTACT
-                    txtAddress.Text = dr["Address"].ToString();
-                    txtCountry.Text = dr["Country"].ToString();
-                    txtPhone.Text = dr["PhoneNumber"].ToString();
-                    txtEmail.Text = dr["Email"].ToString();
-                    // OTHERS
-                    txtEducation.Text = dr["Education"].ToString();
-                    txtSkills.Text = dr["Skills"].ToString();
-                    txtWorkExp.Text = dr["WorkExperience"].ToString();
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(
+                        @"SELECT full_name, birthdate, address, phone, email,
+                                 school, skills, company
+                          FROM applicants WHERE email = @Email", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Email", userEmail);
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                string fullName = dr["full_name"].ToString();
+                                string[] nameParts = fullName.Split(' ');
+                                txtFN.Text = nameParts.Length > 0 ? nameParts[0] : "";
+                                txtMI.Text = nameParts.Length > 2 ? nameParts[1] : "";
+                                txtLN.Text = nameParts.Length > 1 ? nameParts[nameParts.Length - 1] : "";
+
+                                if (dr["birthdate"] != DBNull.Value)
+                                    dtpBirthday.Value = Convert.ToDateTime(dr["birthdate"]);
+
+                                txtAddress.Text = dr["address"].ToString();
+                                txtPhone.Text = dr["phone"].ToString();
+                                txtEmail.Text = dr["email"].ToString();
+                                txtEducation.Text = dr["school"].ToString();
+                                txtSkills.Text = dr["skills"].ToString();
+                                txtWorkExp.Text = dr["company"].ToString();
+                            }
+                        }
+                    }
                 }
-                dr.Close();
-                cmd.Parameters.Clear();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error loading profile: " + ex.Message);
             }
-            finally
-            {
-                conn.Close();
-            }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            // TURN ON EDIT MODE    
             SetReadOnly(false);
             MessageBox.Show("You can now edit your profile. Click Save when done.");
         }
@@ -82,37 +75,41 @@ namespace HRApplicantSystem.Forms.Applicant
         {
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
-                cmd.CommandText = @"UPDATE ApplicantRegister SET FirstName = @FN, MiddleName = @MI, LastName = @LN,
-                                     Birthdate = @Bday, Address = @Address, Country = @Country, PhoneNumber = @Phone,
-                                     Education = @Edu, Skills = @Skills, WorkExperience = @WorkExp WHERE Email = @OriginalEmail";
-                // PASS VALUE
-                cmd.Parameters.AddWithValue("@FN", txtFN.Text);
-                cmd.Parameters.AddWithValue("@MI", txtMI.Text);
-                cmd.Parameters.AddWithValue("@LN", txtLN.Text);
-                cmd.Parameters.AddWithValue("@Bday", dtpBirthday.Value);
-                cmd.Parameters.AddWithValue("@Address", txtAddress.Text);
-                cmd.Parameters.AddWithValue("@Country", txtCountry.Text);
-                cmd.Parameters.AddWithValue("@Phone", txtPhone.Text);
-                cmd.Parameters.AddWithValue("@Edu", txtEducation.Text);
-                cmd.Parameters.AddWithValue("@Skills", txtSkills.Text);
-                cmd.Parameters.AddWithValue("@WorkExp", txtWorkExp.Text);
-                cmd.Parameters.AddWithValue("@OriginalEmail", userEmail);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Profile Updated Successfully");
+                using (SqlConnection conn = DatabaseHelper.GetConnection())
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(
+                        @"UPDATE applicants SET 
+                            full_name = @FullName,
+                            birthdate = @Bday,
+                            address   = @Address,
+                            phone     = @Phone,
+                            school    = @Edu,
+                            skills    = @Skills,
+                            company   = @WorkExp
+                          WHERE email = @OriginalEmail", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@FullName", $"{txtFN.Text.Trim()} {txtMI.Text.Trim()} {txtLN.Text.Trim()}");
+                        cmd.Parameters.AddWithValue("@Bday", dtpBirthday.Value.Date);
+                        cmd.Parameters.AddWithValue("@Address", txtAddress.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Phone", txtPhone.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Edu", txtEducation.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Skills", txtSkills.Text.Trim());
+                        cmd.Parameters.AddWithValue("@WorkExp", txtWorkExp.Text.Trim());
+                        cmd.Parameters.AddWithValue("@OriginalEmail", userEmail);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("Profile Updated Successfully!");
                 SetReadOnly(true);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error saving: " + ex.Message);
             }
-            finally
-            {
-                conn.Close();
-                cmd.Parameters.Clear();
-            }
         }
+
         private void SetReadOnly(bool isReadOnly)
         {
             txtFN.ReadOnly = isReadOnly;
@@ -125,38 +122,28 @@ namespace HRApplicantSystem.Forms.Applicant
             txtSkills.ReadOnly = isReadOnly;
             txtWorkExp.ReadOnly = isReadOnly;
 
-            if (isReadOnly)
-            {
-                txtFN.BackColor = System.Drawing.Color.LightGray;
-                txtMI.BackColor = System.Drawing.Color.LightGray;
-                txtLN.BackColor = System.Drawing.Color.LightGray;
-                txtAddress.BackColor = System.Drawing.Color.LightGray;
-                txtCountry.BackColor = System.Drawing.Color.LightGray;
-                txtPhone.BackColor = System.Drawing.Color.LightGray;
-                txtEducation.BackColor = System.Drawing.Color.LightGray;
-                txtSkills.BackColor = System.Drawing.Color.LightGray;
-                txtWorkExp.BackColor = System.Drawing.Color.LightGray;
-            }
-            else
-            {
-                txtFN.BackColor = System.Drawing.Color.White;
-                txtMI.BackColor = System.Drawing.Color.White;
-                txtLN.BackColor = System.Drawing.Color.White;
-                txtAddress.BackColor = System.Drawing.Color.White;
-                txtCountry.BackColor = System.Drawing.Color.White;
-                txtPhone.BackColor = System.Drawing.Color.White;
-                txtEducation.BackColor = System.Drawing.Color.White;
-                txtSkills.BackColor = System.Drawing.Color.White;
-                txtWorkExp.BackColor = System.Drawing.Color.White;
-            }
+            Color c = isReadOnly ? Color.LightGray : Color.White;
+            txtFN.BackColor = c;
+            txtMI.BackColor = c;
+            txtLN.BackColor = c;
+            txtAddress.BackColor = c;
+            txtCountry.BackColor = c;
+            txtPhone.BackColor = c;
+            txtEducation.BackColor = c;
+            txtSkills.BackColor = c;
+            txtWorkExp.BackColor = c;
         }
 
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            frmApplicantDashboard dash = new
-            frmApplicantDashboard(userEmail);
-            dash.Show();
-            this.Hide();
-        }
+        private void btnBack_Click(object sender, EventArgs e) => this.Close();
+
+        // --- Stub handlers wired in Designer ---
+        private void label1_Click(object sender, EventArgs e) { }
+        private void label2_Click(object sender, EventArgs e) { }
+        private void label5_Click(object sender, EventArgs e) { }
+        private void label10_Click(object sender, EventArgs e) { }
+        private void lblEducationBg_Click(object sender, EventArgs e) { }
+        private void textBox1_TextChanged(object sender, EventArgs e) { }
+        private void textBox4_TextChanged(object sender, EventArgs e) { }
+        private void textBox6_TextChanged(object sender, EventArgs e) { }
     }
 }
