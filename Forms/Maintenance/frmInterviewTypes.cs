@@ -217,5 +217,10 @@ namespace HRApplicantSystem.Forms.Maintenance
             txtName.Text = "";
             dgvList.ClearSelection();
         }
+
+        private void dgvList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
