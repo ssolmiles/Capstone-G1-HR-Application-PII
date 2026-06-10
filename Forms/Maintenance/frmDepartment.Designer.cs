@@ -34,17 +34,18 @@
             // txtName
             // 
             this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtName.Location = new System.Drawing.Point(130, 17);
+            this.txtName.Location = new System.Drawing.Point(144, 18);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(230, 23);
             this.txtName.TabIndex = 1;
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // btnAdd
             // 
             this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
             this.btnAdd.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(380, 16);
+            this.btnAdd.Location = new System.Drawing.Point(396, 18);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(80, 25);
             this.btnAdd.TabIndex = 2;
@@ -57,7 +58,7 @@
             this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
             this.btnUpdate.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(470, 16);
+            this.btnUpdate.Location = new System.Drawing.Point(486, 18);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(80, 25);
             this.btnUpdate.TabIndex = 3;
@@ -70,7 +71,7 @@
             this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.btnDelete.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(560, 16);
+            this.btnDelete.Location = new System.Drawing.Point(579, 17);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(80, 25);
             this.btnDelete.TabIndex = 4;
@@ -81,7 +82,7 @@
             // btnClear
             // 
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.Location = new System.Drawing.Point(650, 16);
+            this.btnClear.Location = new System.Drawing.Point(673, 16);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(80, 25);
             this.btnClear.TabIndex = 5;
@@ -90,9 +91,10 @@
             // 
             // lblName
             // 
+            this.lblName.AutoSize = true;
             this.lblName.Location = new System.Drawing.Point(12, 20);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(110, 23);
+            this.lblName.Size = new System.Drawing.Size(131, 16);
             this.lblName.TabIndex = 1;
             this.lblName.Text = "Department Name:";
             this.lblName.Click += new System.EventHandler(this.lblName_Click);
