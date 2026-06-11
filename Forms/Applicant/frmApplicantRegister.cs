@@ -18,6 +18,7 @@ namespace HRApplicantSystem.Forms.Applicant
             txtMI.Text = "e.g.  []";
             txtLN.Text = "e.g. Zamora";
             txtEmail.ReadOnly = false;
+
             cboCountry.Items.Add("Philippines (+63)");
             cboCountry.Items.Add("United States (+1)");
             cboCountry.Items.Add("Australia (+61)");
@@ -26,6 +27,11 @@ namespace HRApplicantSystem.Forms.Applicant
             cboCountry.Items.Add("Canada (+1)");
             cboCountry.Items.Add("United Kingdom (+44)");
             cboCountry.Text = "Philippines (+63)";
+
+            cboGender.Items.Add("Male");
+            cboGender.Items.Add("Female");
+            cboGender.Items.Add("Other");
+            cboGender.Text = "";
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
@@ -33,6 +39,18 @@ namespace HRApplicantSystem.Forms.Applicant
             if (!chkAgree.Checked)
             {
                 MessageBox.Show("Please check the box if you understand the terms.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtFN.Text) || string.IsNullOrWhiteSpace(txtLN.Text))
+            {
+                MessageBox.Show("Please enter your first and last name.");
+                return;
+            }
+
+            if (cboGender.SelectedIndex == -1 && string.IsNullOrWhiteSpace(cboGender.Text))
+            {
+                MessageBox.Show("Please select your gender.");
                 return;
             }
 
@@ -60,9 +78,9 @@ namespace HRApplicantSystem.Forms.Applicant
                     // Insert new applicant
                     using (SqlCommand insertCmd = new SqlCommand(
                         @"INSERT INTO applicants 
-                            (full_name, email, password, phone, birthdate, is_active) 
+                            (full_name, email, password, phone, birthdate, gender, is_active) 
                           VALUES 
-                            (@FullName, @Email, @Password, @Phone, @Bday, @IsActive)",
+                            (@FullName, @Email, @Password, @Phone, @Bday, @Gender, @IsActive)",
                         conn))
                     {
                         insertCmd.Parameters.AddWithValue("@FullName", fullName);
@@ -70,6 +88,7 @@ namespace HRApplicantSystem.Forms.Applicant
                         insertCmd.Parameters.AddWithValue("@Password", BCrypt.Net.BCrypt.HashPassword(txtPassword.Text.Trim()));
                         insertCmd.Parameters.AddWithValue("@Phone", txtPhone.Text.Trim());
                         insertCmd.Parameters.AddWithValue("@Bday", dtpBirthday.Value.Date);
+                        insertCmd.Parameters.AddWithValue("@Gender", cboGender.Text.Trim());
                         insertCmd.Parameters.AddWithValue("@IsActive", true);
                         insertCmd.ExecuteNonQuery();
                     }
@@ -87,35 +106,5 @@ namespace HRApplicantSystem.Forms.Applicant
         }
 
         private void dtpBirthday_ValueChanged(object sender, EventArgs e) { }
-
-        private void lblPassword_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtPhone_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblCountry_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

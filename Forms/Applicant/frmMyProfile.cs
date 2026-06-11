@@ -215,7 +215,12 @@ namespace HRApplicantSystem.Forms.Applicant
             txtDuration.BackColor = c;
         }
 
-        private void btnBack_Click(object sender, EventArgs e) => this.Close();
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            frmApplicantDashboard dashboard = new frmApplicantDashboard(userEmail);
+            dashboard.Show();
+            this.Close();
+        }
 
         private void btnDocs_Click(object sender, EventArgs e)
         {

@@ -20,7 +20,6 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnDocs = new System.Windows.Forms.Button();
-
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblFN = new System.Windows.Forms.Label();
             this.txtFN = new System.Windows.Forms.TextBox();
@@ -30,7 +29,6 @@
             this.txtLN = new System.Windows.Forms.TextBox();
             this.lblBday = new System.Windows.Forms.Label();
             this.dtpBirthday = new System.Windows.Forms.DateTimePicker();
-
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblAddress = new System.Windows.Forms.Label();
             this.txtAddress = new System.Windows.Forms.TextBox();
@@ -40,13 +38,11 @@
             this.txtProvince = new System.Windows.Forms.TextBox();
             this.lblZip = new System.Windows.Forms.Label();
             this.txtZip = new System.Windows.Forms.TextBox();
-
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lblPhone = new System.Windows.Forms.Label();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
-
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.lblEducation = new System.Windows.Forms.Label();
             this.txtEducation = new System.Windows.Forms.TextBox();
@@ -54,11 +50,9 @@
             this.txtDegree = new System.Windows.Forms.TextBox();
             this.lblYearGrad = new System.Windows.Forms.Label();
             this.txtYearGrad = new System.Windows.Forms.TextBox();
-
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.lblSkills = new System.Windows.Forms.Label();
             this.txtSkills = new System.Windows.Forms.TextBox();
-
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.lblWorkExp = new System.Windows.Forms.Label();
             this.txtWorkExp = new System.Windows.Forms.TextBox();
@@ -66,7 +60,6 @@
             this.txtPosition = new System.Windows.Forms.TextBox();
             this.lblDuration = new System.Windows.Forms.Label();
             this.txtDuration = new System.Windows.Forms.TextBox();
-
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -74,9 +67,9 @@
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.SuspendLayout();
-            //
+            // 
             // lblTitle
-            //
+            // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
@@ -85,9 +78,9 @@
             this.lblTitle.Size = new System.Drawing.Size(184, 36);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "My Profile";
-            //
+            // 
             // btnEdit
-            //
+            // 
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Verdana", 10F);
             this.btnEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
@@ -98,9 +91,9 @@
             this.btnEdit.Text = "Edit Profile";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            //
+            // 
             // btnSave
-            //
+            // 
             this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
@@ -112,9 +105,9 @@
             this.btnSave.Text = "Save Changes";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            //
+            // 
             // btnBack
-            //
+            // 
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Verdana", 10F);
             this.btnBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
@@ -125,9 +118,9 @@
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            //
+            // 
             // btnDocs
-            //
+            // 
             this.btnDocs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDocs.Font = new System.Drawing.Font("Verdana", 10F);
             this.btnDocs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
@@ -138,9 +131,9 @@
             this.btnDocs.Text = "My Documents";
             this.btnDocs.UseVisualStyleBackColor = true;
             this.btnDocs.Click += new System.EventHandler(this.btnDocs_Click);
-            //
-            // groupBox1 - Personal Information
-            //
+            // 
+            // groupBox1
+            // 
             this.groupBox1.Controls.Add(this.lblFN);
             this.groupBox1.Controls.Add(this.txtFN);
             this.groupBox1.Controls.Add(this.lblMI);
@@ -157,11 +150,9 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Personal Information";
-            //
+            // 
             // lblFN
-            //
-            this.lblFN.AutoSize = false;
-            this.lblFN.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             this.lblFN.Font = new System.Drawing.Font("Verdana", 10F);
             this.lblFN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblFN.Location = new System.Drawing.Point(8, 25);
@@ -169,20 +160,19 @@
             this.lblFN.Size = new System.Drawing.Size(96, 20);
             this.lblFN.TabIndex = 0;
             this.lblFN.Text = "First Name:";
-            //
+            this.lblFN.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // txtFN
-            //
+            // 
             this.txtFN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFN.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtFN.Location = new System.Drawing.Point(110, 22);
             this.txtFN.Name = "txtFN";
             this.txtFN.Size = new System.Drawing.Size(160, 28);
             this.txtFN.TabIndex = 1;
-            //
+            // 
             // lblMI
-            //
-            this.lblMI.AutoSize = false;
-            this.lblMI.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             this.lblMI.Font = new System.Drawing.Font("Verdana", 10F);
             this.lblMI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblMI.Location = new System.Drawing.Point(278, 25);
@@ -190,21 +180,20 @@
             this.lblMI.Size = new System.Drawing.Size(43, 20);
             this.lblMI.TabIndex = 2;
             this.lblMI.Text = "M.I.:";
-            //
+            this.lblMI.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // txtMI
-            //
+            // 
             this.txtMI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMI.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtMI.Location = new System.Drawing.Point(325, 22);
-            this.txtMI.Name = "txtMI";
             this.txtMI.MaxLength = 5;
+            this.txtMI.Name = "txtMI";
             this.txtMI.Size = new System.Drawing.Size(50, 28);
             this.txtMI.TabIndex = 2;
-            //
+            // 
             // lblLN
-            //
-            this.lblLN.AutoSize = false;
-            this.lblLN.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             this.lblLN.Font = new System.Drawing.Font("Verdana", 10F);
             this.lblLN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblLN.Location = new System.Drawing.Point(8, 58);
@@ -212,20 +201,19 @@
             this.lblLN.Size = new System.Drawing.Size(96, 20);
             this.lblLN.TabIndex = 3;
             this.lblLN.Text = "Last Name:";
-            //
+            this.lblLN.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // txtLN
-            //
+            // 
             this.txtLN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLN.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtLN.Location = new System.Drawing.Point(110, 55);
             this.txtLN.Name = "txtLN";
             this.txtLN.Size = new System.Drawing.Size(160, 28);
             this.txtLN.TabIndex = 3;
-            //
+            // 
             // lblBday
-            //
-            this.lblBday.AutoSize = false;
-            this.lblBday.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             this.lblBday.Font = new System.Drawing.Font("Verdana", 10F);
             this.lblBday.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblBday.Location = new System.Drawing.Point(270, 58);
@@ -233,19 +221,20 @@
             this.lblBday.Size = new System.Drawing.Size(76, 20);
             this.lblBday.TabIndex = 4;
             this.lblBday.Text = "Birthday:";
-            //
+            this.lblBday.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // dtpBirthday
-            //
-            this.dtpBirthday.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            // 
             this.dtpBirthday.CustomFormat = "MMMM dd, yyyy";
             this.dtpBirthday.Font = new System.Drawing.Font("Verdana", 9F);
+            this.dtpBirthday.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpBirthday.Location = new System.Drawing.Point(350, 56);
             this.dtpBirthday.Name = "dtpBirthday";
             this.dtpBirthday.Size = new System.Drawing.Size(180, 26);
             this.dtpBirthday.TabIndex = 4;
-            //
-            // groupBox2 - Address
-            //
+            // 
+            // groupBox2
+            // 
             this.groupBox2.Controls.Add(this.lblAddress);
             this.groupBox2.Controls.Add(this.txtAddress);
             this.groupBox2.Controls.Add(this.lblCity);
@@ -262,11 +251,9 @@
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Address";
-            //
+            // 
             // lblAddress
-            //
-            this.lblAddress.AutoSize = false;
-            this.lblAddress.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             this.lblAddress.Font = new System.Drawing.Font("Verdana", 10F);
             this.lblAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblAddress.Location = new System.Drawing.Point(8, 25);
@@ -274,20 +261,19 @@
             this.lblAddress.Size = new System.Drawing.Size(64, 20);
             this.lblAddress.TabIndex = 0;
             this.lblAddress.Text = "Street:";
-            //
+            this.lblAddress.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // txtAddress
-            //
+            // 
             this.txtAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAddress.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtAddress.Location = new System.Drawing.Point(80, 22);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(530, 28);
             this.txtAddress.TabIndex = 6;
-            //
+            // 
             // lblCity
-            //
-            this.lblCity.AutoSize = false;
-            this.lblCity.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             this.lblCity.Font = new System.Drawing.Font("Verdana", 10F);
             this.lblCity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblCity.Location = new System.Drawing.Point(8, 58);
@@ -295,20 +281,19 @@
             this.lblCity.Size = new System.Drawing.Size(64, 20);
             this.lblCity.TabIndex = 7;
             this.lblCity.Text = "City:";
-            //
+            this.lblCity.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // txtCity
-            //
+            // 
             this.txtCity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCity.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtCity.Location = new System.Drawing.Point(80, 55);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(200, 28);
             this.txtCity.TabIndex = 7;
-            //
+            // 
             // lblProvince
-            //
-            this.lblProvince.AutoSize = false;
-            this.lblProvince.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             this.lblProvince.Font = new System.Drawing.Font("Verdana", 10F);
             this.lblProvince.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblProvince.Location = new System.Drawing.Point(310, 58);
@@ -316,20 +301,19 @@
             this.lblProvince.Size = new System.Drawing.Size(80, 20);
             this.lblProvince.TabIndex = 8;
             this.lblProvince.Text = "Province:";
-            //
+            this.lblProvince.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // txtProvince
-            //
+            // 
             this.txtProvince.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtProvince.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtProvince.Location = new System.Drawing.Point(396, 55);
             this.txtProvince.Name = "txtProvince";
             this.txtProvince.Size = new System.Drawing.Size(214, 28);
             this.txtProvince.TabIndex = 9;
-            //
+            // 
             // lblZip
-            //
-            this.lblZip.AutoSize = false;
-            this.lblZip.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             this.lblZip.Font = new System.Drawing.Font("Verdana", 10F);
             this.lblZip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblZip.Location = new System.Drawing.Point(8, 91);
@@ -337,19 +321,20 @@
             this.lblZip.Size = new System.Drawing.Size(64, 20);
             this.lblZip.TabIndex = 10;
             this.lblZip.Text = "Zip:";
-            //
+            this.lblZip.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // txtZip
-            //
+            // 
             this.txtZip.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtZip.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtZip.Location = new System.Drawing.Point(80, 88);
-            this.txtZip.Name = "txtZip";
             this.txtZip.MaxLength = 10;
+            this.txtZip.Name = "txtZip";
             this.txtZip.Size = new System.Drawing.Size(120, 28);
             this.txtZip.TabIndex = 11;
-            //
-            // groupBox3 - Contact Details
-            //
+            // 
+            // groupBox3
+            // 
             this.groupBox3.Controls.Add(this.lblPhone);
             this.groupBox3.Controls.Add(this.txtPhone);
             this.groupBox3.Controls.Add(this.lblEmail);
@@ -362,11 +347,10 @@
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Contact Details";
-            //
+            
+            // 
             // lblPhone
-            //
-            this.lblPhone.AutoSize = false;
-            this.lblPhone.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             this.lblPhone.Font = new System.Drawing.Font("Verdana", 10F);
             this.lblPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblPhone.Location = new System.Drawing.Point(8, 25);
@@ -374,20 +358,19 @@
             this.lblPhone.Size = new System.Drawing.Size(64, 20);
             this.lblPhone.TabIndex = 0;
             this.lblPhone.Text = "Phone:";
-            //
+            this.lblPhone.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // txtPhone
-            //
+            // 
             this.txtPhone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhone.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtPhone.Location = new System.Drawing.Point(80, 22);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(200, 28);
             this.txtPhone.TabIndex = 9;
-            //
+            // 
             // lblEmail
-            //
-            this.lblEmail.AutoSize = false;
-            this.lblEmail.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             this.lblEmail.Font = new System.Drawing.Font("Verdana", 10F);
             this.lblEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblEmail.Location = new System.Drawing.Point(8, 58);
@@ -395,9 +378,10 @@
             this.lblEmail.Size = new System.Drawing.Size(64, 20);
             this.lblEmail.TabIndex = 10;
             this.lblEmail.Text = "Email:";
-            //
+            this.lblEmail.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // txtEmail
-            //
+            // 
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEmail.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtEmail.Location = new System.Drawing.Point(80, 55);
@@ -405,9 +389,9 @@
             this.txtEmail.ReadOnly = true;
             this.txtEmail.Size = new System.Drawing.Size(300, 28);
             this.txtEmail.TabIndex = 10;
-            //
-            // groupBox4 - Education
-            //
+            // 
+            // groupBox4
+            // 
             this.groupBox4.Controls.Add(this.lblEducation);
             this.groupBox4.Controls.Add(this.txtEducation);
             this.groupBox4.Controls.Add(this.lblDegree);
@@ -422,11 +406,9 @@
             this.groupBox4.TabIndex = 13;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Education";
-            //
+            // 
             // lblEducation
-            //
-            this.lblEducation.AutoSize = false;
-            this.lblEducation.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             this.lblEducation.Font = new System.Drawing.Font("Verdana", 10F);
             this.lblEducation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblEducation.Location = new System.Drawing.Point(8, 28);
@@ -434,20 +416,19 @@
             this.lblEducation.Size = new System.Drawing.Size(80, 20);
             this.lblEducation.TabIndex = 0;
             this.lblEducation.Text = "School:";
-            //
+            this.lblEducation.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // txtEducation
-            //
+            // 
             this.txtEducation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEducation.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtEducation.Location = new System.Drawing.Point(95, 25);
             this.txtEducation.Name = "txtEducation";
             this.txtEducation.Size = new System.Drawing.Size(550, 28);
             this.txtEducation.TabIndex = 12;
-            //
+            // 
             // lblDegree
-            //
-            this.lblDegree.AutoSize = false;
-            this.lblDegree.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             this.lblDegree.Font = new System.Drawing.Font("Verdana", 10F);
             this.lblDegree.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblDegree.Location = new System.Drawing.Point(8, 64);
@@ -455,20 +436,19 @@
             this.lblDegree.Size = new System.Drawing.Size(80, 20);
             this.lblDegree.TabIndex = 13;
             this.lblDegree.Text = "Degree:";
-            //
+            this.lblDegree.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // txtDegree
-            //
+            // 
             this.txtDegree.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDegree.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtDegree.Location = new System.Drawing.Point(95, 61);
             this.txtDegree.Name = "txtDegree";
             this.txtDegree.Size = new System.Drawing.Size(550, 28);
             this.txtDegree.TabIndex = 14;
-            //
+            // 
             // lblYearGrad
-            //
-            this.lblYearGrad.AutoSize = false;
-            this.lblYearGrad.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             this.lblYearGrad.Font = new System.Drawing.Font("Verdana", 10F);
             this.lblYearGrad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblYearGrad.Location = new System.Drawing.Point(8, 100);
@@ -476,19 +456,20 @@
             this.lblYearGrad.Size = new System.Drawing.Size(140, 20);
             this.lblYearGrad.TabIndex = 15;
             this.lblYearGrad.Text = "Year Graduated:";
-            //
+            this.lblYearGrad.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // txtYearGrad
-            //
+            // 
             this.txtYearGrad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtYearGrad.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtYearGrad.Location = new System.Drawing.Point(155, 97);
-            this.txtYearGrad.Name = "txtYearGrad";
             this.txtYearGrad.MaxLength = 4;
+            this.txtYearGrad.Name = "txtYearGrad";
             this.txtYearGrad.Size = new System.Drawing.Size(100, 28);
             this.txtYearGrad.TabIndex = 16;
-            //
-            // groupBox5 - Skills
-            //
+            // 
+            // groupBox5
+            // 
             this.groupBox5.Controls.Add(this.lblSkills);
             this.groupBox5.Controls.Add(this.txtSkills);
             this.groupBox5.Font = new System.Drawing.Font("Verdana", 10F);
@@ -499,11 +480,9 @@
             this.groupBox5.TabIndex = 15;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Skills";
-            //
+            // 
             // lblSkills
-            //
-            this.lblSkills.AutoSize = false;
-            this.lblSkills.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             this.lblSkills.Font = new System.Drawing.Font("Verdana", 10F);
             this.lblSkills.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblSkills.Location = new System.Drawing.Point(8, 25);
@@ -511,20 +490,21 @@
             this.lblSkills.Size = new System.Drawing.Size(80, 20);
             this.lblSkills.TabIndex = 0;
             this.lblSkills.Text = "Skills:";
-            //
+            this.lblSkills.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // txtSkills
-            //
+            // 
             this.txtSkills.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSkills.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtSkills.Location = new System.Drawing.Point(95, 22);
             this.txtSkills.Multiline = true;
-            this.txtSkills.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtSkills.Name = "txtSkills";
+            this.txtSkills.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtSkills.Size = new System.Drawing.Size(550, 110);
             this.txtSkills.TabIndex = 14;
-            //
-            // groupBox6 - Work Experience
-            //
+            // 
+            // groupBox6
+            // 
             this.groupBox6.Controls.Add(this.lblWorkExp);
             this.groupBox6.Controls.Add(this.txtWorkExp);
             this.groupBox6.Controls.Add(this.lblPosition);
@@ -539,11 +519,9 @@
             this.groupBox6.TabIndex = 17;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Work Experience";
-            //
+            // 
             // lblWorkExp
-            //
-            this.lblWorkExp.AutoSize = false;
-            this.lblWorkExp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             this.lblWorkExp.Font = new System.Drawing.Font("Verdana", 10F);
             this.lblWorkExp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblWorkExp.Location = new System.Drawing.Point(8, 28);
@@ -551,20 +529,19 @@
             this.lblWorkExp.Size = new System.Drawing.Size(110, 20);
             this.lblWorkExp.TabIndex = 0;
             this.lblWorkExp.Text = "Company:";
-            //
+            this.lblWorkExp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // txtWorkExp
-            //
+            // 
             this.txtWorkExp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtWorkExp.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtWorkExp.Location = new System.Drawing.Point(125, 25);
             this.txtWorkExp.Name = "txtWorkExp";
             this.txtWorkExp.Size = new System.Drawing.Size(530, 28);
             this.txtWorkExp.TabIndex = 16;
-            //
+            // 
             // lblPosition
-            //
-            this.lblPosition.AutoSize = false;
-            this.lblPosition.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             this.lblPosition.Font = new System.Drawing.Font("Verdana", 10F);
             this.lblPosition.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblPosition.Location = new System.Drawing.Point(8, 64);
@@ -572,20 +549,19 @@
             this.lblPosition.Size = new System.Drawing.Size(110, 20);
             this.lblPosition.TabIndex = 17;
             this.lblPosition.Text = "Position:";
-            //
+            this.lblPosition.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // txtPosition
-            //
+            // 
             this.txtPosition.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPosition.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtPosition.Location = new System.Drawing.Point(125, 61);
             this.txtPosition.Name = "txtPosition";
             this.txtPosition.Size = new System.Drawing.Size(530, 28);
             this.txtPosition.TabIndex = 18;
-            //
+            // 
             // lblDuration
-            //
-            this.lblDuration.AutoSize = false;
-            this.lblDuration.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             this.lblDuration.Font = new System.Drawing.Font("Verdana", 10F);
             this.lblDuration.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblDuration.Location = new System.Drawing.Point(8, 100);
@@ -593,18 +569,19 @@
             this.lblDuration.Size = new System.Drawing.Size(110, 20);
             this.lblDuration.TabIndex = 19;
             this.lblDuration.Text = "Duration:";
-            //
+            this.lblDuration.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // txtDuration
-            //
+            // 
             this.txtDuration.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDuration.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtDuration.Location = new System.Drawing.Point(125, 97);
             this.txtDuration.Name = "txtDuration";
             this.txtDuration.Size = new System.Drawing.Size(530, 28);
             this.txtDuration.TabIndex = 20;
-            //
+            // 
             // frmMyProfile
-            //
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1615, 821);
