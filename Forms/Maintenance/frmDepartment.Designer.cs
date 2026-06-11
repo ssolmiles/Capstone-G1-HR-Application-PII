@@ -1,4 +1,6 @@
-﻿namespace HRApplicantSystem.Forms.Maintenance
+﻿using System.Windows.Forms;
+
+namespace HRApplicantSystem.Forms.Maintenance
 {
     partial class frmDepartments
     {
@@ -12,13 +14,13 @@
 
         private void InitializeComponent()
         {
-            this.dgvList = new System.Windows.Forms.DataGridView();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.lblName = new System.Windows.Forms.Label();
+            this.dgvList = new DataGridView();
+            this.txtName = new TextBox();
+            this.btnAdd = new Button();
+            this.btnUpdate = new Button();
+            this.btnDelete = new Button();
+            this.btnClear = new Button();
+            this.lblName = new Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -29,11 +31,11 @@
             this.dgvList.Name = "dgvList";
             this.dgvList.Size = new System.Drawing.Size(760, 350);
             this.dgvList.TabIndex = 0;
-            this.dgvList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvList_CellContentClick);
+            this.dgvList.CellContentClick += new DataGridViewCellEventHandler(this.dgvList_CellContentClick);
             // 
             // txtName
             // 
-            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtName.BorderStyle = BorderStyle.FixedSingle;
             this.txtName.Location = new System.Drawing.Point(144, 18);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(230, 23);
@@ -81,7 +83,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClear.FlatStyle = FlatStyle.Flat;
             this.btnClear.Location = new System.Drawing.Point(673, 16);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(80, 25);
@@ -101,7 +103,7 @@
             // 
             // frmDepartments
             // 
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.BackgroundImageLayout = ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dgvList);
             this.Controls.Add(this.lblName);
@@ -110,7 +112,7 @@
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnClear);
-            this.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Cursor = Cursors.IBeam;
             this.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.Name = "frmDepartments";
@@ -122,12 +124,12 @@
 
         }
 
-        private System.Windows.Forms.DataGridView dgvList;
-        private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.Label lblName;
+        private DataGridView dgvList;
+        private TextBox txtName;
+        private Button btnAdd;
+        private Button btnUpdate;
+        private Button btnDelete;
+        private Button btnClear;
+        private Label lblName;
     }
 }

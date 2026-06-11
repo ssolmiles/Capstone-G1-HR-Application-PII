@@ -1,7 +1,6 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Data;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace HRApplicantSystem.Forms.Maintenance
@@ -15,84 +14,31 @@ namespace HRApplicantSystem.Forms.Maintenance
 
         private void frmAssessmentTypes_Load(object sender, EventArgs e)
         {
-            ApplyUniversalUITheme();
             LoadData();
-        }
-
-        private void ApplyUniversalUITheme()
-        {
-            try
-            {
-                this.Font = new Font("Verdana", 10);
-
-                if (this.Controls.ContainsKey("lblTitle"))
-                {
-                    this.Controls["lblTitle"].Font = new Font("Verdana", 17, FontStyle.Bold);
-                    this.Controls["lblTitle"].ForeColor = ColorTranslator.FromHtml("#1F3864");
-                }
-
-                if (this.Controls.ContainsKey("lblSubtitle"))
-                {
-                    this.Controls["lblSubtitle"].Font = new Font("Verdana", 11, FontStyle.Italic);
-                    this.Controls["lblSubtitle"].ForeColor = ColorTranslator.FromHtml("#888888");
-                }
-
-                if (this.Controls.ContainsKey("txtName"))
-                {
-                    ((TextBox)this.Controls["txtName"]).BorderStyle = BorderStyle.FixedSingle;
-                }
-
-                if (this.Controls.ContainsKey("btnAdd"))
-                {
-                    this.Controls["btnAdd"].BackColor = ColorTranslator.FromHtml("#1F5C99");
-                    this.Controls["btnAdd"].ForeColor = Color.White;
-                    this.Controls["btnAdd"].Font = new Font("Verdana", 10, FontStyle.Bold);
-                }
-
-                if (this.Controls.ContainsKey("btnUpdate"))
-                {
-                    this.Controls["btnUpdate"].BackColor = ColorTranslator.FromHtml("#1F5C99");
-                    this.Controls["btnUpdate"].ForeColor = Color.White;
-                    this.Controls["btnUpdate"].Font = new Font("Verdana", 10, FontStyle.Bold);
-                }
-
-                if (this.Controls.ContainsKey("btnDelete"))
-                {
-                    this.Controls["btnDelete"].BackColor = ColorTranslator.FromHtml("#C0392B");
-                    this.Controls["btnDelete"].ForeColor = Color.White;
-                    this.Controls["btnDelete"].Font = new Font("Verdana", 10, FontStyle.Bold);
-                }
-
-                if (this.Controls.ContainsKey("btnClear"))
-                {
-                    var btn = (Button)this.Controls["btnClear"];
-                    btn.FlatStyle = FlatStyle.Flat;
-                    btn.ForeColor = ColorTranslator.FromHtml("#555555");
-                }
-            }
-            catch { }
         }
 
         private void LoadData()
         {
-            try
             {
-                using (var conn = DatabaseHelper.GetConnection())
+                try
                 {
-                    conn.Open();
-                    string query = "SELECT assessment_type_id AS ID, name AS Name FROM assessment_types";
-                    var adapter = new MySqlDataAdapter(query, conn);
-                    var table = new DataTable();
-                    adapter.Fill(table);
-                    dgvList.DataSource = table;
-                    dgvList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    dgvList.ReadOnly = true;
-                    dgvList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                    using (var conn = DatabaseHelper.GetConnection())
+                    {
+                        conn.Open();
+                        string query = "SELECT assessment_type_id AS ID, name AS Name FROM assessment_types";
+                        var adapter = new MySqlDataAdapter(query, conn);
+                        var table = new DataTable();
+                        adapter.Fill(table);
+                        dgvList.DataSource = table;
+                        dgvList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        dgvList.ReadOnly = true;
+                        dgvList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loading data: " + ex.Message);
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading data: " + ex.Message);
+                }
             }
         }
 
@@ -101,7 +47,7 @@ namespace HRApplicantSystem.Forms.Maintenance
             string name = txtName.Text.Trim();
             if (string.IsNullOrEmpty(name))
             {
-                MessageBox.Show("Please enter an assessment type.");
+                MessageBox.Show("Please enter an assessment type name.");
                 return;
             }
             try
@@ -134,7 +80,7 @@ namespace HRApplicantSystem.Forms.Maintenance
             string name = txtName.Text.Trim();
             if (string.IsNullOrEmpty(name))
             {
-                MessageBox.Show("Please enter a new name.");
+                MessageBox.Show("Please enter a new assessment type name.");
                 return;
             }
             int id = Convert.ToInt32(dgvList.SelectedRows[0].Cells["ID"].Value);
@@ -192,7 +138,7 @@ namespace HRApplicantSystem.Forms.Maintenance
             catch (Exception ex)
             {
                 MessageBox.Show("Error deleting: " + ex.Message);
-            }
+            }   
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -212,6 +158,28 @@ namespace HRApplicantSystem.Forms.Maintenance
         {
             txtName.Text = "";
             dgvList.ClearSelection();
+        }
+
+        private void lblName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // frmAssessmentTypes
+            // 
+            this.ClientSize = new System.Drawing.Size(1014, 478);
+            this.Name = "frmAssessmentTypes";
+            this.ResumeLayout(false);
+
         }
     }
 }
