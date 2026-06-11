@@ -14,9 +14,9 @@ namespace HRApplicantSystem.Forms.Applicant
 
         private void frmApplicantRegister_Load_1(object sender, EventArgs e)
         {
-            txtFN.Text = "e.g. Juan";
-            txtMI.Text = "e.g. Santos";
-            txtLN.Text = "e.g. Dela Cruz";
+            txtFN.Text = "e.g. Cj";
+            txtMI.Text = "e.g.  []";
+            txtLN.Text = "e.g. Zamora";
             txtEmail.ReadOnly = false;
             cboCountry.Items.Add("Philippines (+63)");
             cboCountry.Items.Add("United States (+1)");
@@ -99,6 +99,21 @@ namespace HRApplicantSystem.Forms.Applicant
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblCountry_Click(object sender, EventArgs e)
         {
 
         }

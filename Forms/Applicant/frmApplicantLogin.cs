@@ -25,7 +25,7 @@ namespace HRApplicantSystem.Forms.Applicant
                     conn.Open();
 
                     using (SqlCommand cmd = new SqlCommand(
-                        "SELECT password FROM applicants WHERE email = @Email AND is_active = 1",
+                        "SELECT password FROM applicants WHERE email = @Email AND (is_active = 1 OR is_active IS NULL)",
                         conn))
                     {
                         cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
@@ -63,6 +63,44 @@ namespace HRApplicantSystem.Forms.Applicant
             }
         }
 
+        private void MigratePasswords()
+        {
+            try
+            {
+                using (SqlConnection conn = DatabaseHelper.GetConnection())
+                {
+                    conn.Open();
+
+                    var users = new System.Collections.Generic.List<(int id, string pass)>();
+
+                    using (SqlCommand cmd = new SqlCommand(
+                        "SELECT applicant_id, password FROM applicants WHERE password NOT LIKE '$2%'", conn))
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                            users.Add(((int)dr["applicant_id"], dr["password"].ToString()));
+                    }
+
+                    foreach (var (id, pass) in users)
+                    {
+                        string hashed = BCrypt.Net.BCrypt.HashPassword(pass);
+                        using (SqlCommand upd = new SqlCommand(
+                            "UPDATE applicants SET password = @Hash WHERE applicant_id = @Id", conn))
+                        {
+                            upd.Parameters.AddWithValue("@Hash", hashed);
+                            upd.Parameters.AddWithValue("@Id", id);
+                            upd.ExecuteNonQuery();
+                        }
+                    }
+
+                    MessageBox.Show("Migration complete! All passwords are now hashed.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Migration error: " + ex.Message);
+            }
+        }
         private void btnClear_Click(object sender, EventArgs e)
         {
             txtEmail.Clear();
@@ -74,7 +112,7 @@ namespace HRApplicantSystem.Forms.Applicant
         {
             txtPassword.PasswordChar = CheckbxShowPas.Checked ? '\0' : '•';
         }
-
+            
         private void lblCreateAcc_Click(object sender, EventArgs e)
         {
             new frmApplicantRegister().Show();

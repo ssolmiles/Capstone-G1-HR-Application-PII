@@ -2,30 +2,17 @@
 {
     partial class frmApplicantRegister
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
-            {
                 components.Dispose();
-            }
             base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             this.txtFN = new System.Windows.Forms.TextBox();
@@ -33,8 +20,9 @@
             this.txtLN = new System.Windows.Forms.TextBox();
             this.dtpBirthday = new System.Windows.Forms.DateTimePicker();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.cboCountry = new System.Windows.Forms.ComboBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtPhone = new System.Windows.Forms.TextBox();
+            this.cboCountry = new System.Windows.Forms.ComboBox();
             this.chkAgree = new System.Windows.Forms.CheckBox();
             this.btnRegister = new System.Windows.Forms.Button();
             this.lblFN = new System.Windows.Forms.Label();
@@ -44,11 +32,15 @@
             this.lblEmail = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lblPhone = new System.Windows.Forms.Label();
+            this.lblCountry = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.Gender = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -58,93 +50,96 @@
             this.txtFN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFN.Font = new System.Drawing.Font("Verdana", 11F);
             this.txtFN.Location = new System.Drawing.Point(206, 42);
-            this.txtFN.Margin = new System.Windows.Forms.Padding(4);
             this.txtFN.Name = "txtFN";
             this.txtFN.Size = new System.Drawing.Size(265, 30);
-            this.txtFN.TabIndex = 37;
+            this.txtFN.TabIndex = 1;
             // 
             // txtMI
             // 
             this.txtMI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMI.Font = new System.Drawing.Font("Verdana", 11F);
-            this.txtMI.Location = new System.Drawing.Point(206, 96);
-            this.txtMI.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMI.Location = new System.Drawing.Point(206, 84);
             this.txtMI.Name = "txtMI";
             this.txtMI.Size = new System.Drawing.Size(265, 30);
-            this.txtMI.TabIndex = 38;
+            this.txtMI.TabIndex = 2;
             // 
             // txtLN
             // 
+            this.txtLN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLN.Font = new System.Drawing.Font("Verdana", 11F);
-            this.txtLN.Location = new System.Drawing.Point(206, 134);
-            this.txtLN.Margin = new System.Windows.Forms.Padding(4);
+            this.txtLN.Location = new System.Drawing.Point(206, 126);
             this.txtLN.Name = "txtLN";
             this.txtLN.Size = new System.Drawing.Size(265, 30);
-            this.txtLN.TabIndex = 39;
+            this.txtLN.TabIndex = 3;
             // 
             // dtpBirthday
             // 
-            this.dtpBirthday.CalendarFont = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpBirthday.Font = new System.Drawing.Font("Verdana", 11F);
-            this.dtpBirthday.Location = new System.Drawing.Point(206, 179);
-            this.dtpBirthday.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpBirthday.Location = new System.Drawing.Point(206, 168);
             this.dtpBirthday.Name = "dtpBirthday";
             this.dtpBirthday.Size = new System.Drawing.Size(265, 30);
-            this.dtpBirthday.TabIndex = 40;
+            this.dtpBirthday.TabIndex = 4;
             this.dtpBirthday.ValueChanged += new System.EventHandler(this.dtpBirthday_ValueChanged);
             // 
             // txtEmail
             // 
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEmail.Font = new System.Drawing.Font("Verdana", 11F);
-            this.txtEmail.Location = new System.Drawing.Point(176, 46);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
+            this.txtEmail.Location = new System.Drawing.Point(176, 43);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(265, 30);
-            this.txtEmail.TabIndex = 41;
+            this.txtEmail.TabIndex = 9;
             // 
-            // cboCountry
+            // txtPassword
             // 
-            this.cboCountry.Font = new System.Drawing.Font("Verdana", 11F);
-            this.cboCountry.FormattingEnabled = true;
-            this.cboCountry.Location = new System.Drawing.Point(176, 156);
-            this.cboCountry.Margin = new System.Windows.Forms.Padding(4);
-            this.cboCountry.Name = "cboCountry";
-            this.cboCountry.Size = new System.Drawing.Size(57, 30);
-            this.cboCountry.TabIndex = 42;
+            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPassword.Font = new System.Drawing.Font("Verdana", 11F);
+            this.txtPassword.Location = new System.Drawing.Point(176, 87);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '●';
+            this.txtPassword.Size = new System.Drawing.Size(265, 30);
+            this.txtPassword.TabIndex = 10;
             // 
             // txtPhone
             // 
-            this.txtPhone.Font = new System.Drawing.Font("Verdana", 14F);
-            this.txtPhone.Location = new System.Drawing.Point(264, 151);
-            this.txtPhone.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPhone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPhone.Font = new System.Drawing.Font("Verdana", 11F);
+            this.txtPhone.Location = new System.Drawing.Point(248, 250);
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(177, 36);
-            this.txtPhone.TabIndex = 43;
+            this.txtPhone.Size = new System.Drawing.Size(223, 30);
+            this.txtPhone.TabIndex = 6;
             this.txtPhone.TextChanged += new System.EventHandler(this.txtPhone_TextChanged);
+            // 
+            // cboCountry
+            // 
+            this.cboCountry.Font = new System.Drawing.Font("Verdana", 10F);
+            this.cboCountry.Location = new System.Drawing.Point(73, 252);
+            this.cboCountry.Name = "cboCountry";
+            this.cboCountry.Size = new System.Drawing.Size(50, 28);
+            this.cboCountry.TabIndex = 7;
             // 
             // chkAgree
             // 
             this.chkAgree.AutoSize = true;
-            this.chkAgree.Font = new System.Drawing.Font("Verdana", 11F);
-            this.chkAgree.Location = new System.Drawing.Point(680, 338);
-            this.chkAgree.Margin = new System.Windows.Forms.Padding(4);
+            this.chkAgree.Font = new System.Drawing.Font("Verdana", 9F);
+            this.chkAgree.Location = new System.Drawing.Point(10, 295);
             this.chkAgree.Name = "chkAgree";
-            this.chkAgree.Size = new System.Drawing.Size(225, 27);
-            this.chkAgree.TabIndex = 44;
-            this.chkAgree.Text = "Do you understand?";
-            this.chkAgree.UseVisualStyleBackColor = true;
+            this.chkAgree.Size = new System.Drawing.Size(515, 22);
+            this.chkAgree.TabIndex = 8;
+            this.chkAgree.Text = "I understand that my information will be used for hiring purposes.";
             // 
             // btnRegister
             // 
-            this.btnRegister.Font = new System.Drawing.Font("Verdana", 11F);
-            this.btnRegister.Location = new System.Drawing.Point(709, 398);
-            this.btnRegister.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
+            this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegister.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Bold);
+            this.btnRegister.ForeColor = System.Drawing.Color.White;
+            this.btnRegister.Location = new System.Drawing.Point(606, 637);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(153, 45);
-            this.btnRegister.TabIndex = 45;
-            this.btnRegister.Text = "REGISTER";
-            this.btnRegister.UseVisualStyleBackColor = true;
+            this.btnRegister.Size = new System.Drawing.Size(200, 45);
+            this.btnRegister.TabIndex = 11;
+            this.btnRegister.Text = "Create Account";
+            this.btnRegister.UseVisualStyleBackColor = false;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // lblFN
@@ -152,163 +147,205 @@
             this.lblFN.AutoSize = true;
             this.lblFN.Font = new System.Drawing.Font("Verdana", 11F);
             this.lblFN.Location = new System.Drawing.Point(36, 42);
-            this.lblFN.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFN.Name = "lblFN";
             this.lblFN.Size = new System.Drawing.Size(122, 23);
-            this.lblFN.TabIndex = 46;
+            this.lblFN.TabIndex = 0;
             this.lblFN.Text = "First Name:";
             // 
             // lblMI
             // 
             this.lblMI.AutoSize = true;
             this.lblMI.Font = new System.Drawing.Font("Verdana", 11F);
-            this.lblMI.Location = new System.Drawing.Point(21, 96);
-            this.lblMI.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMI.Location = new System.Drawing.Point(21, 84);
             this.lblMI.Name = "lblMI";
             this.lblMI.Size = new System.Drawing.Size(143, 23);
-            this.lblMI.TabIndex = 47;
+            this.lblMI.TabIndex = 2;
             this.lblMI.Text = "Middle Name:";
             // 
             // lblLN
             // 
             this.lblLN.AutoSize = true;
             this.lblLN.Font = new System.Drawing.Font("Verdana", 11F);
-            this.lblLN.Location = new System.Drawing.Point(45, 133);
-            this.lblLN.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblLN.Location = new System.Drawing.Point(45, 126);
             this.lblLN.Name = "lblLN";
             this.lblLN.Size = new System.Drawing.Size(119, 23);
-            this.lblLN.TabIndex = 48;
+            this.lblLN.TabIndex = 3;
             this.lblLN.Text = "Last Name:";
             // 
             // lblDOB
             // 
             this.lblDOB.AutoSize = true;
             this.lblDOB.Font = new System.Drawing.Font("Verdana", 11F);
-            this.lblDOB.Location = new System.Drawing.Point(23, 179);
-            this.lblDOB.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDOB.Location = new System.Drawing.Point(23, 168);
             this.lblDOB.Name = "lblDOB";
             this.lblDOB.Size = new System.Drawing.Size(142, 23);
-            this.lblDOB.TabIndex = 49;
+            this.lblDOB.TabIndex = 4;
             this.lblDOB.Text = "Date of Birth:";
             // 
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Verdana", 11F);
-            this.lblEmail.Location = new System.Drawing.Point(86, 53);
-            this.lblEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEmail.Location = new System.Drawing.Point(21, 46);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(72, 23);
-            this.lblEmail.TabIndex = 50;
+            this.lblEmail.TabIndex = 0;
             this.lblEmail.Text = "Email:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Verdana", 11F);
-            this.label2.Location = new System.Drawing.Point(-9, 156);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Font = new System.Drawing.Font("Verdana", 9F);
+            this.label2.ForeColor = System.Drawing.Color.Gray;
+            this.label2.Location = new System.Drawing.Point(156, 131);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(173, 23);
-            this.label2.TabIndex = 51;
-            this.label2.Text = "Contact Number:";
+            this.label2.Size = new System.Drawing.Size(329, 18);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Use a strong password (min. 8 characters)";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Verdana", 11F);
-            this.lblPassword.Location = new System.Drawing.Point(49, 101);
-            this.lblPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPassword.Location = new System.Drawing.Point(21, 90);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(109, 23);
-            this.lblPassword.TabIndex = 52;
+            this.lblPassword.TabIndex = 10;
             this.lblPassword.Text = "Password:";
             this.lblPassword.Click += new System.EventHandler(this.lblPassword_Click);
             // 
-            // txtPassword
+            // lblPhone
             // 
-            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPassword.Font = new System.Drawing.Font("Verdana", 11F);
-            this.txtPassword.Location = new System.Drawing.Point(176, 99);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(265, 30);
-            this.txtPassword.TabIndex = 53;
+            this.lblPhone.AutoSize = true;
+            this.lblPhone.Font = new System.Drawing.Font("Verdana", 11F);
+            this.lblPhone.Location = new System.Drawing.Point(129, 250);
+            this.lblPhone.Name = "lblPhone";
+            this.lblPhone.Size = new System.Drawing.Size(117, 23);
+            this.lblPhone.TabIndex = 6;
+            this.lblPhone.Text = "Phone No.:";
             // 
-            // label1
+            // lblCountry
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Verdana", 11F);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            this.label1.Location = new System.Drawing.Point(12, 60);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(126, 23);
-            this.label1.TabIndex = 55;
-            this.label1.Text = "Get Started!";
+            this.lblCountry.AutoSize = true;
+            this.lblCountry.Font = new System.Drawing.Font("Verdana", 10F);
+            this.lblCountry.Location = new System.Drawing.Point(10, 255);
+            this.lblCountry.Name = "lblCountry";
+            this.lblCountry.Size = new System.Drawing.Size(60, 20);
+            this.lblCountry.TabIndex = 7;
+            this.lblCountry.Text = "Code:";
+            this.lblCountry.Click += new System.EventHandler(this.lblCountry_Click);
             // 
-            // textBox1
+            // label4
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox1.Font = new System.Drawing.Font("Verdana", 18F);
-            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
-            this.textBox1.Location = new System.Drawing.Point(16, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(302, 44);
-            this.textBox1.TabIndex = 54;
-            this.textBox1.Text = "Create an Account";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Verdana", 11F);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.label4.Location = new System.Drawing.Point(17, 105);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(424, 23);
+            this.label4.TabIndex = 60;
+            this.label4.Text = "Fill in your basic information to get started";
+            // 
+            // Gender
+            // 
+            this.Gender.AutoSize = true;
+            this.Gender.Font = new System.Drawing.Font("Verdana", 11F);
+            this.Gender.Location = new System.Drawing.Point(79, 210);
+            this.Gender.Name = "Gender";
+            this.Gender.Size = new System.Drawing.Size(88, 23);
+            this.Gender.TabIndex = 5;
+            this.Gender.Text = "Gender:";
+            this.Gender.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Verdana", 8.25F);
+            this.label3.Location = new System.Drawing.Point(82, 190);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 17);
+            this.label3.TabIndex = 58;
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblFN);
+            this.groupBox1.Controls.Add(this.txtFN);
+            this.groupBox1.Controls.Add(this.lblMI);
+            this.groupBox1.Controls.Add(this.txtMI);
             this.groupBox1.Controls.Add(this.lblLN);
             this.groupBox1.Controls.Add(this.txtLN);
-            this.groupBox1.Controls.Add(this.dtpBirthday);
-            this.groupBox1.Controls.Add(this.txtFN);
-            this.groupBox1.Controls.Add(this.txtMI);
-            this.groupBox1.Controls.Add(this.lblFN);
-            this.groupBox1.Controls.Add(this.lblMI);
+            this.groupBox1.Controls.Add(this.txtPhone);
             this.groupBox1.Controls.Add(this.lblDOB);
+            this.groupBox1.Controls.Add(this.dtpBirthday);
+            this.groupBox1.Controls.Add(this.Gender);
+            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.lblPhone);
+            this.groupBox1.Controls.Add(this.lblCountry);
+            this.groupBox1.Controls.Add(this.cboCountry);
+            this.groupBox1.Controls.Add(this.chkAgree);
             this.groupBox1.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
-            this.groupBox1.Location = new System.Drawing.Point(39, 116);
+            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
+            this.groupBox1.Location = new System.Drawing.Point(12, 160);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(501, 247);
+            this.groupBox1.Size = new System.Drawing.Size(690, 340);
             this.groupBox1.TabIndex = 56;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Personal Information";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // textBox2
+            // 
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox2.Font = new System.Drawing.Font("Verdana", 11F);
+            this.textBox2.Location = new System.Drawing.Point(206, 207);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(265, 30);
+            this.textBox2.TabIndex = 5;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.txtEmail);
-            this.groupBox2.Controls.Add(this.cboCountry);
-            this.groupBox2.Controls.Add(this.txtPhone);
             this.groupBox2.Controls.Add(this.lblEmail);
+            this.groupBox2.Controls.Add(this.txtEmail);
+            this.groupBox2.Controls.Add(this.lblPassword);
             this.groupBox2.Controls.Add(this.txtPassword);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.lblPassword);
-            this.groupBox2.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(39, 418);
+            this.groupBox2.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
+            this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
+            this.groupBox2.Location = new System.Drawing.Point(772, 235);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(501, 225);
+            this.groupBox2.Size = new System.Drawing.Size(532, 185);
             this.groupBox2.TabIndex = 57;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Account Details ";
+            this.groupBox2.Text = "Account Details";
+            // 
+            // textBox3
+            // 
+            this.textBox3.BackColor = System.Drawing.SystemColors.Info;
+            this.textBox3.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold);
+            this.textBox3.ForeColor = System.Drawing.Color.Navy;
+            this.textBox3.Location = new System.Drawing.Point(16, 41);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(346, 44);
+            this.textBox3.TabIndex = 59;
+            this.textBox3.Text = "Create an Account";
             // 
             // frmApplicantRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1209, 802);
+            this.ClientSize = new System.Drawing.Size(1365, 793);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnRegister);
-            this.Controls.Add(this.chkAgree);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmApplicantRegister";
-            this.Text = "frmApplicantRegister";
+            this.Text = "Applicant Registration";
             this.Load += new System.EventHandler(this.frmApplicantRegister_Load_1);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -320,13 +357,15 @@
         }
 
         #endregion
+
         private System.Windows.Forms.TextBox txtFN;
         private System.Windows.Forms.TextBox txtMI;
         private System.Windows.Forms.TextBox txtLN;
         private System.Windows.Forms.DateTimePicker dtpBirthday;
         private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.ComboBox cboCountry;
+        private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.TextBox txtPhone;
+        private System.Windows.Forms.ComboBox cboCountry;
         private System.Windows.Forms.CheckBox chkAgree;
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Label lblFN;
@@ -336,9 +375,13 @@
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lblPhone;
+        private System.Windows.Forms.Label lblCountry;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label Gender;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
     }
