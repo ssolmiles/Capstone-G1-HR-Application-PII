@@ -23,24 +23,20 @@ namespace HRApplicantSystem.Forms.Maintenance
         {
             try
             {
-                // Font Base Rule (Verdana)
                 this.Font = new Font("Verdana", 10);
 
-                // Form Title Customization
                 if (this.Controls.ContainsKey("lblTitle"))
                 {
                     this.Controls["lblTitle"].Font = new Font("Verdana", 17, FontStyle.Bold);
                     this.Controls["lblTitle"].ForeColor = ColorTranslator.FromHtml("#1F3864");
                 }
 
-                // Subtitle Customization
                 if (this.Controls.ContainsKey("lblSubtitle"))
                 {
                     this.Controls["lblSubtitle"].Font = new Font("Verdana", 11, FontStyle.Italic);
                     this.Controls["lblSubtitle"].ForeColor = ColorTranslator.FromHtml("#888888");
                 }
 
-                // Inputs and Buttons Setup
                 if (this.Controls.ContainsKey("txtName"))
                 {
                     ((TextBox)this.Controls["txtName"]).BorderStyle = BorderStyle.FixedSingle;
