@@ -69,8 +69,8 @@ namespace HRApplicantSystem.Forms.HR
 
         private void btnInterviews_Click(object sender, EventArgs e)
         {
-            frmInterviewSchedule interviewScheduleForm = new frmInterviewSchedule();
-            interviewScheduleForm.Show();
+            frmApplicantReview reviewForm = new frmApplicantReview();
+            reviewForm.Show();
             this.Hide();
         }
 

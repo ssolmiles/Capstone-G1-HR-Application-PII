@@ -68,7 +68,7 @@
             this.lblResult.Name = "lblResult";
             this.lblResult.Size = new System.Drawing.Size(254, 23);
             this.lblResult.TabIndex = 0;
-            this.lblResult.Text = "Final Result: PENDING";
+            this.lblResult.Text = "Final Result: ";
             // 
             // lblRemarks
             // 

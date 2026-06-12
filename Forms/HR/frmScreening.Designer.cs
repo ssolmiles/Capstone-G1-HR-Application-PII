@@ -4,6 +4,26 @@
     {
         private System.ComponentModel.IContainer components = null;
 
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label lblSubtitle;
+
+        private System.Windows.Forms.GroupBox groupBox1; // Applicant Details
+        private System.Windows.Forms.Label lblApplicantNameCaption;
+        private System.Windows.Forms.Label lblApplicantName;
+        private System.Windows.Forms.Label lblJobAppliedCaption;
+        private System.Windows.Forms.Label lblJobApplied;
+
+        private System.Windows.Forms.GroupBox groupBox2; // Screening Result
+        private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Button btnQualified;
+        private System.Windows.Forms.Button btnNotQualified;
+
+        private System.Windows.Forms.GroupBox groupBox3; // Remarks
+        private System.Windows.Forms.Label lblRemarksCaption;
+        private System.Windows.Forms.TextBox txtRemarks;
+
+        private System.Windows.Forms.Button btnNext;
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -14,76 +34,232 @@
         #region Windows Form Designer generated code
         private void InitializeComponent()
         {
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.lblSubtitle = new System.Windows.Forms.Label();
+
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblApplicantNameCaption = new System.Windows.Forms.Label();
+            this.lblApplicantName = new System.Windows.Forms.Label();
+            this.lblJobAppliedCaption = new System.Windows.Forms.Label();
+            this.lblJobApplied = new System.Windows.Forms.Label();
+
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblStatus = new System.Windows.Forms.Label();
             this.btnQualified = new System.Windows.Forms.Button();
             this.btnNotQualified = new System.Windows.Forms.Button();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.lblStatus = new System.Windows.Forms.Label();
+
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lblRemarksCaption = new System.Windows.Forms.Label();
             this.txtRemarks = new System.Windows.Forms.TextBox();
+
+            this.btnNext = new System.Windows.Forms.Button();
+
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnQualified
-            // 
-            this.btnQualified.Location = new System.Drawing.Point(50, 200);
-            this.btnQualified.Name = "btnQualified";
-            this.btnQualified.Size = new System.Drawing.Size(120, 35);
-            this.btnQualified.TabIndex = 0;
-            this.btnQualified.Text = "Qualified";
-            // 
-            // btnNotQualified
-            // 
-            this.btnNotQualified.Location = new System.Drawing.Point(200, 200);
-            this.btnNotQualified.Name = "btnNotQualified";
-            this.btnNotQualified.Size = new System.Drawing.Size(120, 35);
-            this.btnNotQualified.TabIndex = 1;
-            this.btnNotQualified.Text = "Not Qualified";
-            // 
-            // btnNext
-            // 
-            this.btnNext.Location = new System.Drawing.Point(350, 200);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(120, 35);
-            this.btnNext.TabIndex = 2;
-            this.btnNext.Text = "Next →";
-            // 
+            //
+            // lblTitle
+            //
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(31, 56, 100);
+            this.lblTitle.Location = new System.Drawing.Point(35, 20);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(220, 30);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "Application Screening";
+            //
+            // lblSubtitle
+            //
+            this.lblSubtitle.AutoSize = true;
+            this.lblSubtitle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic);
+            this.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(136, 136, 136);
+            this.lblSubtitle.Location = new System.Drawing.Point(37, 54);
+            this.lblSubtitle.Name = "lblSubtitle";
+            this.lblSubtitle.Size = new System.Drawing.Size(260, 15);
+            this.lblSubtitle.TabIndex = 1;
+            this.lblSubtitle.Text = "Review applicant details and mark qualification";
+            //
+            // groupBox1 - Applicant Details
+            //
+            this.groupBox1.Controls.Add(this.lblApplicantNameCaption);
+            this.groupBox1.Controls.Add(this.lblApplicantName);
+            this.groupBox1.Controls.Add(this.lblJobAppliedCaption);
+            this.groupBox1.Controls.Add(this.lblJobApplied);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(31, 92, 153);
+            this.groupBox1.Location = new System.Drawing.Point(35, 90);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(420, 140);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Applicant Details";
+            //
+            // lblApplicantNameCaption
+            //
+            this.lblApplicantNameCaption.AutoSize = true;
+            this.lblApplicantNameCaption.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblApplicantNameCaption.ForeColor = System.Drawing.Color.FromArgb(85, 85, 85);
+            this.lblApplicantNameCaption.Location = new System.Drawing.Point(20, 35);
+            this.lblApplicantNameCaption.Name = "lblApplicantNameCaption";
+            this.lblApplicantNameCaption.Size = new System.Drawing.Size(50, 19);
+            this.lblApplicantNameCaption.TabIndex = 0;
+            this.lblApplicantNameCaption.Text = "Name:";
+            //
+            // lblApplicantName
+            //
+            this.lblApplicantName.AutoSize = true;
+            this.lblApplicantName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblApplicantName.Location = new System.Drawing.Point(120, 35);
+            this.lblApplicantName.Name = "lblApplicantName";
+            this.lblApplicantName.Size = new System.Drawing.Size(120, 19);
+            this.lblApplicantName.TabIndex = 1;
+            this.lblApplicantName.Text = "(Loading...)";
+            //
+            // lblJobAppliedCaption
+            //
+            this.lblJobAppliedCaption.AutoSize = true;
+            this.lblJobAppliedCaption.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblJobAppliedCaption.ForeColor = System.Drawing.Color.FromArgb(85, 85, 85);
+            this.lblJobAppliedCaption.Location = new System.Drawing.Point(20, 75);
+            this.lblJobAppliedCaption.Name = "lblJobAppliedCaption";
+            this.lblJobAppliedCaption.Size = new System.Drawing.Size(95, 19);
+            this.lblJobAppliedCaption.TabIndex = 2;
+            this.lblJobAppliedCaption.Text = "Job Applied for:";
+            //
+            // lblJobApplied
+            //
+            this.lblJobApplied.AutoSize = true;
+            this.lblJobApplied.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblJobApplied.Location = new System.Drawing.Point(120, 75);
+            this.lblJobApplied.Name = "lblJobApplied";
+            this.lblJobApplied.Size = new System.Drawing.Size(120, 19);
+            this.lblJobApplied.TabIndex = 3;
+            this.lblJobApplied.Text = "(Loading...)";
+            //
+            // groupBox2 - Screening Result
+            //
+            this.groupBox2.Controls.Add(this.lblStatus);
+            this.groupBox2.Controls.Add(this.btnQualified);
+            this.groupBox2.Controls.Add(this.btnNotQualified);
+            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(31, 92, 153);
+            this.groupBox2.Location = new System.Drawing.Point(475, 90);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(420, 140);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Screening Result";
+            //
             // lblStatus
-            // 
-            this.lblStatus.Location = new System.Drawing.Point(50, 150);
+            //
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(85, 85, 85);
+            this.lblStatus.Location = new System.Drawing.Point(20, 35);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(300, 23);
-            this.lblStatus.TabIndex = 3;
+            this.lblStatus.Size = new System.Drawing.Size(140, 19);
+            this.lblStatus.TabIndex = 0;
             this.lblStatus.Text = "Status: Pending";
-            // 
+            //
+            // btnQualified
+            //
+            this.btnQualified.BackColor = System.Drawing.Color.FromArgb(26, 122, 60);
+            this.btnQualified.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQualified.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnQualified.ForeColor = System.Drawing.Color.White;
+            this.btnQualified.Location = new System.Drawing.Point(20, 75);
+            this.btnQualified.Name = "btnQualified";
+            this.btnQualified.Size = new System.Drawing.Size(150, 40);
+            this.btnQualified.TabIndex = 1;
+            this.btnQualified.Text = "Qualified";
+            this.btnQualified.UseVisualStyleBackColor = false;
+            //
+            // btnNotQualified
+            //
+            this.btnNotQualified.BackColor = System.Drawing.Color.FromArgb(192, 57, 43);
+            this.btnNotQualified.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNotQualified.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnNotQualified.ForeColor = System.Drawing.Color.White;
+            this.btnNotQualified.Location = new System.Drawing.Point(190, 75);
+            this.btnNotQualified.Name = "btnNotQualified";
+            this.btnNotQualified.Size = new System.Drawing.Size(150, 40);
+            this.btnNotQualified.TabIndex = 2;
+            this.btnNotQualified.Text = "Not Qualified";
+            this.btnNotQualified.UseVisualStyleBackColor = false;
+            //
+            // groupBox3 - Remarks
+            //
+            this.groupBox3.Controls.Add(this.lblRemarksCaption);
+            this.groupBox3.Controls.Add(this.txtRemarks);
+            this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(31, 92, 153);
+            this.groupBox3.Location = new System.Drawing.Point(35, 250);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(860, 160);
+            this.groupBox3.TabIndex = 4;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Remarks";
+            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
+            //
+            // lblRemarksCaption
+            //
+            this.lblRemarksCaption.AutoSize = true;
+            this.lblRemarksCaption.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblRemarksCaption.ForeColor = System.Drawing.Color.FromArgb(85, 85, 85);
+            this.lblRemarksCaption.Location = new System.Drawing.Point(20, 30);
+            this.lblRemarksCaption.Name = "lblRemarksCaption";
+            this.lblRemarksCaption.Size = new System.Drawing.Size(65, 19);
+            this.lblRemarksCaption.TabIndex = 0;
+            this.lblRemarksCaption.Text = "Remarks:";
+            //
             // txtRemarks
-            // 
-            this.txtRemarks.Location = new System.Drawing.Point(50, 50);
+            //
+            this.txtRemarks.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtRemarks.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtRemarks.Location = new System.Drawing.Point(20, 60);
             this.txtRemarks.Multiline = true;
             this.txtRemarks.Name = "txtRemarks";
-            this.txtRemarks.Size = new System.Drawing.Size(500, 80);
-            this.txtRemarks.TabIndex = 4;
-            // 
+            this.txtRemarks.Size = new System.Drawing.Size(820, 85);
+            this.txtRemarks.TabIndex = 1;
+            //
+            // btnNext
+            //
+            this.btnNext.BackColor = System.Drawing.Color.FromArgb(31, 92, 153);
+            this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNext.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnNext.ForeColor = System.Drawing.Color.White;
+            this.btnNext.Location = new System.Drawing.Point(715, 430);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(180, 45);
+            this.btnNext.TabIndex = 5;
+            this.btnNext.Text = "Proceed to Schedule Interview";
+            this.btnNext.UseVisualStyleBackColor = false;
+            //
             // frmScreening
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnQualified);
-            this.Controls.Add(this.btnNotQualified);
+            this.ClientSize = new System.Drawing.Size(940, 510);
+            this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.lblSubtitle);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnNext);
-            this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.txtRemarks);
             this.Name = "frmScreening";
-            this.Text = "Screening";
+            this.Text = "Application Screening";
             this.Load += new System.EventHandler(this.frmScreening_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
         #endregion
-
-        private System.Windows.Forms.Button btnQualified;
-        private System.Windows.Forms.Button btnNotQualified;
-        private System.Windows.Forms.Button btnNext;
-        private System.Windows.Forms.Label lblStatus;
-        private System.Windows.Forms.TextBox txtRemarks;
     }
 }

@@ -25,7 +25,7 @@ namespace HRApplicantSystem.Forms.Maintenance
                 using (var conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
-                    string query = "SELECT position_id AS ID, title AS Name FROM positions";
+                    string query = "SELECT position_id AS ID, title AS Name FROM positions ORDER BY title";
                     var adapter = new SqlDataAdapter(query, conn);
                     var table = new DataTable();
                     adapter.Fill(table);
@@ -52,13 +52,15 @@ namespace HRApplicantSystem.Forms.Maintenance
                         cmd.Parameters.AddWithValue("@name", name);
                         cmd.ExecuteNonQuery();
                     }
-                    MessageBox.Show("Position added!"); ClearFields(); LoadData();
+                    MessageBox.Show("Position added!");
+                    ClearFields();
+                    LoadData();
                 }
             }
             catch (Exception ex) { MessageBox.Show("Error adding: " + ex.Message); }
         }
 
-        public void btnUpdate_Click(object sender, EventArgs e)
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (dgvList.SelectedRows.Count == 0) { MessageBox.Show("Select a row first."); return; }
             string name = txtName.Text.Trim();
@@ -75,7 +77,9 @@ namespace HRApplicantSystem.Forms.Maintenance
                         cmd.Parameters.AddWithValue("@id", id);
                         cmd.ExecuteNonQuery();
                     }
-                    MessageBox.Show("Updated!"); ClearFields(); LoadData();
+                    MessageBox.Show("Updated!");
+                    ClearFields();
+                    LoadData();
                 }
             }
             catch (Exception ex) { MessageBox.Show("Error updating: " + ex.Message); }
@@ -97,7 +101,9 @@ namespace HRApplicantSystem.Forms.Maintenance
                         cmd.Parameters.AddWithValue("@id", id);
                         cmd.ExecuteNonQuery();
                     }
-                    MessageBox.Show("Deleted!"); ClearFields(); LoadData();
+                    MessageBox.Show("Deleted!");
+                    ClearFields();
+                    LoadData();
                 }
             }
             catch (Exception ex) { MessageBox.Show("Error deleting: " + ex.Message); }
@@ -105,12 +111,18 @@ namespace HRApplicantSystem.Forms.Maintenance
 
         private void btnClear_Click(object sender, EventArgs e) => ClearFields();
 
+        private void btnBack_Click(object sender, EventArgs e) => this.Close();
+
         private void dgvList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
                 txtName.Text = dgvList.Rows[e.RowIndex].Cells["Name"].Value.ToString();
         }
 
-        private void ClearFields() { txtName.Text = ""; dgvList.ClearSelection(); }
+        private void ClearFields()
+        {
+            txtName.Text = "";
+            dgvList.ClearSelection();
+        }
     }
 }

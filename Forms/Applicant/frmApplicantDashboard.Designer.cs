@@ -42,7 +42,7 @@
             this.btnViewStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewStatus.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnViewStatus.ForeColor = System.Drawing.Color.White;
-            this.btnViewStatus.Location = new System.Drawing.Point(930, 185);
+            this.btnViewStatus.Location = new System.Drawing.Point(1036, 59);
             this.btnViewStatus.Name = "btnViewStatus";
             this.btnViewStatus.Size = new System.Drawing.Size(230, 44);
             this.btnViewStatus.TabIndex = 1;
@@ -56,7 +56,7 @@
             this.btnProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProfile.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnProfile.ForeColor = System.Drawing.Color.White;
-            this.btnProfile.Location = new System.Drawing.Point(930, 239);
+            this.btnProfile.Location = new System.Drawing.Point(1036, 113);
             this.btnProfile.Name = "btnProfile";
             this.btnProfile.Size = new System.Drawing.Size(230, 44);
             this.btnProfile.TabIndex = 2;
@@ -70,7 +70,7 @@
             this.btnChangePass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChangePass.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnChangePass.ForeColor = System.Drawing.Color.White;
-            this.btnChangePass.Location = new System.Drawing.Point(930, 293);
+            this.btnChangePass.Location = new System.Drawing.Point(1036, 167);
             this.btnChangePass.Name = "btnChangePass";
             this.btnChangePass.Size = new System.Drawing.Size(230, 44);
             this.btnChangePass.TabIndex = 3;
@@ -84,7 +84,7 @@
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.Location = new System.Drawing.Point(930, 347);
+            this.btnLogout.Location = new System.Drawing.Point(1036, 221);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(230, 44);
             this.btnLogout.TabIndex = 4;

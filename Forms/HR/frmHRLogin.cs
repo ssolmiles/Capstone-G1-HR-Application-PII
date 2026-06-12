@@ -11,6 +11,15 @@ namespace HRApplicantSystem.Forms.HR
         {
             InitializeComponent();
         }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            new HRApplicantSystem.Forms.frmRoleSelection().Show();
+            this.Close();
+        }
+
+
+
         private void frmHRLogin_Load(object sender, EventArgs e) { }
 
         private void btnLogin_Click(object sender, EventArgs e)

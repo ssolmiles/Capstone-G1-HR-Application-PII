@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
-using HRApplicantSystem.Forms.Applicant;
+using HRApplicantSystem.Forms;
 using HRApplicantSystem.Helpers;
 
 namespace HRApplicantSystem
@@ -14,7 +14,6 @@ namespace HRApplicantSystem
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // Load Azure DB config before any form opens
             string iniPath = Path.Combine(
                 AppDomain.CurrentDomain.BaseDirectory,
                 "Database",
@@ -34,7 +33,7 @@ namespace HRApplicantSystem
                 return;
             }
 
-            Application.Run(new frmApplicantLogin());
+            Application.Run(new frmRoleSelection());
         }
     }
 }

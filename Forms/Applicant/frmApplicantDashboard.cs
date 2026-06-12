@@ -110,7 +110,7 @@ namespace HRApplicantSystem.Forms.Applicant
                             }
                             else
                             {
-                                lblSchedule.Text = "No schedule yet. Please wait.";
+                                lblSchedule.Text = "No schedule yet.";
                             }
                         }
                     }

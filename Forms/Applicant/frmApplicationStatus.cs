@@ -67,7 +67,7 @@ namespace HRApplicantSystem.Forms.Applicant
                                     case "under_review":
                                     case "screened":
                                         lblStep1.BackColor = Color.Green;
-                                        lblStep2.BackColor = Color.Orange;
+                                        lblStep2.BackColor = Color.Orange;  
                                         break;
                                     case "interview_scheduled":
                                     case "interviewed":
@@ -107,7 +107,7 @@ namespace HRApplicantSystem.Forms.Applicant
                                 string result = dr["final_decision"] == DBNull.Value ? "" : dr["final_decision"].ToString();
                                 if (string.IsNullOrEmpty(result))
                                 {
-                                    lblResult.Text = "Final Result: PENDING";
+                                    lblResult.Text = "Final Result: ";
                                     lblResult.ForeColor = Color.Orange;
                                 }
                                 else

@@ -56,15 +56,5 @@ namespace HRApplicantSystem.Forms.Maintenance
         {
             this.Close();
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnInterviewTypes_Click_1(object sender, EventArgs e)
-        {
-
-        }
     }
 }

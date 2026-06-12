@@ -4,12 +4,30 @@
     {
         private System.ComponentModel.IContainer components = null;
 
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label lblSubtitle;
+
+        private System.Windows.Forms.GroupBox groupBox1; // Applicant Details
+        private System.Windows.Forms.Label lblApplicantNameCaption;
+        private System.Windows.Forms.Label lblApplicantName;
+        private System.Windows.Forms.Label lblJobAppliedCaption;
+        private System.Windows.Forms.Label lblJobApplied;
+
+        private System.Windows.Forms.GroupBox groupBox2; // Schedule Details
+        private System.Windows.Forms.Label lblDateCaption;
         private System.Windows.Forms.DateTimePicker dtpDate;
+        private System.Windows.Forms.Label lblTimeCaption;
         private System.Windows.Forms.DateTimePicker dtpTime;
+        private System.Windows.Forms.Label lblInterviewerCaption;
         private System.Windows.Forms.TextBox txtInterviewer;
-        private System.Windows.Forms.ComboBox cmbMode;
+        private System.Windows.Forms.Label lblLocationCaption;
         private System.Windows.Forms.TextBox txtLocation;
+        private System.Windows.Forms.Label label1; // Interview Mode:
+        private System.Windows.Forms.ComboBox cmbMode;
+
+        private System.Windows.Forms.GroupBox groupBox3; // Status
         private System.Windows.Forms.Label lblStatus;
+
         private System.Windows.Forms.Button btnSchedule;
         private System.Windows.Forms.Button btnComplete;
         private System.Windows.Forms.Button btnCancel;
@@ -18,122 +36,338 @@
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
-            {
                 components.Dispose();
-            }
             base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
         private void InitializeComponent()
         {
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.lblSubtitle = new System.Windows.Forms.Label();
+
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblApplicantNameCaption = new System.Windows.Forms.Label();
+            this.lblApplicantName = new System.Windows.Forms.Label();
+            this.lblJobAppliedCaption = new System.Windows.Forms.Label();
+            this.lblJobApplied = new System.Windows.Forms.Label();
+
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblDateCaption = new System.Windows.Forms.Label();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
+            this.lblTimeCaption = new System.Windows.Forms.Label();
             this.dtpTime = new System.Windows.Forms.DateTimePicker();
+            this.lblInterviewerCaption = new System.Windows.Forms.Label();
             this.txtInterviewer = new System.Windows.Forms.TextBox();
-            this.cmbMode = new System.Windows.Forms.ComboBox();
+            this.lblLocationCaption = new System.Windows.Forms.Label();
             this.txtLocation = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbMode = new System.Windows.Forms.ComboBox();
+
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lblStatus = new System.Windows.Forms.Label();
+
             this.btnSchedule = new System.Windows.Forms.Button();
             this.btnComplete = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
+
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
-            // 
+            //
+            // lblTitle
+            //
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(31, 56, 100);
+            this.lblTitle.Location = new System.Drawing.Point(35, 20);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(220, 30);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "Interview Scheduling";
+            //
+            // lblSubtitle
+            //
+            this.lblSubtitle.AutoSize = true;
+            this.lblSubtitle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic);
+            this.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(136, 136, 136);
+            this.lblSubtitle.Location = new System.Drawing.Point(37, 54);
+            this.lblSubtitle.Name = "lblSubtitle";
+            this.lblSubtitle.Size = new System.Drawing.Size(260, 15);
+            this.lblSubtitle.TabIndex = 1;
+            this.lblSubtitle.Text = "Set up and manage the interview schedule";
+            //
+            // groupBox1 - Applicant Details
+            //
+            this.groupBox1.Controls.Add(this.lblApplicantNameCaption);
+            this.groupBox1.Controls.Add(this.lblApplicantName);
+            this.groupBox1.Controls.Add(this.lblJobAppliedCaption);
+            this.groupBox1.Controls.Add(this.lblJobApplied);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(31, 92, 153);
+            this.groupBox1.Location = new System.Drawing.Point(35, 90);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(380, 110);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Applicant Details";
+            //
+            // lblApplicantNameCaption
+            //
+            this.lblApplicantNameCaption.AutoSize = true;
+            this.lblApplicantNameCaption.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblApplicantNameCaption.ForeColor = System.Drawing.Color.FromArgb(85, 85, 85);
+            this.lblApplicantNameCaption.Location = new System.Drawing.Point(20, 30);
+            this.lblApplicantNameCaption.Name = "lblApplicantNameCaption";
+            this.lblApplicantNameCaption.Size = new System.Drawing.Size(50, 19);
+            this.lblApplicantNameCaption.TabIndex = 0;
+            this.lblApplicantNameCaption.Text = "Name:";
+            //
+            // lblApplicantName
+            //
+            this.lblApplicantName.AutoSize = true;
+            this.lblApplicantName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblApplicantName.Location = new System.Drawing.Point(120, 30);
+            this.lblApplicantName.Name = "lblApplicantName";
+            this.lblApplicantName.Size = new System.Drawing.Size(120, 19);
+            this.lblApplicantName.TabIndex = 1;
+            this.lblApplicantName.Text = "(Loading...)";
+            //
+            // lblJobAppliedCaption
+            //
+            this.lblJobAppliedCaption.AutoSize = true;
+            this.lblJobAppliedCaption.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblJobAppliedCaption.ForeColor = System.Drawing.Color.FromArgb(85, 85, 85);
+            this.lblJobAppliedCaption.Location = new System.Drawing.Point(20, 65);
+            this.lblJobAppliedCaption.Name = "lblJobAppliedCaption";
+            this.lblJobAppliedCaption.Size = new System.Drawing.Size(95, 19);
+            this.lblJobAppliedCaption.TabIndex = 2;
+            this.lblJobAppliedCaption.Text = "Job Applied for:";
+            //
+            // lblJobApplied
+            //
+            this.lblJobApplied.AutoSize = true;
+            this.lblJobApplied.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblJobApplied.Location = new System.Drawing.Point(120, 65);
+            this.lblJobApplied.Name = "lblJobApplied";
+            this.lblJobApplied.Size = new System.Drawing.Size(120, 19);
+            this.lblJobApplied.TabIndex = 3;
+            this.lblJobApplied.Text = "(Loading...)";
+            //
+            // groupBox2 - Schedule Details
+            //
+            this.groupBox2.Controls.Add(this.lblDateCaption);
+            this.groupBox2.Controls.Add(this.dtpDate);
+            this.groupBox2.Controls.Add(this.lblTimeCaption);
+            this.groupBox2.Controls.Add(this.dtpTime);
+            this.groupBox2.Controls.Add(this.lblInterviewerCaption);
+            this.groupBox2.Controls.Add(this.txtInterviewer);
+            this.groupBox2.Controls.Add(this.lblLocationCaption);
+            this.groupBox2.Controls.Add(this.txtLocation);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.cmbMode);
+            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(31, 92, 153);
+            this.groupBox2.Location = new System.Drawing.Point(35, 215);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(620, 230);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Schedule Details";
+            //
+            // lblDateCaption
+            //
+            this.lblDateCaption.AutoSize = true;
+            this.lblDateCaption.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblDateCaption.ForeColor = System.Drawing.Color.FromArgb(85, 85, 85);
+            this.lblDateCaption.Location = new System.Drawing.Point(20, 35);
+            this.lblDateCaption.Name = "lblDateCaption";
+            this.lblDateCaption.Size = new System.Drawing.Size(45, 19);
+            this.lblDateCaption.TabIndex = 0;
+            this.lblDateCaption.Text = "Date:";
+            //
             // dtpDate
-            // 
-            this.dtpDate.Location = new System.Drawing.Point(20, 44);
+            //
+            this.dtpDate.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDate.Location = new System.Drawing.Point(150, 32);
             this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(200, 22);
-            this.dtpDate.TabIndex = 0;
-            // 
+            this.dtpDate.Size = new System.Drawing.Size(160, 25);
+            this.dtpDate.TabIndex = 1;
+            //
+            // lblTimeCaption
+            //
+            this.lblTimeCaption.AutoSize = true;
+            this.lblTimeCaption.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblTimeCaption.ForeColor = System.Drawing.Color.FromArgb(85, 85, 85);
+            this.lblTimeCaption.Location = new System.Drawing.Point(330, 35);
+            this.lblTimeCaption.Name = "lblTimeCaption";
+            this.lblTimeCaption.Size = new System.Drawing.Size(45, 19);
+            this.lblTimeCaption.TabIndex = 2;
+            this.lblTimeCaption.Text = "Time:";
+            //
             // dtpTime
-            // 
+            //
+            this.dtpTime.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.dtpTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpTime.Location = new System.Drawing.Point(20, 72);
+            this.dtpTime.Location = new System.Drawing.Point(440, 32);
             this.dtpTime.Name = "dtpTime";
-            this.dtpTime.Size = new System.Drawing.Size(200, 22);
-            this.dtpTime.TabIndex = 1;
-            // 
+            this.dtpTime.ShowUpDown = true;
+            this.dtpTime.Size = new System.Drawing.Size(140, 25);
+            this.dtpTime.TabIndex = 3;
+            //
+            // lblInterviewerCaption
+            //
+            this.lblInterviewerCaption.AutoSize = true;
+            this.lblInterviewerCaption.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblInterviewerCaption.ForeColor = System.Drawing.Color.FromArgb(85, 85, 85);
+            this.lblInterviewerCaption.Location = new System.Drawing.Point(20, 80);
+            this.lblInterviewerCaption.Name = "lblInterviewerCaption";
+            this.lblInterviewerCaption.Size = new System.Drawing.Size(80, 19);
+            this.lblInterviewerCaption.TabIndex = 4;
+            this.lblInterviewerCaption.Text = "Interviewer:";
+            //
             // txtInterviewer
-            // 
-            this.txtInterviewer.Location = new System.Drawing.Point(20, 112);
+            //
+            this.txtInterviewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtInterviewer.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtInterviewer.Location = new System.Drawing.Point(150, 77);
             this.txtInterviewer.Name = "txtInterviewer";
-            this.txtInterviewer.Size = new System.Drawing.Size(217, 22);
-            this.txtInterviewer.TabIndex = 2;
-            this.txtInterviewer.Text = "TO BE ASSIGNED";
-            // 
+            this.txtInterviewer.Size = new System.Drawing.Size(430, 25);
+            this.txtInterviewer.TabIndex = 5;
+            //
+            // label1 - Interview Mode caption
+            //
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(85, 85, 85);
+            this.label1.Location = new System.Drawing.Point(20, 125);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(105, 19);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Interview Mode:";
+            //
             // cmbMode
-            // 
-            this.cmbMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            //
+            this.cmbMode.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbMode.FormattingEnabled = true;
             this.cmbMode.Items.AddRange(new object[] {
-            "Select Mode",
             "Online",
-            "Onsite"});
-            this.cmbMode.Location = new System.Drawing.Point(20, 140);
+            "Video Call",
+            "Phone Call",
+            "On-site",
+            "Panel"});
+            this.cmbMode.Location = new System.Drawing.Point(150, 122);
             this.cmbMode.Name = "cmbMode";
-            this.cmbMode.Size = new System.Drawing.Size(153, 24);
-            this.cmbMode.TabIndex = 3;
-            // 
+            this.cmbMode.Size = new System.Drawing.Size(180, 25);
+            this.cmbMode.TabIndex = 7;
+            //
+            // lblLocationCaption
+            //
+            this.lblLocationCaption.AutoSize = true;
+            this.lblLocationCaption.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblLocationCaption.ForeColor = System.Drawing.Color.FromArgb(85, 85, 85);
+            this.lblLocationCaption.Location = new System.Drawing.Point(20, 170);
+            this.lblLocationCaption.Name = "lblLocationCaption";
+            this.lblLocationCaption.Size = new System.Drawing.Size(70, 19);
+            this.lblLocationCaption.TabIndex = 8;
+            this.lblLocationCaption.Text = "Location:";
+            //
             // txtLocation
-            // 
-            this.txtLocation.Location = new System.Drawing.Point(20, 181);
+            //
+            this.txtLocation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtLocation.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtLocation.Location = new System.Drawing.Point(150, 167);
             this.txtLocation.Name = "txtLocation";
-            this.txtLocation.Size = new System.Drawing.Size(250, 22);
-            this.txtLocation.TabIndex = 4;
-            this.txtLocation.Text = "To be Announced";
-            // 
+            this.txtLocation.Size = new System.Drawing.Size(430, 25);
+            this.txtLocation.TabIndex = 9;
+            //
+            // groupBox3 - Status
+            //
+            this.groupBox3.Controls.Add(this.lblStatus);
+            this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(31, 92, 153);
+            this.groupBox3.Location = new System.Drawing.Point(675, 215);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(265, 100);
+            this.groupBox3.TabIndex = 4;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Status";
+            //
             // lblStatus
-            // 
+            //
             this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(20, 220);
+            this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(212, 122, 0);
+            this.lblStatus.Location = new System.Drawing.Point(20, 40);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(100, 16);
-            this.lblStatus.TabIndex = 5;
-            this.lblStatus.Text = "Status: Pending";
-            // 
+            this.lblStatus.Size = new System.Drawing.Size(150, 20);
+            this.lblStatus.TabIndex = 0;
+            this.lblStatus.Text = "Status: Not Scheduled";
+            //
             // btnSchedule
-            // 
-            this.btnSchedule.Location = new System.Drawing.Point(20, 260);
+            //
+            this.btnSchedule.BackColor = System.Drawing.Color.FromArgb(31, 92, 153);
+            this.btnSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSchedule.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnSchedule.ForeColor = System.Drawing.Color.White;
+            this.btnSchedule.Location = new System.Drawing.Point(675, 330);
             this.btnSchedule.Name = "btnSchedule";
-            this.btnSchedule.Size = new System.Drawing.Size(110, 23);
-            this.btnSchedule.TabIndex = 6;
-            this.btnSchedule.Text = "Schedule";
-            // 
+            this.btnSchedule.Size = new System.Drawing.Size(265, 40);
+            this.btnSchedule.TabIndex = 5;
+            this.btnSchedule.Text = "Schedule Interview";
+            this.btnSchedule.UseVisualStyleBackColor = false;
+            //
             // btnComplete
-            // 
-            this.btnComplete.Location = new System.Drawing.Point(136, 260);
+            //
+            this.btnComplete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnComplete.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnComplete.ForeColor = System.Drawing.Color.FromArgb(26, 122, 60);
+            this.btnComplete.Location = new System.Drawing.Point(675, 380);
             this.btnComplete.Name = "btnComplete";
-            this.btnComplete.Size = new System.Drawing.Size(101, 23);
-            this.btnComplete.TabIndex = 7;
-            this.btnComplete.Text = "Mark Completed";
-            // 
+            this.btnComplete.Size = new System.Drawing.Size(265, 35);
+            this.btnComplete.TabIndex = 6;
+            this.btnComplete.Text = "Mark as Completed";
+            this.btnComplete.UseVisualStyleBackColor = true;
+            //
             // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(116, 300);
+            //
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(192, 57, 43);
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Location = new System.Drawing.Point(675, 425);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(120, 23);
-            this.btnCancel.TabIndex = 8;
+            this.btnCancel.Size = new System.Drawing.Size(265, 35);
+            this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "Cancel Interview";
-            // 
+            this.btnCancel.UseVisualStyleBackColor = false;
+            //
             // btnNext
-            // 
-            this.btnNext.Location = new System.Drawing.Point(20, 300);
+            //
+            this.btnNext.BackColor = System.Drawing.Color.FromArgb(31, 92, 153);
+            this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNext.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnNext.ForeColor = System.Drawing.Color.White;
+            this.btnNext.Location = new System.Drawing.Point(440, 470);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(90, 23);
-            this.btnNext.TabIndex = 9;
-            this.btnNext.Text = "Next → Evaluation";
-            // 
+            this.btnNext.Size = new System.Drawing.Size(215, 45);
+            this.btnNext.TabIndex = 8;
+            this.btnNext.Text = "Proceed to Evaluation";
+            this.btnNext.UseVisualStyleBackColor = false;
+            //
             // frmInterviewSchedule
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 400);
-            this.Controls.Add(this.dtpDate);
-            this.Controls.Add(this.dtpTime);
-            this.Controls.Add(this.txtInterviewer);
-            this.Controls.Add(this.cmbMode);
-            this.Controls.Add(this.txtLocation);
-            this.Controls.Add(this.lblStatus);
+            this.ClientSize = new System.Drawing.Size(975, 545);
+            this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.lblSubtitle);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnSchedule);
             this.Controls.Add(this.btnComplete);
             this.Controls.Add(this.btnCancel);
@@ -141,9 +375,14 @@
             this.Name = "frmInterviewSchedule";
             this.Text = "Interview Scheduling";
             this.Load += new System.EventHandler(this.frmInterviewSchedule_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
         #endregion
     }
