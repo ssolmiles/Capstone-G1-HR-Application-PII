@@ -39,16 +39,21 @@
             this.btnUploadID = new System.Windows.Forms.Button();
             this.btnUploadTranscipt = new System.Windows.Forms.Button();
             this.btnUploadCerts = new System.Windows.Forms.Button();
-            this.btnSaveRemarks = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.lblFormTitle = new System.Windows.Forms.Label();
+            this.lblSubtitle = new System.Windows.Forms.Label();
+            this.lblRowResume = new System.Windows.Forms.Label();
+            this.lblRowID = new System.Windows.Forms.Label();
+            this.lblRowTranscript = new System.Windows.Forms.Label();
+            this.lblRowCert = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblResumeStatus
             // 
             this.lblResumeStatus.AutoSize = true;
             this.lblResumeStatus.Font = new System.Drawing.Font("Verdana", 14F);
-            this.lblResumeStatus.Location = new System.Drawing.Point(110, 145);
+            this.lblResumeStatus.Location = new System.Drawing.Point(446, 88);
             this.lblResumeStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblResumeStatus.Name = "lblResumeStatus";
             this.lblResumeStatus.Size = new System.Drawing.Size(192, 29);
@@ -59,7 +64,7 @@
             // 
             this.lblIDStatus.AutoSize = true;
             this.lblIDStatus.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIDStatus.Location = new System.Drawing.Point(25, 40);
+            this.lblIDStatus.Location = new System.Drawing.Point(505, 144);
             this.lblIDStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblIDStatus.Name = "lblIDStatus";
             this.lblIDStatus.Size = new System.Drawing.Size(133, 28);
@@ -71,7 +76,7 @@
             // 
             this.lblTranscriptStatus.AutoSize = true;
             this.lblTranscriptStatus.Font = new System.Drawing.Font("Verdana", 14F);
-            this.lblTranscriptStatus.Location = new System.Drawing.Point(87, 199);
+            this.lblTranscriptStatus.Location = new System.Drawing.Point(423, 204);
             this.lblTranscriptStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTranscriptStatus.Name = "lblTranscriptStatus";
             this.lblTranscriptStatus.Size = new System.Drawing.Size(215, 29);
@@ -82,7 +87,7 @@
             // 
             this.lblCertStatus.AutoSize = true;
             this.lblCertStatus.Font = new System.Drawing.Font("Verdana", 14F);
-            this.lblCertStatus.Location = new System.Drawing.Point(72, 262);
+            this.lblCertStatus.Location = new System.Drawing.Point(408, 248);
             this.lblCertStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCertStatus.Name = "lblCertStatus";
             this.lblCertStatus.Size = new System.Drawing.Size(230, 29);
@@ -92,38 +97,43 @@
             // lblOverallStatus
             // 
             this.lblOverallStatus.AutoSize = true;
-            this.lblOverallStatus.Font = new System.Drawing.Font("Verdana", 14F);
-            this.lblOverallStatus.Location = new System.Drawing.Point(122, 323);
+            this.lblOverallStatus.Font = new System.Drawing.Font("Verdana", 14F, System.Drawing.FontStyle.Bold);
+            this.lblOverallStatus.Location = new System.Drawing.Point(25, 380);
             this.lblOverallStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblOverallStatus.Name = "lblOverallStatus";
-            this.lblOverallStatus.Size = new System.Drawing.Size(180, 29);
+            this.lblOverallStatus.Size = new System.Drawing.Size(203, 29);
             this.lblOverallStatus.TabIndex = 4;
             this.lblOverallStatus.Text = "Overall Status";
             // 
             // txtRemarks
             // 
-            this.txtRemarks.Font = new System.Drawing.Font("Verdana", 14F);
-            this.txtRemarks.Location = new System.Drawing.Point(731, 145);
+            this.txtRemarks.BackColor = System.Drawing.SystemColors.Control;
+            this.txtRemarks.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtRemarks.Font = new System.Drawing.Font("Verdana", 11F);
+            this.txtRemarks.Location = new System.Drawing.Point(25, 460);
             this.txtRemarks.Margin = new System.Windows.Forms.Padding(4);
+            this.txtRemarks.Multiline = true;
             this.txtRemarks.Name = "txtRemarks";
-            this.txtRemarks.Size = new System.Drawing.Size(278, 36);
+            this.txtRemarks.ReadOnly = true;
+            this.txtRemarks.Size = new System.Drawing.Size(984, 50);
             this.txtRemarks.TabIndex = 5;
             // 
             // lblRemarks
             // 
             this.lblRemarks.AutoSize = true;
-            this.lblRemarks.Font = new System.Drawing.Font("Verdana", 14F);
-            this.lblRemarks.Location = new System.Drawing.Point(565, 145);
+            this.lblRemarks.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
+            this.lblRemarks.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
+            this.lblRemarks.Location = new System.Drawing.Point(25, 430);
             this.lblRemarks.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRemarks.Name = "lblRemarks";
-            this.lblRemarks.Size = new System.Drawing.Size(136, 29);
+            this.lblRemarks.Size = new System.Drawing.Size(150, 25);
             this.lblRemarks.TabIndex = 6;
-            this.lblRemarks.Text = "Remarks: ";
+            this.lblRemarks.Text = "HR Remarks";
             // 
             // btnUploadResume
             // 
             this.btnUploadResume.Font = new System.Drawing.Font("Verdana", 14F);
-            this.btnUploadResume.Location = new System.Drawing.Point(343, 139);
+            this.btnUploadResume.Location = new System.Drawing.Point(673, 76);
             this.btnUploadResume.Margin = new System.Windows.Forms.Padding(4);
             this.btnUploadResume.Name = "btnUploadResume";
             this.btnUploadResume.Size = new System.Drawing.Size(154, 41);
@@ -135,7 +145,7 @@
             // btnUploadID
             // 
             this.btnUploadID.Font = new System.Drawing.Font("Verdana", 14F);
-            this.btnUploadID.Location = new System.Drawing.Point(341, 199);
+            this.btnUploadID.Location = new System.Drawing.Point(671, 136);
             this.btnUploadID.Margin = new System.Windows.Forms.Padding(4);
             this.btnUploadID.Name = "btnUploadID";
             this.btnUploadID.Size = new System.Drawing.Size(154, 43);
@@ -147,7 +157,7 @@
             // btnUploadTranscipt
             // 
             this.btnUploadTranscipt.Font = new System.Drawing.Font("Verdana", 14F);
-            this.btnUploadTranscipt.Location = new System.Drawing.Point(341, 262);
+            this.btnUploadTranscipt.Location = new System.Drawing.Point(671, 199);
             this.btnUploadTranscipt.Margin = new System.Windows.Forms.Padding(4);
             this.btnUploadTranscipt.Name = "btnUploadTranscipt";
             this.btnUploadTranscipt.Size = new System.Drawing.Size(156, 39);
@@ -159,7 +169,7 @@
             // btnUploadCerts
             // 
             this.btnUploadCerts.Font = new System.Drawing.Font("Verdana", 14F);
-            this.btnUploadCerts.Location = new System.Drawing.Point(341, 323);
+            this.btnUploadCerts.Location = new System.Drawing.Point(671, 260);
             this.btnUploadCerts.Margin = new System.Windows.Forms.Padding(4);
             this.btnUploadCerts.Name = "btnUploadCerts";
             this.btnUploadCerts.Size = new System.Drawing.Size(156, 37);
@@ -168,22 +178,12 @@
             this.btnUploadCerts.UseVisualStyleBackColor = true;
             this.btnUploadCerts.Click += new System.EventHandler(this.btnUploadCerts_Click);
             // 
-            // btnSaveRemarks
-            // 
-            this.btnSaveRemarks.Font = new System.Drawing.Font("Verdana", 14F);
-            this.btnSaveRemarks.Location = new System.Drawing.Point(1015, 491);
-            this.btnSaveRemarks.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSaveRemarks.Name = "btnSaveRemarks";
-            this.btnSaveRemarks.Size = new System.Drawing.Size(110, 36);
-            this.btnSaveRemarks.TabIndex = 11;
-            this.btnSaveRemarks.Text = "SAVE";
-            this.btnSaveRemarks.UseVisualStyleBackColor = true;
-            this.btnSaveRemarks.Click += new System.EventHandler(this.btnSaveRemarks_Click);
-            // 
             // btnBack
             // 
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Verdana", 14F);
-            this.btnBack.Location = new System.Drawing.Point(13, 524);
+            this.btnBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.btnBack.Location = new System.Drawing.Point(25, 540);
             this.btnBack.Margin = new System.Windows.Forms.Padding(4);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(110, 35);
@@ -196,13 +196,78 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // lblFormTitle
+            // 
+            this.lblFormTitle.AutoSize = true;
+            this.lblFormTitle.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold);
+            this.lblFormTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
+            this.lblFormTitle.Location = new System.Drawing.Point(20, 15);
+            this.lblFormTitle.Name = "lblFormTitle";
+            this.lblFormTitle.Size = new System.Drawing.Size(263, 36);
+            this.lblFormTitle.TabIndex = 20;
+            this.lblFormTitle.Text = "My Documents";
+            // 
+            // lblSubtitle
+            // 
+            this.lblSubtitle.AutoSize = true;
+            this.lblSubtitle.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Italic);
+            this.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.lblSubtitle.Location = new System.Drawing.Point(23, 55);
+            this.lblSubtitle.Name = "lblSubtitle";
+            this.lblSubtitle.Size = new System.Drawing.Size(386, 23);
+            this.lblSubtitle.TabIndex = 21;
+            this.lblSubtitle.Text = "Upload your required documents below";
+            // 
+            // lblRowResume
+            // 
+            this.lblRowResume.AutoSize = true;
+            this.lblRowResume.Font = new System.Drawing.Font("Verdana", 10F);
+            this.lblRowResume.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.lblRowResume.Location = new System.Drawing.Point(25, 150);
+            this.lblRowResume.Name = "lblRowResume";
+            this.lblRowResume.Size = new System.Drawing.Size(86, 20);
+            this.lblRowResume.TabIndex = 22;
+            this.lblRowResume.Text = "Resume:";
+            // 
+            // lblRowID
+            // 
+            this.lblRowID.AutoSize = true;
+            this.lblRowID.Font = new System.Drawing.Font("Verdana", 10F);
+            this.lblRowID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.lblRowID.Location = new System.Drawing.Point(25, 199);
+            this.lblRowID.Name = "lblRowID";
+            this.lblRowID.Size = new System.Drawing.Size(150, 20);
+            this.lblRowID.TabIndex = 23;
+            this.lblRowID.Text = "Government ID:";
+            // 
+            // lblRowTranscript
+            // 
+            this.lblRowTranscript.AutoSize = true;
+            this.lblRowTranscript.Font = new System.Drawing.Font("Verdana", 10F);
+            this.lblRowTranscript.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.lblRowTranscript.Location = new System.Drawing.Point(25, 248);
+            this.lblRowTranscript.Name = "lblRowTranscript";
+            this.lblRowTranscript.Size = new System.Drawing.Size(197, 20);
+            this.lblRowTranscript.TabIndex = 24;
+            this.lblRowTranscript.Text = "Transcript of Records:";
+            // 
+            // lblRowCert
+            // 
+            this.lblRowCert.AutoSize = true;
+            this.lblRowCert.Font = new System.Drawing.Font("Verdana", 10F);
+            this.lblRowCert.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.lblRowCert.Location = new System.Drawing.Point(25, 297);
+            this.lblRowCert.Name = "lblRowCert";
+            this.lblRowCert.Size = new System.Drawing.Size(188, 20);
+            this.lblRowCert.TabIndex = 25;
+            this.lblRowCert.Text = "Training Certificates:";
+            // 
             // frmMyDocuments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1154, 572);
+            this.ClientSize = new System.Drawing.Size(1154, 620);
             this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.btnSaveRemarks);
             this.Controls.Add(this.btnUploadCerts);
             this.Controls.Add(this.btnUploadTranscipt);
             this.Controls.Add(this.btnUploadID);
@@ -214,6 +279,12 @@
             this.Controls.Add(this.lblTranscriptStatus);
             this.Controls.Add(this.lblIDStatus);
             this.Controls.Add(this.lblResumeStatus);
+            this.Controls.Add(this.lblRowCert);
+            this.Controls.Add(this.lblRowTranscript);
+            this.Controls.Add(this.lblRowID);
+            this.Controls.Add(this.lblRowResume);
+            this.Controls.Add(this.lblSubtitle);
+            this.Controls.Add(this.lblFormTitle);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMyDocuments";
             this.Text = "frmMyDocuments";
@@ -236,8 +307,13 @@
         private System.Windows.Forms.Button btnUploadID;
         private System.Windows.Forms.Button btnUploadTranscipt;
         private System.Windows.Forms.Button btnUploadCerts;
-        private System.Windows.Forms.Button btnSaveRemarks;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Label lblFormTitle;
+        private System.Windows.Forms.Label lblSubtitle;
+        private System.Windows.Forms.Label lblRowResume;
+        private System.Windows.Forms.Label lblRowID;
+        private System.Windows.Forms.Label lblRowTranscript;
+        private System.Windows.Forms.Label lblRowCert;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

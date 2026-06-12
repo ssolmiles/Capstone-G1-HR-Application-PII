@@ -16,6 +16,7 @@
         private void InitializeComponent()
         {
             this.btnViewStatus = new System.Windows.Forms.Button();
+            this.btnJobVacancies = new System.Windows.Forms.Button();
             this.btnProfile = new System.Windows.Forms.Button();
             this.btnChangePass = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
@@ -42,13 +43,27 @@
             this.btnViewStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewStatus.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnViewStatus.ForeColor = System.Drawing.Color.White;
-            this.btnViewStatus.Location = new System.Drawing.Point(1036, 59);
+            this.btnViewStatus.Location = new System.Drawing.Point(1036, 63);
             this.btnViewStatus.Name = "btnViewStatus";
             this.btnViewStatus.Size = new System.Drawing.Size(230, 44);
             this.btnViewStatus.TabIndex = 1;
             this.btnViewStatus.Text = "View Application Status";
             this.btnViewStatus.UseVisualStyleBackColor = false;
             this.btnViewStatus.Click += new System.EventHandler(this.btnViewStatus_Click);
+            // 
+            // btnJobVacancies
+            // 
+            this.btnJobVacancies.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
+            this.btnJobVacancies.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnJobVacancies.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
+            this.btnJobVacancies.ForeColor = System.Drawing.Color.White;
+            this.btnJobVacancies.Location = new System.Drawing.Point(1036, 13);
+            this.btnJobVacancies.Name = "btnJobVacancies";
+            this.btnJobVacancies.Size = new System.Drawing.Size(230, 44);
+            this.btnJobVacancies.TabIndex = 10;
+            this.btnJobVacancies.Text = "Job Vacancies";
+            this.btnJobVacancies.UseVisualStyleBackColor = false;
+            this.btnJobVacancies.Click += new System.EventHandler(this.btnJobVacancies_Click);
             // 
             // btnProfile
             // 
@@ -235,6 +250,7 @@
             this.Controls.Add(this.btnChangePass);
             this.Controls.Add(this.btnProfile);
             this.Controls.Add(this.btnViewStatus);
+            this.Controls.Add(this.btnJobVacancies);
             this.ForeColor = System.Drawing.Color.Black;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmApplicantDashboard";
@@ -257,6 +273,7 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnViewStatus;
+        private System.Windows.Forms.Button btnJobVacancies;
         private System.Windows.Forms.Button btnProfile;
         private System.Windows.Forms.Button btnChangePass;
         private System.Windows.Forms.Button btnLogout;

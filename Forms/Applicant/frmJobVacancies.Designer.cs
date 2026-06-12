@@ -90,7 +90,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 470);
+            this.ClientSize = new System.Drawing.Size(1125, 508);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnApply);
@@ -102,6 +102,7 @@
             this.Load += new System.EventHandler(this.frmJobVacancies_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion

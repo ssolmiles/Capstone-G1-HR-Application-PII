@@ -166,6 +166,13 @@ namespace HRApplicantSystem.Forms.Applicant
             statusForm.Show();
         }
 
+        private void btnJobVacancies_Click(object sender, EventArgs e)
+        {
+            frmJobVacancies jobForm = new frmJobVacancies(userEmail);
+            jobForm.Show();
+            this.Hide();
+        }
+
         // --- Stub handlers ---
         private void lblStatus_Click(object sender, EventArgs e) { }
         private void lblMissingDocs_Click(object sender, EventArgs e) { }
@@ -173,14 +180,8 @@ namespace HRApplicantSystem.Forms.Applicant
         private void label1_Click(object sender, EventArgs e) { }
         private void textBox1_TextChanged(object sender, EventArgs e) { }
 
-        private void groupBox4_Enter(object sender, EventArgs e)
-        {
+        private void groupBox4_Enter(object sender, EventArgs e) { }
 
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
+        private void groupBox1_Enter(object sender, EventArgs e) { }
     }
 }

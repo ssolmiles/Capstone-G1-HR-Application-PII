@@ -146,11 +146,6 @@ namespace HRApplicantSystem.Forms.Applicant
         private void btnUploadCerts_Click(object sender, EventArgs e)
             => UploadDocument("cert", lblCertStatus);
 
-        private void btnSaveRemarks_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Remarks are set by HR and cannot be edited by applicants.");
-        }
-
         private void btnBack_Click(object sender, EventArgs e)
         {
             frmMyProfile profile = new frmMyProfile(userEmail);
