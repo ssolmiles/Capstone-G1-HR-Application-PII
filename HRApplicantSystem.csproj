@@ -188,6 +188,18 @@
     <Compile Include="Forms\frmRoleSelection.Designer.cs">
       <DependentUpon>frmRoleSelection.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\HR\frmHRApplicantProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HR\frmHRApplicantProfile.Designer.cs">
+      <DependentUpon>frmHRApplicantProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HR\frmHRViewDocuments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HR\frmHRViewDocuments.Designer.cs">
+      <DependentUpon>frmHRViewDocuments.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Maintenance\frmEmploymentTypes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -371,6 +383,9 @@
     <EmbeddedResource Include="Forms\frmRoleSelection.resx">
       <DependentUpon>frmRoleSelection.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HR\frmHRApplicantProfile.resx">
+      <DependentUpon>frmHRApplicantProfile.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\HR\frmHRLogin.resx">
       <DependentUpon>frmHRLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -382,6 +397,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\HR\frmApplicantList.resx">
       <DependentUpon>frmApplicantList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HR\frmHRViewDocuments.resx">
+      <DependentUpon>frmHRViewDocuments.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\HR\frmScreening.resx">
       <DependentUpon>frmScreening.cs</DependentUpon>

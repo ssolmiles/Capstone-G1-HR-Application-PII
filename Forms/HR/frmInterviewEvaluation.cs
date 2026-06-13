@@ -1,235 +1,95 @@
-﻿using System;
-using System.Globalization;
-using System.Windows.Forms;
+﻿using HRApplicantSystem.Helpers;
 using Microsoft.Data.SqlClient;
-using HRApplicantSystem.Helpers;
-
+using System;
+using System.Data;
+using System.Drawing;
+using System.Windows.Forms;
 namespace HRApplicantSystem.Forms.HR
 {
     public partial class frmInterviewEvaluation : Form
     {
-        private readonly int _applicationId;
-        private int? _scheduleId;
-        private int? _evaluationId;
-
-        public frmInterviewEvaluation(int applicationId)
+        private int _schedId = -1, _appId = -1;
+        public frmInterviewEvaluation()
         {
             InitializeComponent();
-            _applicationId = applicationId;
-
-            button1.Click += btnPass_Click;
-            button2.Click += btnFail_Click;
-            button3.Click += btnSave_Click;
-            button4.Click += btnNext_Click;
+            dgvInterviewed.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvInterviewed.ReadOnly = true; dgvInterviewed.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvInterviewed.AllowUserToAddRows = false; dgvInterviewed.RowHeadersVisible = false;
+            dgvInterviewed.SelectionChanged += (s, e) => {
+                if (dgvInterviewed.SelectedRows.Count > 0)
+                {
+                    _schedId = Convert.ToInt32(dgvInterviewed.SelectedRows[0].Cells["SchedID"].Value);
+                    _appId = Convert.ToInt32(dgvInterviewed.SelectedRows[0].Cells["AppID"].Value);
+                    lblResult.Text = "Selected: " + dgvInterviewed.SelectedRows[0].Cells["Applicant"].Value;
+                }
+            };
         }
 
-        private void frmInterviewEvaluation_Load(object sender, EventArgs e)
-        {
-            LoadApplicationInfo();
-        }
+        private void frmInterviewEvaluation_Load(object s, EventArgs e) => LoadData();
 
-        private void LoadApplicationInfo()
+        private void LoadData()
         {
             try
             {
                 using (var conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
+                    string sql = @"SELECT s.schedule_id AS [SchedID], a.application_id AS [AppID],
+                    ap.full_name AS [Applicant], p.title AS [Position],
+                    it.label AS [Interview Type], s.scheduled_date AS [Date]
+                    FROM interview_schedules s
+                    INNER JOIN applications a ON s.application_id=a.application_id
+                    INNER JOIN applicants ap ON a.applicant_id=ap.applicant_id
+                    INNER JOIN job_vacancies v ON a.vacancy_id=v.vacancy_id
+                    INNER JOIN positions p ON v.position_id=p.position_id
+                    INNER JOIN interview_types it ON s.interview_type_id=it.interview_type_id
+                    WHERE s.status='completed' ORDER BY s.scheduled_date DESC";
+                    var ada = new SqlDataAdapter(sql, conn); var dt = new DataTable(); ada.Fill(dt);
+                    dgvInterviewed.DataSource = dt;
+                    if (dgvInterviewed.Columns["SchedID"] != null) dgvInterviewed.Columns["SchedID"].Visible = false;
+                    if (dgvInterviewed.Columns["AppID"] != null) dgvInterviewed.Columns["AppID"].Visible = false;
+                }
+            }
+            catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
+        }
 
-                    // Applicant + job info
-                    string query = @"
-                        SELECT ap.full_name AS ApplicantName, p.title AS JobTitle
-                        FROM applications a
-                        INNER JOIN applicants ap   ON ap.applicant_id = a.applicant_id
-                        INNER JOIN job_vacancies jv ON jv.vacancy_id = a.vacancy_id
-                        INNER JOIN positions p      ON p.position_id = jv.position_id
-                        WHERE a.application_id = @id";
-
-                    using (var cmd = new SqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@id", _applicationId);
-                        using (var reader = cmd.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                lblApplicantName.Text = reader["ApplicantName"].ToString();
-                                lblJobApplied.Text = reader["JobTitle"].ToString();
-                            }
-                            else
-                            {
-                                lblApplicantName.Text = "(unknown)";
-                                lblJobApplied.Text = "(unknown)";
-                            }
-                        }
-                    }
-
-                    // Latest interview schedule for this application
+        private void Save(string result)
+        {
+            if (_schedId == -1) { MessageBox.Show("Select a completed interview."); return; }
+            if (!decimal.TryParse(txtScore.Text.Trim(), out decimal score))
+            { MessageBox.Show("Enter a valid number for score."); return; }
+            try
+            {
+                using (var conn = DatabaseHelper.GetConnection())
+                {
+                    conn.Open();
                     using (var cmd = new SqlCommand(
-                        "SELECT TOP 1 schedule_id FROM interview_schedules WHERE application_id = @id ORDER BY schedule_id DESC", conn))
+                        @"INSERT INTO interview_evaluations
+                          (schedule_id,application_id,score,remarks,result,recommendation,evaluated_by,evaluated_at)
+                          VALUES(@sid,@aid,@sc,@rm,@rs,@rec,@by,GETDATE())", conn))
                     {
-                        cmd.Parameters.AddWithValue("@id", _applicationId);
-                        var result = cmd.ExecuteScalar();
-                        if (result != null) _scheduleId = Convert.ToInt32(result);
-                    }
-
-                    // Existing evaluation, if any
-                    using (var cmd = new SqlCommand(@"
-                        SELECT TOP 1 evaluation_id, score, remarks, recommendation, result
-                        FROM interview_evaluations
-                        WHERE application_id = @id
-                        ORDER BY evaluation_id DESC", conn))
-                    {
-                        cmd.Parameters.AddWithValue("@id", _applicationId);
-                        using (var reader = cmd.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                _evaluationId = Convert.ToInt32(reader["evaluation_id"]);
-
-                                if (reader["score"] != DBNull.Value)
-                                    txtScore.Text = Convert.ToDecimal(reader["score"]).ToString(CultureInfo.InvariantCulture);
-
-                                if (reader["remarks"] != DBNull.Value)
-                                    txtRemarks.Text = reader["remarks"].ToString();
-
-                                if (reader["recommendation"] != DBNull.Value)
-                                    txtRecommendation.Text = reader["recommendation"].ToString();
-
-                                string result = reader["result"] as string;
-                                if (result == "pass")
-                                    SetResult("Result: Pass", true);
-                                else if (result == "fail")
-                                    SetResult("Result: Fail", false);
-                            }
-                        }
+                        cmd.Parameters.AddWithValue("@sid", _schedId);
+                        cmd.Parameters.AddWithValue("@aid", _appId);
+                        cmd.Parameters.AddWithValue("@sc", score);
+                        cmd.Parameters.AddWithValue("@rm", txtRemarks.Text.Trim());
+                        cmd.Parameters.AddWithValue("@rs", result);
+                        cmd.Parameters.AddWithValue("@rec", txtRecommendation.Text.Trim());
+                        cmd.Parameters.AddWithValue("@by", SessionManager.CurrentUserID);
+                        cmd.ExecuteNonQuery();
                     }
                 }
+                string next = result == "pass" ? "screened" : "rejected";
+                StatusHistoryLogger.LogStatusChange(_appId, "interviewed", next,
+                    SessionManager.CurrentUserID, $"Evaluation: {result}, score {score}.");
+                lblResult.Text = $"Result: {result.ToUpper()}";
+                lblResult.ForeColor = result == "pass" ? Color.Green : Color.Red;
+                MessageBox.Show($"Saved — {result.ToUpper()}"); LoadData();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loading application: " + ex.Message);
-            }
+            catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
         }
-
-        private void SetResult(string text, bool pass)
-        {
-            lblResult.Text = text;
-            lblResult.ForeColor = pass
-                ? System.Drawing.Color.FromArgb(26, 122, 60)
-                : System.Drawing.Color.FromArgb(192, 57, 43);
-        }
-
-        private void btnPass_Click(object sender, EventArgs e)
-        {
-            SetResult("Result: Pass", true);
-            MessageBox.Show("Applicant marked as PASS.\nScore: " + txtScore.Text + "\nRemarks: " + txtRemarks.Text);
-        }
-
-        private void btnFail_Click(object sender, EventArgs e)
-        {
-            SetResult("Result: Fail", false);
-            MessageBox.Show("Applicant marked as FAIL.\nScore: " + txtScore.Text + "\nRemarks: " + txtRemarks.Text);
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            if (!decimal.TryParse(txtScore.Text, NumberStyles.Number, CultureInfo.InvariantCulture, out decimal score))
-            {
-                MessageBox.Show("Please enter a valid numeric score (0-100).");
-                return;
-            }
-
-            string result;
-            if (lblResult.Text == "Result: Pass") result = "pass";
-            else if (lblResult.Text == "Result: Fail") result = "fail";
-            else
-            {
-                MessageBox.Show("Please mark the result as Pass or Fail before saving.");
-                return;
-            }
-
-            try
-            {
-                int userId = SessionManager.CurrentUser?.UserID ?? 0;
-
-                using (var conn = DatabaseHelper.GetConnection())
-                {
-                    conn.Open();
-
-                    if (_evaluationId.HasValue)
-                    {
-                        string update = @"
-                            UPDATE interview_evaluations
-                            SET score = @score, remarks = @remarks, recommendation = @recommendation,
-                                result = @result, evaluated_by = @userId, evaluated_at = @now
-                            WHERE evaluation_id = @evalId";
-
-                        using (var cmd = new SqlCommand(update, conn))
-                        {
-                            cmd.Parameters.AddWithValue("@score", score);
-                            cmd.Parameters.AddWithValue("@remarks", string.IsNullOrWhiteSpace(txtRemarks.Text) ? (object)DBNull.Value : txtRemarks.Text.Trim());
-                            cmd.Parameters.AddWithValue("@recommendation", string.IsNullOrWhiteSpace(txtRecommendation.Text) ? (object)DBNull.Value : txtRecommendation.Text.Trim());
-                            cmd.Parameters.AddWithValue("@result", result);
-                            cmd.Parameters.AddWithValue("@userId", userId);
-                            cmd.Parameters.AddWithValue("@now", DateTime.Now);
-                            cmd.Parameters.AddWithValue("@evalId", _evaluationId.Value);
-                            cmd.ExecuteNonQuery();
-                        }
-                    }
-                    else
-                    {
-                        string insert = @"
-                            INSERT INTO interview_evaluations
-                                (schedule_id, application_id, score, remarks, recommendation, result, evaluated_by, evaluated_at)
-                            OUTPUT INSERTED.evaluation_id
-                            VALUES
-                                (@scheduleId, @appId, @score, @remarks, @recommendation, @result, @userId, @now)";
-
-                        using (var cmd = new SqlCommand(insert, conn))
-                        {
-                            cmd.Parameters.AddWithValue("@scheduleId", (object)_scheduleId ?? DBNull.Value);
-                            cmd.Parameters.AddWithValue("@appId", _applicationId);
-                            cmd.Parameters.AddWithValue("@score", score);
-                            cmd.Parameters.AddWithValue("@remarks", string.IsNullOrWhiteSpace(txtRemarks.Text) ? (object)DBNull.Value : txtRemarks.Text.Trim());
-                            cmd.Parameters.AddWithValue("@recommendation", string.IsNullOrWhiteSpace(txtRecommendation.Text) ? (object)DBNull.Value : txtRecommendation.Text.Trim());
-                            cmd.Parameters.AddWithValue("@result", result);
-                            cmd.Parameters.AddWithValue("@userId", userId);
-                            cmd.Parameters.AddWithValue("@now", DateTime.Now);
-                            _evaluationId = Convert.ToInt32(cmd.ExecuteScalar());
-                        }
-                    }
-                }
-
-                string newAppStatus = result == "pass" ? "interviewed" : "rejected";
-                StatusHistoryLoggerSafe(newAppStatus, $"Interview evaluation result: {result}");
-
-                string summary = $"Score: {txtScore.Text}\nRemarks: {txtRemarks.Text}\nResult: {lblResult.Text}\nRecommendation: {txtRecommendation.Text}";
-                MessageBox.Show("Evaluation saved:\n" + summary);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error saving evaluation: " + ex.Message);
-            }
-        }
-
-        private void btnNext_Click(object sender, EventArgs e)
-        {
-            frmHiringDecision finalForm = new frmHiringDecision(_applicationId);
-            finalForm.Show();
-            this.Hide();
-        }
-
-        private void StatusHistoryLoggerSafe(string newStatus, string remarks)
-        {
-            try
-            {
-                int userId = SessionManager.CurrentUser?.UserID ?? 0;
-                StatusHistoryLogger.LogStatusChange(_applicationId, null, newStatus, userId, remarks);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Warning: status history could not be recorded: " + ex.Message);
-            }
-        }
+        private void btnPass_Click(object s, EventArgs e) => Save("pass");
+        private void btnFail_Click(object s, EventArgs e) => Save("fail");
+        private void btnNext_Click(object s, EventArgs e) { new frmHiringDecision().Show(); this.Hide(); }
+        private void btnBack_Click(object s, EventArgs e) { new frmInterviewSchedule().Show(); this.Close(); }
     }
 }

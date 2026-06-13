@@ -99,40 +99,69 @@ namespace HRApplicantSystem.Forms.Applicant
         private void UploadDocument(string docTypeKeyword, Label statusLabel)
         {
             if (openFileDialog1.ShowDialog() != DialogResult.OK) return;
-
             string filePath = openFileDialog1.FileName;
-
             try
             {
-                using (SqlConnection conn = DatabaseHelper.GetConnection())
+                using (var conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
                     int applicantId = GetApplicantId(conn);
                     if (applicantId == -1) return;
 
-                    using (SqlCommand cmd = new SqlCommand(
-                        @"UPDATE applicant_documents 
-                          SET file_path = @FilePath, status = 'submitted', uploaded_at = GETDATE()
-                          WHERE applicant_id = @ApplicantId
-                            AND req_type_id = (
-                              SELECT TOP 1 req_type_id FROM requirement_types 
-                              WHERE label LIKE @Keyword)", conn))
+                    // Check if a record already exists for this doc type
+                    using (var check = new SqlCommand(
+                        @"SELECT COUNT(1) FROM applicant_documents
+                  WHERE applicant_id=@aid
+                  AND req_type_id=(SELECT TOP 1 req_type_id FROM requirement_types
+                                   WHERE label LIKE @kw)", conn))
                     {
-                        cmd.Parameters.AddWithValue("@FilePath", filePath);
-                        cmd.Parameters.AddWithValue("@ApplicantId", applicantId);
-                        cmd.Parameters.AddWithValue("@Keyword", "%" + docTypeKeyword + "%");
-                        cmd.ExecuteNonQuery();
+                        check.Parameters.AddWithValue("@aid", applicantId);
+                        check.Parameters.AddWithValue("@kw", "%" + docTypeKeyword + "%");
+                        bool exists = Convert.ToInt32(check.ExecuteScalar()) > 0;
+
+                        if (exists)
+                        {
+                            // Update existing record
+                            using (var cmd = new SqlCommand(
+                                @"UPDATE applicant_documents
+                          SET file_path=@fp, status='submitted', uploaded_at=GETDATE()
+                          WHERE applicant_id=@aid
+                          AND req_type_id=(SELECT TOP 1 req_type_id FROM requirement_types
+                                           WHERE label LIKE @kw)", conn))
+                            {
+                                cmd.Parameters.AddWithValue("@fp", filePath);
+                                cmd.Parameters.AddWithValue("@aid", applicantId);
+                                cmd.Parameters.AddWithValue("@kw", "%" + docTypeKeyword + "%");
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                        else
+                        {
+                            // Insert new record
+                            using (var cmd = new SqlCommand(
+                                @"INSERT INTO applicant_documents
+                            (applicant_id, req_type_id, file_path, status, uploaded_at)
+                          VALUES
+                            (@aid,
+                             (SELECT TOP 1 req_type_id FROM requirement_types
+                              WHERE label LIKE @kw),
+                             @fp, 'submitted', GETDATE())", conn))
+                            {
+                                cmd.Parameters.AddWithValue("@aid", applicantId);
+                                cmd.Parameters.AddWithValue("@kw", "%" + docTypeKeyword + "%");
+                                cmd.Parameters.AddWithValue("@fp", filePath);
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
                     }
                 }
-
-                statusLabel.Text = "Submitted";
-                statusLabel.ForeColor = Color.Green;
+                statusLabel.Text = "Submitted ✓";
+                statusLabel.ForeColor = System.Drawing.Color.Green;
+                MessageBox.Show("Document uploaded successfully!");
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error saving: " + ex.Message);
-            }
+            catch (Exception ex) { MessageBox.Show("Upload error: " + ex.Message); }
         }
+
 
         private void btnUploadResume_Click(object sender, EventArgs e)
             => UploadDocument("resume", lblResumeStatus);
@@ -154,5 +183,10 @@ namespace HRApplicantSystem.Forms.Applicant
         }
 
         private void lblIDStatus_Click(object sender, EventArgs e) { }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

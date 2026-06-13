@@ -32,9 +32,9 @@ namespace HRApplicantSystem.Forms.Applicant
                     conn.Open();
                     using (SqlCommand cmd = new SqlCommand(
                         @"SELECT full_name, birthdate, address, city, province, zip_code,
-                                 phone, email,
-                                 school, degree, year_grad, skills,
-                                 company, position, duration
+                           phone, email, gender,
+                           school, degree, year_grad, skills,
+                           company, position, duration
                           FROM applicants WHERE email = @Email", conn))
                     {
                         cmd.Parameters.AddWithValue("@Email", userEmail);
@@ -116,22 +116,22 @@ namespace HRApplicantSystem.Forms.Applicant
                 {
                     conn.Open();
                     using (SqlCommand cmd = new SqlCommand(
-                        @"UPDATE applicants SET 
-                            full_name = @FullName,
-                            birthdate = @Bday,
+                        @"full_name = @FullName,  -- NOT first_name or name
+                            birthdate = @Bday,      -- NOT date_of_birth
                             address   = @Address,
                             city      = @City,
                             province  = @Province,
                             zip_code  = @Zip,
-                            phone     = @Phone,
-                            school    = @School,
+                            phone     = @Phone,     -- NOT phone_number
+                            school    = @School,    -- NOT school_name
                             degree    = @Degree,
-                            year_grad = @YearGrad,
+                            year_grad = @YearGrad,  -- NOT graduation_year
                             skills    = @Skills,
                             company   = @Company,
                             position  = @Position,
                             duration  = @Duration
-                          WHERE email = @OriginalEmail", conn))
+                        WHERE email = @OriginalEmail
+                        ", conn))
                     {
                         string mi = txtMI.Text.Trim();
                         string fullName = string.IsNullOrEmpty(mi)
@@ -224,6 +224,7 @@ namespace HRApplicantSystem.Forms.Applicant
 
         private void btnDocs_Click(object sender, EventArgs e)
         {
+            new frmMyDocuments(userEmail).ShowDialog();
             var frm = new frmMyDocuments(userEmail);
             frm.ShowDialog();
         }

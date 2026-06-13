@@ -1,8 +1,9 @@
-﻿using System;
-using System.Data;
-using System.Windows.Forms;
+﻿using HRApplicantSystem.Helpers;
 using Microsoft.Data.SqlClient;
-using HRApplicantSystem.Helpers;
+using System;
+using System.Data;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace HRApplicantSystem.Forms.HR
 {
@@ -11,161 +12,94 @@ namespace HRApplicantSystem.Forms.HR
         public frmApplicantReview()
         {
             InitializeComponent();
-
-            btnSearch.Click += btnSearch_Click;
-            btnClear.Click += btnClear_Click;
-            btnViewProfile.Click += btnViewProfile_Click;
-            btnViewDocuments.Click += btnViewDocuments_Click;
-            btnLockReview.Click += btnLockReview_Click;
-            btnNext.Click += btnNext_Click;
+            dgvApplications.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvApplications.ReadOnly = true; dgvApplications.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvApplications.AllowUserToAddRows = false; dgvApplications.RowHeadersVisible = false;
         }
 
-        private void frmApplicantReview_Load(object sender, EventArgs e)
-        {
-            LoadData(null);
-        }
+        private void frmHRApplicantReview_Load(object s, EventArgs e) => Load2();
 
-        private void LoadData(string searchTerm)
+        private void Load2(string q = "")
         {
             try
             {
                 using (var conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
-
-                    string query = @"
-                        SELECT
-                            a.application_id   AS ApplicationID,
-                            ap.full_name        AS Applicant,
-                            p.title             AS [Position],
-                            d.name              AS Department,
-                            a.status            AS Status,
-                            a.submitted_at      AS Submitted
+                    string sql = @"SELECT a.application_id AS [AppID],
+                        ap.applicant_id AS [ApplicantID],
+                        ap.full_name AS [Applicant], ap.email AS [Email],
+                        p.title AS [Position], d.name AS [Department],
+                        a.status AS [Status], a.submitted_at AS [Submitted]
                         FROM applications a
-                        INNER JOIN applicants ap     ON ap.applicant_id = a.applicant_id
-                        INNER JOIN job_vacancies jv  ON jv.vacancy_id = a.vacancy_id
-                        INNER JOIN positions p       ON p.position_id = jv.position_id
-                        LEFT JOIN departments d      ON d.department_id = jv.department_id
-                        WHERE (@search IS NULL
-                               OR ap.full_name LIKE '%' + @search + '%'
-                               OR p.title LIKE '%' + @search + '%')
-                        ORDER BY a.last_updated DESC";
-
-                    var adapter = new SqlDataAdapter(query, conn);
-                    adapter.SelectCommand.Parameters.AddWithValue("@search",
-                        string.IsNullOrWhiteSpace(searchTerm) ? (object)DBNull.Value : searchTerm.Trim());
-
-                    var table = new DataTable();
-                    adapter.Fill(table);
-
-                    dgvApplicants.DataSource = table;
-                    dgvApplicants.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-                    if (dgvApplicants.Columns.Contains("ApplicationID"))
-                        dgvApplicants.Columns["ApplicationID"].Visible = false;
-
-                    lblCount.Text = $"{table.Rows.Count} applicant(s)";
+                        INNER JOIN applicants ap ON a.applicant_id=ap.applicant_id
+                        INNER JOIN job_vacancies v ON a.vacancy_id=v.vacancy_id
+                        INNER JOIN positions p ON v.position_id=p.position_id
+                        INNER JOIN departments d ON v.department_id=d.department_id
+                        WHERE a.status IN ('submitted','under_review')";
+                    if (!string.IsNullOrEmpty(q))
+                        sql += " AND (ap.full_name LIKE @q OR p.title LIKE @q)";
+                    sql += " ORDER BY a.submitted_at DESC";
+                    var ada = new SqlDataAdapter(sql, conn);
+                    if (!string.IsNullOrEmpty(q))
+                        ada.SelectCommand.Parameters.AddWithValue("@q", "%" + q + "%");
+                    var dt = new DataTable(); ada.Fill(dt);
+                    dgvApplications.DataSource = dt;
+                    if (dgvApplications.Columns["AppID"] != null) dgvApplications.Columns["AppID"].Visible = false;
+                    if (dgvApplications.Columns["ApplicantID"] != null) dgvApplications.Columns["ApplicantID"].Visible = false;
+                    lblCount.Text = $"{dt.Rows.Count} application(s)";
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loading applicants: " + ex.Message);
-            }
+            catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        private int AppId()
         {
-            LoadData(txtSearch.Text);
+            if (dgvApplications.SelectedRows.Count == 0) return -1;
+            return Convert.ToInt32(dgvApplications.SelectedRows[0].Cells["AppID"].Value);
+        }
+        private int AplId()
+        {
+            if (dgvApplications.SelectedRows.Count == 0) return -1;
+            return Convert.ToInt32(dgvApplications.SelectedRows[0].Cells["ApplicantID"].Value);
+        }
+        private string AplEmail()
+        {
+            if (dgvApplications.SelectedRows.Count == 0) return null;
+            return dgvApplications.SelectedRows[0].Cells["Email"].Value?.ToString();
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
+        private void btnSearch_Click(object s, EventArgs e) => Load2(txtSearch.Text.Trim());
+
+        private void btnViewProfile_Click(object s, EventArgs e)
         {
-            txtSearch.Text = "";
-            LoadData(null);
+            var e2 = AplEmail(); if (e2 == null) { MessageBox.Show("Select first."); return; }
+            new frmHRApplicantProfile(e2).ShowDialog();
         }
 
-        private bool TryGetSelectedApplicationId(out int applicationId)
+        private void btnViewDocuments_Click(object s, EventArgs e)
         {
-            applicationId = 0;
-            if (dgvApplicants.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Please select an applicant first.");
-                return false;
-            }
-
-            applicationId = Convert.ToInt32(dgvApplicants.SelectedRows[0].Cells["ApplicationID"].Value);
-            return true;
+            int id = AplId(); if (id == -1) { MessageBox.Show("Select first."); return; }
+            new frmHRViewDocuments(id).ShowDialog();
         }
 
-        private void btnViewProfile_Click(object sender, EventArgs e)
+        private void btnLockReview_Click(object s, EventArgs e)
         {
-            if (!TryGetSelectedApplicationId(out int applicationId)) return;
-            MessageBox.Show($"Viewing profile for application #{applicationId}.");
-            // TODO: open applicant profile view (frmMyProfile read-only) for this applicant
-        }
-
-        private void btnViewDocuments_Click(object sender, EventArgs e)
-        {
-            if (!TryGetSelectedApplicationId(out int applicationId)) return;
-            MessageBox.Show($"Viewing documents for application #{applicationId}.");
-            // TODO: open document viewer for this applicant
-        }
-
-        private void btnLockReview_Click(object sender, EventArgs e)
-        {
-            if (!TryGetSelectedApplicationId(out int applicationId)) return;
-
+            int id = AppId();
+            if (id == -1) { MessageBox.Show("Select first."); return; }
             try
             {
-                using (var conn = DatabaseHelper.GetConnection())
-                {
-                    conn.Open();
-                    using (var cmd = new SqlCommand(
-                        "UPDATE applications SET status = 'under_review', last_updated = @now WHERE application_id = @id AND status = 'submitted'", conn))
-                    {
-                        cmd.Parameters.AddWithValue("@now", DateTime.Now);
-                        cmd.Parameters.AddWithValue("@id", applicationId);
-                        int rows = cmd.ExecuteNonQuery();
-
-                        if (rows > 0)
-                        {
-                            StatusHistoryLoggerSafe(applicationId, "submitted", "under_review", "Locked for review by HR");
-                            MessageBox.Show("Application locked for review.");
-                            LoadData(txtSearch.Text);
-                        }
-                        else
-                        {
-                            MessageBox.Show("This application is not in 'submitted' status, or is already locked.");
-                        }
-                    }
-                }
+                StatusHistoryLogger.LogStatusChange(id, "submitted", "under_review",
+                    SessionManager.CurrentUserID, "Locked for review.");
+                MessageBox.Show("Application locked for review."); Load2();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error locking application: " + ex.Message);
-            }
+            catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
         }
 
-        private void btnNext_Click(object sender, EventArgs e)
-        {
-            if (!TryGetSelectedApplicationId(out int applicationId)) return;
+        private void btnNext_Click(object s, EventArgs e)
+        { new frmScreening().Show(); this.Hide(); }
 
-            frmScreening screeningForm = new frmScreening(applicationId);
-            screeningForm.Show();
-            this.Hide();
-        }
-
-        private void StatusHistoryLoggerSafe(int applicationId, string oldStatus, string newStatus, string remarks)
-        {
-            try
-            {
-                int userId = SessionManager.CurrentUser?.UserID ?? 0;
-                StatusHistoryLogger.LogStatusChange(applicationId, oldStatus, newStatus, userId, remarks);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Warning: status history could not be recorded: " + ex.Message);
-            }
-        }
+        private void btnBack_Click(object s, EventArgs e)
+        { new frmHRDashboard().Show(); this.Close(); }
     }
 }

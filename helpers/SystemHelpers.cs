@@ -60,6 +60,8 @@ namespace HRApplicantSystem.Helpers
     {
         public static User CurrentUser { get; private set; }
         public static string CurrentRole => CurrentUser?.Role;
+
+        public static int CurrentUserID => CurrentUser?.UserID ?? 0;
         public static Applicant CurrentApplicant { get; private set; }
 
         public static bool IsLoggedIn => CurrentUser != null;

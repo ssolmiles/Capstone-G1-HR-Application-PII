@@ -1,7 +1,8 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using HRApplicantSystem.Forms.HR;
 using HRApplicantSystem.Helpers;
 using Microsoft.Data.SqlClient;
+using System;
+using System.Windows.Forms;
 
 namespace HRApplicantSystem.Forms.Applicant
 {
@@ -22,52 +23,85 @@ namespace HRApplicantSystem.Forms.Applicant
             this.Close();
         }
 
-        private void btnLogIn_Click(object sender, EventArgs e)
+        private void btnLogin_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtEmail.Text) || string.IsNullOrWhiteSpace(txtPassword.Text))
+            { MessageBox.Show("Enter email and password."); return; }
+
             try
             {
-                using (SqlConnection conn = DatabaseHelper.GetConnection())
+                using (var conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
-
-                    using (SqlCommand cmd = new SqlCommand(
-                        "SELECT password FROM applicants WHERE email = @Email AND (is_active = 1 OR is_active IS NULL)",
-                        conn))
+                    using (var cmd = new SqlCommand(
+                        "SELECT user_id, full_name, password, role FROM users" +
+                        " WHERE email=@e AND is_active=1", conn))
                     {
-                        cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
-
-                        object result = cmd.ExecuteScalar();
-
-                        if (result != null &&
-                            BCrypt.Net.BCrypt.Verify(
-                                txtPassword.Text.Trim(),
-                                result.ToString()))
+                        cmd.Parameters.AddWithValue("@e", txtEmail.Text.Trim());
+                        using (var dr = cmd.ExecuteReader())
                         {
-                            frmApplicantDashboard dash =
-                                new frmApplicantDashboard(txtEmail.Text.Trim());
+                            if (!dr.Read()) { ShowFail(); return; }
 
-                            dash.Show();
+                            int uid = Convert.ToInt32(dr["user_id"]);
+                            string name = dr["full_name"].ToString();
+                            string hash = dr["password"].ToString();
+                            string role = dr["role"].ToString();
+                            dr.Close();
+
+                            bool ok = false;
+                            bool needsUpgrade = false;
+
+                            if (hash.StartsWith("$2"))  // BCrypt hash
+                            {
+                                ok = BCrypt.Net.BCrypt.Verify(txtPassword.Text.Trim(), hash);
+                            }
+                            else  // plaintext (seed data) — compare directly
+                            {
+                                ok = hash == txtPassword.Text.Trim();
+                                needsUpgrade = ok;
+                            }
+
+                            if (!ok) { ShowFail(); return; }
+
+                            // Auto-upgrade plaintext password to BCrypt
+                            if (needsUpgrade)
+                            {
+                                string newHash = BCrypt.Net.BCrypt.HashPassword(txtPassword.Text.Trim());
+                                using (var upd = new SqlCommand(
+                                    "UPDATE users SET password=@h WHERE user_id=@id", conn))
+                                {
+                                    upd.Parameters.AddWithValue("@h", newHash);
+                                    upd.Parameters.AddWithValue("@id", uid);
+                                    upd.ExecuteNonQuery();
+                                }
+                            }
+
+                            // Store complete user in session (with UserID!)
+                            SessionManager.Login(new HRApplicantSystem.Models.User
+                            {
+                                UserID = uid,
+                                FullName = name,
+                                Email = txtEmail.Text.Trim(),
+                                Role = role,
+                                IsActive = true
+                            });
+
+                            new frmHRDashboard().Show();
                             this.Hide();
-                        }
-                        else
-                        {
-                            MessageBox.Show(
-                                "Invalid Email or Password",
-                                "Login Failed",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-
-                            txtPassword.Clear();
-                            txtPassword.Focus();
                         }
                     }
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
+            catch (Exception ex) { MessageBox.Show("Login error: " + ex.Message); }
         }
+
+        private void ShowFail()
+        {
+            MessageBox.Show("Invalid email or password.", "Login Failed",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            txtPassword.Clear(); txtPassword.Focus();
+        }
+
 
         private void MigratePasswords()
         {

@@ -43,84 +43,84 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
-            //
+            // 
             // txtFN
-            //
+            // 
             this.txtFN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFN.Font = new System.Drawing.Font("Verdana", 11F);
             this.txtFN.Location = new System.Drawing.Point(206, 42);
             this.txtFN.Name = "txtFN";
             this.txtFN.Size = new System.Drawing.Size(265, 30);
             this.txtFN.TabIndex = 1;
-            //
+            // 
             // txtMI
-            //
+            // 
             this.txtMI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMI.Font = new System.Drawing.Font("Verdana", 11F);
             this.txtMI.Location = new System.Drawing.Point(206, 84);
             this.txtMI.Name = "txtMI";
             this.txtMI.Size = new System.Drawing.Size(265, 30);
             this.txtMI.TabIndex = 2;
-            //
+            // 
             // txtLN
-            //
+            // 
             this.txtLN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLN.Font = new System.Drawing.Font("Verdana", 11F);
             this.txtLN.Location = new System.Drawing.Point(206, 126);
             this.txtLN.Name = "txtLN";
             this.txtLN.Size = new System.Drawing.Size(265, 30);
             this.txtLN.TabIndex = 3;
-            //
+            // 
             // dtpBirthday
-            //
-            this.dtpBirthday.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            // 
             this.dtpBirthday.CustomFormat = "MMMM dd, yyyy";
             this.dtpBirthday.Font = new System.Drawing.Font("Verdana", 11F);
+            this.dtpBirthday.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpBirthday.Location = new System.Drawing.Point(206, 168);
             this.dtpBirthday.Name = "dtpBirthday";
             this.dtpBirthday.Size = new System.Drawing.Size(265, 30);
             this.dtpBirthday.TabIndex = 4;
             this.dtpBirthday.ValueChanged += new System.EventHandler(this.dtpBirthday_ValueChanged);
-            //
+            // 
             // txtEmail
-            //
+            // 
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEmail.Font = new System.Drawing.Font("Verdana", 11F);
             this.txtEmail.Location = new System.Drawing.Point(176, 43);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(265, 30);
             this.txtEmail.TabIndex = 9;
-            //
+            // 
             // txtPassword
-            //
+            // 
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPassword.Font = new System.Drawing.Font("Verdana", 11F);
             this.txtPassword.Location = new System.Drawing.Point(176, 87);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '\u25CF';
+            this.txtPassword.PasswordChar = '●';
             this.txtPassword.Size = new System.Drawing.Size(265, 30);
             this.txtPassword.TabIndex = 10;
-            //
+            // 
             // txtPhone
-            //
+            // 
             this.txtPhone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhone.Font = new System.Drawing.Font("Verdana", 11F);
-            this.txtPhone.Location = new System.Drawing.Point(248, 250);
+            this.txtPhone.Location = new System.Drawing.Point(389, 245);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(223, 30);
             this.txtPhone.TabIndex = 6;
-            //
+            // 
             // cboCountry
-            //
+            // 
             this.cboCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCountry.Font = new System.Drawing.Font("Verdana", 10F);
             this.cboCountry.Location = new System.Drawing.Point(73, 252);
             this.cboCountry.Name = "cboCountry";
             this.cboCountry.Size = new System.Drawing.Size(160, 28);
             this.cboCountry.TabIndex = 7;
-            //
+            // 
             // chkAgree
-            //
+            // 
             this.chkAgree.AutoSize = true;
             this.chkAgree.Font = new System.Drawing.Font("Verdana", 9F);
             this.chkAgree.Location = new System.Drawing.Point(10, 295);
@@ -128,9 +128,9 @@
             this.chkAgree.Size = new System.Drawing.Size(515, 22);
             this.chkAgree.TabIndex = 8;
             this.chkAgree.Text = "I understand that my information will be used for hiring purposes.";
-            //
+            // 
             // btnRegister
-            //
+            // 
             this.btnRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
             this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegister.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Bold);
@@ -142,9 +142,9 @@
             this.btnRegister.Text = "Create Account";
             this.btnRegister.UseVisualStyleBackColor = false;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
-            //
+            // 
             // lblFN
-            //
+            // 
             this.lblFN.AutoSize = true;
             this.lblFN.Font = new System.Drawing.Font("Verdana", 11F);
             this.lblFN.Location = new System.Drawing.Point(36, 42);
@@ -152,9 +152,9 @@
             this.lblFN.Size = new System.Drawing.Size(122, 23);
             this.lblFN.TabIndex = 0;
             this.lblFN.Text = "First Name:";
-            //
+            // 
             // lblMI
-            //
+            // 
             this.lblMI.AutoSize = true;
             this.lblMI.Font = new System.Drawing.Font("Verdana", 11F);
             this.lblMI.Location = new System.Drawing.Point(21, 84);
@@ -162,9 +162,9 @@
             this.lblMI.Size = new System.Drawing.Size(143, 23);
             this.lblMI.TabIndex = 2;
             this.lblMI.Text = "Middle Name:";
-            //
+            // 
             // lblLN
-            //
+            // 
             this.lblLN.AutoSize = true;
             this.lblLN.Font = new System.Drawing.Font("Verdana", 11F);
             this.lblLN.Location = new System.Drawing.Point(45, 126);
@@ -172,9 +172,9 @@
             this.lblLN.Size = new System.Drawing.Size(119, 23);
             this.lblLN.TabIndex = 3;
             this.lblLN.Text = "Last Name:";
-            //
+            // 
             // lblDOB
-            //
+            // 
             this.lblDOB.AutoSize = true;
             this.lblDOB.Font = new System.Drawing.Font("Verdana", 11F);
             this.lblDOB.Location = new System.Drawing.Point(23, 168);
@@ -182,9 +182,9 @@
             this.lblDOB.Size = new System.Drawing.Size(142, 23);
             this.lblDOB.TabIndex = 4;
             this.lblDOB.Text = "Date of Birth:";
-            //
+            // 
             // lblEmail
-            //
+            // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Verdana", 11F);
             this.lblEmail.Location = new System.Drawing.Point(21, 46);
@@ -192,9 +192,9 @@
             this.lblEmail.Size = new System.Drawing.Size(72, 23);
             this.lblEmail.TabIndex = 0;
             this.lblEmail.Text = "Email:";
-            //
+            // 
             // lblPasswordHint
-            //
+            // 
             this.lblPasswordHint.AutoSize = true;
             this.lblPasswordHint.Font = new System.Drawing.Font("Verdana", 9F);
             this.lblPasswordHint.ForeColor = System.Drawing.Color.Gray;
@@ -203,9 +203,9 @@
             this.lblPasswordHint.Size = new System.Drawing.Size(329, 18);
             this.lblPasswordHint.TabIndex = 11;
             this.lblPasswordHint.Text = "Use a strong password (min. 8 characters)";
-            //
+            // 
             // lblPassword
-            //
+            // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Verdana", 11F);
             this.lblPassword.Location = new System.Drawing.Point(21, 90);
@@ -213,19 +213,19 @@
             this.lblPassword.Size = new System.Drawing.Size(109, 23);
             this.lblPassword.TabIndex = 10;
             this.lblPassword.Text = "Password:";
-            //
+            // 
             // lblPhone
-            //
+            // 
             this.lblPhone.AutoSize = true;
             this.lblPhone.Font = new System.Drawing.Font("Verdana", 11F);
-            this.lblPhone.Location = new System.Drawing.Point(129, 250);
+            this.lblPhone.Location = new System.Drawing.Point(257, 252);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(117, 23);
             this.lblPhone.TabIndex = 6;
             this.lblPhone.Text = "Phone No.:";
-            //
+            // 
             // lblCountry
-            //
+            // 
             this.lblCountry.AutoSize = true;
             this.lblCountry.Font = new System.Drawing.Font("Verdana", 10F);
             this.lblCountry.Location = new System.Drawing.Point(10, 255);
@@ -233,9 +233,9 @@
             this.lblCountry.Size = new System.Drawing.Size(60, 20);
             this.lblCountry.TabIndex = 7;
             this.lblCountry.Text = "Code:";
-            //
+            // 
             // lblSubtitle
-            //
+            // 
             this.lblSubtitle.AutoSize = true;
             this.lblSubtitle.Font = new System.Drawing.Font("Verdana", 11F);
             this.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
@@ -244,9 +244,9 @@
             this.lblSubtitle.Size = new System.Drawing.Size(424, 23);
             this.lblSubtitle.TabIndex = 60;
             this.lblSubtitle.Text = "Fill in your basic information to get started";
-            //
+            // 
             // lblGender
-            //
+            // 
             this.lblGender.AutoSize = true;
             this.lblGender.Font = new System.Drawing.Font("Verdana", 11F);
             this.lblGender.Location = new System.Drawing.Point(79, 210);
@@ -254,18 +254,18 @@
             this.lblGender.Size = new System.Drawing.Size(88, 23);
             this.lblGender.TabIndex = 5;
             this.lblGender.Text = "Gender:";
-            //
+            // 
             // cboGender
-            //
+            // 
             this.cboGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboGender.Font = new System.Drawing.Font("Verdana", 11F);
             this.cboGender.Location = new System.Drawing.Point(206, 207);
             this.cboGender.Name = "cboGender";
-            this.cboGender.Size = new System.Drawing.Size(265, 31);
+            this.cboGender.Size = new System.Drawing.Size(265, 30);
             this.cboGender.TabIndex = 5;
-            //
+            // 
             // groupBox1
-            //
+            // 
             this.groupBox1.Controls.Add(this.lblFN);
             this.groupBox1.Controls.Add(this.txtFN);
             this.groupBox1.Controls.Add(this.lblMI);
@@ -289,9 +289,9 @@
             this.groupBox1.TabIndex = 56;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Personal Information";
-            //
+            // 
             // groupBox2
-            //
+            // 
             this.groupBox2.Controls.Add(this.lblEmail);
             this.groupBox2.Controls.Add(this.txtEmail);
             this.groupBox2.Controls.Add(this.lblPassword);
@@ -305,21 +305,21 @@
             this.groupBox2.TabIndex = 57;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Account Details";
-            //
+            // 
             // lblTitle
-            //
+            // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.BackColor = System.Drawing.SystemColors.Info;
             this.lblTitle.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.Navy;
             this.lblTitle.Location = new System.Drawing.Point(16, 41);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(346, 44);
+            this.lblTitle.Size = new System.Drawing.Size(323, 36);
             this.lblTitle.TabIndex = 59;
             this.lblTitle.Text = "Create an Account";
-            //
+            // 
             // frmApplicantRegister
-            //
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;

@@ -1,19 +1,89 @@
-﻿using System;
+﻿using HRApplicantSystem.Helpers;
+using Microsoft.Data.SqlClient;
+using System;
+using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
-using HRApplicantSystem.Helpers;
 
 namespace HRApplicantSystem.Forms.HR
 {
     public partial class frmApplicantList : Form
     {
-        public frmApplicantList()
-        {
-            InitializeComponent();
-        }
+        public frmApplicantList() { InitializeComponent(); }
 
         private void frmApplicantList_Load(object sender, EventArgs e)
-        {
+            => LoadApplicants();
 
+        private void LoadApplicants(string q = "")
+        {
+            try
+            {
+                using (var conn = DatabaseHelper.GetConnection())
+                {
+                    conn.Open();
+                    string sql = @"SELECT applicant_id AS [ID],
+                        full_name AS [Name], email AS [Email],
+                        phone AS [Phone], gender AS [Gender],
+                        city AS [City], school AS [School],
+                        degree AS [Degree], is_active AS [Active]
+                        FROM applicants";
+                    if (!string.IsNullOrEmpty(q))
+                        sql += " WHERE full_name LIKE @q OR email LIKE @q";
+                    sql += " ORDER BY full_name";
+                    var ada = new SqlDataAdapter(sql, conn);
+                    if (!string.IsNullOrEmpty(q))
+                        ada.SelectCommand.Parameters.AddWithValue("@q", "%" + q + "%");
+                    var dt = new DataTable();
+                    ada.Fill(dt);
+                    dgvApplicants.DataSource = dt;
+                    if (dgvApplicants.Columns["ID"] != null)
+                        dgvApplicants.Columns["ID"].Visible = false;
+                    // Colour Active column
+                    foreach (DataGridViewRow row in dgvApplicants.Rows)
+                    {
+                        bool active = row.Cells["Active"].Value != DBNull.Value
+                            && Convert.ToBoolean(row.Cells["Active"].Value);
+                        row.Cells["Active"].Value = active ? "Yes" : "No";
+                        row.Cells["Active"].Style.ForeColor = active ? Color.Green : Color.Red;
+                    }
+                    lblCount.Text = $"Total: {dt.Rows.Count} applicant(s)";
+                }
+            }
+            catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
         }
+
+        private int SelId()
+        {
+            if (dgvApplicants.SelectedRows.Count == 0) return -1;
+            return Convert.ToInt32(dgvApplicants.SelectedRows[0].Cells["ID"].Value);
+        }
+        private string SelEmail()
+        {
+            if (dgvApplicants.SelectedRows.Count == 0) return null;
+            return dgvApplicants.SelectedRows[0].Cells["Email"].Value?.ToString();
+        }
+
+        private void btnSearch_Click(object s, EventArgs e) => LoadApplicants(txtSearch.Text.Trim());
+        private void btnClear_Click(object s, EventArgs e) { txtSearch.Clear(); LoadApplicants(); }
+
+        private void btnViewProfile_Click(object s, EventArgs e)
+        {
+            string email = SelEmail();
+            if (email == null) { MessageBox.Show("Select an applicant first."); return; }
+            new frmHRApplicantProfile(email).ShowDialog();
+        }
+
+        private void btnViewDocuments_Click(object s, EventArgs e)
+        {
+            int id = SelId();
+            if (id == -1) { MessageBox.Show("Select an applicant first."); return; }
+            new frmHRViewDocuments(id).ShowDialog();
+        }
+
+        private void btnBack_Click(object s, EventArgs e)
+        { new frmHRDashboard().Show(); this.Close(); }
+
+        private void dgvApplicants_CellDoubleClick(object s, DataGridViewCellEventArgs e)
+        { if (e.RowIndex >= 0) btnViewProfile_Click(s, e); }
     }
 }

@@ -1,176 +1,99 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using HRApplicantSystem.Helpers;
 using Microsoft.Data.SqlClient;
-using HRApplicantSystem.Helpers;
-
+using System;
+using System.Data;
+using System.Drawing;
+using System.Windows.Forms;
 namespace HRApplicantSystem.Forms.HR
 {
     public partial class frmScreening : Form
     {
-        private readonly int _applicationId;
-
-        public frmScreening(int applicationId)
+        private int _appId = -1, _aplId = -1;
+        public frmScreening()
         {
             InitializeComponent();
-            _applicationId = applicationId;
-
-            btnQualified.Click += btnQualified_Click;
-            btnNotQualified.Click += btnNotQualified_Click;
-            btnNext.Click += btnNext_Click;
+            dgvApplications.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvApplications.ReadOnly = true; dgvApplications.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvApplications.AllowUserToAddRows = false; dgvApplications.RowHeadersVisible = false;
+            dgvApplications.SelectionChanged += Dgv_SelectionChanged;
         }
 
-        private void frmScreening_Load(object sender, EventArgs e)
+        private void Dgv_SelectionChanged(object s, EventArgs e)
         {
-            LoadApplicationInfo();
+            if (dgvApplications.SelectedRows.Count > 0)
+            {
+                _appId = Convert.ToInt32(dgvApplications.SelectedRows[0].Cells["AppID"].Value);
+                _aplId = Convert.ToInt32(dgvApplications.SelectedRows[0].Cells["ApplicantID"].Value);
+                lblSelectedApplicant.Text = "Selected: " + dgvApplications.SelectedRows[0].Cells["Applicant"].Value;
+            }
         }
 
-        private void LoadApplicationInfo()
+        private void frmScreening_Load(object s, EventArgs e) => LoadData();
+
+        private void LoadData()
         {
             try
             {
                 using (var conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
-
-                    string query = @"
-                        SELECT ap.full_name AS ApplicantName,
-                               p.title      AS JobTitle,
-                               a.status     AS Status,
-                               sr.result    AS ScreeningResult,
-                               sr.remarks   AS ScreeningRemarks
+                    string sql = @"SELECT a.application_id AS [AppID],
+                        ap.applicant_id AS [ApplicantID], ap.full_name AS [Applicant],
+                        p.title AS [Position], d.name AS [Department],
+                        a.status AS [Status], a.submitted_at AS [Submitted]
                         FROM applications a
-                        INNER JOIN applicants ap    ON ap.applicant_id = a.applicant_id
-                        INNER JOIN job_vacancies jv  ON jv.vacancy_id = a.vacancy_id
-                        INNER JOIN positions p       ON p.position_id = jv.position_id
-                        LEFT JOIN screening_results sr ON sr.application_id = a.application_id
-                        WHERE a.application_id = @id";
-
-                    using (var cmd = new SqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@id", _applicationId);
-                        using (var reader = cmd.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                lblApplicantName.Text = reader["ApplicantName"].ToString();
-                                lblJobApplied.Text = reader["JobTitle"].ToString();
-
-                                string result = reader["ScreeningResult"] as string;
-                                if (result == "qualified")
-                                    SetStatus("Status: Qualified", true);
-                                else if (result == "not_qualified")
-                                    SetStatus("Status: Not Qualified", false);
-                                else
-                                    lblStatus.Text = "Status: Pending";
-
-                                if (reader["ScreeningRemarks"] != DBNull.Value)
-                                    txtRemarks.Text = reader["ScreeningRemarks"].ToString();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Application not found.");
-                                lblApplicantName.Text = "(unknown)";
-                                lblJobApplied.Text = "(unknown)";
-                            }
-                        }
-                    }
+                        INNER JOIN applicants ap ON a.applicant_id=ap.applicant_id
+                        INNER JOIN job_vacancies v ON a.vacancy_id=v.vacancy_id
+                        INNER JOIN positions p ON v.position_id=p.position_id
+                        INNER JOIN departments d ON v.department_id=d.department_id
+                        WHERE a.status='under_review' ORDER BY a.submitted_at";
+                    var ada = new SqlDataAdapter(sql, conn); var dt = new DataTable(); ada.Fill(dt);
+                    dgvApplications.DataSource = dt;
+                    if (dgvApplications.Columns["AppID"] != null) dgvApplications.Columns["AppID"].Visible = false;
+                    if (dgvApplications.Columns["ApplicantID"] != null) dgvApplications.Columns["ApplicantID"].Visible = false;
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loading application: " + ex.Message);
-            }
+            catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
         }
 
-        private void SetStatus(string text, bool qualified)
+        private void SaveResult(string result)
         {
-            lblStatus.Text = text;
-            lblStatus.ForeColor = qualified
-                ? System.Drawing.Color.FromArgb(26, 122, 60)
-                : System.Drawing.Color.FromArgb(192, 57, 43);
-        }
-
-        private void btnQualified_Click(object sender, EventArgs e)
-        {
-            SaveScreening("qualified");
-        }
-
-        private void btnNotQualified_Click(object sender, EventArgs e)
-        {
-            SaveScreening("not_qualified");
-        }
-
-        private void SaveScreening(string result)
-        {
+            if (_appId == -1) { MessageBox.Show("Select an application first."); return; }
             try
             {
-                int userId = SessionManager.CurrentUser?.UserID ?? 0;
-
                 using (var conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
-
-                    string upsert = @"
-                        MERGE screening_results AS target
-                        USING (SELECT @appId AS application_id) AS src
-                            ON target.application_id = src.application_id
-                        WHEN MATCHED THEN
-                            UPDATE SET result = @result, remarks = @remarks,
-                                       reviewed_by = @userId, reviewed_at = @now
-                        WHEN NOT MATCHED THEN
-                            INSERT (application_id, reviewed_by, result, remarks, reviewed_at)
-                            VALUES (@appId, @userId, @result, @remarks, @now);";
-
-                    using (var cmd = new SqlCommand(upsert, conn))
+                    using (var cmd = new SqlCommand(
+                        @"IF EXISTS(SELECT 1 FROM screening_results WHERE application_id=@id)
+                              UPDATE screening_results SET result=@r,remarks=@rm,
+                              reviewed_by=@by,reviewed_at=GETDATE() WHERE application_id=@id
+                          ELSE
+                              INSERT INTO screening_results(application_id,reviewed_by,result,remarks,reviewed_at)
+                              VALUES(@id,@by,@r,@rm,GETDATE())", conn))
                     {
-                        cmd.Parameters.AddWithValue("@appId", _applicationId);
-                        cmd.Parameters.AddWithValue("@userId", userId);
-                        cmd.Parameters.AddWithValue("@result", result);
-                        cmd.Parameters.AddWithValue("@remarks",
-                            string.IsNullOrWhiteSpace(txtRemarks.Text) ? (object)DBNull.Value : txtRemarks.Text.Trim());
-                        cmd.Parameters.AddWithValue("@now", DateTime.Now);
+                        cmd.Parameters.AddWithValue("@id", _appId);
+                        cmd.Parameters.AddWithValue("@by", SessionManager.CurrentUserID);
+                        cmd.Parameters.AddWithValue("@r", result);
+                        cmd.Parameters.AddWithValue("@rm", txtRemarks.Text.Trim());
                         cmd.ExecuteNonQuery();
                     }
                 }
-
-                string newStatus = result == "qualified" ? "screened" : "rejected";
-                StatusHistoryLoggerSafe(newStatus, $"Screening result: {result}");
-
-                bool qualified = result == "qualified";
-                SetStatus(qualified ? "Status: Qualified" : "Status: Not Qualified", qualified);
-
-                MessageBox.Show(
-                    (qualified ? "Applicant marked Qualified." : "Applicant marked Not Qualified.")
-                    + "\nRemarks: " + txtRemarks.Text);
+                string next = result == "qualified" ? "screened" : "rejected";
+                StatusHistoryLogger.LogStatusChange(_appId, "under_review", next,
+                    SessionManager.CurrentUserID, $"Screening: {result}.");
+                lblStatus.Text = "Status: " + next;
+                lblStatus.ForeColor = result == "qualified" ? Color.Green : Color.Red;
+                MessageBox.Show($"Marked as {result.ToUpper()}."); LoadData();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error saving screening result: " + ex.Message);
-            }
+            catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
         }
 
-        private void btnNext_Click(object sender, EventArgs e)
-        {
-            frmInterviewSchedule interviewForm = new frmInterviewSchedule(_applicationId);
-            interviewForm.Show();
-            this.Hide();
-        }
-
-        private void StatusHistoryLoggerSafe(string newStatus, string remarks)
-        {
-            try
-            {
-                int userId = SessionManager.CurrentUser?.UserID ?? 0;
-                StatusHistoryLogger.LogStatusChange(_applicationId, null, newStatus, userId, remarks);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Warning: status history could not be recorded: " + ex.Message);
-            }
-        }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-        }
+        private void btnQualified_Click(object s, EventArgs e) => SaveResult("qualified");
+        private void btnNotQualified_Click(object s, EventArgs e) => SaveResult("not_qualified");
+        private void btnViewDocuments_Click(object s, EventArgs e)
+        { if (_aplId == -1) { MessageBox.Show("Select first."); return; } new frmHRViewDocuments(_aplId).ShowDialog(); }
+        private void btnNext_Click(object s, EventArgs e) { new frmInterviewSchedule().Show(); this.Hide(); }
+        private void btnBack_Click(object s, EventArgs e) { new frmApplicantReview().Show(); this.Close(); }
     }
 }

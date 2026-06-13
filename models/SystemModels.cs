@@ -17,9 +17,10 @@ namespace HRApplicantSystem.Models
         public DateTime? UpdatedAt { get; set; }
 
         // Helper
-        public bool IsHR => Role == "HR Staff" || Role == "HR Manager" || Role == "Admin";
-        public bool IsAdmin => Role == "Admin";
-        public bool CanMakeFinalDecision => Role == "Admin" || Role == "HR Manager";
+        public bool IsHR => Role == "hr_staff" || Role == "hr_manager" || Role == "admin";
+        public bool IsAdmin => Role == "admin";
+        public bool CanMakeFinalDecision => Role == "admin" || Role == "hr_manager";
+
     }
 
     public class StatusHistory
