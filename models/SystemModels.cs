@@ -5,23 +5,20 @@ namespace HRApplicantSystem.Models
     public class User
     {
         public int UserID { get; set; }
+        public string FullName { get; set; }   // ADD THIS LINE
         public string Email { get; set; }
         public string PasswordHash { get; set; }
-
-        // Role: Applicant, HR Staff, HR Manager, Admin
         public string Role { get; set; }
-
         public bool IsActive { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? LastLoginAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
 
-        // Helper
         public bool IsHR => Role == "hr_staff" || Role == "hr_manager" || Role == "admin";
         public bool IsAdmin => Role == "admin";
         public bool CanMakeFinalDecision => Role == "admin" || Role == "hr_manager";
-
     }
+
 
     public class StatusHistory
     {

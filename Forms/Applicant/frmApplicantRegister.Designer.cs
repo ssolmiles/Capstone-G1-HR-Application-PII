@@ -48,7 +48,7 @@
             // 
             this.txtFN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFN.Font = new System.Drawing.Font("Verdana", 11F);
-            this.txtFN.Location = new System.Drawing.Point(206, 42);
+            this.txtFN.Location = new System.Drawing.Point(210, 78);
             this.txtFN.Name = "txtFN";
             this.txtFN.Size = new System.Drawing.Size(265, 30);
             this.txtFN.TabIndex = 1;
@@ -57,7 +57,7 @@
             // 
             this.txtMI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMI.Font = new System.Drawing.Font("Verdana", 11F);
-            this.txtMI.Location = new System.Drawing.Point(206, 84);
+            this.txtMI.Location = new System.Drawing.Point(210, 120);
             this.txtMI.Name = "txtMI";
             this.txtMI.Size = new System.Drawing.Size(265, 30);
             this.txtMI.TabIndex = 2;
@@ -66,7 +66,7 @@
             // 
             this.txtLN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLN.Font = new System.Drawing.Font("Verdana", 11F);
-            this.txtLN.Location = new System.Drawing.Point(206, 126);
+            this.txtLN.Location = new System.Drawing.Point(210, 162);
             this.txtLN.Name = "txtLN";
             this.txtLN.Size = new System.Drawing.Size(265, 30);
             this.txtLN.TabIndex = 3;
@@ -76,7 +76,7 @@
             this.dtpBirthday.CustomFormat = "MMMM dd, yyyy";
             this.dtpBirthday.Font = new System.Drawing.Font("Verdana", 11F);
             this.dtpBirthday.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpBirthday.Location = new System.Drawing.Point(206, 168);
+            this.dtpBirthday.Location = new System.Drawing.Point(209, 286);
             this.dtpBirthday.Name = "dtpBirthday";
             this.dtpBirthday.Size = new System.Drawing.Size(265, 30);
             this.dtpBirthday.TabIndex = 4;
@@ -105,7 +105,7 @@
             // 
             this.txtPhone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhone.Font = new System.Drawing.Font("Verdana", 11F);
-            this.txtPhone.Location = new System.Drawing.Point(389, 245);
+            this.txtPhone.Location = new System.Drawing.Point(385, 428);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(223, 30);
             this.txtPhone.TabIndex = 6;
@@ -114,7 +114,7 @@
             // 
             this.cboCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCountry.Font = new System.Drawing.Font("Verdana", 10F);
-            this.cboCountry.Location = new System.Drawing.Point(73, 252);
+            this.cboCountry.Location = new System.Drawing.Point(96, 430);
             this.cboCountry.Name = "cboCountry";
             this.cboCountry.Size = new System.Drawing.Size(160, 28);
             this.cboCountry.TabIndex = 7;
@@ -123,7 +123,7 @@
             // 
             this.chkAgree.AutoSize = true;
             this.chkAgree.Font = new System.Drawing.Font("Verdana", 9F);
-            this.chkAgree.Location = new System.Drawing.Point(10, 295);
+            this.chkAgree.Location = new System.Drawing.Point(33, 473);
             this.chkAgree.Name = "chkAgree";
             this.chkAgree.Size = new System.Drawing.Size(515, 22);
             this.chkAgree.TabIndex = 8;
@@ -135,7 +135,7 @@
             this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegister.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Bold);
             this.btnRegister.ForeColor = System.Drawing.Color.White;
-            this.btnRegister.Location = new System.Drawing.Point(606, 637);
+            this.btnRegister.Location = new System.Drawing.Point(1196, 391);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(200, 45);
             this.btnRegister.TabIndex = 11;
@@ -147,7 +147,7 @@
             // 
             this.lblFN.AutoSize = true;
             this.lblFN.Font = new System.Drawing.Font("Verdana", 11F);
-            this.lblFN.Location = new System.Drawing.Point(36, 42);
+            this.lblFN.Location = new System.Drawing.Point(40, 78);
             this.lblFN.Name = "lblFN";
             this.lblFN.Size = new System.Drawing.Size(122, 23);
             this.lblFN.TabIndex = 0;
@@ -157,7 +157,7 @@
             // 
             this.lblMI.AutoSize = true;
             this.lblMI.Font = new System.Drawing.Font("Verdana", 11F);
-            this.lblMI.Location = new System.Drawing.Point(21, 84);
+            this.lblMI.Location = new System.Drawing.Point(25, 120);
             this.lblMI.Name = "lblMI";
             this.lblMI.Size = new System.Drawing.Size(143, 23);
             this.lblMI.TabIndex = 2;
@@ -167,7 +167,7 @@
             // 
             this.lblLN.AutoSize = true;
             this.lblLN.Font = new System.Drawing.Font("Verdana", 11F);
-            this.lblLN.Location = new System.Drawing.Point(45, 126);
+            this.lblLN.Location = new System.Drawing.Point(49, 162);
             this.lblLN.Name = "lblLN";
             this.lblLN.Size = new System.Drawing.Size(119, 23);
             this.lblLN.TabIndex = 3;
@@ -177,7 +177,7 @@
             // 
             this.lblDOB.AutoSize = true;
             this.lblDOB.Font = new System.Drawing.Font("Verdana", 11F);
-            this.lblDOB.Location = new System.Drawing.Point(23, 168);
+            this.lblDOB.Location = new System.Drawing.Point(26, 286);
             this.lblDOB.Name = "lblDOB";
             this.lblDOB.Size = new System.Drawing.Size(142, 23);
             this.lblDOB.TabIndex = 4;
@@ -218,7 +218,7 @@
             // 
             this.lblPhone.AutoSize = true;
             this.lblPhone.Font = new System.Drawing.Font("Verdana", 11F);
-            this.lblPhone.Location = new System.Drawing.Point(257, 252);
+            this.lblPhone.Location = new System.Drawing.Point(262, 432);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(117, 23);
             this.lblPhone.TabIndex = 6;
@@ -228,7 +228,7 @@
             // 
             this.lblCountry.AutoSize = true;
             this.lblCountry.Font = new System.Drawing.Font("Verdana", 10F);
-            this.lblCountry.Location = new System.Drawing.Point(10, 255);
+            this.lblCountry.Location = new System.Drawing.Point(33, 433);
             this.lblCountry.Name = "lblCountry";
             this.lblCountry.Size = new System.Drawing.Size(60, 20);
             this.lblCountry.TabIndex = 7;
@@ -249,7 +249,7 @@
             // 
             this.lblGender.AutoSize = true;
             this.lblGender.Font = new System.Drawing.Font("Verdana", 11F);
-            this.lblGender.Location = new System.Drawing.Point(79, 210);
+            this.lblGender.Location = new System.Drawing.Point(67, 346);
             this.lblGender.Name = "lblGender";
             this.lblGender.Size = new System.Drawing.Size(88, 23);
             this.lblGender.TabIndex = 5;
@@ -259,7 +259,7 @@
             // 
             this.cboGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboGender.Font = new System.Drawing.Font("Verdana", 11F);
-            this.cboGender.Location = new System.Drawing.Point(206, 207);
+            this.cboGender.Location = new System.Drawing.Point(202, 346);
             this.cboGender.Name = "cboGender";
             this.cboGender.Size = new System.Drawing.Size(265, 30);
             this.cboGender.TabIndex = 5;
@@ -285,7 +285,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
             this.groupBox1.Location = new System.Drawing.Point(12, 160);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(690, 340);
+            this.groupBox1.Size = new System.Drawing.Size(907, 617);
             this.groupBox1.TabIndex = 56;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Personal Information";
@@ -299,7 +299,7 @@
             this.groupBox2.Controls.Add(this.lblPasswordHint);
             this.groupBox2.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBox2.Location = new System.Drawing.Point(772, 235);
+            this.groupBox2.Location = new System.Drawing.Point(1017, 167);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(532, 185);
             this.groupBox2.TabIndex = 57;
@@ -323,7 +323,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1365, 793);
+            this.ClientSize = new System.Drawing.Size(1902, 1033);
             this.Controls.Add(this.lblSubtitle);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.groupBox2);

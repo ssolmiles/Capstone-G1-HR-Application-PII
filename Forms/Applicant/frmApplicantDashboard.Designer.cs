@@ -43,7 +43,7 @@
             this.btnViewStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewStatus.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnViewStatus.ForeColor = System.Drawing.Color.White;
-            this.btnViewStatus.Location = new System.Drawing.Point(1036, 63);
+            this.btnViewStatus.Location = new System.Drawing.Point(822, 218);
             this.btnViewStatus.Name = "btnViewStatus";
             this.btnViewStatus.Size = new System.Drawing.Size(230, 44);
             this.btnViewStatus.TabIndex = 1;
@@ -57,7 +57,7 @@
             this.btnJobVacancies.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnJobVacancies.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnJobVacancies.ForeColor = System.Drawing.Color.White;
-            this.btnJobVacancies.Location = new System.Drawing.Point(1036, 13);
+            this.btnJobVacancies.Location = new System.Drawing.Point(822, 168);
             this.btnJobVacancies.Name = "btnJobVacancies";
             this.btnJobVacancies.Size = new System.Drawing.Size(230, 44);
             this.btnJobVacancies.TabIndex = 10;
@@ -71,7 +71,7 @@
             this.btnProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProfile.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnProfile.ForeColor = System.Drawing.Color.White;
-            this.btnProfile.Location = new System.Drawing.Point(1036, 113);
+            this.btnProfile.Location = new System.Drawing.Point(822, 268);
             this.btnProfile.Name = "btnProfile";
             this.btnProfile.Size = new System.Drawing.Size(230, 44);
             this.btnProfile.TabIndex = 2;
@@ -85,7 +85,7 @@
             this.btnChangePass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChangePass.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnChangePass.ForeColor = System.Drawing.Color.White;
-            this.btnChangePass.Location = new System.Drawing.Point(1036, 167);
+            this.btnChangePass.Location = new System.Drawing.Point(822, 322);
             this.btnChangePass.Name = "btnChangePass";
             this.btnChangePass.Size = new System.Drawing.Size(230, 44);
             this.btnChangePass.TabIndex = 3;
@@ -99,7 +99,7 @@
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.Location = new System.Drawing.Point(1036, 221);
+            this.btnLogout.Location = new System.Drawing.Point(822, 376);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(230, 44);
             this.btnLogout.TabIndex = 4;
@@ -142,6 +142,7 @@
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Documents";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // lblMissingDocs
             // 
@@ -160,9 +161,9 @@
             this.groupBox3.Controls.Add(this.lblSchedule);
             this.groupBox3.Font = new System.Drawing.Font("Verdana", 10F);
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBox3.Location = new System.Drawing.Point(73, 274);
+            this.groupBox3.Location = new System.Drawing.Point(73, 299);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(307, 219);
+            this.groupBox3.Size = new System.Drawing.Size(307, 194);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Upcoming Interview";
@@ -194,9 +195,9 @@
             this.groupBox4.Controls.Add(this.lblUpdates);
             this.groupBox4.Font = new System.Drawing.Font("Verdana", 10F);
             this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBox4.Location = new System.Drawing.Point(410, 274);
+            this.groupBox4.Location = new System.Drawing.Point(410, 299);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(318, 219);
+            this.groupBox4.Size = new System.Drawing.Size(318, 194);
             this.groupBox4.TabIndex = 8;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Recent Updates";
@@ -205,9 +206,9 @@
             // lblUpdates
             // 
             this.lblUpdates.Font = new System.Drawing.Font("Verdana", 9F);
-            this.lblUpdates.Location = new System.Drawing.Point(10, 25);
+            this.lblUpdates.Location = new System.Drawing.Point(10, 39);
             this.lblUpdates.Name = "lblUpdates";
-            this.lblUpdates.Size = new System.Drawing.Size(280, 159);
+            this.lblUpdates.Size = new System.Drawing.Size(280, 145);
             this.lblUpdates.TabIndex = 0;
             this.lblUpdates.Text = "RECENT UPDATES:";
             // 
@@ -239,7 +240,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1366, 696);
+            this.ClientSize = new System.Drawing.Size(1902, 1033);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.groupBox4);

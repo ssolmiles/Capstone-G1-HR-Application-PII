@@ -347,7 +347,6 @@
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Contact Details";
-            
             // 
             // lblPhone
             // 
@@ -584,7 +583,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1615, 821);
+            this.ClientSize = new System.Drawing.Size(1902, 1033);
             this.Controls.Add(this.btnDocs);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.groupBox6);

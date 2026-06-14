@@ -68,7 +68,7 @@
             this.lblSearch.AutoSize = true;
             this.lblSearch.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblSearch.Location = new System.Drawing.Point(32, 95);
+            this.lblSearch.Location = new System.Drawing.Point(36, 90);
             this.lblSearch.Name = "lblSearch";
             this.lblSearch.Size = new System.Drawing.Size(65, 23);
             this.lblSearch.TabIndex = 2;
@@ -78,7 +78,7 @@
             // 
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtSearch.Location = new System.Drawing.Point(94, 92);
+            this.txtSearch.Location = new System.Drawing.Point(107, 88);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(320, 30);
             this.txtSearch.TabIndex = 3;
@@ -89,9 +89,9 @@
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(424, 91);
+            this.btnSearch.Location = new System.Drawing.Point(437, 87);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(90, 28);
+            this.btnSearch.Size = new System.Drawing.Size(90, 31);
             this.btnSearch.TabIndex = 4;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
@@ -108,7 +108,7 @@
             this.dgvApplications.RowHeadersWidth = 51;
             this.dgvApplications.RowTemplate.Height = 24;
             this.dgvApplications.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvApplications.Size = new System.Drawing.Size(960, 380);
+            this.dgvApplications.Size = new System.Drawing.Size(1522, 688);
             this.dgvApplications.TabIndex = 6;
             this.dgvApplications.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvApplicants_CellContentClick);
             // 
@@ -117,7 +117,7 @@
             this.btnViewProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewProfile.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnViewProfile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.btnViewProfile.Location = new System.Drawing.Point(1010, 135);
+            this.btnViewProfile.Location = new System.Drawing.Point(1586, 84);
             this.btnViewProfile.Name = "btnViewProfile";
             this.btnViewProfile.Size = new System.Drawing.Size(174, 34);
             this.btnViewProfile.TabIndex = 8;
@@ -129,7 +129,7 @@
             this.btnViewDocuments.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewDocuments.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnViewDocuments.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.btnViewDocuments.Location = new System.Drawing.Point(1010, 178);
+            this.btnViewDocuments.Location = new System.Drawing.Point(1586, 127);
             this.btnViewDocuments.Name = "btnViewDocuments";
             this.btnViewDocuments.Size = new System.Drawing.Size(174, 34);
             this.btnViewDocuments.TabIndex = 9;
@@ -141,7 +141,7 @@
             this.btnLockReview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLockReview.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnLockReview.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.btnLockReview.Location = new System.Drawing.Point(1010, 221);
+            this.btnLockReview.Location = new System.Drawing.Point(1586, 170);
             this.btnLockReview.Name = "btnLockReview";
             this.btnLockReview.Size = new System.Drawing.Size(174, 34);
             this.btnLockReview.TabIndex = 10;
@@ -154,7 +154,7 @@
             this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNext.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnNext.ForeColor = System.Drawing.Color.White;
-            this.btnNext.Location = new System.Drawing.Point(1010, 280);
+            this.btnNext.Location = new System.Drawing.Point(1586, 229);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(174, 40);
             this.btnNext.TabIndex = 11;
@@ -166,7 +166,7 @@
             this.lblCount.AutoSize = true;
             this.lblCount.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblCount.Location = new System.Drawing.Point(32, 522);
+            this.lblCount.Location = new System.Drawing.Point(1455, 90);
             this.lblCount.Name = "lblCount";
             this.lblCount.Size = new System.Drawing.Size(99, 20);
             this.lblCount.TabIndex = 7;
@@ -177,7 +177,7 @@
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.btnBack.Location = new System.Drawing.Point(1010, 335);
+            this.btnBack.Location = new System.Drawing.Point(1586, 284);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(174, 34);
             this.btnBack.TabIndex = 12;
@@ -188,7 +188,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1220, 575);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(1902, 1033);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblSubtitle);

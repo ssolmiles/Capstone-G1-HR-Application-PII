@@ -31,8 +31,8 @@ namespace HRApplicantSystem.Forms.HR
                     conn.Open();
 
                     using (SqlCommand cmd = new SqlCommand(
-                        "SELECT password, role FROM users WHERE email = @Email AND is_active = 1",
-                        conn))
+    "SELECT user_id, full_name, password, role FROM users WHERE email = @Email AND is_active = 1",
+    conn))
                     {
                         cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
 
@@ -42,22 +42,26 @@ namespace HRApplicantSystem.Forms.HR
                             {
                                 string storedHash = dr["password"].ToString();
                                 string role = dr["role"].ToString();
+                                int userId = Convert.ToInt32(dr["user_id"]);
+                                string fullName = dr["full_name"] == DBNull.Value ? "" : dr["full_name"].ToString();
 
-                                if (BCrypt.Net.BCrypt.Verify(
-                                    txtPassword.Text.Trim(),
-                                    storedHash))
+                                if (BCrypt.Net.BCrypt.Verify(txtPassword.Text.Trim(), storedHash))
                                 {
                                     SessionManager.Login(
                                         new HRApplicantSystem.Models.User
                                         {
+                                            UserID = userId,
+                                            FullName = fullName,
                                             Email = txtEmail.Text.Trim(),
-                                            Role = role
+                                            Role = role,
+                                            IsActive = true
                                         });
 
                                     frmHRDashboard dashboard = new frmHRDashboard();
                                     dashboard.Show();
                                     this.Hide();
                                 }
+
                                 else
                                 {
                                     MessageBox.Show(
@@ -101,6 +105,12 @@ namespace HRApplicantSystem.Forms.HR
         private void lblEmail_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void lblCreateAccount_Click(object sender, EventArgs e)
+        {
+            new frmHRRegister().Show();
+            this.Hide();
         }
     }
 }

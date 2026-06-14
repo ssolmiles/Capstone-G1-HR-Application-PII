@@ -109,6 +109,7 @@
             this.button1.TabIndex = 6;
             this.button1.Text = "Applicants";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnApplicants_Click);
             // 
             // button2
             // 
@@ -119,6 +120,7 @@
             this.button2.TabIndex = 8;
             this.button2.Text = "Review";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.btnInterviews_Click);
             // 
             // button3
             // 
@@ -129,6 +131,7 @@
             this.button3.TabIndex = 9;
             this.button3.Text = "Interview";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.btnVacancyManagement_Click);
             // 
             // button4
             // 
@@ -139,6 +142,7 @@
             this.button4.TabIndex = 10;
             this.button4.Text = "Log Out";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // button5
             // 
@@ -149,6 +153,7 @@
             this.button5.TabIndex = 11;
             this.button5.Text = "Reports";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.btnReports_Click);
             // 
             // button6
             // 
@@ -159,6 +164,7 @@
             this.button6.TabIndex = 12;
             this.button6.Text = "Maintenance";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.btnMaintenance_Click);
             // 
             // button8
             // 
@@ -173,7 +179,7 @@
             // frmHRDashboard
             // 
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.ClientSize = new System.Drawing.Size(1358, 600);
+            this.ClientSize = new System.Drawing.Size(1902, 1033);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);

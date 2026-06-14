@@ -25,6 +25,7 @@
             this.btnReopen = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVacancies)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,7 +84,7 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(43, 375);
+            this.txtSearch.Location = new System.Drawing.Point(43, 381);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(102, 22);
             this.txtSearch.TabIndex = 6;
@@ -91,61 +92,77 @@
             // dgvVacancies
             // 
             this.dgvVacancies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVacancies.Location = new System.Drawing.Point(52, 445);
+            this.dgvVacancies.Location = new System.Drawing.Point(605, 41);
             this.dgvVacancies.Name = "dgvVacancies";
             this.dgvVacancies.RowHeadersWidth = 51;
             this.dgvVacancies.RowTemplate.Height = 24;
-            this.dgvVacancies.Size = new System.Drawing.Size(242, 156);
+            this.dgvVacancies.Size = new System.Drawing.Size(1157, 554);
             this.dgvVacancies.TabIndex = 7;
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(432, 74);
+            this.btnAdd.Location = new System.Drawing.Point(414, 37);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(132, 28);
             this.btnAdd.TabIndex = 8;
-            this.btnAdd.Text = "button1";
+            this.btnAdd.Text = "Add Vacancy";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(432, 130);
+            this.btnClose.Location = new System.Drawing.Point(414, 93);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(132, 28);
             this.btnClose.TabIndex = 9;
-            this.btnClose.Text = "button2";
+            this.btnClose.Text = "Close Vacancy";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnReopen
             // 
-            this.btnReopen.Location = new System.Drawing.Point(432, 176);
+            this.btnReopen.Location = new System.Drawing.Point(414, 139);
             this.btnReopen.Name = "btnReopen";
             this.btnReopen.Size = new System.Drawing.Size(132, 28);
             this.btnReopen.TabIndex = 10;
-            this.btnReopen.Text = "button3";
+            this.btnReopen.Text = "Reopen Vacancy";
             this.btnReopen.UseVisualStyleBackColor = true;
+            this.btnReopen.Click += new System.EventHandler(this.btnReopen_Click);
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(432, 222);
+            this.btnSearch.Location = new System.Drawing.Point(257, 212);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(132, 28);
+            this.btnSearch.Size = new System.Drawing.Size(63, 28);
             this.btnSearch.TabIndex = 11;
-            this.btnSearch.Text = "button4";
+            this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(432, 275);
+            this.btnClear.Location = new System.Drawing.Point(335, 212);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(132, 28);
+            this.btnClear.Size = new System.Drawing.Size(75, 28);
             this.btnClear.TabIndex = 12;
-            this.btnClear.Text = "button5";
+            this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(436, 567);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(132, 28);
+            this.btnBack.TabIndex = 13;
+            this.btnBack.Text = "Back to Dashboard";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // frmJobVacancyManagement
             // 
-            this.ClientSize = new System.Drawing.Size(1066, 793);
+            this.ClientSize = new System.Drawing.Size(1902, 1033);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnReopen);
@@ -181,5 +198,6 @@
         private System.Windows.Forms.Button btnReopen;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnBack;
     }
 }

@@ -1,6 +1,5 @@
 ﻿using HRApplicantSystem.Helpers;
 using Microsoft.Data.SqlClient;
-using Org.BouncyCastle.Asn1.Cmp;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -12,6 +11,15 @@ namespace HRApplicantSystem.Forms.HR
         public frmHRApplicantProfile(string email)
         { InitializeComponent(); _email = email; }
 
+
+        public frmHRApplicantProfile()
+        {
+            InitializeComponent();
+            _email = string.Empty;
+
+        }
+        
+       
         private void frmHRApplicantProfile_Load(object s, EventArgs e) => LoadProfile();
 
         private void LoadProfile()

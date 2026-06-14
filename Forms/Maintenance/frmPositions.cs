@@ -8,14 +8,41 @@ namespace HRApplicantSystem.Forms.Maintenance
 {
     public partial class frmPositions : Form
     {
-        public frmPositions()
-        {
-            InitializeComponent();
-        }
+        public frmPositions() { InitializeComponent(); }
 
         private void frmPositions_Load(object sender, EventArgs e)
         {
+            LoadDepartments();
             LoadData();
+        }
+
+        private void LoadDepartments()
+        {
+            try
+            {
+                using (var conn = DatabaseHelper.GetConnection())
+                {
+                    conn.Open();
+                    var cmd = new SqlCommand(
+                        "SELECT department_id, name FROM departments ORDER BY name",
+                        conn);
+                    var dr = cmd.ExecuteReader();
+                    cboDepartment.Items.Clear();
+                    cboDepartment.Items.Add(
+                        new { Text = "-- Select Department --", Value = 0 });
+                    while (dr.Read())
+                        cboDepartment.Items.Add(new
+                        {
+                            Text = dr["name"].ToString(),
+                            Value = (int)dr["department_id"]
+                        });
+                    cboDepartment.DisplayMember = "Text";
+                    cboDepartment.ValueMember = "Value";
+                    cboDepartment.SelectedIndex = 0;
+                }
+            }
+            catch (Exception ex)
+            { MessageBox.Show("Error loading departments: " + ex.Message); }
         }
 
         private void LoadData()
@@ -25,31 +52,54 @@ namespace HRApplicantSystem.Forms.Maintenance
                 using (var conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
-                    string query = "SELECT position_id AS ID, title AS Name FROM positions ORDER BY title";
+                    string query = @"SELECT p.position_id AS ID,
+                        p.title AS Name,
+                        ISNULL(d.name, 'No Department') AS Department
+                        FROM positions p
+                        LEFT JOIN departments d
+                            ON p.department_id = d.department_id
+                        ORDER BY p.title";
                     var adapter = new SqlDataAdapter(query, conn);
                     var table = new DataTable();
                     adapter.Fill(table);
                     dgvList.DataSource = table;
-                    dgvList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    dgvList.AutoSizeColumnsMode =
+                        DataGridViewAutoSizeColumnsMode.Fill;
                     dgvList.ReadOnly = true;
-                    dgvList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                    dgvList.SelectionMode =
+                        DataGridViewSelectionMode.FullRowSelect;
                 }
             }
-            catch (Exception ex) { MessageBox.Show("Error loading data: " + ex.Message); }
+            catch (Exception ex)
+            { MessageBox.Show("Error loading data: " + ex.Message); }
+        }
+
+        private int GetSelectedDeptId()
+        {
+            if (cboDepartment.SelectedIndex <= 0) return 0;
+            dynamic item = cboDepartment.SelectedItem;
+            return item.Value;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             string name = txtName.Text.Trim();
-            if (string.IsNullOrEmpty(name)) { MessageBox.Show("Please enter a position title."); return; }
+            if (string.IsNullOrEmpty(name))
+            { MessageBox.Show("Please enter a position title."); return; }
+            int deptId = GetSelectedDeptId();
+            if (deptId == 0)
+            { MessageBox.Show("Please select a department."); return; }
             try
             {
                 using (var conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
-                    using (var cmd = new SqlCommand("INSERT INTO positions (title) VALUES (@name)", conn))
+                    using (var cmd = new SqlCommand(
+                        @"INSERT INTO positions (title, department_id)
+                          VALUES (@name, @deptId)", conn))
                     {
                         cmd.Parameters.AddWithValue("@name", name);
+                        cmd.Parameters.AddWithValue("@deptId", deptId);
                         cmd.ExecuteNonQuery();
                     }
                     MessageBox.Show("Position added!");
@@ -57,24 +107,34 @@ namespace HRApplicantSystem.Forms.Maintenance
                     LoadData();
                 }
             }
-            catch (Exception ex) { MessageBox.Show("Error adding: " + ex.Message); }
+            catch (Exception ex)
+            { MessageBox.Show("Error adding: " + ex.Message); }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (dgvList.SelectedRows.Count == 0) { MessageBox.Show("Select a row first."); return; }
+            if (dgvList.SelectedRows.Count == 0)
+            { MessageBox.Show("Select a row first."); return; }
             string name = txtName.Text.Trim();
-            if (string.IsNullOrEmpty(name)) { MessageBox.Show("Please enter a new title."); return; }
-            int id = Convert.ToInt32(dgvList.SelectedRows[0].Cells["ID"].Value);
+            if (string.IsNullOrEmpty(name))
+            { MessageBox.Show("Please enter a new title."); return; }
+            int id = Convert.ToInt32(
+                dgvList.SelectedRows[0].Cells["ID"].Value);
+            int deptId = GetSelectedDeptId();
             try
             {
                 using (var conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
-                    using (var cmd = new SqlCommand("UPDATE positions SET title = @name WHERE position_id = @id", conn))
+                    string sql = deptId > 0
+                        ? "UPDATE positions SET title=@name, department_id=@d WHERE position_id=@id"
+                        : "UPDATE positions SET title=@name WHERE position_id=@id";
+                    using (var cmd = new SqlCommand(sql, conn))
                     {
                         cmd.Parameters.AddWithValue("@name", name);
                         cmd.Parameters.AddWithValue("@id", id);
+                        if (deptId > 0)
+                            cmd.Parameters.AddWithValue("@d", deptId);
                         cmd.ExecuteNonQuery();
                     }
                     MessageBox.Show("Updated!");
@@ -82,21 +142,28 @@ namespace HRApplicantSystem.Forms.Maintenance
                     LoadData();
                 }
             }
-            catch (Exception ex) { MessageBox.Show("Error updating: " + ex.Message); }
+            catch (Exception ex)
+            { MessageBox.Show("Error updating: " + ex.Message); }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (dgvList.SelectedRows.Count == 0) { MessageBox.Show("Select a row first."); return; }
-            int id = Convert.ToInt32(dgvList.SelectedRows[0].Cells["ID"].Value);
+            if (dgvList.SelectedRows.Count == 0)
+            { MessageBox.Show("Select a row first."); return; }
+            int id = Convert.ToInt32(
+                dgvList.SelectedRows[0].Cells["ID"].Value);
             string name = dgvList.SelectedRows[0].Cells["Name"].Value.ToString();
-            if (MessageBox.Show($"Delete '{name}'?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes) return;
+            if (MessageBox.Show($"Delete '{name}'?", "Confirm Delete",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+                != DialogResult.Yes) return;
             try
             {
                 using (var conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
-                    using (var cmd = new SqlCommand("DELETE FROM positions WHERE position_id = @id", conn))
+                    using (var cmd = new SqlCommand(
+                        "DELETE FROM positions WHERE position_id = @id",
+                        conn))
                     {
                         cmd.Parameters.AddWithValue("@id", id);
                         cmd.ExecuteNonQuery();
@@ -106,11 +173,11 @@ namespace HRApplicantSystem.Forms.Maintenance
                     LoadData();
                 }
             }
-            catch (Exception ex) { MessageBox.Show("Error deleting: " + ex.Message); }
+            catch (Exception ex)
+            { MessageBox.Show("Error deleting: " + ex.Message); }
         }
 
         private void btnClear_Click(object sender, EventArgs e) => ClearFields();
-
         private void btnBack_Click(object sender, EventArgs e) => this.Close();
 
         private void dgvList_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -122,6 +189,7 @@ namespace HRApplicantSystem.Forms.Maintenance
         private void ClearFields()
         {
             txtName.Text = "";
+            cboDepartment.SelectedIndex = 0;
             dgvList.ClearSelection();
         }
     }

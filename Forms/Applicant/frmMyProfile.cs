@@ -116,22 +116,22 @@ namespace HRApplicantSystem.Forms.Applicant
                 {
                     conn.Open();
                     using (SqlCommand cmd = new SqlCommand(
-                        @"full_name = @FullName,  -- NOT first_name or name
-                            birthdate = @Bday,      -- NOT date_of_birth
+                        @"UPDATE applicants SET
+                            full_name = @FullName,
+                            birthdate = @Bday,
                             address   = @Address,
                             city      = @City,
                             province  = @Province,
                             zip_code  = @Zip,
-                            phone     = @Phone,     -- NOT phone_number
-                            school    = @School,    -- NOT school_name
+                            phone     = @Phone,
+                            school    = @School,
                             degree    = @Degree,
-                            year_grad = @YearGrad,  -- NOT graduation_year
+                            year_grad = @YearGrad,
                             skills    = @Skills,
                             company   = @Company,
                             position  = @Position,
                             duration  = @Duration
-                        WHERE email = @OriginalEmail
-                        ", conn))
+                          WHERE email = @OriginalEmail", conn))
                     {
                         string mi = txtMI.Text.Trim();
                         string fullName = string.IsNullOrEmpty(mi)

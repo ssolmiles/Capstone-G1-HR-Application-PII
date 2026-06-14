@@ -156,7 +156,11 @@ namespace HRApplicantSystem.Forms.Maintenance
                 using (var conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
-                    new SqlCommand($"UPDATE job_vacancies SET status='closed' WHERE vacancy_id={id}", conn).ExecuteNonQuery();
+                    using (var cmd = new SqlCommand("UPDATE job_vacancies SET status='closed' WHERE vacancy_id=@id", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", id);
+                        cmd.ExecuteNonQuery();
+                    }
                 }
                 MessageBox.Show("Vacancy closed."); LoadVacancies();
             }
@@ -172,7 +176,11 @@ namespace HRApplicantSystem.Forms.Maintenance
                 using (var conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
-                    new SqlCommand($"UPDATE job_vacancies SET status='open' WHERE vacancy_id={id}", conn).ExecuteNonQuery();
+                    using (var cmd = new SqlCommand("UPDATE job_vacancies SET status='open' WHERE vacancy_id=@id", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", id);
+                        cmd.ExecuteNonQuery();
+                    }
                 }
                 MessageBox.Show("Vacancy reopened!"); LoadVacancies();
             }
@@ -200,7 +208,38 @@ namespace HRApplicantSystem.Forms.Maintenance
 
         private void cboDepartment_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // "-- Select Department --" chosen (or nothing selected yet): show all positions.
+            if (cboDepartment.SelectedIndex <= 0)
+            {
+                LoadPositions();
+                return;
+            }
 
+            dynamic dept = cboDepartment.SelectedItem;
+            try
+            {
+                using (var conn = DatabaseHelper.GetConnection())
+                {
+                    conn.Open();
+                    var cmd = new SqlCommand("SELECT position_id, title FROM positions WHERE department_id = @d", conn);
+                    cmd.Parameters.AddWithValue("@d", dept.Value);
+                    var reader = cmd.ExecuteReader();
+                    cboPosition.Items.Clear();
+                    cboPosition.Items.Add(new { Text = "-- Select Position --", Value = 0 });
+                    while (reader.Read())
+                        cboPosition.Items.Add(new { Text = reader["title"].ToString(), Value = (int)reader["position_id"] });
+                    cboPosition.DisplayMember = "Text";
+                    cboPosition.ValueMember = "Value";
+                    cboPosition.SelectedIndex = 0;
+                }
+            }
+            catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            new HRApplicantSystem.Forms.HR.frmHRDashboard().Show();
+            this.Close();
         }
     }
 }

@@ -98,8 +98,7 @@ namespace HRApplicantSystem.Forms.HR
         {
             if (dgvDocuments.SelectedRows.Count == 0) { MessageBox.Show("Select a document first."); return; }
             int docId = Convert.ToInt32(dgvDocuments.SelectedRows[0].Cells["DocID"].Value);
-            string reason = Microsoft.VisualBasic.Interaction.InputBox(
-                "Rejection reason (optional):", "Reject Document", "");
+            string reason = ShowInputDialog("Rejection reason (optional):", "Reject Document");
             if (MessageBox.Show("Mark this document as rejected/missing?", "Confirm",
                 MessageBoxButtons.YesNo) != DialogResult.Yes) return;
             try
@@ -122,5 +121,49 @@ namespace HRApplicantSystem.Forms.HR
 
         private void btnRefresh_Click(object s, EventArgs e) => LoadDocuments();
         private void btnClose_Click(object s, EventArgs e) => this.Close();
+
+        // ── Lightweight input prompt (avoids Microsoft.VisualBasic dependency) ──
+        private static string ShowInputDialog(string prompt, string title)
+        {
+            using (var dlg = new Form())
+            using (var lbl = new Label())
+            using (var txt = new TextBox())
+            using (var btnOk = new Button())
+            using (var btnCancel = new Button())
+            {
+                dlg.Text = title;
+                dlg.StartPosition = FormStartPosition.CenterParent;
+                dlg.FormBorderStyle = FormBorderStyle.FixedDialog;
+                dlg.MinimizeBox = false;
+                dlg.MaximizeBox = false;
+                dlg.ClientSize = new Size(360, 130);
+
+                lbl.Text = prompt;
+                lbl.AutoSize = true;
+                lbl.Location = new Point(12, 15);
+
+                txt.Location = new Point(12, 40);
+                txt.Size = new Size(336, 26);
+
+                btnOk.Text = "OK";
+                btnOk.DialogResult = DialogResult.OK;
+                btnOk.Location = new Point(192, 80);
+                btnOk.Size = new Size(75, 30);
+
+                btnCancel.Text = "Cancel";
+                btnCancel.DialogResult = DialogResult.Cancel;
+                btnCancel.Location = new Point(273, 80);
+                btnCancel.Size = new Size(75, 30);
+
+                dlg.Controls.Add(lbl);
+                dlg.Controls.Add(txt);
+                dlg.Controls.Add(btnOk);
+                dlg.Controls.Add(btnCancel);
+                dlg.AcceptButton = btnOk;
+                dlg.CancelButton = btnCancel;
+
+                return dlg.ShowDialog() == DialogResult.OK ? txt.Text : "";
+            }
+        }
     }
 }

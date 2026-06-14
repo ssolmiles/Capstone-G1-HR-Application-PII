@@ -1,6 +1,5 @@
 ﻿-- =============================================
 -- HR APPLICANT SYSTEM — SCHEMA
--- Run this once on Azure SQL
 -- =============================================
 
 CREATE TABLE users (

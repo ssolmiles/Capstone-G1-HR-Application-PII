@@ -29,162 +29,182 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-
-            // ── lblTitle ─────────────────────────────────────────
-            this.lblTitle.Text = "HR Applicant Portal";
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(31, 56, 100);
+            // 
+            // lblTitle
+            // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(290, 40);
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
+            this.lblTitle.Location = new System.Drawing.Point(735, 217);
             this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(337, 46);
             this.lblTitle.TabIndex = 0;
-
-            // ── lblSubtitle ───────────────────────────────────────
-            this.lblSubtitle.Text = "Sign in to your applicant account";
-            this.lblSubtitle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Italic);
-            this.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(136, 136, 136);
+            this.lblTitle.Text = "HR Applicant Portal";
+            // 
+            // lblSubtitle
+            // 
             this.lblSubtitle.AutoSize = true;
-            this.lblSubtitle.Location = new System.Drawing.Point(330, 80);
+            this.lblSubtitle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Italic);
+            this.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.lblSubtitle.Location = new System.Drawing.Point(775, 257);
             this.lblSubtitle.Name = "lblSubtitle";
+            this.lblSubtitle.Size = new System.Drawing.Size(251, 23);
             this.lblSubtitle.TabIndex = 1;
-
-            // ── label2 (Email) ────────────────────────────────────
-            this.label2.Text = "Email:";
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(85, 85, 85);
+            this.lblSubtitle.Text = "Sign in to your applicant account";
+            // 
+            // label2
+            // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(290, 140);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.label2.Location = new System.Drawing.Point(735, 317);
             this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 23);
             this.label2.TabIndex = 2;
-
-            // ── txtEmail ──────────────────────────────────────────
+            this.label2.Text = "Email:";
+            // 
+            // txtEmail
+            // 
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtEmail.Location = new System.Drawing.Point(290, 163);
+            this.txtEmail.Location = new System.Drawing.Point(735, 340);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(310, 30);
+            this.txtEmail.Size = new System.Drawing.Size(310, 32);
             this.txtEmail.TabIndex = 3;
             this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
-
-            // ── label3 (Password) ─────────────────────────────────
-            this.label3.Text = "Password:";
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(85, 85, 85);
+            // 
+            // label3
+            // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(290, 205);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.label3.Location = new System.Drawing.Point(735, 382);
             this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(84, 23);
             this.label3.TabIndex = 4;
-
-            // ── txtPassword ───────────────────────────────────────
+            this.label3.Text = "Password:";
+            // 
+            // txtPassword
+            // 
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtPassword.Location = new System.Drawing.Point(290, 228);
+            this.txtPassword.Location = new System.Drawing.Point(735, 405);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '●';
-            this.txtPassword.Size = new System.Drawing.Size(310, 30);
+            this.txtPassword.Size = new System.Drawing.Size(310, 32);
             this.txtPassword.TabIndex = 5;
-
-            // ── linklblFgtPass ────────────────────────────────────
-            this.linklblFgtPass.Text = "Forgot Password?";
-            this.linklblFgtPass.Font = new System.Drawing.Font("Segoe UI", 9F);
+            // 
+            // linklblFgtPass
+            // 
             this.linklblFgtPass.AutoSize = true;
-            this.linklblFgtPass.Location = new System.Drawing.Point(290, 265);
+            this.linklblFgtPass.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.linklblFgtPass.Location = new System.Drawing.Point(735, 442);
             this.linklblFgtPass.Name = "linklblFgtPass";
+            this.linklblFgtPass.Size = new System.Drawing.Size(125, 20);
             this.linklblFgtPass.TabIndex = 6;
             this.linklblFgtPass.TabStop = true;
+            this.linklblFgtPass.Text = "Forgot Password?";
             this.linklblFgtPass.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklblFgtPass_LinkClicked);
-
-            // ── CheckbxShowPas ────────────────────────────────────
-            this.CheckbxShowPas.Text = "Show Password";
-            this.CheckbxShowPas.Font = new System.Drawing.Font("Segoe UI", 9F);
+            // 
+            // CheckbxShowPas
+            // 
             this.CheckbxShowPas.AutoSize = true;
-            this.CheckbxShowPas.Location = new System.Drawing.Point(430, 265);
-            this.CheckbxShowPas.Name = "CheckbxShowPas";
-            this.CheckbxShowPas.TabIndex = 7;
             this.CheckbxShowPas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CheckbxShowPas.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CheckbxShowPas.Location = new System.Drawing.Point(875, 442);
+            this.CheckbxShowPas.Name = "CheckbxShowPas";
+            this.CheckbxShowPas.Size = new System.Drawing.Size(132, 24);
+            this.CheckbxShowPas.TabIndex = 7;
+            this.CheckbxShowPas.Text = "Show Password";
             this.CheckbxShowPas.CheckedChanged += new System.EventHandler(this.CheckbxShowPas_CheckedChanged);
-
-            // ── btnLogIn ──────────────────────────────────────────
-            this.btnLogIn.Text = "LOGIN";
-            this.btnLogIn.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnLogIn.BackColor = System.Drawing.Color.FromArgb(31, 92, 153);
-            this.btnLogIn.ForeColor = System.Drawing.Color.White;
-            this.btnLogIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            // 
+            // btnLogIn
+            // 
+            this.btnLogIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
+            this.btnLogIn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogIn.FlatAppearance.BorderSize = 0;
-            this.btnLogIn.Location = new System.Drawing.Point(290, 300);
+            this.btnLogIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogIn.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.btnLogIn.ForeColor = System.Drawing.Color.White;
+            this.btnLogIn.Location = new System.Drawing.Point(735, 477);
             this.btnLogIn.Name = "btnLogIn";
             this.btnLogIn.Size = new System.Drawing.Size(310, 42);
             this.btnLogIn.TabIndex = 8;
-            this.btnLogIn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLogIn.Text = "LOGIN";
             this.btnLogIn.UseVisualStyleBackColor = false;
             this.btnLogIn.Click += new System.EventHandler(this.btnLogIn_Click);
-
-            // ── btnClear ──────────────────────────────────────────
-            this.btnClear.Text = "CLEAR";
-            this.btnClear.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnClear.ForeColor = System.Drawing.Color.FromArgb(85, 85, 85);
+            // 
+            // btnClear
+            // 
+            this.btnClear.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.Location = new System.Drawing.Point(290, 352);
+            this.btnClear.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnClear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.btnClear.Location = new System.Drawing.Point(735, 529);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(310, 38);
             this.btnClear.TabIndex = 9;
-            this.btnClear.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClear.Text = "CLEAR";
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-
-            // ── btnBack ───────────────────────────────────────────
-            this.btnBack.Text = "← Back to Role Selection";
-            this.btnBack.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnBack.ForeColor = System.Drawing.Color.FromArgb(85, 85, 85);
-            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            // 
+            // btnBack
+            // 
+            this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBack.FlatAppearance.BorderSize = 0;
-            this.btnBack.Location = new System.Drawing.Point(290, 400);
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBack.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.btnBack.Location = new System.Drawing.Point(735, 577);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(200, 28);
             this.btnBack.TabIndex = 10;
-            this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBack.Text = "← Back to Role Selection";
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-
-            // ── label5 (Don't have account) ───────────────────────
-            this.label5.Text = "Don't Have an Account?";
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(136, 136, 136);
+            // 
+            // label5
+            // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(290, 445);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.label5.Location = new System.Drawing.Point(735, 622);
             this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(168, 20);
             this.label5.TabIndex = 11;
-
-            // ── lblCreateAcc ──────────────────────────────────────
-            this.lblCreateAcc.Text = "Create Account";
-            this.lblCreateAcc.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblCreateAcc.ForeColor = System.Drawing.Color.FromArgb(31, 92, 153);
+            this.label5.Text = "Don\'t Have an Account?";
+            // 
+            // lblCreateAcc
+            // 
             this.lblCreateAcc.AutoSize = true;
-            this.lblCreateAcc.Location = new System.Drawing.Point(290, 467);
-            this.lblCreateAcc.Name = "lblCreateAcc";
-            this.lblCreateAcc.TabIndex = 12;
             this.lblCreateAcc.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblCreateAcc.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblCreateAcc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
+            this.lblCreateAcc.Location = new System.Drawing.Point(735, 644);
+            this.lblCreateAcc.Name = "lblCreateAcc";
+            this.lblCreateAcc.Size = new System.Drawing.Size(132, 23);
+            this.lblCreateAcc.TabIndex = 12;
+            this.lblCreateAcc.Text = "Create Account";
             this.lblCreateAcc.Click += new System.EventHandler(this.lblCreateAcc_Click);
-
-            // ── unused but kept to avoid breaking .cs references ──
-            this.label1.Name = "label1";
-            this.label1.TabIndex = 98;
-            this.label1.Size = new System.Drawing.Size(0, 0);
+            // 
+            // label1
+            // 
             this.label1.Location = new System.Drawing.Point(0, 0);
-
-            this.label4.Name = "label4";
-            this.label4.TabIndex = 99;
-            this.label4.Size = new System.Drawing.Size(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 0);
+            this.label1.TabIndex = 98;
+            // 
+            // label4
+            // 
             this.label4.Location = new System.Drawing.Point(0, 0);
-
-            // ── frmApplicantLogin ─────────────────────────────────
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 0);
+            this.label4.TabIndex = 99;
+            // 
+            // frmApplicantLogin
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 540);
             this.BackColor = System.Drawing.Color.White;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.Name = "frmApplicantLogin";
-            this.Text = "Applicant Login";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.ClientSize = new System.Drawing.Size(1902, 1033);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblSubtitle);
             this.Controls.Add(this.label2);
@@ -200,9 +220,15 @@
             this.Controls.Add(this.lblCreateAcc);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.Name = "frmApplicantLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Applicant Login";
             this.Load += new System.EventHandler(this.frmApplicantLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         private System.Windows.Forms.Label lblTitle;

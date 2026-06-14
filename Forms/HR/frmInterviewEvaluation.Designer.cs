@@ -202,7 +202,6 @@
             this.txtRemarks.Name = "txtRemarks";
             this.txtRemarks.Size = new System.Drawing.Size(380, 75);
             this.txtRemarks.TabIndex = 3;
-            this.txtRemarks.TextChanged += new System.EventHandler(this.txtRemarks_TextChanged);
             // 
             // label3
             // 
@@ -293,9 +292,9 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(322, 425);
+            this.button4.Location = new System.Drawing.Point(386, 416);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(420, 40);
+            this.button4.Size = new System.Drawing.Size(250, 40);
             this.button4.TabIndex = 8;
             this.button4.Text = "Proceed to Hiring Decision";
             this.button4.UseVisualStyleBackColor = false;
@@ -303,11 +302,11 @@
             // dgvInterviewed
             // 
             this.dgvInterviewed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvInterviewed.Location = new System.Drawing.Point(948, 77);
+            this.dgvInterviewed.Location = new System.Drawing.Point(760, 65);
             this.dgvInterviewed.Name = "dgvInterviewed";
             this.dgvInterviewed.RowHeadersWidth = 51;
             this.dgvInterviewed.RowTemplate.Height = 24;
-            this.dgvInterviewed.Size = new System.Drawing.Size(571, 358);
+            this.dgvInterviewed.Size = new System.Drawing.Size(1010, 358);
             this.dgvInterviewed.TabIndex = 9;
             // 
             // frmInterviewEvaluation

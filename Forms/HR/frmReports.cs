@@ -8,22 +8,12 @@ namespace HRApplicantSystem.Forms.HR
         public frmReports()
         {
             InitializeComponent();
-            btnGenerateReport.Click += btnGenerateReport_Click;
-            btnNext.Click += btnNext_Click;
         }
 
-        private void btnGenerateReport_Click(object sender, EventArgs e)
+        private void btnBack_Click(object sender, EventArgs e)
         {
-            lstReports.Items.Add("Report generated at " + DateTime.Now);
+            new frmHRDashboard().Show();
+            this.Close();
         }
-
-        private void btnNext_Click(object sender, EventArgs e)
-        {
-            frmHRDashboard dashboard = new frmHRDashboard();
-            dashboard.Show();
-            this.Hide();
-        }
-
-        private void frmReports_Load(object sender, EventArgs e) { }
     }
 }

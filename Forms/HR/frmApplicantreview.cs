@@ -17,7 +17,8 @@ namespace HRApplicantSystem.Forms.HR
             dgvApplications.AllowUserToAddRows = false; dgvApplications.RowHeadersVisible = false;
         }
 
-        private void frmHRApplicantReview_Load(object s, EventArgs e) => Load2();
+        // FIX: Renamed to match Designer wire-up (was frmHRApplicantReview_Load)
+        private void frmApplicantReview_Load(object s, EventArgs e) => Load2();
 
         private void Load2(string q = "")
         {
@@ -67,6 +68,12 @@ namespace HRApplicantSystem.Forms.HR
         {
             if (dgvApplications.SelectedRows.Count == 0) return null;
             return dgvApplications.SelectedRows[0].Cells["Email"].Value?.ToString();
+        }
+
+        // FIX: Added stub to match Designer wire-up on dgvApplications.CellContentClick
+        private void dgvApplicants_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Row selection is handled via SelectedRows; no additional action needed here.
         }
 
         private void btnSearch_Click(object s, EventArgs e) => Load2(txtSearch.Text.Trim());

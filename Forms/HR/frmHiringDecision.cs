@@ -4,18 +4,21 @@ using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+
 namespace HRApplicantSystem.Forms.HR
 {
     public partial class frmHiringDecision : Form
     {
         private int _appId = -1;
+
         public frmHiringDecision()
         {
             InitializeComponent();
             dgvPassed.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvPassed.ReadOnly = true; dgvPassed.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvPassed.AllowUserToAddRows = false; dgvPassed.RowHeadersVisible = false;
-            dgvPassed.SelectionChanged += (s, e) => {
+            dgvPassed.SelectionChanged += (s, e) =>
+            {
                 if (dgvPassed.SelectedRows.Count > 0)
                 {
                     _appId = Convert.ToInt32(dgvPassed.SelectedRows[0].Cells["AppID"].Value);
@@ -91,8 +94,15 @@ namespace HRApplicantSystem.Forms.HR
             }
             catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
         }
+
         private void btnHire_Click(object s, EventArgs e) => Decide("accepted");
         private void btnReject_Click(object s, EventArgs e) => Decide("rejected");
         private void btnBack_Click(object s, EventArgs e) { new frmInterviewEvaluation().Show(); this.Close(); }
+
+        // FIX: Added stub to match Designer wire-up on txtFinalRemarks.TextChanged
+        private void txtFinalRemarks_TextChanged(object sender, EventArgs e)
+        {
+            // No action needed; txtFinalRemarks.Text is read at decision time.
+        }
     }
 }

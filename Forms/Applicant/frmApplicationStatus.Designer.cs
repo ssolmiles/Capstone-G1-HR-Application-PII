@@ -66,7 +66,7 @@
             this.lblResult.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(122)))), ((int)(((byte)(0)))));
             this.lblResult.Location = new System.Drawing.Point(8, 30);
             this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(254, 23);
+            this.lblResult.Size = new System.Drawing.Size(154, 23);
             this.lblResult.TabIndex = 0;
             this.lblResult.Text = "Final Result: ";
             // 
@@ -179,7 +179,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
             this.groupBox1.Location = new System.Drawing.Point(499, 56);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(546, 274);
+            this.groupBox1.Size = new System.Drawing.Size(848, 297);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "HR Remarks";
@@ -213,7 +213,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Verdana", 10F);
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.button1.Location = new System.Drawing.Point(864, 643);
+            this.button1.Location = new System.Drawing.Point(1535, 46);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(230, 40);
             this.button1.TabIndex = 8;
@@ -225,7 +225,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1122, 710);
+            this.ClientSize = new System.Drawing.Size(1902, 1033);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblCurrentStatus);
             this.Controls.Add(this.lblStep1);

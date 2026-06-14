@@ -15,6 +15,7 @@ namespace HRApplicantSystem.Forms.HR
         private void frmHRDashboard_Load(object sender, EventArgs e)
         {
             LoadRecruitmentSummary();
+            button6.Visible = (SessionManager.CurrentRole == "admin");
         }
 
         private void LoadRecruitmentSummary()
@@ -79,6 +80,24 @@ namespace HRApplicantSystem.Forms.HR
             frmReports reportsForm = new frmReports();
             reportsForm.Show();
             this.Hide();
+        }
+
+        private void btnVacancyManagement_Click(object sender, EventArgs e)
+        {
+            new HRApplicantSystem.Forms.Maintenance.frmJobVacancyManagement().Show();
+            this.Hide();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            SessionManager.Logout();
+            new HRApplicantSystem.Forms.HR.frmHRLogin().Show();
+            this.Close();
+        }
+
+        private void btnMaintenance_Click(object sender, EventArgs e)
+        {
+            new HRApplicantSystem.Forms.Maintenance.frmMaintenance().ShowDialog();
         }
 
         // --- Stub handlers wired in Designer ---

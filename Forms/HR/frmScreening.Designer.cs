@@ -52,6 +52,7 @@
             this.dgvApplications = new System.Windows.Forms.DataGridView();
             this.ViewDocuments = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.lblSelectedApplicant = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -272,6 +273,18 @@
             this.button1.Text = "Back";
             this.button1.UseVisualStyleBackColor = false;
             // 
+            // lblSelectedApplicant
+            // FIX: Added missing label referenced in frmScreening.cs
+            // 
+            this.lblSelectedApplicant.AutoSize = true;
+            this.lblSelectedApplicant.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic);
+            this.lblSelectedApplicant.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.lblSelectedApplicant.Location = new System.Drawing.Point(37, 430);
+            this.lblSelectedApplicant.Name = "lblSelectedApplicant";
+            this.lblSelectedApplicant.Size = new System.Drawing.Size(130, 20);
+            this.lblSelectedApplicant.TabIndex = 10;
+            this.lblSelectedApplicant.Text = "No applicant selected";
+            // 
             // frmScreening
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -286,6 +299,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnNext);
+            this.Controls.Add(this.lblSelectedApplicant);
             this.Name = "frmScreening";
             this.Text = "Application Screening";
             this.Load += new System.EventHandler(this.frmScreening_Load);
@@ -305,5 +319,7 @@
         private System.Windows.Forms.DataGridView dgvApplications;
         private System.Windows.Forms.Button ViewDocuments;
         private System.Windows.Forms.Button button1;
+        // FIX: Added missing label referenced in frmScreening.cs Dgv_SelectionChanged
+        private System.Windows.Forms.Label lblSelectedApplicant;
     }
 }

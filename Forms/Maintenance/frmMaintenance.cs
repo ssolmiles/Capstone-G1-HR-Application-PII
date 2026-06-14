@@ -52,6 +52,11 @@ namespace HRApplicantSystem.Forms.Maintenance
             new frmAssessmentTypes().ShowDialog();
         }
 
+        private void btnUserManagement_Click(object sender, EventArgs e)
+        {
+            new frmUserManagement().ShowDialog();
+        }
+
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Close();

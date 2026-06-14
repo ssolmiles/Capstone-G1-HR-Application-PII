@@ -69,6 +69,7 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.dgvSchedules = new System.Windows.Forms.DataGridView();
             this.btnBack = new System.Windows.Forms.Button();
+            this.lblSelectedApplicant = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -287,7 +288,7 @@
             this.groupBox3.Controls.Add(this.lblStatus);
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBox3.Location = new System.Drawing.Point(675, 215);
+            this.groupBox3.Location = new System.Drawing.Point(421, 100);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(265, 100);
             this.groupBox3.TabIndex = 4;
@@ -311,9 +312,9 @@
             this.btnSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSchedule.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnSchedule.ForeColor = System.Drawing.Color.White;
-            this.btnSchedule.Location = new System.Drawing.Point(675, 330);
+            this.btnSchedule.Location = new System.Drawing.Point(296, 473);
             this.btnSchedule.Name = "btnSchedule";
-            this.btnSchedule.Size = new System.Drawing.Size(265, 40);
+            this.btnSchedule.Size = new System.Drawing.Size(188, 40);
             this.btnSchedule.TabIndex = 5;
             this.btnSchedule.Text = "Schedule Interview";
             this.btnSchedule.UseVisualStyleBackColor = false;
@@ -323,9 +324,9 @@
             this.btnComplete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnComplete.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnComplete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(122)))), ((int)(((byte)(60)))));
-            this.btnComplete.Location = new System.Drawing.Point(675, 380);
+            this.btnComplete.Location = new System.Drawing.Point(296, 523);
             this.btnComplete.Name = "btnComplete";
-            this.btnComplete.Size = new System.Drawing.Size(265, 35);
+            this.btnComplete.Size = new System.Drawing.Size(188, 35);
             this.btnComplete.TabIndex = 6;
             this.btnComplete.Text = "Mark as Completed";
             this.btnComplete.UseVisualStyleBackColor = true;
@@ -336,9 +337,9 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(675, 425);
+            this.btnCancel.Location = new System.Drawing.Point(296, 568);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(265, 35);
+            this.btnCancel.Size = new System.Drawing.Size(188, 35);
             this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "Cancel Interview";
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -349,7 +350,7 @@
             this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNext.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnNext.ForeColor = System.Drawing.Color.White;
-            this.btnNext.Location = new System.Drawing.Point(440, 470);
+            this.btnNext.Location = new System.Drawing.Point(35, 473);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(215, 45);
             this.btnNext.TabIndex = 8;
@@ -359,11 +360,11 @@
             // dgvSchedules
             // 
             this.dgvSchedules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSchedules.Location = new System.Drawing.Point(1134, 51);
+            this.dgvSchedules.Location = new System.Drawing.Point(714, 90);
             this.dgvSchedules.Name = "dgvSchedules";
             this.dgvSchedules.RowHeadersWidth = 51;
             this.dgvSchedules.RowTemplate.Height = 24;
-            this.dgvSchedules.Size = new System.Drawing.Size(595, 393);
+            this.dgvSchedules.Size = new System.Drawing.Size(1008, 393);
             this.dgvSchedules.TabIndex = 9;
             // 
             // btnBack
@@ -372,12 +373,23 @@
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnBack.ForeColor = System.Drawing.Color.White;
-            this.btnBack.Location = new System.Drawing.Point(844, 494);
+            this.btnBack.Location = new System.Drawing.Point(1710, 29);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(215, 45);
+            this.btnBack.Size = new System.Drawing.Size(138, 45);
             this.btnBack.TabIndex = 10;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = false;
+            // 
+            // lblSelectedApplicant
+            // 
+            this.lblSelectedApplicant.AutoSize = true;
+            this.lblSelectedApplicant.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblSelectedApplicant.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
+            this.lblSelectedApplicant.Location = new System.Drawing.Point(710, 523);
+            this.lblSelectedApplicant.Name = "lblSelectedApplicant";
+            this.lblSelectedApplicant.Size = new System.Drawing.Size(139, 23);
+            this.lblSelectedApplicant.TabIndex = 11;
+            this.lblSelectedApplicant.Text = "Selected: (none)";
             // 
             // frmInterviewSchedule
             // 
@@ -386,6 +398,7 @@
             this.ClientSize = new System.Drawing.Size(1902, 1033);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.dgvSchedules);
+            this.Controls.Add(this.lblSelectedApplicant);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblSubtitle);
             this.Controls.Add(this.groupBox1);
@@ -413,5 +426,6 @@
 
         private System.Windows.Forms.DataGridView dgvSchedules;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Label lblSelectedApplicant;
     }
 }

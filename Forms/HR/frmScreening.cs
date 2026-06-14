@@ -4,11 +4,13 @@ using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+
 namespace HRApplicantSystem.Forms.HR
 {
     public partial class frmScreening : Form
     {
         private int _appId = -1, _aplId = -1;
+
         public frmScreening()
         {
             InitializeComponent();
@@ -24,6 +26,7 @@ namespace HRApplicantSystem.Forms.HR
             {
                 _appId = Convert.ToInt32(dgvApplications.SelectedRows[0].Cells["AppID"].Value);
                 _aplId = Convert.ToInt32(dgvApplications.SelectedRows[0].Cells["ApplicantID"].Value);
+                // FIX: lblSelectedApplicant is now declared in the Designer (see frmScreening_Designer.cs fix)
                 lblSelectedApplicant.Text = "Selected: " + dgvApplications.SelectedRows[0].Cells["Applicant"].Value;
             }
         }
@@ -91,9 +94,17 @@ namespace HRApplicantSystem.Forms.HR
 
         private void btnQualified_Click(object s, EventArgs e) => SaveResult("qualified");
         private void btnNotQualified_Click(object s, EventArgs e) => SaveResult("not_qualified");
+
         private void btnViewDocuments_Click(object s, EventArgs e)
         { if (_aplId == -1) { MessageBox.Show("Select first."); return; } new frmHRViewDocuments(_aplId).ShowDialog(); }
+
         private void btnNext_Click(object s, EventArgs e) { new frmInterviewSchedule().Show(); this.Hide(); }
         private void btnBack_Click(object s, EventArgs e) { new frmApplicantReview().Show(); this.Close(); }
+
+        // FIX: Added stub to match Designer wire-up on groupBox3.Enter
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+            // No action needed on groupBox3 focus enter.
+        }
     }
 }

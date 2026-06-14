@@ -29,7 +29,7 @@
             // 
             this.btnSearch.Location = new System.Drawing.Point(378, 50);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(100, 28);
+            this.btnSearch.Size = new System.Drawing.Size(88, 28);
             this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -42,7 +42,7 @@
             this.listViewJobs.HideSelection = false;
             this.listViewJobs.Location = new System.Drawing.Point(13, 126);
             this.listViewJobs.Name = "listViewJobs";
-            this.listViewJobs.Size = new System.Drawing.Size(600, 250);
+            this.listViewJobs.Size = new System.Drawing.Size(1680, 250);
             this.listViewJobs.TabIndex = 2;
             this.listViewJobs.UseCompatibleStateImageBehavior = false;
             this.listViewJobs.View = System.Windows.Forms.View.Details;
@@ -52,7 +52,7 @@
             // 
             this.btnViewDetails.Location = new System.Drawing.Point(27, 400);
             this.btnViewDetails.Name = "btnViewDetails";
-            this.btnViewDetails.Size = new System.Drawing.Size(120, 30);
+            this.btnViewDetails.Size = new System.Drawing.Size(108, 30);
             this.btnViewDetails.TabIndex = 3;
             this.btnViewDetails.Text = "View Details";
             this.btnViewDetails.UseVisualStyleBackColor = true;
@@ -62,7 +62,7 @@
             // 
             this.btnApply.Location = new System.Drawing.Point(180, 400);
             this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(120, 30);
+            this.btnApply.Size = new System.Drawing.Size(108, 30);
             this.btnApply.TabIndex = 4;
             this.btnApply.Text = "Apply";
             this.btnApply.UseVisualStyleBackColor = true;
@@ -72,7 +72,7 @@
             // 
             this.btnBack.Location = new System.Drawing.Point(330, 400);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(120, 30);
+            this.btnBack.Size = new System.Drawing.Size(108, 30);
             this.btnBack.TabIndex = 5;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
@@ -83,14 +83,14 @@
             this.txtSearch.Font = new System.Drawing.Font("Verdana", 12F);
             this.txtSearch.Location = new System.Drawing.Point(27, 50);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(320, 32);
+            this.txtSearch.Size = new System.Drawing.Size(308, 32);
             this.txtSearch.TabIndex = 0;
             // 
             // frmJobVacancies
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1125, 508);
+            this.ClientSize = new System.Drawing.Size(1902, 1033);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnApply);

@@ -1,5 +1,4 @@
-﻿using HRApplicantSystem.Forms.HR;
-using HRApplicantSystem.Helpers;
+﻿using HRApplicantSystem.Helpers;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Windows.Forms;
@@ -23,7 +22,8 @@ namespace HRApplicantSystem.Forms.Applicant
             this.Close();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        // FIX: Renamed from btnLogin_Click → btnLogIn_Click to match Designer wire-up
+        private void btnLogIn_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtEmail.Text) || string.IsNullOrWhiteSpace(txtPassword.Text))
             { MessageBox.Show("Enter email and password."); return; }
@@ -34,59 +34,30 @@ namespace HRApplicantSystem.Forms.Applicant
                 {
                     conn.Open();
                     using (var cmd = new SqlCommand(
-                        "SELECT user_id, full_name, password, role FROM users" +
-                        " WHERE email=@e AND is_active=1", conn))
+                        "SELECT applicant_id, full_name, password, is_active FROM applicants WHERE email=@e", conn))
                     {
                         cmd.Parameters.AddWithValue("@e", txtEmail.Text.Trim());
                         using (var dr = cmd.ExecuteReader())
                         {
                             if (!dr.Read()) { ShowFail(); return; }
 
-                            int uid = Convert.ToInt32(dr["user_id"]);
-                            string name = dr["full_name"].ToString();
+                            bool isActive = dr["is_active"] != DBNull.Value && Convert.ToBoolean(dr["is_active"]);
+                            if (!isActive) { MessageBox.Show("This account is inactive."); return; }
+
                             string hash = dr["password"].ToString();
-                            string role = dr["role"].ToString();
+                            string name = dr["full_name"].ToString();
                             dr.Close();
 
-                            bool ok = false;
-                            bool needsUpgrade = false;
-
-                            if (hash.StartsWith("$2"))  // BCrypt hash
-                            {
-                                ok = BCrypt.Net.BCrypt.Verify(txtPassword.Text.Trim(), hash);
-                            }
-                            else  // plaintext (seed data) — compare directly
-                            {
-                                ok = hash == txtPassword.Text.Trim();
-                                needsUpgrade = ok;
-                            }
-
+                            bool ok = BCrypt.Net.BCrypt.Verify(txtPassword.Text.Trim(), hash);
                             if (!ok) { ShowFail(); return; }
 
-                            // Auto-upgrade plaintext password to BCrypt
-                            if (needsUpgrade)
+                            SessionManager.LoginApplicant(new HRApplicantSystem.Models.Applicant
                             {
-                                string newHash = BCrypt.Net.BCrypt.HashPassword(txtPassword.Text.Trim());
-                                using (var upd = new SqlCommand(
-                                    "UPDATE users SET password=@h WHERE user_id=@id", conn))
-                                {
-                                    upd.Parameters.AddWithValue("@h", newHash);
-                                    upd.Parameters.AddWithValue("@id", uid);
-                                    upd.ExecuteNonQuery();
-                                }
-                            }
-
-                            // Store complete user in session (with UserID!)
-                            SessionManager.Login(new HRApplicantSystem.Models.User
-                            {
-                                UserID = uid,
-                                FullName = name,
                                 Email = txtEmail.Text.Trim(),
-                                Role = role,
-                                IsActive = true
+                                FullName = name
                             });
 
-                            new frmHRDashboard().Show();
+                            new frmApplicantDashboard(txtEmail.Text.Trim()).Show();
                             this.Hide();
                         }
                     }
@@ -102,45 +73,6 @@ namespace HRApplicantSystem.Forms.Applicant
             txtPassword.Clear(); txtPassword.Focus();
         }
 
-
-        private void MigratePasswords()
-        {
-            try
-            {
-                using (SqlConnection conn = DatabaseHelper.GetConnection())
-                {
-                    conn.Open();
-
-                    var users = new System.Collections.Generic.List<(int id, string pass)>();
-
-                    using (SqlCommand cmd = new SqlCommand(
-                        "SELECT applicant_id, password FROM applicants WHERE password NOT LIKE '$2%'", conn))
-                    using (SqlDataReader dr = cmd.ExecuteReader())
-                    {
-                        while (dr.Read())
-                            users.Add(((int)dr["applicant_id"], dr["password"].ToString()));
-                    }
-
-                    foreach (var (id, pass) in users)
-                    {
-                        string hashed = BCrypt.Net.BCrypt.HashPassword(pass);
-                        using (SqlCommand upd = new SqlCommand(
-                            "UPDATE applicants SET password = @Hash WHERE applicant_id = @Id", conn))
-                        {
-                            upd.Parameters.AddWithValue("@Hash", hashed);
-                            upd.Parameters.AddWithValue("@Id", id);
-                            upd.ExecuteNonQuery();
-                        }
-                    }
-
-                    MessageBox.Show("Migration complete! All passwords are now hashed.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Migration error: " + ex.Message);
-            }
-        }
         private void btnClear_Click(object sender, EventArgs e)
         {
             txtEmail.Clear();
@@ -152,7 +84,7 @@ namespace HRApplicantSystem.Forms.Applicant
         {
             txtPassword.PasswordChar = CheckbxShowPas.Checked ? '\0' : '•';
         }
-            
+
         private void lblCreateAcc_Click(object sender, EventArgs e)
         {
             new frmApplicantRegister().Show();
@@ -172,7 +104,6 @@ namespace HRApplicantSystem.Forms.Applicant
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
         }
     }
 }

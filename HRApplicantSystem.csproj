@@ -194,6 +194,12 @@
     <Compile Include="Forms\HR\frmHRApplicantProfile.Designer.cs">
       <DependentUpon>frmHRApplicantProfile.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\HR\frmHRRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HR\frmHRRegister.Designer.cs">
+      <DependentUpon>frmHRRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\HR\frmHRViewDocuments.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +211,12 @@
     </Compile>
     <Compile Include="Forms\Maintenance\frmEmploymentTypes.Designer.cs">
       <DependentUpon>frmEmploymentTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Maintenance\frmUserManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Maintenance\frmUserManagement.Designer.cs">
+      <DependentUpon>frmUserManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -398,6 +410,9 @@
     <EmbeddedResource Include="Forms\HR\frmApplicantList.resx">
       <DependentUpon>frmApplicantList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HR\frmHRRegister.resx">
+      <DependentUpon>frmHRRegister.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\HR\frmHRViewDocuments.resx">
       <DependentUpon>frmHRViewDocuments.cs</DependentUpon>
     </EmbeddedResource>
@@ -458,8 +473,8 @@
       <DependentUpon>frmJobVacancyManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Maintenance\frmPositions.resx">
-      <DependentUpon>frmPositions.cs</DependentUpon>
-    </EmbeddedResource>
+  <DependentUpon>frmPositions.cs</DependentUpon>
+</EmbeddedResource>
     <EmbeddedResource Include="Forms\Maintenance\frmRequirementTypes.resx">
       <DependentUpon>frmRequirementTypes.cs</DependentUpon>
     </EmbeddedResource>
@@ -468,6 +483,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Maintenance\frmAssessmentTypes.resx">
       <DependentUpon>frmAssessmentTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Maintenance\frmUserManagement.resx">
+      <DependentUpon>frmUserManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

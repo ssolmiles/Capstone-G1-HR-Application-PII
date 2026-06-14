@@ -10,12 +10,21 @@ namespace HRApplicantSystem.Forms.Applicant
     {
         private string userEmail;
 
+        public frmApplicantDashboard()
+        {
+            InitializeComponent();
+            userEmail = string.Empty;
+        }
+
+        // Runtime constructor
         public frmApplicantDashboard(string email)
         {
             InitializeComponent();
             userEmail = email;
         }
 
+      
+        
         private void frmApplicantDashboard_Load_1(object sender, EventArgs e)
         {
             LoadDashboardData();
@@ -183,5 +192,10 @@ namespace HRApplicantSystem.Forms.Applicant
         private void groupBox4_Enter(object sender, EventArgs e) { }
 
         private void groupBox1_Enter(object sender, EventArgs e) { }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

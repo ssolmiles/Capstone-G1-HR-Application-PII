@@ -21,30 +21,35 @@ namespace HRApplicantSystem.Forms.HR
                 using (var conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
+                    // Use CASE in SQL to return a string instead of BIT
                     string sql = @"SELECT applicant_id AS [ID],
                         full_name AS [Name], email AS [Email],
                         phone AS [Phone], gender AS [Gender],
                         city AS [City], school AS [School],
-                        degree AS [Degree], is_active AS [Active]
+                        degree AS [Degree],
+                        CASE WHEN is_active = 1 THEN 'Yes' ELSE 'No' END AS [Active]
                         FROM applicants";
                     if (!string.IsNullOrEmpty(q))
                         sql += " WHERE full_name LIKE @q OR email LIKE @q";
                     sql += " ORDER BY full_name";
+
                     var ada = new SqlDataAdapter(sql, conn);
                     if (!string.IsNullOrEmpty(q))
                         ada.SelectCommand.Parameters.AddWithValue("@q", "%" + q + "%");
                     var dt = new DataTable();
                     ada.Fill(dt);
                     dgvApplicants.DataSource = dt;
+
                     if (dgvApplicants.Columns["ID"] != null)
                         dgvApplicants.Columns["ID"].Visible = false;
-                    // Colour Active column
+
+                    // Colour the Active column — no type conversion needed
+                    // because SQL already returns a string
                     foreach (DataGridViewRow row in dgvApplicants.Rows)
                     {
-                        bool active = row.Cells["Active"].Value != DBNull.Value
-                            && Convert.ToBoolean(row.Cells["Active"].Value);
-                        row.Cells["Active"].Value = active ? "Yes" : "No";
-                        row.Cells["Active"].Style.ForeColor = active ? Color.Green : Color.Red;
+                        bool active = row.Cells["Active"].Value?.ToString() == "Yes";
+                        row.Cells["Active"].Style.ForeColor =
+                            active ? Color.Green : Color.Red;
                     }
                     lblCount.Text = $"Total: {dt.Rows.Count} applicant(s)";
                 }
@@ -63,8 +68,10 @@ namespace HRApplicantSystem.Forms.HR
             return dgvApplicants.SelectedRows[0].Cells["Email"].Value?.ToString();
         }
 
-        private void btnSearch_Click(object s, EventArgs e) => LoadApplicants(txtSearch.Text.Trim());
-        private void btnClear_Click(object s, EventArgs e) { txtSearch.Clear(); LoadApplicants(); }
+        private void btnSearch_Click(object s, EventArgs e)
+            => LoadApplicants(txtSearch.Text.Trim());
+        private void btnClear_Click(object s, EventArgs e)
+        { txtSearch.Clear(); LoadApplicants(); }
 
         private void btnViewProfile_Click(object s, EventArgs e)
         {
