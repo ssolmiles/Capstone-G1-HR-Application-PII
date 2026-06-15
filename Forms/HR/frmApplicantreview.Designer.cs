@@ -95,6 +95,7 @@
             this.btnSearch.TabIndex = 4;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // dgvApplications
             // 
@@ -123,6 +124,7 @@
             this.btnViewProfile.TabIndex = 8;
             this.btnViewProfile.Text = "View Profile";
             this.btnViewProfile.UseVisualStyleBackColor = true;
+            this.btnViewProfile.Click += new System.EventHandler(this.btnViewProfile_Click);
             // 
             // btnViewDocuments
             // 
@@ -135,6 +137,7 @@
             this.btnViewDocuments.TabIndex = 9;
             this.btnViewDocuments.Text = "View Documents";
             this.btnViewDocuments.UseVisualStyleBackColor = true;
+            this.btnViewDocuments.Click += new System.EventHandler(this.btnViewDocuments_Click);
             // 
             // btnLockReview
             // 
@@ -147,6 +150,7 @@
             this.btnLockReview.TabIndex = 10;
             this.btnLockReview.Text = "Lock for Review";
             this.btnLockReview.UseVisualStyleBackColor = true;
+            this.btnLockReview.Click += new System.EventHandler(this.btnLockReview_Click);
             // 
             // btnNext
             // 
@@ -160,6 +164,7 @@
             this.btnNext.TabIndex = 11;
             this.btnNext.Text = "Proceed to Screening";
             this.btnNext.UseVisualStyleBackColor = false;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // lblCount
             // 
@@ -183,6 +188,7 @@
             this.btnBack.TabIndex = 12;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // frmApplicantReview
             // 

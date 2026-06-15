@@ -10,6 +10,11 @@ namespace HRApplicantSystem.Forms.Applicant
     {
         private string userEmail;
 
+        // Snapshot of all editable field values, taken right after loading
+        // (and again right after a successful save). Used to detect whether
+        // the user actually changed anything before hitting Save.
+        private string originalSnapshot;
+
         public frmMyProfile(string email)
         {
             InitializeComponent();
@@ -21,6 +26,7 @@ namespace HRApplicantSystem.Forms.Applicant
             LoadProfileData();
             SetReadOnly(true);
             btnSave.Enabled = false;
+            originalSnapshot = BuildSnapshot();
         }
 
         private void LoadProfileData()
@@ -95,6 +101,32 @@ namespace HRApplicantSystem.Forms.Applicant
             }
         }
 
+        // Builds a single string representing the current state of every
+        // editable field. Comparing two snapshots tells us whether anything
+        // actually changed.
+        private string BuildSnapshot()
+        {
+            return string.Join("|", new[]
+            {
+                txtFN.Text.Trim(),
+                txtMI.Text.Trim(),
+                txtLN.Text.Trim(),
+                dtpBirthday.Value.Date.ToString("yyyy-MM-dd"),
+                txtAddress.Text.Trim(),
+                txtCity.Text.Trim(),
+                txtProvince.Text.Trim(),
+                txtZip.Text.Trim(),
+                txtPhone.Text.Trim(),
+                txtEducation.Text.Trim(),
+                txtDegree.Text.Trim(),
+                txtYearGrad.Text.Trim(),
+                txtSkills.Text.Trim(),
+                txtWorkExp.Text.Trim(),
+                txtPosition.Text.Trim(),
+                txtDuration.Text.Trim()
+            });
+        }
+
         private void btnEdit_Click(object sender, EventArgs e)
         {
             SetReadOnly(false);
@@ -107,6 +139,17 @@ namespace HRApplicantSystem.Forms.Applicant
             if (string.IsNullOrWhiteSpace(txtFN.Text) || string.IsNullOrWhiteSpace(txtLN.Text))
             {
                 MessageBox.Show("First Name and Last Name are required.");
+                return;
+            }
+
+            // Nothing was actually edited: tell the user, exit edit mode,
+            // but don't treat it as an error and don't hit the database.
+            if (BuildSnapshot() == originalSnapshot)
+            {
+                MessageBox.Show("No changes committed!", "Profile",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                SetReadOnly(true);
+                btnSave.Enabled = false;
                 return;
             }
 
@@ -160,6 +203,9 @@ namespace HRApplicantSystem.Forms.Applicant
                 MessageBox.Show("Profile Updated Successfully!");
                 SetReadOnly(true);
                 btnSave.Enabled = false;
+
+                // The saved values are now the new baseline.
+                originalSnapshot = BuildSnapshot();
             }
             catch (Exception ex)
             {
@@ -215,18 +261,24 @@ namespace HRApplicantSystem.Forms.Applicant
             txtDuration.BackColor = c;
         }
 
+        // This form is opened with ShowDialog() from the Dashboard, which
+        // remains visible underneath. Just close — do NOT create another
+        // Dashboard instance (that was causing duplicate windows to stack up).
         private void btnBack_Click(object sender, EventArgs e)
         {
-            frmApplicantDashboard dashboard = new frmApplicantDashboard(userEmail);
-            dashboard.Show();
             this.Close();
         }
 
+        // FIX: previously opened frmMyDocuments TWICE (two separate
+        // ShowDialog() calls), which is what caused extra windows to pile up
+        // every time the user went back from My Documents. Now it's a single
+        // modal instance.
         private void btnDocs_Click(object sender, EventArgs e)
         {
-            new frmMyDocuments(userEmail).ShowDialog();
-            var frm = new frmMyDocuments(userEmail);
-            frm.ShowDialog();
+            using (var frm = new frmMyDocuments(userEmail))
+            {
+                frm.ShowDialog();
+            }
         }
     }
 }

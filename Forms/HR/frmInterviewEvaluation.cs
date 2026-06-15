@@ -8,22 +8,40 @@ namespace HRApplicantSystem.Forms.HR
 {
     public partial class frmInterviewEvaluation : Form
     {
-        private int _schedId = -1, _appId = -1;
+        private int _appId;
+        private int _schedId = -1;   // FIX: added missing field
+
         public frmInterviewEvaluation()
         {
             InitializeComponent();
+
             dgvInterviewed.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvInterviewed.ReadOnly = true; dgvInterviewed.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvInterviewed.AllowUserToAddRows = false; dgvInterviewed.RowHeadersVisible = false;
-            dgvInterviewed.SelectionChanged += (s, e) => {
+            dgvInterviewed.ReadOnly = true;
+            dgvInterviewed.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvInterviewed.AllowUserToAddRows = false;
+            dgvInterviewed.RowHeadersVisible = false;
+
+            dgvInterviewed.SelectionChanged += (s, e) =>
+            {
                 if (dgvInterviewed.SelectedRows.Count > 0)
                 {
-                    _schedId = Convert.ToInt32(dgvInterviewed.SelectedRows[0].Cells["SchedID"].Value);
-                    _appId = Convert.ToInt32(dgvInterviewed.SelectedRows[0].Cells["AppID"].Value);
-                    lblResult.Text = "Selected: " + dgvInterviewed.SelectedRows[0].Cells["Applicant"].Value;
+                    var row = dgvInterviewed.SelectedRows[0];
+                    if (row.Cells["SchedID"].Value == null || row.Cells["AppID"].Value == null) return;
+
+                    _schedId = Convert.ToInt32(row.Cells["SchedID"].Value);
+                    _appId = Convert.ToInt32(row.Cells["AppID"].Value);
+
+                    lblApplicantName.Text = row.Cells["Applicant"].Value?.ToString() ?? "";
+                    lblJobApplied.Text = row.Cells["Position"].Value?.ToString() ?? "";
                 }
             };
         }
+
+        public frmInterviewEvaluation(int appId) : this()
+        {
+            _appId = appId;
+        }
+        // FIX: removed stray "}" that prematurely closed the class here
 
         private void frmInterviewEvaluation_Load(object s, EventArgs e) => LoadData();
 
@@ -90,6 +108,11 @@ namespace HRApplicantSystem.Forms.HR
         private void btnPass_Click(object s, EventArgs e) => Save("pass");
         private void btnFail_Click(object s, EventArgs e) => Save("fail");
         private void btnNext_Click(object s, EventArgs e) { new frmHiringDecision().Show(); this.Hide(); }
+
+        private void groupBox2_Enter(object sender, EventArgs e) { }
+
         private void btnBack_Click(object s, EventArgs e) { new frmInterviewSchedule().Show(); this.Close(); }
+
+        private void txtRemarks_TextChanged(object sender, EventArgs e) { }
     }
 }

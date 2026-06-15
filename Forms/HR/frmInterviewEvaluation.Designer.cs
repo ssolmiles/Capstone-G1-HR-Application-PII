@@ -161,6 +161,7 @@
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Evaluation";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // label1
             // 
@@ -202,6 +203,7 @@
             this.txtRemarks.Name = "txtRemarks";
             this.txtRemarks.Size = new System.Drawing.Size(380, 75);
             this.txtRemarks.TabIndex = 3;
+            this.txtRemarks.TextChanged += new System.EventHandler(this.txtRemarks_TextChanged);
             // 
             // label3
             // 
@@ -259,6 +261,8 @@
             this.button1.TabIndex = 5;
             this.button1.Text = "Pass";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.btnPass_Click);
+
             // 
             // button2
             // 
@@ -270,6 +274,8 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(125, 40);
             this.button2.TabIndex = 6;
+            this.button2.Click += new System.EventHandler(this.btnFail_Click);
+
             this.button2.Text = "Fail";
             this.button2.UseVisualStyleBackColor = false;
             // 
@@ -281,6 +287,8 @@
             this.btnBack.ForeColor = System.Drawing.Color.White;
             this.btnBack.Location = new System.Drawing.Point(40, 395);
             this.btnBack.Name = "btnBack";
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+
             this.btnBack.Size = new System.Drawing.Size(260, 40);
             this.btnBack.TabIndex = 7;
             this.btnBack.Text = "Back [or Save?]";
@@ -291,6 +299,8 @@
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.button4.Click += new System.EventHandler(this.btnNext_Click);
+
             this.button4.ForeColor = System.Drawing.Color.White;
             this.button4.Location = new System.Drawing.Point(386, 416);
             this.button4.Name = "button4";

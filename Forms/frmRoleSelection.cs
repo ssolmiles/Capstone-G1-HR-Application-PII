@@ -23,5 +23,10 @@ namespace HRApplicantSystem.Forms
             new frmHRLogin().Show();
             this.Hide();
         }
+
+        private void frmRoleSelection_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -31,6 +31,11 @@ namespace HRApplicantSystem.Forms.Applicant
             lblTranscriptStatus.ForeColor = Color.Red;
             lblCertStatus.ForeColor = Color.Red;
 
+            SetDocControls(false, btnUploadResume, btnRemoveResume);
+            SetDocControls(false, btnUploadID, btnRemoveID);
+            SetDocControls(false, btnUploadTranscript, btnRemoveTranscript);
+            SetDocControls(false, btnUploadCerts, btnRemoveCerts);
+
             try
             {
                 using (SqlConnection conn = DatabaseHelper.GetConnection())
@@ -63,42 +68,35 @@ namespace HRApplicantSystem.Forms.Applicant
 
                                 if (label.Contains("resume"))
                                 {
-                                    lblResumeStatus.Text = submitted
-                                        ? "Submitted" : "Missing";
-                                    lblResumeStatus.ForeColor = submitted
-                                        ? Color.Green : Color.Red;
+                                    SetStatus(lblResumeStatus, submitted);
                                     hasResume = submitted;
                                 }
-                                // FIX: 'Valid ID' does not match 'id' alone
+                                // 'Valid ID' does not match 'id' alone,
                                 // so match on 'id' OR 'valid'
                                 else if (label.Contains(" id") || label == "valid id"
                                     || label.Contains("valid id"))
                                 {
-                                    lblIDStatus.Text = submitted
-                                        ? "Submitted" : "Missing";
-                                    lblIDStatus.ForeColor = submitted
-                                        ? Color.Green : Color.Red;
+                                    SetStatus(lblIDStatus, submitted);
                                     hasID = submitted;
                                 }
                                 else if (label.Contains("transcript"))
                                 {
-                                    lblTranscriptStatus.Text = submitted
-                                        ? "Submitted" : "Missing";
-                                    lblTranscriptStatus.ForeColor = submitted
-                                        ? Color.Green : Color.Red;
+                                    SetStatus(lblTranscriptStatus, submitted);
                                     hasTranscript = submitted;
                                 }
                                 else if (label.Contains("cert"))
                                 {
-                                    lblCertStatus.Text = submitted
-                                        ? "Submitted" : "Missing";
-                                    lblCertStatus.ForeColor = submitted
-                                        ? Color.Green : Color.Red;
+                                    SetStatus(lblCertStatus, submitted);
                                     hasCert = submitted;
                                 }
                             }
                         }
                     }
+
+                    SetDocControls(hasResume, btnUploadResume, btnRemoveResume);
+                    SetDocControls(hasID, btnUploadID, btnRemoveID);
+                    SetDocControls(hasTranscript, btnUploadTranscript, btnRemoveTranscript);
+                    SetDocControls(hasCert, btnUploadCerts, btnRemoveCerts);
 
                     bool allComplete = hasResume && hasID && hasTranscript && hasCert;
                     lblOverallStatus.Text = "Overall Status: "
@@ -117,12 +115,28 @@ namespace HRApplicantSystem.Forms.Applicant
                         cmd.Parameters.AddWithValue("@ApplicantId", applicantId);
                         object result = cmd.ExecuteScalar();
                         txtRemarks.Text = (result != null && result != DBNull.Value)
-                            ? result.ToString() : "";
+                            ? result.ToString() : "(No remarks from HR yet.)";
                     }
                 }
             }
             catch (Exception ex)
             { MessageBox.Show("Error: " + ex.Message); }
+        }
+
+        private void SetStatus(Label lbl, bool submitted)
+        {
+            lbl.Text = submitted ? "Submitted" : "Missing";
+            lbl.ForeColor = submitted ? Color.Green : Color.Red;
+        }
+
+        // Once a document is Submitted, "Upload" is disabled and "Remove"
+        // becomes available — the applicant must remove the old file before
+        // a new one can be uploaded (prevents silent re-submission /
+        // overwriting a file HR may already be reviewing).
+        private void SetDocControls(bool submitted, Button uploadBtn, Button removeBtn)
+        {
+            uploadBtn.Enabled = !submitted;
+            removeBtn.Enabled = submitted;
         }
 
         private int GetApplicantId(SqlConnection conn)
@@ -137,7 +151,26 @@ namespace HRApplicantSystem.Forms.Applicant
             }
         }
 
-        private void UploadDocument(string docTypeKeyword, Label statusLabel)
+        private int GetReqTypeId(SqlConnection conn, string docTypeKeyword)
+        {
+            using (var rtCmd = new SqlCommand(
+                "SELECT TOP 1 req_type_id FROM requirement_types"
+                + " WHERE label LIKE @kw", conn))
+            {
+                rtCmd.Parameters.AddWithValue("@kw", "%" + docTypeKeyword + "%");
+                object r = rtCmd.ExecuteScalar();
+                if (r == null || r == DBNull.Value)
+                {
+                    MessageBox.Show(
+                        $"Requirement type '{docTypeKeyword}' not found.\n"
+                        + "Ask your admin to seed the requirement_types table.");
+                    return -1;
+                }
+                return Convert.ToInt32(r);
+            }
+        }
+
+        private void UploadDocument(string docTypeKeyword)
         {
             if (openFileDialog1.ShowDialog() != DialogResult.OK) return;
             string filePath = openFileDialog1.FileName;
@@ -149,27 +182,10 @@ namespace HRApplicantSystem.Forms.Applicant
                     int applicantId = GetApplicantId(conn);
                     if (applicantId == -1) return;
 
-                    // FIX: Check the req_type_id exists first
-                    int reqTypeId = -1;
-                    using (var rtCmd = new SqlCommand(
-                        "SELECT TOP 1 req_type_id FROM requirement_types"
-                        + " WHERE label LIKE @kw", conn))
-                    {
-                        rtCmd.Parameters.AddWithValue("@kw",
-                            "%" + docTypeKeyword + "%");
-                        object r = rtCmd.ExecuteScalar();
-                        if (r == null || r == DBNull.Value)
-                        {
-                            MessageBox.Show(
-                                $"Requirement type '{docTypeKeyword}' not found.\n"
-                                + "Ask your admin to seed the requirement_types table.");
-                            return;
-                        }
-                        reqTypeId = Convert.ToInt32(r);
-                    }
+                    int reqTypeId = GetReqTypeId(conn, docTypeKeyword);
+                    if (reqTypeId == -1) return;
 
-                    // Check if record already exists
-                    bool exists = false;
+                    bool exists;
                     using (var check = new SqlCommand(
                         "SELECT COUNT(1) FROM applicant_documents"
                         + " WHERE applicant_id=@aid AND req_type_id=@rtid",
@@ -211,35 +227,81 @@ namespace HRApplicantSystem.Forms.Applicant
                         }
                     }
                 }
-                statusLabel.Text = "Submitted";
-                statusLabel.ForeColor = Color.Green;
                 MessageBox.Show("Document uploaded successfully!");
-                LoadDocumentStatus(); // Refresh all statuses
+                LoadDocumentStatus(); // Refresh all statuses + button states
             }
             catch (Exception ex)
             { MessageBox.Show("Upload error: " + ex.Message); }
         }
 
-        private void btnUploadResume_Click(object sender, EventArgs e)
-            => UploadDocument("resume", lblResumeStatus);
-
-        private void btnUploadID_Click(object sender, EventArgs e)
-            => UploadDocument("id", lblIDStatus);
-
-        private void btnUploadTranscipt_Click(object sender, EventArgs e)
-            => UploadDocument("transcript", lblTranscriptStatus);
-
-        private void btnUploadCerts_Click(object sender, EventArgs e)
-            => UploadDocument("cert", lblCertStatus);
-
-        private void btnBack_Click(object sender, EventArgs e)
+        // Resets a submitted document back to "Missing" (clears the file
+        // path) so the applicant can upload a corrected file afterward.
+        private void RemoveDocument(string docTypeKeyword, string displayName)
         {
-            frmMyProfile profile = new frmMyProfile(userEmail);
-            profile.Show();
-            this.Hide();
+            if (MessageBox.Show(
+                $"Remove your submitted {displayName}?\nYou will need to upload it again.",
+                "Confirm Remove", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+                != DialogResult.Yes)
+                return;
+
+            try
+            {
+                using (var conn = DatabaseHelper.GetConnection())
+                {
+                    conn.Open();
+                    int applicantId = GetApplicantId(conn);
+                    if (applicantId == -1) return;
+
+                    int reqTypeId = GetReqTypeId(conn, docTypeKeyword);
+                    if (reqTypeId == -1) return;
+
+                    using (var cmd = new SqlCommand(
+                        @"UPDATE applicant_documents
+                          SET file_path = NULL, status = 'missing'
+                          WHERE applicant_id=@aid AND req_type_id=@rtid", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@aid", applicantId);
+                        cmd.Parameters.AddWithValue("@rtid", reqTypeId);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                MessageBox.Show($"{displayName} removed. You can upload a new file.");
+                LoadDocumentStatus();
+            }
+            catch (Exception ex)
+            { MessageBox.Show("Error: " + ex.Message); }
         }
 
-        private void lblIDStatus_Click(object sender, EventArgs e) { }
-        private void button1_Click(object sender, EventArgs e) { }
+        private void btnUploadResume_Click(object sender, EventArgs e)
+            => UploadDocument("resume");
+
+        private void btnUploadID_Click(object sender, EventArgs e)
+            => UploadDocument("id");
+
+        private void btnUploadTranscript_Click(object sender, EventArgs e)
+            => UploadDocument("transcript");
+
+        private void btnUploadCerts_Click(object sender, EventArgs e)
+            => UploadDocument("cert");
+
+        private void btnRemoveResume_Click(object sender, EventArgs e)
+            => RemoveDocument("resume", "Resume");
+
+        private void btnRemoveID_Click(object sender, EventArgs e)
+            => RemoveDocument("id", "Valid ID");
+
+        private void btnRemoveTranscript_Click(object sender, EventArgs e)
+            => RemoveDocument("transcript", "Transcript of Records");
+
+        private void btnRemoveCerts_Click(object sender, EventArgs e)
+            => RemoveDocument("cert", "Certificates");
+
+        // This form is opened with ShowDialog() from My Profile, which stays
+        // visible underneath. Close returns control there directly — no new
+        // window is created, so the "panel duplicates" bug is gone.
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -25,12 +25,15 @@ namespace HRApplicantSystem.Forms.Applicant
         {
             listViewJobs.View = System.Windows.Forms.View.Details;
             listViewJobs.FullRowSelect = true;
+            listViewJobs.GridLines = true;
             listViewJobs.Columns.Clear();
             listViewJobs.Columns.Add("Vacancy ID", 80);
-            listViewJobs.Columns.Add("Position", 160);
-            listViewJobs.Columns.Add("Department", 140);
-            listViewJobs.Columns.Add("Type", 100);
+            listViewJobs.Columns.Add("Position", 180);
+            listViewJobs.Columns.Add("Department", 160);
+            listViewJobs.Columns.Add("Type", 110);
             listViewJobs.Columns.Add("Slots", 60);
+            listViewJobs.Columns.Add("Description", 580);
+            listViewJobs.Columns.Add("Qualifications", 580);
         }
 
         private void LoadJobList(string searchText = "")
@@ -47,7 +50,9 @@ namespace HRApplicantSystem.Forms.Applicant
                             p.title,
                             d.name AS department,
                             et.label AS employment_type,
-                            v.slots
+                            v.slots,
+                            v.description,
+                            v.qualifications
                           FROM job_vacancies v
                           INNER JOIN positions p ON v.position_id = p.position_id
                           INNER JOIN departments d ON v.department_id = d.department_id
@@ -72,6 +77,17 @@ namespace HRApplicantSystem.Forms.Applicant
                                 item.SubItems.Add(dr["department"].ToString());
                                 item.SubItems.Add(dr["employment_type"].ToString());
                                 item.SubItems.Add(dr["slots"].ToString());
+
+                                string description = dr["description"] == DBNull.Value ? "" : dr["description"].ToString();
+                                string qualifications = dr["qualifications"] == DBNull.Value ? "" : dr["qualifications"].ToString();
+
+                                // Show a single-line preview in the table itself (per request).
+                                item.SubItems.Add(SingleLine(description));
+                                item.SubItems.Add(SingleLine(qualifications));
+
+                                // Keep the full, untrimmed text for "View Full Details".
+                                item.Tag = new string[] { description, qualifications };
+
                                 listViewJobs.Items.Add(item);
                             }
                         }
@@ -82,6 +98,18 @@ namespace HRApplicantSystem.Forms.Applicant
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
+        }
+
+        // Collapses multi-line description/qualifications text into a single
+        // readable preview line so it fits cleanly inside the table.
+        private static string SingleLine(string text)
+        {
+            if (string.IsNullOrEmpty(text)) return "";
+            string flat = text.Replace("\r\n", " ")
+                               .Replace("\n", " ")
+                               .Replace("\r", " ")
+                               .Trim();
+            return flat.Length > 180 ? flat.Substring(0, 180) + "…" : flat;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -97,51 +125,29 @@ namespace HRApplicantSystem.Forms.Applicant
                 return;
             }
 
-            string vacancyId = listViewJobs.SelectedItems[0].Text;
+            ListViewItem selected = listViewJobs.SelectedItems[0];
+            string position = selected.SubItems[1].Text;
+            string department = selected.SubItems[2].Text;
+            string employmentType = selected.SubItems[3].Text;
+            string slots = selected.SubItems[4].Text;
 
-            try
+            string description = "";
+            string qualifications = "";
+            if (selected.Tag is string[] full)
             {
-                using (SqlConnection conn = DatabaseHelper.GetConnection())
-                {
-                    conn.Open();
-                    using (SqlCommand cmd = new SqlCommand(
-                        @"SELECT 
-                            p.title,
-                            d.name AS department,
-                            et.label AS employment_type,
-                            v.description,
-                            v.qualifications,
-                            v.slots
-                          FROM job_vacancies v
-                          INNER JOIN positions p ON v.position_id = p.position_id
-                          INNER JOIN departments d ON v.department_id = d.department_id
-                          INNER JOIN employment_types et ON v.employment_type_id = et.type_id
-                          WHERE v.vacancy_id = @ID", conn))
-                    {
-                        cmd.Parameters.AddWithValue("@ID", vacancyId);
-
-                        using (SqlDataReader dr = cmd.ExecuteReader())
-                        {
-                            if (dr.Read())
-                            {
-                                string details =
-                                    $"Position: {dr["title"]}\n" +
-                                    $"Department: {dr["department"]}\n" +
-                                    $"Employment Type: {dr["employment_type"]}\n" +
-                                    $"Slots: {dr["slots"]}\n\n" +
-                                    $"Description:\n{dr["description"]}\n\n" +
-                                    $"Qualifications:\n{dr["qualifications"]}";
-
-                                MessageBox.Show(details, "Job Details");
-                            }
-                        }
-                    }
-                }
+                description = full[0];
+                qualifications = full[1];
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
+
+            string details =
+                $"Position: {position}\n" +
+                $"Department: {department}\n" +
+                $"Employment Type: {employmentType}\n" +
+                $"Slots: {slots}\n\n" +
+                $"Description:\n{description}\n\n" +
+                $"Qualifications:\n{qualifications}";
+
+            MessageBox.Show(details, "Job Details");
         }
 
         private void btnApply_Click(object sender, EventArgs e)
@@ -216,11 +222,21 @@ namespace HRApplicantSystem.Forms.Applicant
             }
         }
 
+        // The Dashboard only Hides itself (it is not closed) before showing this
+        // form, so going "Back" just needs to bring it back into view and close
+        // this form — never create a second Dashboard instance.
         private void btnBack_Click(object sender, EventArgs e)
         {
-            frmApplicantDashboard dash = new frmApplicantDashboard(userEmail);
-            dash.Show();
-            this.Hide();
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f is frmApplicantDashboard)
+                {
+                    f.Show();
+                    f.BringToFront();
+                    break;
+                }
+            }
+            this.Close();
         }
 
         private void listViewJobs_SelectedIndexChanged(object sender, EventArgs e) { }

@@ -473,8 +473,8 @@
       <DependentUpon>frmJobVacancyManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Maintenance\frmPositions.resx">
-  <DependentUpon>frmPositions.cs</DependentUpon>
-</EmbeddedResource>
+      <DependentUpon>frmPositions.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Maintenance\frmRequirementTypes.resx">
       <DependentUpon>frmRequirementTypes.cs</DependentUpon>
     </EmbeddedResource>

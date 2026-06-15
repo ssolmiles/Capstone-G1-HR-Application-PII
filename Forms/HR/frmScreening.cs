@@ -24,10 +24,16 @@ namespace HRApplicantSystem.Forms.HR
         {
             if (dgvApplications.SelectedRows.Count > 0)
             {
-                _appId = Convert.ToInt32(dgvApplications.SelectedRows[0].Cells["AppID"].Value);
-                _aplId = Convert.ToInt32(dgvApplications.SelectedRows[0].Cells["ApplicantID"].Value);
-                // FIX: lblSelectedApplicant is now declared in the Designer (see frmScreening_Designer.cs fix)
-                lblSelectedApplicant.Text = "Selected: " + dgvApplications.SelectedRows[0].Cells["Applicant"].Value;
+                var row = dgvApplications.SelectedRows[0];
+                _appId = Convert.ToInt32(row.Cells["AppID"].Value);
+                _aplId = Convert.ToInt32(row.Cells["ApplicantID"].Value);
+
+                lblApplicantName.Text = row.Cells["Applicant"].Value?.ToString() ?? "";
+                lblJobApplied.Text = row.Cells["Position"].Value?.ToString() ?? "";
+                lblSelectedApplicant.Text = "Selected: " + row.Cells["Applicant"].Value;
+
+                lblStatus.Text = "Status: " + row.Cells["Status"].Value;
+                lblStatus.ForeColor = Color.Gray;
             }
         }
 
@@ -100,6 +106,11 @@ namespace HRApplicantSystem.Forms.HR
 
         private void btnNext_Click(object s, EventArgs e) { new frmInterviewSchedule().Show(); this.Hide(); }
         private void btnBack_Click(object s, EventArgs e) { new frmApplicantReview().Show(); this.Close(); }
+
+        private void txtRemarks_TextChanged(object sender, EventArgs e)
+        {
+
+        }
 
         // FIX: Added stub to match Designer wire-up on groupBox3.Enter
         private void groupBox3_Enter(object sender, EventArgs e)

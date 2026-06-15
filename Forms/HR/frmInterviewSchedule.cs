@@ -12,16 +12,51 @@ namespace HRApplicantSystem.Forms.HR
         public frmInterviewSchedule()
         {
             InitializeComponent();
+
+            // Grid of screened applicants waiting to be scheduled
+            dgvToSchedule.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvToSchedule.ReadOnly = true;
+            dgvToSchedule.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvToSchedule.AllowUserToAddRows = false;
+            dgvToSchedule.RowHeadersVisible = false;
+            dgvToSchedule.SelectionChanged += Dgv_SelectionChanged;
+
+            // Grid of existing/past schedules
             dgvSchedules.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvSchedules.ReadOnly = true; dgvSchedules.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvSchedules.AllowUserToAddRows = false; dgvSchedules.RowHeadersVisible = false;
             dgvSchedules.SelectionChanged += (s, e) => {
                 if (dgvSchedules.SelectedRows.Count > 0)
-                    _appId = Convert.ToInt32(dgvSchedules.SelectedRows[0].Cells["AppID"].Value);
+                {
+                    var row = dgvSchedules.SelectedRows[0];
+                    if (row.Cells["AppID"].Value == null) return;
+                    _appId = Convert.ToInt32(row.Cells["AppID"].Value);
+                    lblApplicantName.Text = row.Cells["Applicant"].Value?.ToString() ?? "";
+                    lblJobApplied.Text = row.Cells["Position"].Value?.ToString() ?? "";
+                    lblSelectedApplicant.Text = "Selected: " + row.Cells["Applicant"].Value;
+                    lblStatus.Text = "Status: " + row.Cells["Sched Status"].Value;
+                }
             };
         }
 
-        private void frmInterviewSchedule_Load(object s, EventArgs e) { LoadTypes(); LoadSchedules(); }
+        // Fired when an applicant is picked from the "to schedule" grid
+        private void Dgv_SelectionChanged(object s, EventArgs e)
+        {
+            if (dgvToSchedule.SelectedRows.Count > 0)
+            {
+                var row = dgvToSchedule.SelectedRows[0];
+                if (row.Cells["AppID"].Value == null) return;
+
+                _appId = Convert.ToInt32(row.Cells["AppID"].Value);
+                lblApplicantName.Text = row.Cells["Applicant"].Value?.ToString() ?? "";
+                lblJobApplied.Text = row.Cells["Position"].Value?.ToString() ?? "";
+                lblSelectedApplicant.Text = "Selected: " + row.Cells["Applicant"].Value;
+                lblStatus.Text = "Status: Not Scheduled";
+                lblStatus.ForeColor = Color.OrangeRed;
+            }
+        }
+
+        private void frmInterviewSchedule_Load(object s, EventArgs e) { LoadTypes(); LoadToSchedule(); LoadSchedules(); }
 
         private void LoadTypes()
         {
@@ -38,6 +73,33 @@ namespace HRApplicantSystem.Forms.HR
                     }
                     cmbMode.DisplayMember = "Text"; cmbMode.ValueMember = "Value";
                     if (cmbMode.Items.Count > 0) cmbMode.SelectedIndex = 0;
+                }
+            }
+            catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
+        }
+
+        // Applicants who passed screening and don't have an interview scheduled yet
+        private void LoadToSchedule()
+        {
+            try
+            {
+                using (var conn = DatabaseHelper.GetConnection())
+                {
+                    conn.Open();
+                    string sql = @"SELECT a.application_id AS [AppID],
+                        ap.full_name AS [Applicant], p.title AS [Position],
+                        d.name AS [Department], a.status AS [Status]
+                        FROM applications a
+                        INNER JOIN applicants ap ON a.applicant_id=ap.applicant_id
+                        INNER JOIN job_vacancies v ON a.vacancy_id=v.vacancy_id
+                        INNER JOIN positions p ON v.position_id=p.position_id
+                        INNER JOIN departments d ON v.department_id=d.department_id
+                        WHERE a.status='screened'
+                        AND a.application_id NOT IN (SELECT application_id FROM interview_schedules)
+                        ORDER BY a.submitted_at";
+                    var ada = new SqlDataAdapter(sql, conn); var dt = new DataTable(); ada.Fill(dt);
+                    dgvToSchedule.DataSource = dt;
+                    if (dgvToSchedule.Columns["AppID"] != null) dgvToSchedule.Columns["AppID"].Visible = false;
                 }
             }
             catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
@@ -107,7 +169,8 @@ namespace HRApplicantSystem.Forms.HR
                 StatusHistoryLogger.LogStatusChange(_appId, "screened", "interview_scheduled",
                     SessionManager.CurrentUserID, "Interview scheduled.");
                 lblStatus.Text = "Status: Scheduled"; lblStatus.ForeColor = Color.Blue;
-                MessageBox.Show("Interview scheduled!"); LoadSchedules();
+                MessageBox.Show("Interview scheduled!");
+                LoadToSchedule(); LoadSchedules();
             }
             catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
         }
@@ -126,7 +189,8 @@ namespace HRApplicantSystem.Forms.HR
                     }
                 }
                 StatusHistoryLogger.LogStatusChange(_appId, null, appS, SessionManager.CurrentUserID);
-                lblStatus.Text = $"Status: {ss}"; MessageBox.Show($"Marked {ss}."); LoadSchedules();
+                lblStatus.Text = $"Status: {ss}"; MessageBox.Show($"Marked {ss}.");
+                LoadToSchedule(); LoadSchedules();
             }
             catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
         }
@@ -134,5 +198,25 @@ namespace HRApplicantSystem.Forms.HR
         private void btnCancel_Click(object s, EventArgs e) => UpdateSched("cancelled", "screened");
         private void btnNext_Click(object s, EventArgs e) { new frmInterviewEvaluation().Show(); this.Hide(); }
         private void btnBack_Click(object s, EventArgs e) { new frmScreening().Show(); this.Close(); }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtInterviewer_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

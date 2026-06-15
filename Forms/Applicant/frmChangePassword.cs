@@ -101,5 +101,12 @@ namespace HRApplicantSystem.Forms.Applicant
         }
 
         private void txtNewPass_TextChanged(object sender, EventArgs e) { }
+
+        // This form is opened with ShowDialog() from the Dashboard, which
+        // stays visible underneath. Close returns control there directly.
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

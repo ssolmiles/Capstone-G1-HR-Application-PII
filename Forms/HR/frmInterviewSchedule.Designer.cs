@@ -32,6 +32,7 @@
         private System.Windows.Forms.Button btnComplete;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.DataGridView dgvToSchedule;
 
         protected override void Dispose(bool disposing)
         {
@@ -68,12 +69,14 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.dgvSchedules = new System.Windows.Forms.DataGridView();
+            this.dgvToSchedule = new System.Windows.Forms.DataGridView();
             this.btnBack = new System.Windows.Forms.Button();
             this.lblSelectedApplicant = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSchedules)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvToSchedule)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -106,19 +109,20 @@
             this.groupBox1.Controls.Add(this.lblJobApplied);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBox1.Location = new System.Drawing.Point(35, 90);
+            this.groupBox1.Location = new System.Drawing.Point(35, 104);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(380, 110);
+            this.groupBox1.Size = new System.Drawing.Size(569, 142);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Applicant Details";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // lblApplicantNameCaption
             // 
             this.lblApplicantNameCaption.AutoSize = true;
             this.lblApplicantNameCaption.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblApplicantNameCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblApplicantNameCaption.Location = new System.Drawing.Point(20, 30);
+            this.lblApplicantNameCaption.Location = new System.Drawing.Point(89, 42);
             this.lblApplicantNameCaption.Name = "lblApplicantNameCaption";
             this.lblApplicantNameCaption.Size = new System.Drawing.Size(60, 23);
             this.lblApplicantNameCaption.TabIndex = 0;
@@ -128,7 +132,7 @@
             // 
             this.lblApplicantName.AutoSize = true;
             this.lblApplicantName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblApplicantName.Location = new System.Drawing.Point(120, 30);
+            this.lblApplicantName.Location = new System.Drawing.Point(186, 42);
             this.lblApplicantName.Name = "lblApplicantName";
             this.lblApplicantName.Size = new System.Drawing.Size(102, 23);
             this.lblApplicantName.TabIndex = 1;
@@ -139,7 +143,7 @@
             this.lblJobAppliedCaption.AutoSize = true;
             this.lblJobAppliedCaption.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblJobAppliedCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblJobAppliedCaption.Location = new System.Drawing.Point(20, 65);
+            this.lblJobAppliedCaption.Location = new System.Drawing.Point(20, 83);
             this.lblJobAppliedCaption.Name = "lblJobAppliedCaption";
             this.lblJobAppliedCaption.Size = new System.Drawing.Size(129, 23);
             this.lblJobAppliedCaption.TabIndex = 2;
@@ -149,7 +153,7 @@
             // 
             this.lblJobApplied.AutoSize = true;
             this.lblJobApplied.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblJobApplied.Location = new System.Drawing.Point(120, 65);
+            this.lblJobApplied.Location = new System.Drawing.Point(186, 83);
             this.lblJobApplied.Name = "lblJobApplied";
             this.lblJobApplied.Size = new System.Drawing.Size(102, 23);
             this.lblJobApplied.TabIndex = 3;
@@ -169,12 +173,13 @@
             this.groupBox2.Controls.Add(this.cmbMode);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBox2.Location = new System.Drawing.Point(35, 215);
+            this.groupBox2.Location = new System.Drawing.Point(42, 387);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(620, 230);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Schedule Details";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // lblDateCaption
             // 
@@ -191,7 +196,7 @@
             // 
             this.dtpDate.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDate.Location = new System.Drawing.Point(150, 32);
+            this.dtpDate.Location = new System.Drawing.Point(158, 35);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(160, 30);
             this.dtpDate.TabIndex = 1;
@@ -201,7 +206,7 @@
             this.lblTimeCaption.AutoSize = true;
             this.lblTimeCaption.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblTimeCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblTimeCaption.Location = new System.Drawing.Point(330, 35);
+            this.lblTimeCaption.Location = new System.Drawing.Point(367, 35);
             this.lblTimeCaption.Name = "lblTimeCaption";
             this.lblTimeCaption.Size = new System.Drawing.Size(51, 23);
             this.lblTimeCaption.TabIndex = 2;
@@ -232,10 +237,11 @@
             // 
             this.txtInterviewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtInterviewer.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtInterviewer.Location = new System.Drawing.Point(150, 77);
+            this.txtInterviewer.Location = new System.Drawing.Point(158, 78);
             this.txtInterviewer.Name = "txtInterviewer";
             this.txtInterviewer.Size = new System.Drawing.Size(430, 30);
             this.txtInterviewer.TabIndex = 5;
+            this.txtInterviewer.TextChanged += new System.EventHandler(this.txtInterviewer_TextChanged);
             // 
             // lblLocationCaption
             // 
@@ -252,7 +258,7 @@
             // 
             this.txtLocation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLocation.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtLocation.Location = new System.Drawing.Point(150, 167);
+            this.txtLocation.Location = new System.Drawing.Point(158, 168);
             this.txtLocation.Name = "txtLocation";
             this.txtLocation.Size = new System.Drawing.Size(430, 30);
             this.txtLocation.TabIndex = 9;
@@ -278,7 +284,7 @@
             "Phone Call",
             "On-site",
             "Panel"});
-            this.cmbMode.Location = new System.Drawing.Point(150, 122);
+            this.cmbMode.Location = new System.Drawing.Point(158, 122);
             this.cmbMode.Name = "cmbMode";
             this.cmbMode.Size = new System.Drawing.Size(180, 31);
             this.cmbMode.TabIndex = 7;
@@ -288,12 +294,13 @@
             this.groupBox3.Controls.Add(this.lblStatus);
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBox3.Location = new System.Drawing.Point(421, 100);
+            this.groupBox3.Location = new System.Drawing.Point(35, 260);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(265, 100);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Status";
+            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // lblStatus
             // 
@@ -312,24 +319,26 @@
             this.btnSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSchedule.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnSchedule.ForeColor = System.Drawing.Color.White;
-            this.btnSchedule.Location = new System.Drawing.Point(296, 473);
+            this.btnSchedule.Location = new System.Drawing.Point(918, 512);
             this.btnSchedule.Name = "btnSchedule";
             this.btnSchedule.Size = new System.Drawing.Size(188, 40);
             this.btnSchedule.TabIndex = 5;
             this.btnSchedule.Text = "Schedule Interview";
             this.btnSchedule.UseVisualStyleBackColor = false;
+            this.btnSchedule.Click += new System.EventHandler(this.btnSchedule_Click);
             // 
             // btnComplete
             // 
             this.btnComplete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnComplete.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnComplete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(122)))), ((int)(((byte)(60)))));
-            this.btnComplete.Location = new System.Drawing.Point(296, 523);
+            this.btnComplete.Location = new System.Drawing.Point(1112, 517);
             this.btnComplete.Name = "btnComplete";
             this.btnComplete.Size = new System.Drawing.Size(188, 35);
             this.btnComplete.TabIndex = 6;
             this.btnComplete.Text = "Mark as Completed";
             this.btnComplete.UseVisualStyleBackColor = true;
+            this.btnComplete.Click += new System.EventHandler(this.btnComplete_Click);
             // 
             // btnCancel
             // 
@@ -337,12 +346,13 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(296, 568);
+            this.btnCancel.Location = new System.Drawing.Point(1319, 515);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(188, 35);
             this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "Cancel Interview";
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnNext
             // 
@@ -350,22 +360,33 @@
             this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNext.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnNext.ForeColor = System.Drawing.Color.White;
-            this.btnNext.Location = new System.Drawing.Point(35, 473);
+            this.btnNext.Location = new System.Drawing.Point(42, 662);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(215, 45);
             this.btnNext.TabIndex = 8;
             this.btnNext.Text = "Proceed to Evaluation";
             this.btnNext.UseVisualStyleBackColor = false;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // dgvSchedules
             // 
             this.dgvSchedules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSchedules.Location = new System.Drawing.Point(714, 90);
+            this.dgvSchedules.Location = new System.Drawing.Point(714, 230);
             this.dgvSchedules.Name = "dgvSchedules";
             this.dgvSchedules.RowHeadersWidth = 51;
             this.dgvSchedules.RowTemplate.Height = 24;
-            this.dgvSchedules.Size = new System.Drawing.Size(1008, 393);
+            this.dgvSchedules.Size = new System.Drawing.Size(1008, 250);
             this.dgvSchedules.TabIndex = 9;
+            // 
+            // dgvToSchedule
+            // 
+            this.dgvToSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvToSchedule.Location = new System.Drawing.Point(714, 30);
+            this.dgvToSchedule.Name = "dgvToSchedule";
+            this.dgvToSchedule.RowHeadersWidth = 51;
+            this.dgvToSchedule.RowTemplate.Height = 24;
+            this.dgvToSchedule.Size = new System.Drawing.Size(1008, 180);
+            this.dgvToSchedule.TabIndex = 12;
             // 
             // btnBack
             // 
@@ -373,12 +394,13 @@
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnBack.ForeColor = System.Drawing.Color.White;
-            this.btnBack.Location = new System.Drawing.Point(1710, 29);
+            this.btnBack.Location = new System.Drawing.Point(1752, 30);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(138, 45);
             this.btnBack.TabIndex = 10;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // lblSelectedApplicant
             // 
@@ -398,6 +420,7 @@
             this.ClientSize = new System.Drawing.Size(1902, 1033);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.dgvSchedules);
+            this.Controls.Add(this.dgvToSchedule);
             this.Controls.Add(this.lblSelectedApplicant);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblSubtitle);
@@ -418,6 +441,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSchedules)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvToSchedule)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

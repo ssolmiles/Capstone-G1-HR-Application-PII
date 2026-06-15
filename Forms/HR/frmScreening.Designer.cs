@@ -175,6 +175,7 @@
             this.btnQualified.TabIndex = 1;
             this.btnQualified.Text = "Qualified";
             this.btnQualified.UseVisualStyleBackColor = false;
+            this.btnQualified.Click += new System.EventHandler(this.btnQualified_Click);
             // 
             // btnNotQualified
             // 
@@ -188,6 +189,7 @@
             this.btnNotQualified.TabIndex = 2;
             this.btnNotQualified.Text = "Not Qualified";
             this.btnNotQualified.UseVisualStyleBackColor = false;
+            this.btnNotQualified.Click += new System.EventHandler(this.btnNotQualified_Click);
             // 
             // groupBox3
             // 
@@ -223,6 +225,7 @@
             this.txtRemarks.Name = "txtRemarks";
             this.txtRemarks.Size = new System.Drawing.Size(820, 85);
             this.txtRemarks.TabIndex = 1;
+            this.txtRemarks.TextChanged += new System.EventHandler(this.txtRemarks_TextChanged);
             // 
             // btnNext
             // 
@@ -236,6 +239,7 @@
             this.btnNext.TabIndex = 5;
             this.btnNext.Text = "Proceed to Schedule Interview";
             this.btnNext.UseVisualStyleBackColor = false;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // dgvApplications
             // 
@@ -259,6 +263,7 @@
             this.ViewDocuments.TabIndex = 3;
             this.ViewDocuments.Text = "View Documents";
             this.ViewDocuments.UseVisualStyleBackColor = false;
+            this.ViewDocuments.Click += new System.EventHandler(this.btnViewDocuments_Click);
             // 
             // button1
             // 
@@ -272,16 +277,16 @@
             this.button1.TabIndex = 7;
             this.button1.Text = "Back";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // lblSelectedApplicant
-            // FIX: Added missing label referenced in frmScreening.cs
             // 
             this.lblSelectedApplicant.AutoSize = true;
             this.lblSelectedApplicant.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic);
             this.lblSelectedApplicant.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblSelectedApplicant.Location = new System.Drawing.Point(37, 430);
             this.lblSelectedApplicant.Name = "lblSelectedApplicant";
-            this.lblSelectedApplicant.Size = new System.Drawing.Size(130, 20);
+            this.lblSelectedApplicant.Size = new System.Drawing.Size(147, 20);
             this.lblSelectedApplicant.TabIndex = 10;
             this.lblSelectedApplicant.Text = "No applicant selected";
             // 

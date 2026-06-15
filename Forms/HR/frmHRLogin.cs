@@ -112,5 +112,12 @@ namespace HRApplicantSystem.Forms.HR
             new frmHRRegister().Show();
             this.Hide();
         }
+
+        // Toggles the password character so HR staff can verify what
+        // they typed before logging in.
+        private void chkShowPass_CheckedChanged(object sender, EventArgs e)
+        {
+            txtPassword.PasswordChar = chkShowPass.Checked ? '\0' : '●';
+        }
     }
 }
