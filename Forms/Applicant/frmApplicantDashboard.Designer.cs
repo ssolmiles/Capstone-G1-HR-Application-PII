@@ -43,7 +43,7 @@
             this.btnViewStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewStatus.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnViewStatus.ForeColor = System.Drawing.Color.White;
-            this.btnViewStatus.Location = new System.Drawing.Point(822, 218);
+            this.btnViewStatus.Location = new System.Drawing.Point(1056, 173);
             this.btnViewStatus.Name = "btnViewStatus";
             this.btnViewStatus.Size = new System.Drawing.Size(230, 44);
             this.btnViewStatus.TabIndex = 1;
@@ -57,7 +57,7 @@
             this.btnJobVacancies.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnJobVacancies.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnJobVacancies.ForeColor = System.Drawing.Color.White;
-            this.btnJobVacancies.Location = new System.Drawing.Point(822, 168);
+            this.btnJobVacancies.Location = new System.Drawing.Point(1056, 123);
             this.btnJobVacancies.Name = "btnJobVacancies";
             this.btnJobVacancies.Size = new System.Drawing.Size(230, 44);
             this.btnJobVacancies.TabIndex = 10;
@@ -71,7 +71,7 @@
             this.btnProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProfile.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnProfile.ForeColor = System.Drawing.Color.White;
-            this.btnProfile.Location = new System.Drawing.Point(822, 268);
+            this.btnProfile.Location = new System.Drawing.Point(1056, 223);
             this.btnProfile.Name = "btnProfile";
             this.btnProfile.Size = new System.Drawing.Size(230, 44);
             this.btnProfile.TabIndex = 2;
@@ -85,7 +85,7 @@
             this.btnChangePass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChangePass.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnChangePass.ForeColor = System.Drawing.Color.White;
-            this.btnChangePass.Location = new System.Drawing.Point(822, 322);
+            this.btnChangePass.Location = new System.Drawing.Point(1056, 277);
             this.btnChangePass.Name = "btnChangePass";
             this.btnChangePass.Size = new System.Drawing.Size(230, 44);
             this.btnChangePass.TabIndex = 3;
@@ -99,7 +99,7 @@
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.Location = new System.Drawing.Point(822, 376);
+            this.btnLogout.Location = new System.Drawing.Point(1056, 331);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(230, 44);
             this.btnLogout.TabIndex = 4;
@@ -114,7 +114,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
             this.groupBox1.Location = new System.Drawing.Point(73, 123);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(307, 132);
+            this.groupBox1.Size = new System.Drawing.Size(307, 170);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Application Status";
@@ -138,7 +138,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
             this.groupBox2.Location = new System.Drawing.Point(410, 123);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(307, 132);
+            this.groupBox2.Size = new System.Drawing.Size(307, 170);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Documents";
@@ -161,7 +161,7 @@
             this.groupBox3.Controls.Add(this.lblSchedule);
             this.groupBox3.Font = new System.Drawing.Font("Verdana", 10F);
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBox3.Location = new System.Drawing.Point(73, 299);
+            this.groupBox3.Location = new System.Drawing.Point(73, 365);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(307, 194);
             this.groupBox3.TabIndex = 7;
@@ -195,7 +195,7 @@
             this.groupBox4.Controls.Add(this.lblUpdates);
             this.groupBox4.Font = new System.Drawing.Font("Verdana", 10F);
             this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBox4.Location = new System.Drawing.Point(410, 299);
+            this.groupBox4.Location = new System.Drawing.Point(410, 365);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(318, 194);
             this.groupBox4.TabIndex = 8;
@@ -217,7 +217,7 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
-            this.lblTitle.Location = new System.Drawing.Point(20, 15);
+            this.lblTitle.Location = new System.Drawing.Point(25, 28);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(255, 36);
             this.lblTitle.TabIndex = 0;
@@ -229,7 +229,7 @@
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Bold);
             this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
-            this.textBox1.Location = new System.Drawing.Point(20, 55);
+            this.textBox1.Location = new System.Drawing.Point(12, 67);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(400, 23);
