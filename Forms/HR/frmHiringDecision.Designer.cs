@@ -26,8 +26,6 @@
         private System.Windows.Forms.Label lblRemarksCaption;
         private System.Windows.Forms.TextBox txtFinalRemarks;
 
-        private System.Windows.Forms.Button btnSave;
-
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -56,7 +54,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lblRemarksCaption = new System.Windows.Forms.Label();
             this.txtFinalRemarks = new System.Windows.Forms.TextBox();
-            this.btnSave = new System.Windows.Forms.Button();
             this.dgvPassed = new System.Windows.Forms.DataGridView();
             this.btnBack = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -227,6 +224,7 @@
             this.btnHire.TabIndex = 2;
             this.btnHire.Text = "Accept Applicant";
             this.btnHire.UseVisualStyleBackColor = false;
+            this.btnHire.Click += new System.EventHandler(this.btnHire_Click);
             // 
             // btnReject
             // 
@@ -240,6 +238,7 @@
             this.btnReject.TabIndex = 3;
             this.btnReject.Text = "Reject Applicant";
             this.btnReject.UseVisualStyleBackColor = false;
+            this.btnReject.Click += new System.EventHandler(this.btnReject_Click);
             // 
             // groupBox3
             // 
@@ -276,27 +275,14 @@
             this.txtFinalRemarks.TabIndex = 1;
             this.txtFinalRemarks.TextChanged += new System.EventHandler(this.txtFinalRemarks_TextChanged);
             // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(355, 320);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(300, 40);
-            this.btnSave.TabIndex = 6;
-            this.btnSave.Text = "Save Decision";
-            this.btnSave.UseVisualStyleBackColor = false;
-            // 
             // dgvPassed
             // 
             this.dgvPassed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPassed.Location = new System.Drawing.Point(1031, 78);
+            this.dgvPassed.Location = new System.Drawing.Point(35, 365);
             this.dgvPassed.Name = "dgvPassed";
             this.dgvPassed.RowHeadersWidth = 51;
             this.dgvPassed.RowTemplate.Height = 24;
-            this.dgvPassed.Size = new System.Drawing.Size(430, 231);
+            this.dgvPassed.Size = new System.Drawing.Size(940, 391);
             this.dgvPassed.TabIndex = 7;
             // 
             // btnBack
@@ -305,12 +291,13 @@
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnBack.ForeColor = System.Drawing.Color.White;
-            this.btnBack.Location = new System.Drawing.Point(717, 377);
+            this.btnBack.Location = new System.Drawing.Point(1069, 43);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(300, 40);
             this.btnBack.TabIndex = 8;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // frmHiringDecision
             // 
@@ -325,7 +312,6 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.btnSave);
             this.Name = "frmHiringDecision";
             this.Text = "Final Hiring Decision";
             this.Load += new System.EventHandler(this.frmHiringDecision_Load);

@@ -186,32 +186,39 @@ namespace HRApplicantSystem.Forms.Applicant
                         applicantId = Convert.ToInt32(result);
                     }
 
-                    // Check duplicate
+                    // Friendly duplicate check
                     using (SqlCommand checkCmd = new SqlCommand(
-                        "SELECT COUNT(*) FROM applications WHERE applicant_id = @ApplicantId AND vacancy_id = @VacancyId",
+                        "SELECT COUNT(*) FROM applications WHERE applicant_id=@a AND vacancy_id=@v",
                         conn))
                     {
-                        checkCmd.Parameters.AddWithValue("@ApplicantId", applicantId);
-                        checkCmd.Parameters.AddWithValue("@VacancyId", vacancyId);
+                        checkCmd.Parameters.AddWithValue("@a", applicantId);
+                        checkCmd.Parameters.AddWithValue("@v", vacancyId);
                         if (Convert.ToInt32(checkCmd.ExecuteScalar()) > 0)
                         {
-                            MessageBox.Show("You already applied for this job.");
+                            MessageBox.Show("You already applied for this position.");
                             return;
                         }
                     }
 
-                    // Insert application
+                    // INSERT application — capture the new PK via OUTPUT
+                    int newAppId;
                     using (SqlCommand insertCmd = new SqlCommand(
-                        @"INSERT INTO applications 
+                        @"INSERT INTO applications
                             (applicant_id, vacancy_id, status, submitted_at, last_updated)
-                          VALUES 
+                          OUTPUT INSERTED.application_id
+                          VALUES
                             (@ApplicantId, @VacancyId, 'submitted', GETDATE(), GETDATE())",
                         conn))
                     {
                         insertCmd.Parameters.AddWithValue("@ApplicantId", applicantId);
                         insertCmd.Parameters.AddWithValue("@VacancyId", vacancyId);
-                        insertCmd.ExecuteNonQuery();
+                        newAppId = Convert.ToInt32(insertCmd.ExecuteScalar());
                     }
+
+                    // Log status history
+                    StatusHistoryLogger.LogStatusChange(
+                        newAppId, "draft", "submitted", 0,
+                        "Applicant submitted application.");
                 }
 
                 MessageBox.Show("Application submitted successfully!");

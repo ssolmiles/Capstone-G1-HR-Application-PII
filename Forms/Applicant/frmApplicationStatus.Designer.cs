@@ -32,10 +32,12 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.grpHistory = new System.Windows.Forms.GroupBox();
+            this.dgvHistory = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHistory)).BeginInit(); this.SuspendLayout();
             // 
             // lblTitle
             // 
@@ -221,11 +223,37 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // dvgHistory
+            // 
+            // grpHistory
+            //
+            this.grpHistory.Controls.Add(this.dgvHistory);
+            this.grpHistory.Font = new System.Drawing.Font("Verdana", 10F);
+            this.grpHistory.ForeColor = System.Drawing.Color.FromArgb(31, 92, 153);
+            this.grpHistory.Location = new System.Drawing.Point(865, 386);
+            this.grpHistory.Name = "grpHistory";
+            this.grpHistory.Size = new System.Drawing.Size(800, 300);
+            this.grpHistory.TabIndex = 10;
+            this.grpHistory.TabStop = false;
+            this.grpHistory.Text = "Application History";
+
+            // dgvHistory
+            //
+            this.dgvHistory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvHistory.Name = "dgvHistory";
+            this.dgvHistory.RowHeadersVisible = false;
+            this.dgvHistory.ReadOnly = true;
+            this.dgvHistory.AllowUserToAddRows = false;
+            this.dgvHistory.AllowUserToDeleteRows = false;
+            this.dgvHistory.AutoSizeColumnsMode =
+                System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            // 
             // frmApplicationStatus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1902, 1033);
+            this.Controls.Add(this.grpHistory);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblCurrentStatus);
             this.Controls.Add(this.lblStep1);
@@ -250,6 +278,7 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHistory)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -274,5 +303,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox grpHistory;
+        private System.Windows.Forms.DataGridView dgvHistory;
     }
 }

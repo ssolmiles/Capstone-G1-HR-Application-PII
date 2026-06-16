@@ -19,7 +19,7 @@
         private System.Windows.Forms.Label lblTimeCaption;
         private System.Windows.Forms.DateTimePicker dtpTime;
         private System.Windows.Forms.Label lblInterviewerCaption;
-        private System.Windows.Forms.TextBox txtInterviewer;
+        private System.Windows.Forms.ComboBox cboInterviewer;
         private System.Windows.Forms.Label lblLocationCaption;
         private System.Windows.Forms.TextBox txtLocation;
         private System.Windows.Forms.Label label1; // Interview Mode:
@@ -57,7 +57,7 @@
             this.lblTimeCaption = new System.Windows.Forms.Label();
             this.dtpTime = new System.Windows.Forms.DateTimePicker();
             this.lblInterviewerCaption = new System.Windows.Forms.Label();
-            this.txtInterviewer = new System.Windows.Forms.TextBox();
+            this.cboInterviewer = new System.Windows.Forms.ComboBox();
             this.lblLocationCaption = new System.Windows.Forms.Label();
             this.txtLocation = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -166,7 +166,7 @@
             this.groupBox2.Controls.Add(this.lblTimeCaption);
             this.groupBox2.Controls.Add(this.dtpTime);
             this.groupBox2.Controls.Add(this.lblInterviewerCaption);
-            this.groupBox2.Controls.Add(this.txtInterviewer);
+            this.groupBox2.Controls.Add(this.cboInterviewer);
             this.groupBox2.Controls.Add(this.lblLocationCaption);
             this.groupBox2.Controls.Add(this.txtLocation);
             this.groupBox2.Controls.Add(this.label1);
@@ -233,15 +233,15 @@
             this.lblInterviewerCaption.TabIndex = 4;
             this.lblInterviewerCaption.Text = "Interviewer:";
             // 
-            // txtInterviewer
+            // cboInterviewer
             // 
-            this.txtInterviewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtInterviewer.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtInterviewer.Location = new System.Drawing.Point(158, 78);
-            this.txtInterviewer.Name = "txtInterviewer";
-            this.txtInterviewer.Size = new System.Drawing.Size(430, 30);
-            this.txtInterviewer.TabIndex = 5;
-            this.txtInterviewer.TextChanged += new System.EventHandler(this.txtInterviewer_TextChanged);
+            this.cboInterviewer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboInterviewer.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboInterviewer.FormattingEnabled = true;
+            this.cboInterviewer.Location = new System.Drawing.Point(158, 78);
+            this.cboInterviewer.Name = "cboInterviewer";
+            this.cboInterviewer.Size = new System.Drawing.Size(430, 31);
+            this.cboInterviewer.TabIndex = 5;
             // 
             // lblLocationCaption
             // 

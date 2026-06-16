@@ -1,6 +1,7 @@
 ﻿using HRApplicantSystem.Helpers;
 using Microsoft.Data.SqlClient;
 using System;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -19,7 +20,30 @@ namespace HRApplicantSystem.Forms.Applicant
         private void frmApplicationStatus_Load_1(object sender, EventArgs e)
         {
             LoadStatusDetails();
+            LoadStatusHistory();
         }
+
+        private void LoadStatusHistory()
+        {
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                string sql = @"SELECT sh.changed_at AS [Date],
+                                sh.old_status AS [From], sh.new_status AS [To],
+                                ISNULL(u.full_name,'System') AS [Changed By],
+                                ISNULL(sh.remarks,'') AS [Remarks]
+                                FROM status_history sh
+                                LEFT JOIN users u ON sh.changed_by = u.user_id
+                                INNER JOIN applications a ON sh.application_id = a.application_id
+                                INNER JOIN applicants ap ON a.applicant_id = ap.applicant_id
+                                WHERE ap.email = @Email ORDER BY sh.changed_at";
+                var ada = new SqlDataAdapter(sql, conn);
+                ada.SelectCommand.Parameters.AddWithValue("@Email", userEmail);
+                var dt = new DataTable(); ada.Fill(dt);
+                dgvHistory.DataSource = dt;
+            }
+        }
+
 
         private void LoadStatusDetails()
         {
@@ -67,7 +91,7 @@ namespace HRApplicantSystem.Forms.Applicant
                                     case "under_review":
                                     case "screened":
                                         lblStep1.BackColor = Color.Green;
-                                        lblStep2.BackColor = Color.Orange;  
+                                        lblStep2.BackColor = Color.Orange;
                                         break;
                                     case "interview_scheduled":
                                     case "interviewed":

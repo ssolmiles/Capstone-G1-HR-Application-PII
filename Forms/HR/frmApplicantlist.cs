@@ -73,6 +73,22 @@ namespace HRApplicantSystem.Forms.HR
         private void btnClear_Click(object s, EventArgs e)
         { txtSearch.Clear(); LoadApplicants(); }
 
+
+        private void btnDeactivateApplicant_Click(object s, EventArgs e)
+        {
+            int id = SelId(); if (id == -1) { MessageBox.Show("Select first."); return; }
+            if (MessageBox.Show("Deactivate this applicant account?", "Confirm",
+            MessageBoxButtons.YesNo) != DialogResult.Yes) return;
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new SqlCommand(
+                "UPDATE applicants SET is_active=0 WHERE applicant_id=@id", conn))
+                { cmd.Parameters.AddWithValue("@id", id); cmd.ExecuteNonQuery(); }
+            }
+            MessageBox.Show("Applicant deactivated."); LoadApplicants();
+        }
+
         private void btnViewProfile_Click(object s, EventArgs e)
         {
             string email = SelEmail();
@@ -88,9 +104,26 @@ namespace HRApplicantSystem.Forms.HR
         }
 
         private void btnBack_Click(object s, EventArgs e)
-        { new frmHRDashboard().Show(); this.Close(); }
+        {
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f is frmHRDashboard)
+                {
+                    f.Show();
+                    f.BringToFront();
+                    break;
+                }
+            }
+
+            this.Close();
+        }
 
         private void dgvApplicants_CellDoubleClick(object s, DataGridViewCellEventArgs e)
         { if (e.RowIndex >= 0) btnViewProfile_Click(s, e); }
+
+        private void dgvApplicants_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

@@ -107,6 +107,18 @@ namespace HRApplicantSystem.Forms.HR
         { new frmScreening().Show(); this.Hide(); }
 
         private void btnBack_Click(object s, EventArgs e)
-        { new frmHRDashboard().Show(); this.Close(); }
+        {
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f is frmHRDashboard)
+                {
+                    f.Show();
+                    f.BringToFront();
+                    break;
+                }
+            }
+
+            this.Close();
+        }
     }
 }

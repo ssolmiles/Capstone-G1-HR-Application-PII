@@ -182,6 +182,12 @@ namespace HRApplicantSystem.Forms.Applicant
             this.Hide();
         }
 
+        private void btnMyApplication_Click(object sender, EventArgs e)
+        {
+            new frmMyApplication(userEmail).ShowDialog();
+        }
+
+
         // --- Stub handlers ---
         private void lblStatus_Click(object sender, EventArgs e) { }
         private void lblMissingDocs_Click(object sender, EventArgs e) { }

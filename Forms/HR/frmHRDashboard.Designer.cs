@@ -1,4 +1,6 @@
-﻿namespace HRApplicantSystem.Forms.HR
+﻿using HRApplicantSystem.Helpers;
+
+namespace HRApplicantSystem.Forms.HR
 {
     partial class frmHRDashboard
     {
@@ -43,8 +45,9 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(458, 58);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Welcome [Name] HR!";
+            this.lblTitle.Text = "Welcome";
             this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
+
             // 
             // monthCalendar1
             // 

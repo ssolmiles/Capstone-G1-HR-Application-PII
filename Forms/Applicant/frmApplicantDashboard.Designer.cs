@@ -31,6 +31,7 @@
             this.lblUpdates = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnMyApplication = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -57,7 +58,7 @@
             this.btnJobVacancies.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnJobVacancies.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnJobVacancies.ForeColor = System.Drawing.Color.White;
-            this.btnJobVacancies.Location = new System.Drawing.Point(1056, 123);
+            this.btnJobVacancies.Location = new System.Drawing.Point(1056, 67);
             this.btnJobVacancies.Name = "btnJobVacancies";
             this.btnJobVacancies.Size = new System.Drawing.Size(230, 44);
             this.btnJobVacancies.TabIndex = 10;
@@ -236,11 +237,25 @@
             this.textBox1.TabIndex = 0;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
+            // btnMyApplication
+            // 
+            this.btnMyApplication.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
+            this.btnMyApplication.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMyApplication.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
+            this.btnMyApplication.ForeColor = System.Drawing.Color.White;
+            this.btnMyApplication.Location = new System.Drawing.Point(1056, 123);
+            this.btnMyApplication.Name = "btnMyApplication";
+            this.btnMyApplication.Size = new System.Drawing.Size(230, 44);
+            this.btnMyApplication.TabIndex = 11;
+            this.btnMyApplication.Text = "My Application";
+            this.btnMyApplication.UseVisualStyleBackColor = false;
+            // 
             // frmApplicantDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1902, 1033);
+            this.Controls.Add(this.btnMyApplication);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.groupBox4);
@@ -287,5 +302,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblSchedule;
         private System.Windows.Forms.Label lblUpdates;
+        private System.Windows.Forms.Button btnMyApplication;
     }
 }

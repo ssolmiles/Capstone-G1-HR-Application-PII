@@ -140,10 +140,10 @@ namespace HRApplicantSystem.Forms.Applicant
             if (listViewApps.SelectedItems.Count > 0)
             {
                 string status = listViewApps.SelectedItems[0].SubItems[3].Text;
-                if (status == "draft")
-                    MessageBox.Show("You can edit this draft application.");
+                if (status == "draft" || status == "submitted")
+                    MessageBox.Show("You can edit this application.");
                 else
-                    MessageBox.Show("Cannot edit! Application has already been submitted.");
+                    MessageBox.Show("Cannot edit — HR is already reviewing this application.");
             }
         }
 

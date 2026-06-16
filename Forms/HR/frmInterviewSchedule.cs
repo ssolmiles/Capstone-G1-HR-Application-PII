@@ -56,7 +56,7 @@ namespace HRApplicantSystem.Forms.HR
             }
         }
 
-        private void frmInterviewSchedule_Load(object s, EventArgs e) { LoadTypes(); LoadToSchedule(); LoadSchedules(); }
+        private void frmInterviewSchedule_Load(object s, EventArgs e) { LoadTypes(); LoadInterviewers(); LoadToSchedule(); LoadSchedules(); }
 
         private void LoadTypes()
         {
@@ -76,6 +76,33 @@ namespace HRApplicantSystem.Forms.HR
                 }
             }
             catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
+        }
+
+        private void LoadInterviewers()
+        {
+            try
+            {
+                using (var conn = DatabaseHelper.GetConnection())
+                {
+                    conn.Open();
+                    using (var cmd = new SqlCommand(
+                            "SELECT user_id, full_name FROM users WHERE is_active=1 ORDER BY full_name", conn))
+                    using (var dr = cmd.ExecuteReader())
+                    {
+                        cboInterviewer.Items.Clear();
+                        while (dr.Read())
+                            cboInterviewer.Items.Add(new
+                            {
+                                Text = dr["full_name"].ToString(),
+                                Value = Convert.ToInt32(dr["user_id"])
+                            });
+                        cboInterviewer.DisplayMember = "Text";
+                        cboInterviewer.ValueMember = "Value";
+                    }
+                }
+            }
+
+            catch (Exception ex) { MessageBox.Show("Error loading interviewers: " + ex.Message); }
         }
 
         // Applicants who passed screening and don't have an interview scheduled yet
@@ -136,20 +163,19 @@ namespace HRApplicantSystem.Forms.HR
         private void btnSchedule_Click(object s, EventArgs e)
         {
             if (_appId == -1) { MessageBox.Show("Select an application first."); return; }
-            if (string.IsNullOrWhiteSpace(txtInterviewer.Text)) { MessageBox.Show("Enter interviewer name."); return; }
+            if (cboInterviewer.SelectedItem == null) { MessageBox.Show("Select an interviewer."); return; }
             try
             {
-                dynamic sel = (dynamic)cmbMode.SelectedItem;
-                int typeId = sel != null ? sel.Value : 1;
-                int iviewerId = SessionManager.CurrentUserID;
+                dynamic selType = (dynamic)cmbMode.SelectedItem;
+                int typeId = selType != null ? selType.Value : 1;
+
+                dynamic selInt = (dynamic)cboInterviewer.SelectedItem;
+                int iviewerId = selInt != null ? selInt.Value : SessionManager.CurrentUserID;
+
+
                 using (var conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
-                    using (var find = new SqlCommand("SELECT TOP 1 user_id FROM users WHERE full_name LIKE @n", conn))
-                    {
-                        find.Parameters.AddWithValue("@n", $"%{txtInterviewer.Text.Trim()}%");
-                        object r = find.ExecuteScalar(); if (r != null) iviewerId = Convert.ToInt32(r);
-                    }
                     using (var cmd = new SqlCommand(
                         @"INSERT INTO interview_schedules
                           (application_id,interviewer_id,interview_type_id,
@@ -199,24 +225,8 @@ namespace HRApplicantSystem.Forms.HR
         private void btnNext_Click(object s, EventArgs e) { new frmInterviewEvaluation().Show(); this.Hide(); }
         private void btnBack_Click(object s, EventArgs e) { new frmScreening().Show(); this.Close(); }
 
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtInterviewer_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        private void groupBox3_Enter(object sender, EventArgs e) { }
+        private void groupBox2_Enter(object sender, EventArgs e) { }
+        private void groupBox1_Enter(object sender, EventArgs e) { }
     }
 }

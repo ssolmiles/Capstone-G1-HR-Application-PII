@@ -14,6 +14,7 @@ namespace HRApplicantSystem.Forms.HR
 
         private void frmHRDashboard_Load(object sender, EventArgs e)
         {
+            lblTitle.Text = $"Welcome, {SessionManager.CurrentUser?.FullName ?? "HR"}!";
             LoadRecruitmentSummary();
             button6.Visible = (SessionManager.CurrentRole == "admin");
         }
