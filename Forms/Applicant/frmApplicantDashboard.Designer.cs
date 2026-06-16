@@ -44,7 +44,7 @@
             this.btnViewStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewStatus.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnViewStatus.ForeColor = System.Drawing.Color.White;
-            this.btnViewStatus.Location = new System.Drawing.Point(1056, 173);
+            this.btnViewStatus.Location = new System.Drawing.Point(1467, 173);
             this.btnViewStatus.Name = "btnViewStatus";
             this.btnViewStatus.Size = new System.Drawing.Size(230, 44);
             this.btnViewStatus.TabIndex = 1;
@@ -58,7 +58,7 @@
             this.btnJobVacancies.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnJobVacancies.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnJobVacancies.ForeColor = System.Drawing.Color.White;
-            this.btnJobVacancies.Location = new System.Drawing.Point(1056, 67);
+            this.btnJobVacancies.Location = new System.Drawing.Point(1467, 67);
             this.btnJobVacancies.Name = "btnJobVacancies";
             this.btnJobVacancies.Size = new System.Drawing.Size(230, 44);
             this.btnJobVacancies.TabIndex = 10;
@@ -72,7 +72,7 @@
             this.btnProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProfile.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnProfile.ForeColor = System.Drawing.Color.White;
-            this.btnProfile.Location = new System.Drawing.Point(1056, 223);
+            this.btnProfile.Location = new System.Drawing.Point(1467, 223);
             this.btnProfile.Name = "btnProfile";
             this.btnProfile.Size = new System.Drawing.Size(230, 44);
             this.btnProfile.TabIndex = 2;
@@ -86,7 +86,7 @@
             this.btnChangePass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChangePass.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnChangePass.ForeColor = System.Drawing.Color.White;
-            this.btnChangePass.Location = new System.Drawing.Point(1056, 277);
+            this.btnChangePass.Location = new System.Drawing.Point(1467, 277);
             this.btnChangePass.Name = "btnChangePass";
             this.btnChangePass.Size = new System.Drawing.Size(230, 44);
             this.btnChangePass.TabIndex = 3;
@@ -100,7 +100,7 @@
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.Location = new System.Drawing.Point(1056, 331);
+            this.btnLogout.Location = new System.Drawing.Point(1467, 331);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(230, 44);
             this.btnLogout.TabIndex = 4;
@@ -151,9 +151,9 @@
             this.lblMissingDocs.Font = new System.Drawing.Font("Verdana", 10F);
             this.lblMissingDocs.Location = new System.Drawing.Point(10, 30);
             this.lblMissingDocs.Name = "lblMissingDocs";
-            this.lblMissingDocs.Size = new System.Drawing.Size(106, 20);
+            this.lblMissingDocs.Size = new System.Drawing.Size(95, 20);
             this.lblMissingDocs.TabIndex = 0;
-            this.lblMissingDocs.Text = "Checking...";
+            this.lblMissingDocs.Text = "Documents: --";
             this.lblMissingDocs.Click += new System.EventHandler(this.lblMissingDocs_Click);
             // 
             // groupBox3
@@ -167,7 +167,7 @@
             this.groupBox3.Size = new System.Drawing.Size(307, 194);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Upcoming Interview";
+            this.groupBox3.Text = "Interview Schedule";
             // 
             // label1
             // 
@@ -243,18 +243,23 @@
             this.btnMyApplication.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMyApplication.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnMyApplication.ForeColor = System.Drawing.Color.White;
-            this.btnMyApplication.Location = new System.Drawing.Point(1056, 123);
+            this.btnMyApplication.Location = new System.Drawing.Point(1467, 123);
             this.btnMyApplication.Name = "btnMyApplication";
             this.btnMyApplication.Size = new System.Drawing.Size(230, 44);
             this.btnMyApplication.TabIndex = 11;
             this.btnMyApplication.Text = "My Application";
             this.btnMyApplication.UseVisualStyleBackColor = false;
+            // FIX: Wire up the missing Click event handler
+            this.btnMyApplication.Click += new System.EventHandler(this.btnMyApplication_Click);
             // 
             // frmApplicantDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1902, 1033);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ClientSize = new System.Drawing.Size(1786, 807);
             this.Controls.Add(this.btnMyApplication);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.textBox1);
@@ -270,6 +275,8 @@
             this.ForeColor = System.Drawing.Color.Black;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmApplicantDashboard";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Applicant Dashboard";
             this.Load += new System.EventHandler(this.frmApplicantDashboard_Load_1);
             this.groupBox1.ResumeLayout(false);
@@ -281,7 +288,6 @@
             this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

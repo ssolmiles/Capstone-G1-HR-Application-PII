@@ -20,10 +20,10 @@ namespace HRApplicantSystem.Forms.Applicant
             listViewApps.GridLines = true;
             listViewApps.Columns.Clear();
             listViewApps.Columns.Add("App ID", 70);
-            listViewApps.Columns.Add("Position", 160);
-            listViewApps.Columns.Add("Department", 130);
-            listViewApps.Columns.Add("Status", 100);
-            listViewApps.Columns.Add("Submitted", 100);
+            listViewApps.Columns.Add("Position", 200);
+            listViewApps.Columns.Add("Department", 160);
+            listViewApps.Columns.Add("Status", 110);
+            listViewApps.Columns.Add("Submitted", 110);
         }
 
         private void frmMyApplication_Load(object sender, EventArgs e)
@@ -79,26 +79,39 @@ namespace HRApplicantSystem.Forms.Applicant
 
                                 listViewApps.Items.Add(item);
                             }
+
+                            // FIX: Show a helpful message when the list is empty
+                            if (listViewApps.Items.Count == 0)
+                            {
+                                ListViewItem empty = new ListViewItem("—");
+                                empty.SubItems.Add("No applications found.");
+                                empty.SubItems.Add(""); empty.SubItems.Add(""); empty.SubItems.Add("");
+                                empty.ForeColor = Color.Gray;
+                                listViewApps.Items.Add(empty);
+                            }
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Error loading applications: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnSaveDraft_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("To apply for a job, please use the Job Vacancies page.");
+            MessageBox.Show("To apply for a job, please use the Job Vacancies page.",
+                "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             if (listViewApps.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Select an application first.");
+                MessageBox.Show("Please select an application first.",
+                    "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -107,9 +120,14 @@ namespace HRApplicantSystem.Forms.Applicant
 
             if (currentStatus != "draft")
             {
-                MessageBox.Show("Cannot submit! Application is already processed.");
+                MessageBox.Show("Cannot submit — this application has already been processed.",
+                    "Invalid Action", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            if (MessageBox.Show("Are you sure you want to submit this application?",
+                "Confirm Submit", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                return;
 
             try
             {
@@ -126,69 +144,53 @@ namespace HRApplicantSystem.Forms.Applicant
                     }
                 }
 
-                MessageBox.Show("Application Submitted Successfully!");
+                MessageBox.Show("Application submitted successfully!",
+                    "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadMyApplications();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Error submitting application: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (listViewApps.SelectedItems.Count > 0)
+            // FIX: Guard was missing; only drafts are editable
+            if (listViewApps.SelectedItems.Count == 0)
             {
-                string status = listViewApps.SelectedItems[0].SubItems[3].Text;
-                if (status == "draft" || status == "submitted")
-                    MessageBox.Show("You can edit this application.");
-                else
-                    MessageBox.Show("Cannot edit — HR is already reviewing this application.");
-            }
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            if (listViewApps.SelectedItems.Count == 0) return;
-
-            string status = listViewApps.SelectedItems[0].SubItems[3].Text;
-            string appId = listViewApps.SelectedItems[0].Text;
-
-            if (status != "draft")
-            {
-                MessageBox.Show("Cannot delete! Application is already submitted.");
+                MessageBox.Show("Please select an application to edit.",
+                    "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (MessageBox.Show("Delete this draft?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            string status = listViewApps.SelectedItems[0].SubItems[3].Text;
+
+            if (status != "draft")
             {
-                try
-                {
-                    using (SqlConnection conn = DatabaseHelper.GetConnection())
-                    {
-                        conn.Open();
-                        using (SqlCommand cmd = new SqlCommand(
-                            "DELETE FROM applications WHERE application_id = @ID", conn))
-                        {
-                            cmd.Parameters.AddWithValue("@ID", appId);
-                            cmd.ExecuteNonQuery();
-                        }
-                    }
-                    MessageBox.Show("Draft deleted.");
-                    LoadMyApplications();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message);
-                }
+                MessageBox.Show("Cannot edit — only draft applications can be modified.",
+                    "Invalid Action", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
+
+           
+
+            MessageBox.Show("Edit feature: open your edit form here.",
+                "Edit", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void listViewApps_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+    
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            frmJobVacancies jobs = new frmJobVacancies(userEmail);
-            jobs.Show();
-            this.Hide();
+           
+            this.Close();
         }
     }
 }

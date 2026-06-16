@@ -236,8 +236,8 @@
             this.grpHistory.TabIndex = 10;
             this.grpHistory.TabStop = false;
             this.grpHistory.Text = "Application History";
-
-            // dgvHistory
+            
+            // dgvHistBBory
             //
             this.dgvHistory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvHistory.Name = "dgvHistory";

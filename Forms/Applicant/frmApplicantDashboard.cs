@@ -23,8 +23,6 @@ namespace HRApplicantSystem.Forms.Applicant
             userEmail = email;
         }
 
-      
-        
         private void frmApplicantDashboard_Load_1(object sender, EventArgs e)
         {
             LoadDashboardData();
@@ -184,7 +182,14 @@ namespace HRApplicantSystem.Forms.Applicant
 
         private void btnMyApplication_Click(object sender, EventArgs e)
         {
-            new frmMyApplication(userEmail).ShowDialog();
+            // FIX: Use ShowDialog so the dashboard stays open underneath,
+            // and refresh dashboard data when the user returns.
+            using (frmMyApplication myApp = new frmMyApplication(userEmail))
+            {
+                myApp.ShowDialog(this);
+            }
+            // Refresh dashboard after returning from My Application
+            LoadDashboardData();
         }
 
 
@@ -194,14 +199,8 @@ namespace HRApplicantSystem.Forms.Applicant
         private void lblSchedule_Click(object sender, EventArgs e) { }
         private void label1_Click(object sender, EventArgs e) { }
         private void textBox1_TextChanged(object sender, EventArgs e) { }
-
         private void groupBox4_Enter(object sender, EventArgs e) { }
-
         private void groupBox1_Enter(object sender, EventArgs e) { }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
+        private void groupBox2_Enter(object sender, EventArgs e) { }
     }
 }

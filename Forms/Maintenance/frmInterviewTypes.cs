@@ -25,93 +25,123 @@ namespace HRApplicantSystem.Forms.Maintenance
                 using (var conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
+
                     string query = "SELECT interview_type_id AS ID, label AS Name FROM interview_types ORDER BY label";
+
                     var adapter = new SqlDataAdapter(query, conn);
                     var table = new DataTable();
                     adapter.Fill(table);
+
                     dgvList.DataSource = table;
+
                     dgvList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     dgvList.ReadOnly = true;
                     dgvList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 }
             }
-            catch (Exception ex) { MessageBox.Show("Error loading data: " + ex.Message); }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading data: " + ex.Message);
+            }
+        }
+
+        private bool IsInterviewTypeUsed(SqlConnection conn, int id)
+        {
+            using (var cmd = new SqlCommand(
+                "SELECT COUNT(*) FROM interview_schedules WHERE interview_type_id = @id", conn))
+            {
+                cmd.Parameters.AddWithValue("@id", id);
+                return (int)cmd.ExecuteScalar() > 0;
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             string name = txtName.Text.Trim();
-            if (string.IsNullOrEmpty(name)) { MessageBox.Show("Please enter an interview type."); return; }
+            if (string.IsNullOrEmpty(name))
+            {
+                MessageBox.Show("Please enter an interview type.");
+                return;
+            }
+
             try
             {
                 using (var conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
-                    using (var cmd = new SqlCommand("INSERT INTO interview_types (label) VALUES (@name)", conn))
+
+                    using (var cmd = new SqlCommand(
+                        "INSERT INTO interview_types (label) VALUES (@name)", conn))
                     {
                         cmd.Parameters.AddWithValue("@name", name);
                         cmd.ExecuteNonQuery();
                     }
-                    MessageBox.Show("Interview type added!");
-                    ClearFields();
-                    LoadData();
                 }
+
+                MessageBox.Show("Added!");
+                txtName.Clear();
+                LoadData();
             }
-            catch (Exception ex) { MessageBox.Show("Error adding: " + ex.Message); }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error adding: " + ex.Message);
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (dgvList.SelectedRows.Count == 0) { MessageBox.Show("Select a row first."); return; }
-            string name = txtName.Text.Trim();
-            if (string.IsNullOrEmpty(name)) { MessageBox.Show("Please enter a new name."); return; }
+            if (dgvList.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Select a row first.");
+                return;
+            }
+
             int id = Convert.ToInt32(dgvList.SelectedRows[0].Cells["ID"].Value);
+            string name = txtName.Text.Trim();
+
+            if (string.IsNullOrEmpty(name))
+            {
+                MessageBox.Show("Please enter a new label.");
+                return;
+            }
+
             try
             {
                 using (var conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
-                    using (var cmd = new SqlCommand("UPDATE interview_types SET label = @name WHERE interview_type_id = @id", conn))
+
+                    using (var cmd = new SqlCommand(
+                        "UPDATE interview_types SET label=@name WHERE interview_type_id=@id", conn))
                     {
                         cmd.Parameters.AddWithValue("@name", name);
                         cmd.Parameters.AddWithValue("@id", id);
                         cmd.ExecuteNonQuery();
                     }
-                    MessageBox.Show("Updated!");
-                    ClearFields();
-                    LoadData();
                 }
-            }
-            catch (Exception ex) { MessageBox.Show("Error updating: " + ex.Message); }
-        }
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            if (dgvList.SelectedRows.Count == 0) { MessageBox.Show("Select a row first."); return; }
-            int id = Convert.ToInt32(dgvList.SelectedRows[0].Cells["ID"].Value);
-            string name = dgvList.SelectedRows[0].Cells["Name"].Value.ToString();
-            if (MessageBox.Show($"Delete '{name}'?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes) return;
-            try
+                MessageBox.Show("Updated!");
+                txtName.Clear();
+                LoadData();
+            }
+            catch (Exception ex)
             {
-                using (var conn = DatabaseHelper.GetConnection())
-                {
-                    conn.Open();
-                    using (var cmd = new SqlCommand("DELETE FROM interview_types WHERE interview_type_id = @id", conn))
-                    {
-                        cmd.Parameters.AddWithValue("@id", id);
-                        cmd.ExecuteNonQuery();
-                    }
-                    MessageBox.Show("Deleted!");
-                    ClearFields();
-                    LoadData();
-                }
+                MessageBox.Show("Error updating: " + ex.Message);
             }
-            catch (Exception ex) { MessageBox.Show("Error deleting: " + ex.Message); }
         }
 
-        private void btnClear_Click(object sender, EventArgs e) => ClearFields();
+        
 
-        private void btnBack_Click(object sender, EventArgs e) => this.Close();
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtName.Clear();
+            dgvList.ClearSelection();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
         private void dgvList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -119,10 +149,8 @@ namespace HRApplicantSystem.Forms.Maintenance
                 txtName.Text = dgvList.Rows[e.RowIndex].Cells["Name"].Value.ToString();
         }
 
-        private void ClearFields()
+        private void dgvList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtName.Text = "";
-            dgvList.ClearSelection();
         }
     }
 }

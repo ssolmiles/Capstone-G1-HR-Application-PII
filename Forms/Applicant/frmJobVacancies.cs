@@ -100,8 +100,7 @@ namespace HRApplicantSystem.Forms.Applicant
             }
         }
 
-        // Collapses multi-line description/qualifications text into a single
-        // readable preview line so it fits cleanly inside the table.
+      
         private static string SingleLine(string text)
         {
             if (string.IsNullOrEmpty(text)) return "";
@@ -158,11 +157,11 @@ namespace HRApplicantSystem.Forms.Applicant
                 return;
             }
 
-            string vacancyId = listViewJobs.SelectedItems[0].Text;
+            string vacancyIdStr = listViewJobs.SelectedItems[0].Text.Trim();
             string jobTitle = listViewJobs.SelectedItems[0].SubItems[1].Text;
 
-            if (MessageBox.Show($"Apply for {jobTitle}?", "Confirm",
-                MessageBoxButtons.YesNo) != DialogResult.Yes)
+            if (MessageBox.Show($"Apply for {jobTitle}?", "Confirm Application",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
                 return;
 
             try
@@ -180,58 +179,90 @@ namespace HRApplicantSystem.Forms.Applicant
                         object result = idCmd.ExecuteScalar();
                         if (result == null)
                         {
-                            MessageBox.Show("Applicant not found.");
+                            MessageBox.Show("Applicant account not found.");
                             return;
                         }
                         applicantId = Convert.ToInt32(result);
                     }
 
-                    // Friendly duplicate check
-                    using (SqlCommand checkCmd = new SqlCommand(
-                        "SELECT COUNT(*) FROM applications WHERE applicant_id=@a AND vacancy_id=@v",
-                        conn))
+                    // Parse vacancy ID safely
+                    if (!int.TryParse(vacancyIdStr, out int vacancyId) || vacancyId <= 0)
                     {
-                        checkCmd.Parameters.AddWithValue("@a", applicantId);
-                        checkCmd.Parameters.AddWithValue("@v", vacancyId);
-                        if (Convert.ToInt32(checkCmd.ExecuteScalar()) > 0)
+                        MessageBox.Show("Invalid job vacancy selected.");
+                        return;
+                    }
+
+                    // === IMPROVED DUPLICATE CHECK ===
+                    using (SqlCommand checkCmd = new SqlCommand(
+                        @"SELECT application_id, status 
+                  FROM applications 
+                  WHERE applicant_id = @ApplicantId 
+                    AND vacancy_id = @VacancyId", conn))
+                    {
+                        checkCmd.Parameters.AddWithValue("@ApplicantId", applicantId);
+                        checkCmd.Parameters.AddWithValue("@VacancyId", vacancyId);
+
+                        using (SqlDataReader reader = checkCmd.ExecuteReader())
                         {
-                            MessageBox.Show("You already applied for this position.");
+                            if (reader.Read())
+                            {
+                                string existingStatus = reader["status"].ToString();
+                                MessageBox.Show($"You have already applied for this position.\n\nCurrent status: {existingStatus}",
+                                    "Already Applied", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                return;
+                            }
+                        }
+                    }
+
+                    // Validate vacancy still exists and is open
+                    using (SqlCommand validateCmd = new SqlCommand(
+                        "SELECT status FROM job_vacancies WHERE vacancy_id = @VacancyId AND status = 'open'", conn))
+                    {
+                        validateCmd.Parameters.AddWithValue("@VacancyId", vacancyId);
+                        if (validateCmd.ExecuteScalar() == null)
+                        {
+                            MessageBox.Show("This job vacancy is no longer available.");
                             return;
                         }
                     }
 
-                    // INSERT application — capture the new PK via OUTPUT
+                    // INSERT the application
                     int newAppId;
                     using (SqlCommand insertCmd = new SqlCommand(
-                        @"INSERT INTO applications
-                            (applicant_id, vacancy_id, status, submitted_at, last_updated)
-                          OUTPUT INSERTED.application_id
-                          VALUES
-                            (@ApplicantId, @VacancyId, 'submitted', GETDATE(), GETDATE())",
-                        conn))
+                        @"INSERT INTO applications 
+                    (applicant_id, vacancy_id, status, submitted_at, last_updated)
+                  OUTPUT INSERTED.application_id
+                  VALUES (@ApplicantId, @VacancyId, 'submitted', GETDATE(), GETDATE())", conn))
                     {
                         insertCmd.Parameters.AddWithValue("@ApplicantId", applicantId);
                         insertCmd.Parameters.AddWithValue("@VacancyId", vacancyId);
+
                         newAppId = Convert.ToInt32(insertCmd.ExecuteScalar());
                     }
 
                     // Log status history
                     StatusHistoryLogger.LogStatusChange(
-                        newAppId, "draft", "submitted", 0,
+                        newAppId, "draft", "submitted", applicantId,
                         "Applicant submitted application.");
-                }
 
-                MessageBox.Show("Application submitted successfully!");
+                    MessageBox.Show("Application submitted successfully!", "Success",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                    // Refresh the list
+                    LoadJobList(txtSearch.Text);
+                }
+            }
+            catch (SqlException ex) when (ex.Number == 547)
+            {
+                MessageBox.Show("Error: The job vacancy or your account is no longer valid.", "Database Error");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Unexpected error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // The Dashboard only Hides itself (it is not closed) before showing this
-        // form, so going "Back" just needs to bring it back into view and close
-        // this form — never create a second Dashboard instance.
+
         private void btnBack_Click(object sender, EventArgs e)
         {
             foreach (Form f in Application.OpenForms)

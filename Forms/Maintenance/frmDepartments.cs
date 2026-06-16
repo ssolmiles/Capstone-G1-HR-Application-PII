@@ -8,6 +8,18 @@ namespace HRApplicantSystem.Forms.Maintenance
 {
     public partial class frmDepartments : Form
     {
+            
+
+        private bool IsDepartmentUsed(SqlConnection conn, int id)
+        {
+            using (var cmd = new SqlCommand(
+                "SELECT COUNT(*) FROM positions WHERE department_id = @id", conn))
+            {
+                cmd.Parameters.AddWithValue("@id", id);
+                return (int)cmd.ExecuteScalar() > 0;
+            }
+        }
+
         public frmDepartments()
         {
             InitializeComponent();
@@ -88,29 +100,7 @@ namespace HRApplicantSystem.Forms.Maintenance
             catch (Exception ex) { MessageBox.Show("Error updating: " + ex.Message); }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            if (dgvList.SelectedRows.Count == 0) { MessageBox.Show("Select a row first."); return; }
-            int id = Convert.ToInt32(dgvList.SelectedRows[0].Cells["ID"].Value);
-            string name = dgvList.SelectedRows[0].Cells["Name"].Value.ToString();
-            if (MessageBox.Show($"Delete '{name}'?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes) return;
-            try
-            {
-                using (var conn = DatabaseHelper.GetConnection())
-                {
-                    conn.Open();
-                    using (var cmd = new SqlCommand("DELETE FROM departments WHERE department_id = @id", conn))
-                    {
-                        cmd.Parameters.AddWithValue("@id", id);
-                        cmd.ExecuteNonQuery();
-                    }
-                    MessageBox.Show("Deleted!");
-                    ClearFields();
-                    LoadData();
-                }
-            }
-            catch (Exception ex) { MessageBox.Show("Error deleting: " + ex.Message); }
-        }
+        
 
         private void btnClear_Click(object sender, EventArgs e) => ClearFields();
 
@@ -122,6 +112,7 @@ namespace HRApplicantSystem.Forms.Maintenance
                 txtName.Text = dgvList.Rows[e.RowIndex].Cells["Name"].Value.ToString();
         }
 
+
         private void ClearFields()
         {
             txtName.Text = "";
@@ -130,7 +121,7 @@ namespace HRApplicantSystem.Forms.Maintenance
 
         private void dgvList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            
         }
     }
 }

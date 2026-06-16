@@ -111,9 +111,9 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Applicant Summary";
-            // 
-            // lblNameCaption
-            // 
+            
+            
+
             this.lblNameCaption.AutoSize = true;
             this.lblNameCaption.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblNameCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
@@ -284,6 +284,7 @@
             this.dgvPassed.RowTemplate.Height = 24;
             this.dgvPassed.Size = new System.Drawing.Size(940, 391);
             this.dgvPassed.TabIndex = 7;
+            this.dgvPassed.SelectionChanged += new System.EventHandler(this.dgvPassed_SelectionChanged);
             // 
             // btnBack
             // 

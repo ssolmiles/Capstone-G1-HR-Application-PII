@@ -72,6 +72,8 @@
             this.dgvToSchedule = new System.Windows.Forms.DataGridView();
             this.btnBack = new System.Windows.Forms.Button();
             this.lblSelectedApplicant = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -132,7 +134,7 @@
             // 
             this.lblApplicantName.AutoSize = true;
             this.lblApplicantName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblApplicantName.Location = new System.Drawing.Point(186, 42);
+            this.lblApplicantName.Location = new System.Drawing.Point(223, 42);
             this.lblApplicantName.Name = "lblApplicantName";
             this.lblApplicantName.Size = new System.Drawing.Size(102, 23);
             this.lblApplicantName.TabIndex = 1;
@@ -153,7 +155,7 @@
             // 
             this.lblJobApplied.AutoSize = true;
             this.lblJobApplied.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblJobApplied.Location = new System.Drawing.Point(186, 83);
+            this.lblJobApplied.Location = new System.Drawing.Point(223, 83);
             this.lblJobApplied.Name = "lblJobApplied";
             this.lblJobApplied.Size = new System.Drawing.Size(102, 23);
             this.lblJobApplied.TabIndex = 3;
@@ -216,7 +218,7 @@
             // 
             this.dtpTime.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.dtpTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpTime.Location = new System.Drawing.Point(440, 32);
+            this.dtpTime.Location = new System.Drawing.Point(424, 35);
             this.dtpTime.Name = "dtpTime";
             this.dtpTime.ShowUpDown = true;
             this.dtpTime.Size = new System.Drawing.Size(140, 30);
@@ -260,7 +262,7 @@
             this.txtLocation.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtLocation.Location = new System.Drawing.Point(158, 168);
             this.txtLocation.Name = "txtLocation";
-            this.txtLocation.Size = new System.Drawing.Size(430, 30);
+            this.txtLocation.Size = new System.Drawing.Size(180, 30);
             this.txtLocation.TabIndex = 9;
             // 
             // label1
@@ -296,7 +298,7 @@
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
             this.groupBox3.Location = new System.Drawing.Point(35, 260);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(265, 100);
+            this.groupBox3.Size = new System.Drawing.Size(569, 100);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Status";
@@ -307,7 +309,7 @@
             this.lblStatus.AutoSize = true;
             this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(122)))), ((int)(((byte)(0)))));
-            this.lblStatus.Location = new System.Drawing.Point(20, 40);
+            this.lblStatus.Location = new System.Drawing.Point(41, 42);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(208, 25);
             this.lblStatus.TabIndex = 0;
@@ -319,7 +321,7 @@
             this.btnSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSchedule.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnSchedule.ForeColor = System.Drawing.Color.White;
-            this.btnSchedule.Location = new System.Drawing.Point(918, 512);
+            this.btnSchedule.Location = new System.Drawing.Point(938, 659);
             this.btnSchedule.Name = "btnSchedule";
             this.btnSchedule.Size = new System.Drawing.Size(188, 40);
             this.btnSchedule.TabIndex = 5;
@@ -332,7 +334,7 @@
             this.btnComplete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnComplete.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnComplete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(122)))), ((int)(((byte)(60)))));
-            this.btnComplete.Location = new System.Drawing.Point(1112, 517);
+            this.btnComplete.Location = new System.Drawing.Point(1132, 664);
             this.btnComplete.Name = "btnComplete";
             this.btnComplete.Size = new System.Drawing.Size(188, 35);
             this.btnComplete.TabIndex = 6;
@@ -346,7 +348,7 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(1319, 515);
+            this.btnCancel.Location = new System.Drawing.Point(1339, 662);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(188, 35);
             this.btnCancel.TabIndex = 7;
@@ -371,22 +373,24 @@
             // dgvSchedules
             // 
             this.dgvSchedules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSchedules.Location = new System.Drawing.Point(714, 230);
+            this.dgvSchedules.Location = new System.Drawing.Point(714, 367);
             this.dgvSchedules.Name = "dgvSchedules";
             this.dgvSchedules.RowHeadersWidth = 51;
             this.dgvSchedules.RowTemplate.Height = 24;
             this.dgvSchedules.Size = new System.Drawing.Size(1008, 250);
             this.dgvSchedules.TabIndex = 9;
+            this.dgvSchedules.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSchedules_CellContentClick);
             // 
             // dgvToSchedule
             // 
             this.dgvToSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvToSchedule.Location = new System.Drawing.Point(714, 30);
+            this.dgvToSchedule.Location = new System.Drawing.Point(714, 120);
             this.dgvToSchedule.Name = "dgvToSchedule";
             this.dgvToSchedule.RowHeadersWidth = 51;
             this.dgvToSchedule.RowTemplate.Height = 24;
             this.dgvToSchedule.Size = new System.Drawing.Size(1008, 180);
             this.dgvToSchedule.TabIndex = 12;
+            this.dgvToSchedule.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvToSchedule_CellContentClick);
             // 
             // btnBack
             // 
@@ -407,17 +411,41 @@
             this.lblSelectedApplicant.AutoSize = true;
             this.lblSelectedApplicant.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblSelectedApplicant.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
-            this.lblSelectedApplicant.Location = new System.Drawing.Point(710, 523);
+            this.lblSelectedApplicant.Location = new System.Drawing.Point(730, 670);
             this.lblSelectedApplicant.Name = "lblSelectedApplicant";
             this.lblSelectedApplicant.Size = new System.Drawing.Size(139, 23);
             this.lblSelectedApplicant.TabIndex = 11;
             this.lblSelectedApplicant.Text = "Selected: (none)";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
+            this.label2.Location = new System.Drawing.Point(707, 323);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(144, 37);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Schedules";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
+            this.label3.Location = new System.Drawing.Point(707, 80);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(170, 37);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "To Schedule";
             // 
             // frmInterviewSchedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1902, 1033);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.dgvSchedules);
             this.Controls.Add(this.dgvToSchedule);
@@ -432,7 +460,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnNext);
             this.Name = "frmInterviewSchedule";
-            this.Text = "Interview Scheduling";
+            this.Text = "s";
             this.Load += new System.EventHandler(this.frmInterviewSchedule_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -451,5 +479,7 @@
         private System.Windows.Forms.DataGridView dgvSchedules;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Label lblSelectedApplicant;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

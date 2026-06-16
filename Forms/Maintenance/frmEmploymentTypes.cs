@@ -25,105 +25,92 @@ namespace HRApplicantSystem.Forms.Maintenance
                 using (var conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
-                    // Schema: employment_types(type_id, label)
+
                     string query = "SELECT type_id AS ID, label AS Name FROM employment_types ORDER BY label";
+
                     var adapter = new SqlDataAdapter(query, conn);
                     var table = new DataTable();
                     adapter.Fill(table);
+
                     dgvList.DataSource = table;
-                    dgvList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    dgvList.ReadOnly = true;
-                    dgvList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 }
             }
-            catch (Exception ex) { MessageBox.Show("Error loading data: " + ex.Message); }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading data: " + ex.Message);
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            string name = txtName.Text.Trim();
-            if (string.IsNullOrEmpty(name)) { MessageBox.Show("Please enter an employment type."); return; }
-            try
+            if (string.IsNullOrWhiteSpace(txtName.Text))
             {
-                using (var conn = DatabaseHelper.GetConnection())
+                MessageBox.Show("Enter a label.");
+                return;
+            }
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+
+                using (var cmd = new SqlCommand(
+                    "INSERT INTO employment_types (label) VALUES (@name)", conn))
                 {
-                    conn.Open();
-                    using (var cmd = new SqlCommand("INSERT INTO employment_types (label) VALUES (@name)", conn))
-                    {
-                        cmd.Parameters.AddWithValue("@name", name);
-                        cmd.ExecuteNonQuery();
-                    }
-                    MessageBox.Show("Employment type added!");
-                    ClearFields();
-                    LoadData();
+                    cmd.Parameters.AddWithValue("@name", txtName.Text.Trim());
+                    cmd.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex) { MessageBox.Show("Error adding: " + ex.Message); }
+
+            txtName.Clear();
+            LoadData();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (dgvList.SelectedRows.Count == 0) { MessageBox.Show("Select a row first."); return; }
-            string name = txtName.Text.Trim();
-            if (string.IsNullOrEmpty(name)) { MessageBox.Show("Please enter a new label."); return; }
+            if (dgvList.SelectedRows.Count == 0) return;
+
             int id = Convert.ToInt32(dgvList.SelectedRows[0].Cells["ID"].Value);
-            try
+
+            using (var conn = DatabaseHelper.GetConnection())
             {
-                using (var conn = DatabaseHelper.GetConnection())
+                conn.Open();
+
+                using (var cmd = new SqlCommand(
+                    "UPDATE employment_types SET label=@name WHERE type_id=@id", conn))
                 {
-                    conn.Open();
-                    using (var cmd = new SqlCommand("UPDATE employment_types SET label = @name WHERE type_id = @id", conn))
-                    {
-                        cmd.Parameters.AddWithValue("@name", name);
-                        cmd.Parameters.AddWithValue("@id", id);
-                        cmd.ExecuteNonQuery();
-                    }
-                    MessageBox.Show("Updated!");
-                    ClearFields();
-                    LoadData();
+                    cmd.Parameters.AddWithValue("@name", txtName.Text.Trim());
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex) { MessageBox.Show("Error updating: " + ex.Message); }
+
+            txtName.Clear();
+            LoadData();
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        
+
+        private void btnClear_Click(object sender, EventArgs e)
         {
-            if (dgvList.SelectedRows.Count == 0) { MessageBox.Show("Select a row first."); return; }
-            int id = Convert.ToInt32(dgvList.SelectedRows[0].Cells["ID"].Value);
-            string name = dgvList.SelectedRows[0].Cells["Name"].Value.ToString();
-            if (MessageBox.Show($"Delete '{name}'?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes) return;
-            try
-            {
-                using (var conn = DatabaseHelper.GetConnection())
-                {
-                    conn.Open();
-                    using (var cmd = new SqlCommand("DELETE FROM employment_types WHERE type_id = @id", conn))
-                    {
-                        cmd.Parameters.AddWithValue("@id", id);
-                        cmd.ExecuteNonQuery();
-                    }
-                    MessageBox.Show("Deleted!");
-                    ClearFields();
-                    LoadData();
-                }
-            }
-            catch (Exception ex) { MessageBox.Show("Error deleting: " + ex.Message); }
+            txtName.Clear();
+            dgvList.ClearSelection();
         }
 
-        private void btnClear_Click(object sender, EventArgs e) => ClearFields();
-
-        private void btnBack_Click(object sender, EventArgs e) => this.Close();
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
         private void dgvList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
+            {
                 txtName.Text = dgvList.Rows[e.RowIndex].Cells["Name"].Value.ToString();
+            }
         }
 
-        private void ClearFields()
+        private void dgvList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtName.Text = "";
-            dgvList.ClearSelection();
         }
     }
 }

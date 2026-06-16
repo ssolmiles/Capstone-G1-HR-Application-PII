@@ -38,8 +38,12 @@ namespace HRApplicantSystem.Forms.Applicant
                                 INNER JOIN applicants ap ON a.applicant_id = ap.applicant_id
                                 WHERE ap.email = @Email ORDER BY sh.changed_at";
                 var ada = new SqlDataAdapter(sql, conn);
-                ada.SelectCommand.Parameters.AddWithValue("@Email", userEmail);
-                var dt = new DataTable(); ada.Fill(dt);
+                ada.SelectCommand.Parameters.AddWithValue(
+                    "@userId",
+                    SessionManager.CurrentUserID);
+
+                var dt = new DataTable();
+                ada.Fill(dt);
                 dgvHistory.DataSource = dt;
             }
         }

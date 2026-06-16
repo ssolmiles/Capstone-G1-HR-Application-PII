@@ -159,7 +159,7 @@
             // frmHRLogin
             // 
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1902, 1033);
+            this.ClientSize = new System.Drawing.Size(1667, 1033);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblSubtitle);
             this.Controls.Add(this.lblEmail);
@@ -174,7 +174,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "frmHRLogin";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "HR Staff Login";
             this.Load += new System.EventHandler(this.frmHRLogin_Load);
             this.ResumeLayout(false);
