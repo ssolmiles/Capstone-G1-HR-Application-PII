@@ -236,7 +236,7 @@ namespace HRApplicantSystem.Forms.HR
 
         private void dgvToSchedule_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
     }
 }

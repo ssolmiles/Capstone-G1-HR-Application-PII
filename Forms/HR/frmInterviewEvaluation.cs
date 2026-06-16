@@ -96,10 +96,10 @@ namespace HRApplicantSystem.Forms.HR
                 return;
             }
 
-            
+
             string result = score >= 75 ? "pass" : "fail";
 
-           
+
 
             try
             {

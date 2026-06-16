@@ -104,7 +104,18 @@ namespace HRApplicantSystem.Forms.HR
         }
 
         private void btnNext_Click(object s, EventArgs e)
-        { new frmScreening().Show(); this.Hide(); }
+        {
+            int appId = AppId();
+
+            if (appId == -1)
+            {
+                MessageBox.Show("Select a scheduled interview first.");
+                return;
+            }
+
+            new frmInterviewEvaluation(appId).Show();
+            this.Hide();
+        }
 
         private void btnBack_Click(object s, EventArgs e)
         {

@@ -43,14 +43,14 @@
             this.dgvDocuments.AllowUserToAddRows = false;
             this.dgvDocuments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDocuments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDocuments.Location = new System.Drawing.Point(13, 39);
+            this.dgvDocuments.Location = new System.Drawing.Point(21, 51);
             this.dgvDocuments.Name = "dgvDocuments";
             this.dgvDocuments.ReadOnly = true;
             this.dgvDocuments.RowHeadersVisible = false;
             this.dgvDocuments.RowHeadersWidth = 51;
             this.dgvDocuments.RowTemplate.Height = 24;
             this.dgvDocuments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDocuments.Size = new System.Drawing.Size(1517, 774);
+            this.dgvDocuments.Size = new System.Drawing.Size(700, 340);
             this.dgvDocuments.TabIndex = 0;
             // 
             // lblApplicantName

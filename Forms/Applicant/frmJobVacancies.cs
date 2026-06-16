@@ -1,6 +1,7 @@
 ﻿using HRApplicantSystem.Helpers;
 using Microsoft.Data.SqlClient;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace HRApplicantSystem.Forms.Applicant
@@ -100,7 +101,7 @@ namespace HRApplicantSystem.Forms.Applicant
             }
         }
 
-      
+
         private static string SingleLine(string text)
         {
             if (string.IsNullOrEmpty(text)) return "";
@@ -149,6 +150,64 @@ namespace HRApplicantSystem.Forms.Applicant
             MessageBox.Show(details, "Job Details");
         }
 
+        // Checks every profile field for the applicant tied to userEmail.
+        // Returns true only if ALL fields are filled in. On failure,
+        // missingFields lists the human-readable names of what's blank.
+        private bool IsProfileComplete(SqlConnection conn, string email, out string missingFields)
+        {
+            missingFields = "";
+
+            using (SqlCommand cmd = new SqlCommand(
+                @"SELECT full_name, birthdate, address, city, province, zip_code,
+                         phone, gender, school, degree, year_grad, skills,
+                         company, position, duration
+                  FROM applicants WHERE email = @Email", conn))
+            {
+                cmd.Parameters.AddWithValue("@Email", email);
+
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    if (!dr.Read())
+                    {
+                        missingFields = "Profile not found.";
+                        return false;
+                    }
+
+                    var missing = new List<string>();
+
+                    void CheckText(string column, string label)
+                    {
+                        if (dr[column] == DBNull.Value || string.IsNullOrWhiteSpace(dr[column].ToString()))
+                            missing.Add(label);
+                    }
+
+                    CheckText("full_name", "Full Name");
+                    if (dr["birthdate"] == DBNull.Value) missing.Add("Birthdate");
+                    CheckText("address", "Address");
+                    CheckText("city", "City");
+                    CheckText("province", "Province");
+                    CheckText("zip_code", "Zip Code");
+                    CheckText("phone", "Phone");
+                    CheckText("gender", "Gender");
+                    CheckText("school", "School");
+                    CheckText("degree", "Degree");
+                    CheckText("year_grad", "Year Graduated");
+                    CheckText("skills", "Skills");
+                    CheckText("company", "Company");
+                    CheckText("position", "Work Position");
+                    CheckText("duration", "Work Duration");
+
+                    if (missing.Count > 0)
+                    {
+                        missingFields = string.Join(", ", missing);
+                        return false;
+                    }
+
+                    return true;
+                }
+            }
+        }
+
         private void btnApply_Click(object sender, EventArgs e)
         {
             if (listViewJobs.SelectedItems.Count == 0)
@@ -183,6 +242,23 @@ namespace HRApplicantSystem.Forms.Applicant
                             return;
                         }
                         applicantId = Convert.ToInt32(result);
+                    }
+
+                    // Profile must be fully filled out before applying.
+                    if (!IsProfileComplete(conn, userEmail, out string missingFields))
+                    {
+                        DialogResult goToProfile = MessageBox.Show(
+                            $"Please complete your profile before applying.\n\nMissing: {missingFields}\n\nGo to My Profile now?",
+                            "Profile Incomplete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                        if (goToProfile == DialogResult.Yes)
+                        {
+                            using (var frm = new frmMyProfile(userEmail))
+                            {
+                                frm.ShowDialog();
+                            }
+                        }
+                        return;
                     }
 
                     // Parse vacancy ID safely
@@ -247,7 +323,7 @@ namespace HRApplicantSystem.Forms.Applicant
 
                     MessageBox.Show("Application submitted successfully!", "Success",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
+
                     // Refresh the list
                     LoadJobList(txtSearch.Text);
                 }

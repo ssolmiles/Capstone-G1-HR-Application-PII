@@ -39,8 +39,8 @@ namespace HRApplicantSystem.Forms.Applicant
                                 WHERE ap.email = @Email ORDER BY sh.changed_at";
                 var ada = new SqlDataAdapter(sql, conn);
                 ada.SelectCommand.Parameters.AddWithValue(
-                    "@userId",
-                    SessionManager.CurrentUserID);
+                    "@Email",
+                    userEmail);
 
                 var dt = new DataTable();
                 ada.Fill(dt);

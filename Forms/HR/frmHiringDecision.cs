@@ -243,7 +243,10 @@ namespace HRApplicantSystem.Forms.HR
 
         private void btnHire_Click(object s, EventArgs e) => Decide("accepted");
         private void btnReject_Click(object s, EventArgs e) => Decide("rejected");
-        private void btnBack_Click(object s, EventArgs e) { new frmInterviewEvaluation().Show(); this.Close(); }
+        private void btnBack_Click(object s, EventArgs e)
+        {
+            this.Close();
+        }
 
         private void txtFinalRemarks_TextChanged(object sender, EventArgs e)
         {
