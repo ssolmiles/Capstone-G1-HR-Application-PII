@@ -40,7 +40,7 @@ namespace HRApplicantSystem.Forms.HR
             // lblTitle
             // 
             this.lblTitle.Font = new System.Drawing.Font("Verdana", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(26, 34);
+            this.lblTitle.Location = new System.Drawing.Point(489, 25);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(458, 58);
             this.lblTitle.TabIndex = 0;
@@ -50,7 +50,7 @@ namespace HRApplicantSystem.Forms.HR
             // monthCalendar1
             // 
             this.monthCalendar1.Font = new System.Drawing.Font("Verdana", 14F);
-            this.monthCalendar1.Location = new System.Drawing.Point(799, 53);
+            this.monthCalendar1.Location = new System.Drawing.Point(1197, 35);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 4;
             // 
@@ -61,7 +61,7 @@ namespace HRApplicantSystem.Forms.HR
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Font = new System.Drawing.Font("Verdana", 14F);
-            this.groupBox1.Location = new System.Drawing.Point(93, 136);
+            this.groupBox1.Location = new System.Drawing.Point(496, 135);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(343, 434);
             this.groupBox1.TabIndex = 5;
@@ -104,7 +104,7 @@ namespace HRApplicantSystem.Forms.HR
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Verdana", 14F);
-            this.button1.Location = new System.Drawing.Point(558, 154);
+            this.button1.Location = new System.Drawing.Point(917, 210);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(203, 41);
             this.button1.TabIndex = 6;
@@ -115,7 +115,7 @@ namespace HRApplicantSystem.Forms.HR
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Verdana", 14F);
-            this.button2.Location = new System.Drawing.Point(558, 201);
+            this.button2.Location = new System.Drawing.Point(917, 257);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(203, 41);
             this.button2.TabIndex = 8;
@@ -126,7 +126,7 @@ namespace HRApplicantSystem.Forms.HR
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Verdana", 14F);
-            this.button3.Location = new System.Drawing.Point(558, 253);
+            this.button3.Location = new System.Drawing.Point(917, 309);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(203, 41);
             this.button3.TabIndex = 9;
@@ -137,7 +137,7 @@ namespace HRApplicantSystem.Forms.HR
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Verdana", 14F);
-            this.button4.Location = new System.Drawing.Point(558, 448);
+            this.button4.Location = new System.Drawing.Point(1258, 760);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(201, 38);
             this.button4.TabIndex = 10;
@@ -148,7 +148,7 @@ namespace HRApplicantSystem.Forms.HR
             // button5
             // 
             this.button5.Font = new System.Drawing.Font("Verdana", 14F);
-            this.button5.Location = new System.Drawing.Point(558, 300);
+            this.button5.Location = new System.Drawing.Point(917, 356);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(203, 41);
             this.button5.TabIndex = 11;
@@ -159,7 +159,7 @@ namespace HRApplicantSystem.Forms.HR
             // button6
             // 
             this.button6.Font = new System.Drawing.Font("Verdana", 14F);
-            this.button6.Location = new System.Drawing.Point(558, 347);
+            this.button6.Location = new System.Drawing.Point(917, 403);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(203, 41);
             this.button6.TabIndex = 12;
@@ -170,7 +170,7 @@ namespace HRApplicantSystem.Forms.HR
             // frmHRDashboard
             // 
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.ClientSize = new System.Drawing.Size(1482, 953);
+            this.ClientSize = new System.Drawing.Size(1902, 1033);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);

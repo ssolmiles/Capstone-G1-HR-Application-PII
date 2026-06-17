@@ -46,7 +46,7 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
-            this.lblTitle.Location = new System.Drawing.Point(30, 20);
+            this.lblTitle.Location = new System.Drawing.Point(341, 50);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(240, 37);
             this.lblTitle.TabIndex = 0;
@@ -57,7 +57,7 @@
             this.lblSubtitle.AutoSize = true;
             this.lblSubtitle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic);
             this.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            this.lblSubtitle.Location = new System.Drawing.Point(32, 54);
+            this.lblSubtitle.Location = new System.Drawing.Point(343, 84);
             this.lblSubtitle.Name = "lblSubtitle";
             this.lblSubtitle.Size = new System.Drawing.Size(331, 20);
             this.lblSubtitle.TabIndex = 1;
@@ -68,7 +68,7 @@
             this.lblSearch.AutoSize = true;
             this.lblSearch.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblSearch.Location = new System.Drawing.Point(36, 90);
+            this.lblSearch.Location = new System.Drawing.Point(885, 82);
             this.lblSearch.Name = "lblSearch";
             this.lblSearch.Size = new System.Drawing.Size(65, 23);
             this.lblSearch.TabIndex = 2;
@@ -78,7 +78,7 @@
             // 
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtSearch.Location = new System.Drawing.Point(107, 88);
+            this.txtSearch.Location = new System.Drawing.Point(956, 80);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(320, 30);
             this.txtSearch.TabIndex = 3;
@@ -89,7 +89,7 @@
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(437, 87);
+            this.btnSearch.Location = new System.Drawing.Point(1286, 79);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(90, 31);
             this.btnSearch.TabIndex = 4;
@@ -102,14 +102,14 @@
             this.dgvApplications.AllowUserToAddRows = false;
             this.dgvApplications.AllowUserToDeleteRows = false;
             this.dgvApplications.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvApplications.Location = new System.Drawing.Point(32, 135);
+            this.dgvApplications.Location = new System.Drawing.Point(347, 127);
             this.dgvApplications.MultiSelect = false;
             this.dgvApplications.Name = "dgvApplications";
             this.dgvApplications.ReadOnly = true;
             this.dgvApplications.RowHeadersWidth = 51;
             this.dgvApplications.RowTemplate.Height = 24;
             this.dgvApplications.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvApplications.Size = new System.Drawing.Size(1522, 688);
+            this.dgvApplications.Size = new System.Drawing.Size(1216, 564);
             this.dgvApplications.TabIndex = 6;
             this.dgvApplications.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvApplicants_CellContentClick);
             // 

@@ -30,13 +30,18 @@
             this.btnAccepted = new System.Windows.Forms.Button();
             this.btnRejected = new System.Windows.Forms.Button();
             this.btnMissing = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReports)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
             // 
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.Location = new System.Drawing.Point(20, 20);
+            this.lblTitle.Location = new System.Drawing.Point(428, 36);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(200, 37);
             this.lblTitle.TabIndex = 0;
@@ -53,7 +58,7 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(20, 732);
+            this.btnBack.Location = new System.Drawing.Point(1760, 23);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(130, 30);
             this.btnBack.TabIndex = 3;
@@ -63,7 +68,7 @@
             // dgvReports
             // 
             this.dgvReports.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvReports.Location = new System.Drawing.Point(748, 71);
+            this.dgvReports.Location = new System.Drawing.Point(908, 74);
             this.dgvReports.Name = "dgvReports";
             this.dgvReports.RowHeadersWidth = 51;
             this.dgvReports.RowTemplate.Height = 24;
@@ -73,7 +78,7 @@
             // lblTotalApplicants
             // 
             this.lblTotalApplicants.AutoSize = true;
-            this.lblTotalApplicants.Location = new System.Drawing.Point(46, 90);
+            this.lblTotalApplicants.Location = new System.Drawing.Point(476, 115);
             this.lblTotalApplicants.Name = "lblTotalApplicants";
             this.lblTotalApplicants.Size = new System.Drawing.Size(104, 16);
             this.lblTotalApplicants.TabIndex = 5;
@@ -82,7 +87,7 @@
             // lblPending
             // 
             this.lblPending.AutoSize = true;
-            this.lblPending.Location = new System.Drawing.Point(53, 153);
+            this.lblPending.Location = new System.Drawing.Point(476, 172);
             this.lblPending.Name = "lblPending";
             this.lblPending.Size = new System.Drawing.Size(57, 16);
             this.lblPending.TabIndex = 6;
@@ -91,7 +96,7 @@
             // lblInterviewed
             // 
             this.lblInterviewed.AutoSize = true;
-            this.lblInterviewed.Location = new System.Drawing.Point(50, 209);
+            this.lblInterviewed.Location = new System.Drawing.Point(471, 231);
             this.lblInterviewed.Name = "lblInterviewed";
             this.lblInterviewed.Size = new System.Drawing.Size(75, 16);
             this.lblInterviewed.TabIndex = 7;
@@ -100,7 +105,7 @@
             // lblAccepted
             // 
             this.lblAccepted.AutoSize = true;
-            this.lblAccepted.Location = new System.Drawing.Point(50, 265);
+            this.lblAccepted.Location = new System.Drawing.Point(471, 284);
             this.lblAccepted.Name = "lblAccepted";
             this.lblAccepted.Size = new System.Drawing.Size(65, 16);
             this.lblAccepted.TabIndex = 8;
@@ -109,7 +114,7 @@
             // lblRejected
             // 
             this.lblRejected.AutoSize = true;
-            this.lblRejected.Location = new System.Drawing.Point(53, 309);
+            this.lblRejected.Location = new System.Drawing.Point(474, 346);
             this.lblRejected.Name = "lblRejected";
             this.lblRejected.Size = new System.Drawing.Size(62, 16);
             this.lblRejected.TabIndex = 9;
@@ -160,9 +165,54 @@
             this.btnMissing.Text = "Missing Requirements";
             this.btnMissing.Click += new System.EventHandler(this.btnMissing_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(368, 109);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(84, 22);
+            this.textBox1.TabIndex = 17;
+            this.textBox1.Text = "Applicants";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(364, 166);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(84, 22);
+            this.textBox2.TabIndex = 18;
+            this.textBox2.Text = "Pending";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(364, 225);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(84, 22);
+            this.textBox3.TabIndex = 19;
+            this.textBox3.Text = "Interviewed";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(368, 281);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(84, 22);
+            this.textBox4.TabIndex = 20;
+            this.textBox4.Text = "Accepted";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(368, 340);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(84, 22);
+            this.textBox5.TabIndex = 21;
+            this.textBox5.Text = "Rejected";
+            // 
             // frmReports
             // 
             this.ClientSize = new System.Drawing.Size(1902, 1033);
+            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnMissing);
             this.Controls.Add(this.btnRejected);
             this.Controls.Add(this.btnAccepted);
@@ -197,5 +247,10 @@
         private System.Windows.Forms.Button btnAccepted;
         private System.Windows.Forms.Button btnRejected;
         private System.Windows.Forms.Button btnMissing;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox5;
     }
 }

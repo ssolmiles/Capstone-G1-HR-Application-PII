@@ -34,7 +34,7 @@
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
             this.lblTitle.Location = new System.Drawing.Point(30, 20);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(228, 36);
+            this.lblTitle.Size = new System.Drawing.Size(252, 36);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Job Vacancies";
             // 
@@ -45,7 +45,7 @@
             this.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
             this.lblSubtitle.Location = new System.Drawing.Point(32, 62);
             this.lblSubtitle.Name = "lblSubtitle";
-            this.lblSubtitle.Size = new System.Drawing.Size(470, 20);
+            this.lblSubtitle.Size = new System.Drawing.Size(573, 20);
             this.lblSubtitle.TabIndex = 1;
             this.lblSubtitle.Text = "Browse open positions and review requirements before you apply";
             // 
@@ -67,7 +67,7 @@
             this.txtSearch.Font = new System.Drawing.Font("Verdana", 11F);
             this.txtSearch.Location = new System.Drawing.Point(30, 116);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(340, 32);
+            this.txtSearch.Size = new System.Drawing.Size(340, 30);
             this.txtSearch.TabIndex = 0;
             // 
             // btnSearch
@@ -92,7 +92,7 @@
             this.listViewJobs.HideSelection = false;
             this.listViewJobs.Location = new System.Drawing.Point(30, 165);
             this.listViewJobs.Name = "listViewJobs";
-            this.listViewJobs.Size = new System.Drawing.Size(1842, 680);
+            this.listViewJobs.Size = new System.Drawing.Size(1842, 383);
             this.listViewJobs.TabIndex = 2;
             this.listViewJobs.UseCompatibleStateImageBehavior = false;
             this.listViewJobs.View = System.Windows.Forms.View.Details;
@@ -103,9 +103,9 @@
             this.btnViewDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewDetails.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnViewDetails.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.btnViewDetails.Location = new System.Drawing.Point(30, 865);
+            this.btnViewDetails.Location = new System.Drawing.Point(35, 582);
             this.btnViewDetails.Name = "btnViewDetails";
-            this.btnViewDetails.Size = new System.Drawing.Size(170, 40);
+            this.btnViewDetails.Size = new System.Drawing.Size(203, 40);
             this.btnViewDetails.TabIndex = 3;
             this.btnViewDetails.Text = "View Full Details";
             this.btnViewDetails.UseVisualStyleBackColor = true;
@@ -117,7 +117,7 @@
             this.btnApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnApply.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnApply.ForeColor = System.Drawing.Color.White;
-            this.btnApply.Location = new System.Drawing.Point(215, 865);
+            this.btnApply.Location = new System.Drawing.Point(244, 582);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(150, 40);
             this.btnApply.TabIndex = 4;

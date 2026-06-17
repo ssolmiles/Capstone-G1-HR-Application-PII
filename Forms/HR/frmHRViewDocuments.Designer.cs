@@ -43,14 +43,14 @@
             this.dgvDocuments.AllowUserToAddRows = false;
             this.dgvDocuments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDocuments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDocuments.Location = new System.Drawing.Point(21, 51);
+            this.dgvDocuments.Location = new System.Drawing.Point(591, 92);
             this.dgvDocuments.Name = "dgvDocuments";
             this.dgvDocuments.ReadOnly = true;
             this.dgvDocuments.RowHeadersVisible = false;
             this.dgvDocuments.RowHeadersWidth = 51;
             this.dgvDocuments.RowTemplate.Height = 24;
             this.dgvDocuments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDocuments.Size = new System.Drawing.Size(700, 340);
+            this.dgvDocuments.Size = new System.Drawing.Size(700, 624);
             this.dgvDocuments.TabIndex = 0;
             // 
             // lblApplicantName
@@ -65,7 +65,7 @@
             // lblDocCount
             // 
             this.lblDocCount.AutoSize = true;
-            this.lblDocCount.Location = new System.Drawing.Point(1605, 51);
+            this.lblDocCount.Location = new System.Drawing.Point(1158, 68);
             this.lblDocCount.Name = "lblDocCount";
             this.lblDocCount.Size = new System.Drawing.Size(133, 16);
             this.lblDocCount.TabIndex = 2;
@@ -73,7 +73,7 @@
             // 
             // btnOpen
             // 
-            this.btnOpen.Location = new System.Drawing.Point(1566, 155);
+            this.btnOpen.Location = new System.Drawing.Point(1328, 167);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(184, 34);
             this.btnOpen.TabIndex = 3;
@@ -83,7 +83,7 @@
             // 
             // btnRejectDoc
             // 
-            this.btnRejectDoc.Location = new System.Drawing.Point(1566, 211);
+            this.btnRejectDoc.Location = new System.Drawing.Point(1328, 223);
             this.btnRejectDoc.Name = "btnRejectDoc";
             this.btnRejectDoc.Size = new System.Drawing.Size(184, 34);
             this.btnRejectDoc.TabIndex = 4;
@@ -93,7 +93,7 @@
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(1566, 263);
+            this.btnRefresh.Location = new System.Drawing.Point(1328, 275);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(184, 34);
             this.btnRefresh.TabIndex = 5;
@@ -103,7 +103,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(1566, 319);
+            this.btnClose.Location = new System.Drawing.Point(1328, 331);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(184, 34);
             this.btnClose.TabIndex = 6;

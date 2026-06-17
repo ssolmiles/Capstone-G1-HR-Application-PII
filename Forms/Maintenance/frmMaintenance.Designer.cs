@@ -31,7 +31,7 @@ namespace HRApplicantSystem.Forms.Maintenance
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
-            this.lblTitle.Location = new System.Drawing.Point(27, 30);
+            this.lblTitle.Location = new System.Drawing.Point(630, 52);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(282, 37);
             this.lblTitle.TabIndex = 0;
@@ -42,7 +42,7 @@ namespace HRApplicantSystem.Forms.Maintenance
             this.lblSubtitle.AutoSize = true;
             this.lblSubtitle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic);
             this.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            this.lblSubtitle.Location = new System.Drawing.Point(29, 70);
+            this.lblSubtitle.Location = new System.Drawing.Point(632, 92);
             this.lblSubtitle.Name = "lblSubtitle";
             this.lblSubtitle.Size = new System.Drawing.Size(289, 20);
             this.lblSubtitle.TabIndex = 1;

@@ -32,7 +32,7 @@
             this.dgvApplicants.AllowUserToAddRows = false;
             this.dgvApplicants.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvApplicants.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvApplicants.Location = new System.Drawing.Point(63, 95);
+            this.dgvApplicants.Location = new System.Drawing.Point(546, 95);
             this.dgvApplicants.MultiSelect = false;
             this.dgvApplicants.Name = "dgvApplicants";
             this.dgvApplicants.ReadOnly = true;
@@ -40,21 +40,21 @@
             this.dgvApplicants.RowHeadersWidth = 51;
             this.dgvApplicants.RowTemplate.Height = 24;
             this.dgvApplicants.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvApplicants.Size = new System.Drawing.Size(1511, 420);
+            this.dgvApplicants.Size = new System.Drawing.Size(1028, 420);
             this.dgvApplicants.TabIndex = 0;
             this.dgvApplicants.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvApplicants_CellContentClick);
             this.dgvApplicants.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvApplicants_CellDoubleClick);
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(32, 50);
+            this.txtSearch.Location = new System.Drawing.Point(546, 59);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(320, 22);
             this.txtSearch.TabIndex = 1;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(362, 48);
+            this.btnSearch.Location = new System.Drawing.Point(876, 54);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(90, 32);
             this.btnSearch.TabIndex = 2;
@@ -64,7 +64,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(462, 48);
+            this.btnClear.Location = new System.Drawing.Point(976, 54);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(90, 32);
             this.btnClear.TabIndex = 3;
@@ -105,7 +105,7 @@
             // lblCount
             // 
             this.lblCount.AutoSize = true;
-            this.lblCount.Location = new System.Drawing.Point(32, 522);
+            this.lblCount.Location = new System.Drawing.Point(543, 539);
             this.lblCount.Name = "lblCount";
             this.lblCount.Size = new System.Drawing.Size(124, 16);
             this.lblCount.TabIndex = 7;

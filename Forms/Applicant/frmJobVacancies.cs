@@ -1,4 +1,19 @@
-﻿using HRApplicantSystem.Helpers;
+﻿// =============================================================
+//  frmJobVacancies.cs
+//
+//  PURPOSE
+//  ───────
+//  Shows all OPEN job vacancies and lets the applicant apply.
+//
+//  DRAFT FLOW
+//  ──────────
+//  Clicking Apply saves the application as status = 'draft'.
+//  The applicant then goes to My Application to review it,
+//  optionally change the position, and click Submit when ready.
+//  This gives them a chance to reconsider before HR sees it.
+// =============================================================
+
+using HRApplicantSystem.Helpers;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -46,18 +61,18 @@ namespace HRApplicantSystem.Forms.Applicant
                     conn.Open();
 
                     string query =
-                        @"SELECT 
+                        @"SELECT
                             v.vacancy_id,
                             p.title,
-                            d.name AS department,
-                            et.label AS employment_type,
+                            d.name        AS department,
+                            et.label      AS employment_type,
                             v.slots,
                             v.description,
                             v.qualifications
                           FROM job_vacancies v
-                          INNER JOIN positions p ON v.position_id = p.position_id
-                          INNER JOIN departments d ON v.department_id = d.department_id
-                          INNER JOIN employment_types et ON v.employment_type_id = et.type_id
+                          INNER JOIN positions        p   ON v.position_id        = p.position_id
+                          INNER JOIN departments      d   ON v.department_id      = d.department_id
+                          INNER JOIN employment_types et  ON v.employment_type_id = et.type_id
                           WHERE v.status = 'open'";
 
                     if (!string.IsNullOrEmpty(searchText))
@@ -73,21 +88,23 @@ namespace HRApplicantSystem.Forms.Applicant
                             listViewJobs.Items.Clear();
                             while (dr.Read())
                             {
-                                ListViewItem item = new ListViewItem(dr["vacancy_id"].ToString());
+                                ListViewItem item = new ListViewItem(
+                                    dr["vacancy_id"].ToString());
                                 item.SubItems.Add(dr["title"].ToString());
                                 item.SubItems.Add(dr["department"].ToString());
                                 item.SubItems.Add(dr["employment_type"].ToString());
                                 item.SubItems.Add(dr["slots"].ToString());
 
-                                string description = dr["description"] == DBNull.Value ? "" : dr["description"].ToString();
-                                string qualifications = dr["qualifications"] == DBNull.Value ? "" : dr["qualifications"].ToString();
+                                string desc = dr["description"] == DBNull.Value
+                                               ? "" : dr["description"].ToString();
+                                string quals = dr["qualifications"] == DBNull.Value
+                                               ? "" : dr["qualifications"].ToString();
 
-                                // Show a single-line preview in the table itself (per request).
-                                item.SubItems.Add(SingleLine(description));
-                                item.SubItems.Add(SingleLine(qualifications));
+                                item.SubItems.Add(SingleLine(desc));
+                                item.SubItems.Add(SingleLine(quals));
 
-                                // Keep the full, untrimmed text for "View Full Details".
-                                item.Tag = new string[] { description, qualifications };
+                                // Keep the full text for "View Full Details".
+                                item.Tag = new string[] { desc, quals };
 
                                 listViewJobs.Items.Add(item);
                             }
@@ -97,10 +114,10 @@ namespace HRApplicantSystem.Forms.Applicant
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Error loading jobs: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         private static string SingleLine(string text)
         {
@@ -121,46 +138,42 @@ namespace HRApplicantSystem.Forms.Applicant
         {
             if (listViewJobs.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Please select a job first.");
+                MessageBox.Show("Please select a job first.",
+                    "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            ListViewItem selected = listViewJobs.SelectedItems[0];
-            string position = selected.SubItems[1].Text;
-            string department = selected.SubItems[2].Text;
-            string employmentType = selected.SubItems[3].Text;
-            string slots = selected.SubItems[4].Text;
-
+            ListViewItem sel = listViewJobs.SelectedItems[0];
             string description = "";
             string qualifications = "";
-            if (selected.Tag is string[] full)
+            if (sel.Tag is string[] full)
             {
                 description = full[0];
                 qualifications = full[1];
             }
 
             string details =
-                $"Position: {position}\n" +
-                $"Department: {department}\n" +
-                $"Employment Type: {employmentType}\n" +
-                $"Slots: {slots}\n\n" +
+                $"Position        : {sel.SubItems[1].Text}\n" +
+                $"Department      : {sel.SubItems[2].Text}\n" +
+                $"Employment Type : {sel.SubItems[3].Text}\n" +
+                $"Slots           : {sel.SubItems[4].Text}\n\n" +
                 $"Description:\n{description}\n\n" +
                 $"Qualifications:\n{qualifications}";
 
-            MessageBox.Show(details, "Job Details");
+            MessageBox.Show(details, "Job Details",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        // Checks every profile field for the applicant tied to userEmail.
-        // Returns true only if ALL fields are filled in. On failure,
-        // missingFields lists the human-readable names of what's blank.
-        private bool IsProfileComplete(SqlConnection conn, string email, out string missingFields)
+        // ── Profile completeness check ────────────────────────
+        private bool IsProfileComplete(
+            SqlConnection conn, string email, out string missingFields)
         {
             missingFields = "";
 
             using (SqlCommand cmd = new SqlCommand(
-                @"SELECT full_name, birthdate, address, city, province, zip_code,
-                         phone, gender, school, degree, year_grad, skills,
-                         company, position, duration
+                @"SELECT full_name, birthdate, address, city, province,
+                         zip_code, phone, gender, school, degree,
+                         year_grad, skills, company, position, duration
                   FROM applicants WHERE email = @Email", conn))
             {
                 cmd.Parameters.AddWithValue("@Email", email);
@@ -175,53 +188,61 @@ namespace HRApplicantSystem.Forms.Applicant
 
                     var missing = new List<string>();
 
-                    void CheckText(string column, string label)
+                    void Check(string col, string label)
                     {
-                        if (dr[column] == DBNull.Value || string.IsNullOrWhiteSpace(dr[column].ToString()))
+                        if (dr[col] == DBNull.Value ||
+                            string.IsNullOrWhiteSpace(dr[col].ToString()))
                             missing.Add(label);
                     }
 
-                    CheckText("full_name", "Full Name");
+                    Check("full_name", "Full Name");
                     if (dr["birthdate"] == DBNull.Value) missing.Add("Birthdate");
-                    CheckText("address", "Address");
-                    CheckText("city", "City");
-                    CheckText("province", "Province");
-                    CheckText("zip_code", "Zip Code");
-                    CheckText("phone", "Phone");
-                    CheckText("gender", "Gender");
-                    CheckText("school", "School");
-                    CheckText("degree", "Degree");
-                    CheckText("year_grad", "Year Graduated");
-                    CheckText("skills", "Skills");
-                    CheckText("company", "Company");
-                    CheckText("position", "Work Position");
-                    CheckText("duration", "Work Duration");
+                    Check("address", "Address");
+                    Check("city", "City");
+                    Check("province", "Province");
+                    Check("zip_code", "Zip Code");
+                    Check("phone", "Phone");
+                    Check("gender", "Gender");
+                    Check("school", "School");
+                    Check("degree", "Degree");
+                    Check("year_grad", "Year Graduated");
+                    Check("skills", "Skills");
+                    Check("company", "Company");
+                    Check("position", "Work Position");
+                    Check("duration", "Work Duration");
 
                     if (missing.Count > 0)
                     {
                         missingFields = string.Join(", ", missing);
                         return false;
                     }
-
                     return true;
                 }
             }
         }
 
+        // ── Apply button ──────────────────────────────────────
+        // Saves the application as status = 'draft'.
+        // The applicant must go to My Application and click Submit
+        // before HR can see it.
         private void btnApply_Click(object sender, EventArgs e)
         {
             if (listViewJobs.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Please select a job to apply.");
+                MessageBox.Show("Please select a job to apply for.",
+                    "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             string vacancyIdStr = listViewJobs.SelectedItems[0].Text.Trim();
             string jobTitle = listViewJobs.SelectedItems[0].SubItems[1].Text;
 
-            if (MessageBox.Show($"Apply for {jobTitle}?", "Confirm Application",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
-                return;
+            if (MessageBox.Show(
+                    $"Save a draft application for:\n  {jobTitle}\n\n" +
+                    "You can review and submit it from the My Application page.",
+                    "Confirm Apply",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question) != DialogResult.Yes) return;
 
             try
             {
@@ -229,115 +250,132 @@ namespace HRApplicantSystem.Forms.Applicant
                 {
                     conn.Open();
 
-                    // Get applicant_id
+                    // 1. Get applicant_id
                     int applicantId;
-                    using (SqlCommand idCmd = new SqlCommand(
-                        "SELECT applicant_id FROM applicants WHERE email = @Email", conn))
+                    using (SqlCommand cmd = new SqlCommand(
+                        "SELECT applicant_id FROM applicants WHERE email = @Email",
+                        conn))
                     {
-                        idCmd.Parameters.AddWithValue("@Email", userEmail);
-                        object result = idCmd.ExecuteScalar();
+                        cmd.Parameters.AddWithValue("@Email", userEmail);
+                        object result = cmd.ExecuteScalar();
                         if (result == null)
                         {
-                            MessageBox.Show("Applicant account not found.");
+                            MessageBox.Show("Applicant account not found.",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         applicantId = Convert.ToInt32(result);
                     }
 
-                    // Profile must be fully filled out before applying.
-                    if (!IsProfileComplete(conn, userEmail, out string missingFields))
+                    // 2. Profile must be complete before applying.
+                    if (!IsProfileComplete(conn, userEmail, out string missing))
                     {
-                        DialogResult goToProfile = MessageBox.Show(
-                            $"Please complete your profile before applying.\n\nMissing: {missingFields}\n\nGo to My Profile now?",
-                            "Profile Incomplete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        DialogResult go = MessageBox.Show(
+                            $"Please complete your profile before applying.\n\n" +
+                            $"Missing: {missing}\n\nGo to My Profile now?",
+                            "Profile Incomplete",
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                        if (goToProfile == DialogResult.Yes)
+                        if (go == DialogResult.Yes)
                         {
                             using (var frm = new frmMyProfile(userEmail))
-                            {
                                 frm.ShowDialog();
-                            }
                         }
                         return;
                     }
 
-                    // Parse vacancy ID safely
+                    // 3. Parse vacancy ID
                     if (!int.TryParse(vacancyIdStr, out int vacancyId) || vacancyId <= 0)
                     {
-                        MessageBox.Show("Invalid job vacancy selected.");
+                        MessageBox.Show("Invalid job vacancy selected.",
+                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
-                    // === IMPROVED DUPLICATE CHECK ===
-                    using (SqlCommand checkCmd = new SqlCommand(
-                        @"SELECT application_id, status 
-                  FROM applications 
-                  WHERE applicant_id = @ApplicantId 
-                    AND vacancy_id = @VacancyId", conn))
+                    // 4. Duplicate check — include the current status in the message.
+                    using (SqlCommand cmd = new SqlCommand(
+                        @"SELECT status FROM applications
+                          WHERE applicant_id = @ApplicantId
+                            AND vacancy_id   = @VacancyId", conn))
                     {
-                        checkCmd.Parameters.AddWithValue("@ApplicantId", applicantId);
-                        checkCmd.Parameters.AddWithValue("@VacancyId", vacancyId);
+                        cmd.Parameters.AddWithValue("@ApplicantId", applicantId);
+                        cmd.Parameters.AddWithValue("@VacancyId", vacancyId);
 
-                        using (SqlDataReader reader = checkCmd.ExecuteReader())
+                        using (SqlDataReader dr = cmd.ExecuteReader())
                         {
-                            if (reader.Read())
+                            if (dr.Read())
                             {
-                                string existingStatus = reader["status"].ToString();
-                                MessageBox.Show($"You have already applied for this position.\n\nCurrent status: {existingStatus}",
-                                    "Already Applied", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                string existingStatus = dr["status"].ToString();
+                                MessageBox.Show(
+                                    "You have already applied for this position.\n\n" +
+                                    $"Current status: {existingStatus}\n\n" +
+                                    "Check My Application to manage it.",
+                                    "Already Applied",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
                                 return;
                             }
                         }
                     }
 
-                    // Validate vacancy still exists and is open
-                    using (SqlCommand validateCmd = new SqlCommand(
-                        "SELECT status FROM job_vacancies WHERE vacancy_id = @VacancyId AND status = 'open'", conn))
+                    // 5. Confirm vacancy is still open.
+                    using (SqlCommand cmd = new SqlCommand(
+                        "SELECT 1 FROM job_vacancies " +
+                        "WHERE vacancy_id = @VacancyId AND status = 'open'", conn))
                     {
-                        validateCmd.Parameters.AddWithValue("@VacancyId", vacancyId);
-                        if (validateCmd.ExecuteScalar() == null)
+                        cmd.Parameters.AddWithValue("@VacancyId", vacancyId);
+                        if (cmd.ExecuteScalar() == null)
                         {
-                            MessageBox.Show("This job vacancy is no longer available.");
+                            MessageBox.Show("This vacancy is no longer open.",
+                                "Unavailable", MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
                             return;
                         }
                     }
 
-                    // INSERT the application
+                    // 6. INSERT as DRAFT — applicant must submit from My Application.
                     int newAppId;
-                    using (SqlCommand insertCmd = new SqlCommand(
-                        @"INSERT INTO applications 
-                    (applicant_id, vacancy_id, status, submitted_at, last_updated)
-                  OUTPUT INSERTED.application_id
-                  VALUES (@ApplicantId, @VacancyId, 'submitted', GETDATE(), GETDATE())", conn))
+                    using (SqlCommand cmd = new SqlCommand(
+                        @"INSERT INTO applications
+                            (applicant_id, vacancy_id, status, last_updated)
+                          OUTPUT INSERTED.application_id
+                          VALUES (@ApplicantId, @VacancyId, 'draft', GETDATE())",
+                        conn))
                     {
-                        insertCmd.Parameters.AddWithValue("@ApplicantId", applicantId);
-                        insertCmd.Parameters.AddWithValue("@VacancyId", vacancyId);
-
-                        newAppId = Convert.ToInt32(insertCmd.ExecuteScalar());
+                        cmd.Parameters.AddWithValue("@ApplicantId", applicantId);
+                        cmd.Parameters.AddWithValue("@VacancyId", vacancyId);
+                        newAppId = Convert.ToInt32(cmd.ExecuteScalar());
                     }
 
-                    // Log status history
+                    // 7. Log the draft creation in status_history.
                     StatusHistoryLogger.LogStatusChange(
-                        newAppId, "draft", "submitted", applicantId,
-                        "Applicant submitted application.");
+                        newAppId,
+                        previousStatus: null,
+                        newStatus: "draft",
+                        changedByUserId: applicantId,
+                        remarks: "Applicant created draft application from Job Vacancies.");
 
-                    MessageBox.Show("Application submitted successfully!", "Success",
+                    MessageBox.Show(
+                        "Draft application saved!\n\n" +
+                        "Go to My Application to review and submit it.",
+                        "Draft Saved",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Refresh the list
                     LoadJobList(txtSearch.Text);
                 }
             }
             catch (SqlException ex) when (ex.Number == 547)
             {
-                MessageBox.Show("Error: The job vacancy or your account is no longer valid.", "Database Error");
+                MessageBox.Show(
+                    "Error: The job vacancy or your account is no longer valid.",
+                    "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Unexpected error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Unexpected error: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         private void btnBack_Click(object sender, EventArgs e)
         {

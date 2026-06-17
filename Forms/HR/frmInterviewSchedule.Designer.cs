@@ -86,7 +86,7 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
-            this.lblTitle.Location = new System.Drawing.Point(35, 20);
+            this.lblTitle.Location = new System.Drawing.Point(313, 36);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(288, 37);
             this.lblTitle.TabIndex = 0;
@@ -97,7 +97,7 @@
             this.lblSubtitle.AutoSize = true;
             this.lblSubtitle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic);
             this.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            this.lblSubtitle.Location = new System.Drawing.Point(37, 54);
+            this.lblSubtitle.Location = new System.Drawing.Point(315, 70);
             this.lblSubtitle.Name = "lblSubtitle";
             this.lblSubtitle.Size = new System.Drawing.Size(277, 20);
             this.lblSubtitle.TabIndex = 1;
@@ -111,9 +111,9 @@
             this.groupBox1.Controls.Add(this.lblJobApplied);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBox1.Location = new System.Drawing.Point(35, 104);
+            this.groupBox1.Location = new System.Drawing.Point(327, 120);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(569, 142);
+            this.groupBox1.Size = new System.Drawing.Size(581, 142);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Applicant Details";
@@ -175,9 +175,9 @@
             this.groupBox2.Controls.Add(this.cmbMode);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBox2.Location = new System.Drawing.Point(42, 387);
+            this.groupBox2.Location = new System.Drawing.Point(320, 403);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(620, 230);
+            this.groupBox2.Size = new System.Drawing.Size(632, 230);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Schedule Details";
@@ -242,7 +242,7 @@
             this.cboInterviewer.FormattingEnabled = true;
             this.cboInterviewer.Location = new System.Drawing.Point(158, 78);
             this.cboInterviewer.Name = "cboInterviewer";
-            this.cboInterviewer.Size = new System.Drawing.Size(430, 31);
+            this.cboInterviewer.Size = new System.Drawing.Size(260, 31);
             this.cboInterviewer.TabIndex = 5;
             // 
             // lblLocationCaption
@@ -252,9 +252,9 @@
             this.lblLocationCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblLocationCaption.Location = new System.Drawing.Point(20, 170);
             this.lblLocationCaption.Name = "lblLocationCaption";
-            this.lblLocationCaption.Size = new System.Drawing.Size(79, 23);
+            this.lblLocationCaption.Size = new System.Drawing.Size(130, 23);
             this.lblLocationCaption.TabIndex = 8;
-            this.lblLocationCaption.Text = "Location:";
+            this.lblLocationCaption.Text = "Location/Mode:";
             // 
             // txtLocation
             // 
@@ -288,7 +288,7 @@
             "Panel"});
             this.cmbMode.Location = new System.Drawing.Point(158, 122);
             this.cmbMode.Name = "cmbMode";
-            this.cmbMode.Size = new System.Drawing.Size(180, 31);
+            this.cmbMode.Size = new System.Drawing.Size(260, 31);
             this.cmbMode.TabIndex = 7;
             // 
             // groupBox3
@@ -296,9 +296,9 @@
             this.groupBox3.Controls.Add(this.lblStatus);
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBox3.Location = new System.Drawing.Point(35, 260);
+            this.groupBox3.Location = new System.Drawing.Point(327, 284);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(569, 100);
+            this.groupBox3.Size = new System.Drawing.Size(288, 100);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Status";
@@ -321,7 +321,7 @@
             this.btnSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSchedule.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnSchedule.ForeColor = System.Drawing.Color.White;
-            this.btnSchedule.Location = new System.Drawing.Point(938, 659);
+            this.btnSchedule.Location = new System.Drawing.Point(1200, 659);
             this.btnSchedule.Name = "btnSchedule";
             this.btnSchedule.Size = new System.Drawing.Size(188, 40);
             this.btnSchedule.TabIndex = 5;
@@ -334,7 +334,7 @@
             this.btnComplete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnComplete.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnComplete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(122)))), ((int)(((byte)(60)))));
-            this.btnComplete.Location = new System.Drawing.Point(1132, 664);
+            this.btnComplete.Location = new System.Drawing.Point(1394, 664);
             this.btnComplete.Name = "btnComplete";
             this.btnComplete.Size = new System.Drawing.Size(188, 35);
             this.btnComplete.TabIndex = 6;
@@ -348,7 +348,7 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(1339, 662);
+            this.btnCancel.Location = new System.Drawing.Point(1601, 662);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(188, 35);
             this.btnCancel.TabIndex = 7;
@@ -362,9 +362,9 @@
             this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNext.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnNext.ForeColor = System.Drawing.Color.White;
-            this.btnNext.Location = new System.Drawing.Point(42, 662);
+            this.btnNext.Location = new System.Drawing.Point(320, 678);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(215, 45);
+            this.btnNext.Size = new System.Drawing.Size(227, 45);
             this.btnNext.TabIndex = 8;
             this.btnNext.Text = "Proceed to Evaluation";
             this.btnNext.UseVisualStyleBackColor = false;
@@ -373,22 +373,22 @@
             // dgvSchedules
             // 
             this.dgvSchedules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSchedules.Location = new System.Drawing.Point(714, 367);
+            this.dgvSchedules.Location = new System.Drawing.Point(976, 367);
             this.dgvSchedules.Name = "dgvSchedules";
             this.dgvSchedules.RowHeadersWidth = 51;
             this.dgvSchedules.RowTemplate.Height = 24;
-            this.dgvSchedules.Size = new System.Drawing.Size(1008, 250);
+            this.dgvSchedules.Size = new System.Drawing.Size(886, 250);
             this.dgvSchedules.TabIndex = 9;
             this.dgvSchedules.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSchedules_CellContentClick);
             // 
             // dgvToSchedule
             // 
             this.dgvToSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvToSchedule.Location = new System.Drawing.Point(714, 120);
+            this.dgvToSchedule.Location = new System.Drawing.Point(976, 120);
             this.dgvToSchedule.Name = "dgvToSchedule";
             this.dgvToSchedule.RowHeadersWidth = 51;
             this.dgvToSchedule.RowTemplate.Height = 24;
-            this.dgvToSchedule.Size = new System.Drawing.Size(1008, 180);
+            this.dgvToSchedule.Size = new System.Drawing.Size(886, 180);
             this.dgvToSchedule.TabIndex = 12;
             this.dgvToSchedule.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvToSchedule_CellContentClick);
             // 
@@ -411,7 +411,7 @@
             this.lblSelectedApplicant.AutoSize = true;
             this.lblSelectedApplicant.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblSelectedApplicant.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
-            this.lblSelectedApplicant.Location = new System.Drawing.Point(730, 670);
+            this.lblSelectedApplicant.Location = new System.Drawing.Point(992, 670);
             this.lblSelectedApplicant.Name = "lblSelectedApplicant";
             this.lblSelectedApplicant.Size = new System.Drawing.Size(139, 23);
             this.lblSelectedApplicant.TabIndex = 11;
@@ -422,7 +422,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
-            this.label2.Location = new System.Drawing.Point(707, 323);
+            this.label2.Location = new System.Drawing.Point(969, 323);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(144, 37);
             this.label2.TabIndex = 13;
@@ -433,7 +433,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
-            this.label3.Location = new System.Drawing.Point(707, 80);
+            this.label3.Location = new System.Drawing.Point(969, 80);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(170, 37);
             this.label3.TabIndex = 14;
@@ -448,13 +448,13 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.dgvSchedules);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.dgvToSchedule);
             this.Controls.Add(this.lblSelectedApplicant);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblSubtitle);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnSchedule);
             this.Controls.Add(this.btnComplete);
             this.Controls.Add(this.btnCancel);

@@ -37,14 +37,16 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvHistory)).BeginInit(); this.SuspendLayout();
+            this.grpHistory.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHistory)).BeginInit();
+            this.SuspendLayout();
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
-            this.lblTitle.Location = new System.Drawing.Point(20, 15);
+            this.lblTitle.Location = new System.Drawing.Point(397, 32);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(322, 36);
             this.lblTitle.TabIndex = 0;
@@ -55,7 +57,7 @@
             this.lblCurrentStatus.AutoSize = true;
             this.lblCurrentStatus.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Bold);
             this.lblCurrentStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.lblCurrentStatus.Location = new System.Drawing.Point(20, 55);
+            this.lblCurrentStatus.Location = new System.Drawing.Point(397, 72);
             this.lblCurrentStatus.Name = "lblCurrentStatus";
             this.lblCurrentStatus.Size = new System.Drawing.Size(202, 23);
             this.lblCurrentStatus.TabIndex = 1;
@@ -98,7 +100,7 @@
             // 
             this.lblStep1.BackColor = System.Drawing.Color.Gray;
             this.lblStep1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblStep1.Location = new System.Drawing.Point(26, 130);
+            this.lblStep1.Location = new System.Drawing.Point(403, 123);
             this.lblStep1.Name = "lblStep1";
             this.lblStep1.Size = new System.Drawing.Size(20, 20);
             this.lblStep1.TabIndex = 2;
@@ -107,7 +109,7 @@
             // 
             this.lblStep2.BackColor = System.Drawing.Color.Gray;
             this.lblStep2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblStep2.Location = new System.Drawing.Point(26, 170);
+            this.lblStep2.Location = new System.Drawing.Point(403, 163);
             this.lblStep2.Name = "lblStep2";
             this.lblStep2.Size = new System.Drawing.Size(20, 20);
             this.lblStep2.TabIndex = 4;
@@ -116,7 +118,7 @@
             // 
             this.lblStep3.BackColor = System.Drawing.Color.Gray;
             this.lblStep3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblStep3.Location = new System.Drawing.Point(26, 210);
+            this.lblStep3.Location = new System.Drawing.Point(403, 203);
             this.lblStep3.Name = "lblStep3";
             this.lblStep3.Size = new System.Drawing.Size(20, 20);
             this.lblStep3.TabIndex = 6;
@@ -125,7 +127,7 @@
             // 
             this.lblStep4.BackColor = System.Drawing.Color.Gray;
             this.lblStep4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblStep4.Location = new System.Drawing.Point(26, 250);
+            this.lblStep4.Location = new System.Drawing.Point(403, 243);
             this.lblStep4.Name = "lblStep4";
             this.lblStep4.Size = new System.Drawing.Size(20, 20);
             this.lblStep4.TabIndex = 8;
@@ -135,7 +137,7 @@
             this.lblStep1Text.AutoSize = true;
             this.lblStep1Text.Font = new System.Drawing.Font("Verdana", 9F);
             this.lblStep1Text.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblStep1Text.Location = new System.Drawing.Point(54, 132);
+            this.lblStep1Text.Location = new System.Drawing.Point(431, 125);
             this.lblStep1Text.Name = "lblStep1Text";
             this.lblStep1Text.Size = new System.Drawing.Size(168, 18);
             this.lblStep1Text.TabIndex = 3;
@@ -146,7 +148,7 @@
             this.lblStep2Text.AutoSize = true;
             this.lblStep2Text.Font = new System.Drawing.Font("Verdana", 9F);
             this.lblStep2Text.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblStep2Text.Location = new System.Drawing.Point(54, 172);
+            this.lblStep2Text.Location = new System.Drawing.Point(431, 165);
             this.lblStep2Text.Name = "lblStep2Text";
             this.lblStep2Text.Size = new System.Drawing.Size(110, 18);
             this.lblStep2Text.TabIndex = 5;
@@ -157,7 +159,7 @@
             this.lblStep3Text.AutoSize = true;
             this.lblStep3Text.Font = new System.Drawing.Font("Verdana", 9F);
             this.lblStep3Text.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblStep3Text.Location = new System.Drawing.Point(54, 212);
+            this.lblStep3Text.Location = new System.Drawing.Point(431, 205);
             this.lblStep3Text.Name = "lblStep3Text";
             this.lblStep3Text.Size = new System.Drawing.Size(77, 18);
             this.lblStep3Text.TabIndex = 7;
@@ -168,7 +170,7 @@
             this.lblStep4Text.AutoSize = true;
             this.lblStep4Text.Font = new System.Drawing.Font("Verdana", 9F);
             this.lblStep4Text.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblStep4Text.Location = new System.Drawing.Point(54, 252);
+            this.lblStep4Text.Location = new System.Drawing.Point(431, 245);
             this.lblStep4Text.Name = "lblStep4Text";
             this.lblStep4Text.Size = new System.Drawing.Size(107, 18);
             this.lblStep4Text.TabIndex = 9;
@@ -179,9 +181,9 @@
             this.groupBox1.Controls.Add(this.lblRemarks);
             this.groupBox1.Font = new System.Drawing.Font("Verdana", 10F);
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBox1.Location = new System.Drawing.Point(499, 56);
+            this.groupBox1.Location = new System.Drawing.Point(954, 450);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(848, 297);
+            this.groupBox1.Size = new System.Drawing.Size(387, 93);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "HR Remarks";
@@ -191,9 +193,9 @@
             this.groupBox2.Controls.Add(this.lblSchedule);
             this.groupBox2.Font = new System.Drawing.Font("Verdana", 10F);
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBox2.Location = new System.Drawing.Point(44, 386);
+            this.groupBox2.Location = new System.Drawing.Point(629, 345);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(360, 198);
+            this.groupBox2.Size = new System.Drawing.Size(271, 198);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Interview Schedule";
@@ -203,9 +205,9 @@
             this.groupBox3.Controls.Add(this.lblResult);
             this.groupBox3.Font = new System.Drawing.Font("Verdana", 10F);
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBox3.Location = new System.Drawing.Point(471, 386);
+            this.groupBox3.Location = new System.Drawing.Point(629, 116);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(360, 198);
+            this.groupBox3.Size = new System.Drawing.Size(271, 198);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Final Result";
@@ -223,30 +225,32 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // dvgHistory
-            // 
             // grpHistory
-            //
+            // 
             this.grpHistory.Controls.Add(this.dgvHistory);
             this.grpHistory.Font = new System.Drawing.Font("Verdana", 10F);
-            this.grpHistory.ForeColor = System.Drawing.Color.FromArgb(31, 92, 153);
-            this.grpHistory.Location = new System.Drawing.Point(865, 386);
+            this.grpHistory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
+            this.grpHistory.Location = new System.Drawing.Point(951, 92);
             this.grpHistory.Name = "grpHistory";
             this.grpHistory.Size = new System.Drawing.Size(800, 300);
             this.grpHistory.TabIndex = 10;
             this.grpHistory.TabStop = false;
             this.grpHistory.Text = "Application History";
-            
-            // dgvHistBBory
-            //
-            this.dgvHistory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvHistory.Name = "dgvHistory";
-            this.dgvHistory.RowHeadersVisible = false;
-            this.dgvHistory.ReadOnly = true;
+            // 
+            // dgvHistory
+            // 
             this.dgvHistory.AllowUserToAddRows = false;
             this.dgvHistory.AllowUserToDeleteRows = false;
-            this.dgvHistory.AutoSizeColumnsMode =
-                System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvHistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvHistory.ColumnHeadersHeight = 29;
+            this.dgvHistory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvHistory.Location = new System.Drawing.Point(3, 24);
+            this.dgvHistory.Name = "dgvHistory";
+            this.dgvHistory.ReadOnly = true;
+            this.dgvHistory.RowHeadersVisible = false;
+            this.dgvHistory.RowHeadersWidth = 51;
+            this.dgvHistory.Size = new System.Drawing.Size(794, 273);
+            this.dgvHistory.TabIndex = 0;
             // 
             // frmApplicationStatus
             // 
@@ -278,6 +282,7 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.grpHistory.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistory)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

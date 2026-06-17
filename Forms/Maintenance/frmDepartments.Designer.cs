@@ -61,7 +61,7 @@
             // 
             this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtName.Location = new System.Drawing.Point(80, 87);
+            this.txtName.Location = new System.Drawing.Point(112, 88);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(260, 30);
             this.txtName.TabIndex = 3;
@@ -72,7 +72,7 @@
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(360, 86);
+            this.btnAdd.Location = new System.Drawing.Point(378, 88);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 28);
             this.btnAdd.TabIndex = 4;
@@ -86,7 +86,7 @@
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(445, 86);
+            this.btnUpdate.Location = new System.Drawing.Point(459, 88);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 28);
             this.btnUpdate.TabIndex = 5;
@@ -99,7 +99,7 @@
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnClear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.btnClear.Location = new System.Drawing.Point(615, 86);
+            this.btnClear.Location = new System.Drawing.Point(540, 88);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 28);
             this.btnClear.TabIndex = 7;
@@ -112,7 +112,7 @@
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.btnBack.Location = new System.Drawing.Point(700, 86);
+            this.btnBack.Location = new System.Drawing.Point(621, 88);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(75, 28);
             this.btnBack.TabIndex = 8;

@@ -31,7 +31,7 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
-            this.lblTitle.Location = new System.Drawing.Point(701, 145);
+            this.lblTitle.Location = new System.Drawing.Point(709, 159);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(258, 46);
             this.lblTitle.TabIndex = 0;
@@ -42,7 +42,7 @@
             this.lblSubtitle.AutoSize = true;
             this.lblSubtitle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Italic);
             this.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            this.lblSubtitle.Location = new System.Drawing.Point(716, 191);
+            this.lblSubtitle.Location = new System.Drawing.Point(724, 205);
             this.lblSubtitle.Name = "lblSubtitle";
             this.lblSubtitle.Size = new System.Drawing.Size(243, 23);
             this.lblSubtitle.TabIndex = 1;
@@ -53,7 +53,7 @@
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblEmail.Location = new System.Drawing.Point(676, 251);
+            this.lblEmail.Location = new System.Drawing.Point(684, 265);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(55, 23);
             this.lblEmail.TabIndex = 2;
@@ -64,7 +64,7 @@
             // 
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtEmail.Location = new System.Drawing.Point(676, 274);
+            this.txtEmail.Location = new System.Drawing.Point(684, 288);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(310, 32);
             this.txtEmail.TabIndex = 3;
@@ -74,7 +74,7 @@
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblPassword.Location = new System.Drawing.Point(676, 316);
+            this.lblPassword.Location = new System.Drawing.Point(684, 330);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(84, 23);
             this.lblPassword.TabIndex = 4;
@@ -85,7 +85,7 @@
             // 
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtPassword.Location = new System.Drawing.Point(676, 339);
+            this.txtPassword.Location = new System.Drawing.Point(684, 353);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '●';
             this.txtPassword.Size = new System.Drawing.Size(310, 32);
@@ -97,7 +97,7 @@
             this.chkShowPass.AutoSize = true;
             this.chkShowPass.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.chkShowPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.chkShowPass.Location = new System.Drawing.Point(676, 378);
+            this.chkShowPass.Location = new System.Drawing.Point(684, 392);
             this.chkShowPass.Name = "chkShowPass";
             this.chkShowPass.Size = new System.Drawing.Size(132, 24);
             this.chkShowPass.TabIndex = 6;
@@ -113,7 +113,7 @@
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(676, 414);
+            this.btnLogin.Location = new System.Drawing.Point(684, 428);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(310, 42);
             this.btnLogin.TabIndex = 7;
@@ -128,7 +128,7 @@
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.btnBack.Location = new System.Drawing.Point(676, 468);
+            this.btnBack.Location = new System.Drawing.Point(684, 482);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(200, 28);
             this.btnBack.TabIndex = 8;
@@ -149,7 +149,7 @@
             this.lblCreateAccount.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblCreateAccount.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblCreateAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.lblCreateAccount.Location = new System.Drawing.Point(676, 516);
+            this.lblCreateAccount.Location = new System.Drawing.Point(684, 530);
             this.lblCreateAccount.Name = "lblCreateAccount";
             this.lblCreateAccount.Size = new System.Drawing.Size(141, 20);
             this.lblCreateAccount.TabIndex = 100;
@@ -159,7 +159,7 @@
             // frmHRLogin
             // 
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1667, 1033);
+            this.ClientSize = new System.Drawing.Size(1902, 1033);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblSubtitle);
             this.Controls.Add(this.lblEmail);

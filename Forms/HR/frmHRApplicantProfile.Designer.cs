@@ -60,7 +60,7 @@
             this.lblFullName.AutoSize = true;
             this.lblFullName.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblFullName.ForeColor = System.Drawing.Color.Black;
-            this.lblFullName.Location = new System.Drawing.Point(200, 200);
+            this.lblFullName.Location = new System.Drawing.Point(916, 185);
             this.lblFullName.Name = "lblFullName";
             this.lblFullName.Size = new System.Drawing.Size(27, 23);
             this.lblFullName.TabIndex = 99;
@@ -71,7 +71,7 @@
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblEmail.ForeColor = System.Drawing.Color.Black;
-            this.lblEmail.Location = new System.Drawing.Point(200, 250);
+            this.lblEmail.Location = new System.Drawing.Point(916, 235);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(27, 23);
             this.lblEmail.TabIndex = 99;
@@ -82,7 +82,7 @@
             this.lblPhone.AutoSize = true;
             this.lblPhone.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblPhone.ForeColor = System.Drawing.Color.Black;
-            this.lblPhone.Location = new System.Drawing.Point(200, 300);
+            this.lblPhone.Location = new System.Drawing.Point(916, 285);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(27, 23);
             this.lblPhone.TabIndex = 99;
@@ -93,7 +93,7 @@
             this.lblGender.AutoSize = true;
             this.lblGender.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblGender.ForeColor = System.Drawing.Color.Black;
-            this.lblGender.Location = new System.Drawing.Point(200, 350);
+            this.lblGender.Location = new System.Drawing.Point(916, 335);
             this.lblGender.Name = "lblGender";
             this.lblGender.Size = new System.Drawing.Size(27, 23);
             this.lblGender.TabIndex = 99;
@@ -104,7 +104,7 @@
             this.lblBirthdate.AutoSize = true;
             this.lblBirthdate.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblBirthdate.ForeColor = System.Drawing.Color.Black;
-            this.lblBirthdate.Location = new System.Drawing.Point(200, 400);
+            this.lblBirthdate.Location = new System.Drawing.Point(916, 385);
             this.lblBirthdate.Name = "lblBirthdate";
             this.lblBirthdate.Size = new System.Drawing.Size(27, 23);
             this.lblBirthdate.TabIndex = 99;
@@ -115,7 +115,7 @@
             this.lblAddress.AutoSize = true;
             this.lblAddress.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblAddress.ForeColor = System.Drawing.Color.Black;
-            this.lblAddress.Location = new System.Drawing.Point(200, 450);
+            this.lblAddress.Location = new System.Drawing.Point(893, 538);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(27, 23);
             this.lblAddress.TabIndex = 99;
@@ -126,7 +126,7 @@
             this.lblCity.AutoSize = true;
             this.lblCity.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblCity.ForeColor = System.Drawing.Color.Black;
-            this.lblCity.Location = new System.Drawing.Point(200, 500);
+            this.lblCity.Location = new System.Drawing.Point(893, 588);
             this.lblCity.Name = "lblCity";
             this.lblCity.Size = new System.Drawing.Size(27, 23);
             this.lblCity.TabIndex = 99;
@@ -137,7 +137,7 @@
             this.lblProvince.AutoSize = true;
             this.lblProvince.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblProvince.ForeColor = System.Drawing.Color.Black;
-            this.lblProvince.Location = new System.Drawing.Point(200, 550);
+            this.lblProvince.Location = new System.Drawing.Point(893, 638);
             this.lblProvince.Name = "lblProvince";
             this.lblProvince.Size = new System.Drawing.Size(27, 23);
             this.lblProvince.TabIndex = 99;
@@ -148,7 +148,7 @@
             this.lblZip.AutoSize = true;
             this.lblZip.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblZip.ForeColor = System.Drawing.Color.Black;
-            this.lblZip.Location = new System.Drawing.Point(200, 600);
+            this.lblZip.Location = new System.Drawing.Point(893, 688);
             this.lblZip.Name = "lblZip";
             this.lblZip.Size = new System.Drawing.Size(27, 23);
             this.lblZip.TabIndex = 99;
@@ -159,7 +159,7 @@
             this.lblSchool.AutoSize = true;
             this.lblSchool.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblSchool.ForeColor = System.Drawing.Color.Black;
-            this.lblSchool.Location = new System.Drawing.Point(675, 200);
+            this.lblSchool.Location = new System.Drawing.Point(1280, 192);
             this.lblSchool.Name = "lblSchool";
             this.lblSchool.Size = new System.Drawing.Size(27, 23);
             this.lblSchool.TabIndex = 99;
@@ -170,7 +170,7 @@
             this.lblDegree.AutoSize = true;
             this.lblDegree.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblDegree.ForeColor = System.Drawing.Color.Black;
-            this.lblDegree.Location = new System.Drawing.Point(675, 250);
+            this.lblDegree.Location = new System.Drawing.Point(1280, 242);
             this.lblDegree.Name = "lblDegree";
             this.lblDegree.Size = new System.Drawing.Size(27, 23);
             this.lblDegree.TabIndex = 99;
@@ -181,7 +181,7 @@
             this.lblYearGrad.AutoSize = true;
             this.lblYearGrad.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblYearGrad.ForeColor = System.Drawing.Color.Black;
-            this.lblYearGrad.Location = new System.Drawing.Point(675, 300);
+            this.lblYearGrad.Location = new System.Drawing.Point(1280, 292);
             this.lblYearGrad.Name = "lblYearGrad";
             this.lblYearGrad.Size = new System.Drawing.Size(27, 23);
             this.lblYearGrad.TabIndex = 99;
@@ -192,7 +192,7 @@
             this.lblSkills.AutoSize = true;
             this.lblSkills.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblSkills.ForeColor = System.Drawing.Color.Black;
-            this.lblSkills.Location = new System.Drawing.Point(675, 350);
+            this.lblSkills.Location = new System.Drawing.Point(1280, 342);
             this.lblSkills.Name = "lblSkills";
             this.lblSkills.Size = new System.Drawing.Size(27, 23);
             this.lblSkills.TabIndex = 99;
@@ -203,7 +203,7 @@
             this.lblCompany.AutoSize = true;
             this.lblCompany.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblCompany.ForeColor = System.Drawing.Color.Black;
-            this.lblCompany.Location = new System.Drawing.Point(1121, 200);
+            this.lblCompany.Location = new System.Drawing.Point(1270, 532);
             this.lblCompany.Name = "lblCompany";
             this.lblCompany.Size = new System.Drawing.Size(27, 23);
             this.lblCompany.TabIndex = 99;
@@ -214,7 +214,7 @@
             this.lblPosition.AutoSize = true;
             this.lblPosition.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblPosition.ForeColor = System.Drawing.Color.Black;
-            this.lblPosition.Location = new System.Drawing.Point(1121, 250);
+            this.lblPosition.Location = new System.Drawing.Point(1270, 582);
             this.lblPosition.Name = "lblPosition";
             this.lblPosition.Size = new System.Drawing.Size(27, 23);
             this.lblPosition.TabIndex = 99;
@@ -225,7 +225,7 @@
             this.lblDuration.AutoSize = true;
             this.lblDuration.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblDuration.ForeColor = System.Drawing.Color.Black;
-            this.lblDuration.Location = new System.Drawing.Point(1121, 300);
+            this.lblDuration.Location = new System.Drawing.Point(1270, 632);
             this.lblDuration.Name = "lblDuration";
             this.lblDuration.Size = new System.Drawing.Size(27, 23);
             this.lblDuration.TabIndex = 99;
@@ -236,7 +236,7 @@
             this.lblCreatedAt.AutoSize = true;
             this.lblCreatedAt.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblCreatedAt.ForeColor = System.Drawing.Color.Black;
-            this.lblCreatedAt.Location = new System.Drawing.Point(1121, 400);
+            this.lblCreatedAt.Location = new System.Drawing.Point(1270, 732);
             this.lblCreatedAt.Name = "lblCreatedAt";
             this.lblCreatedAt.Size = new System.Drawing.Size(27, 23);
             this.lblCreatedAt.TabIndex = 99;
@@ -247,7 +247,7 @@
             this.lblStatus.AutoSize = true;
             this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblStatus.ForeColor = System.Drawing.Color.Black;
-            this.lblStatus.Location = new System.Drawing.Point(1121, 350);
+            this.lblStatus.Location = new System.Drawing.Point(1270, 682);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(27, 23);
             this.lblStatus.TabIndex = 99;
@@ -258,7 +258,7 @@
             this.lblHdrName.AutoSize = true;
             this.lblHdrName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblHdrName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblHdrName.Location = new System.Drawing.Point(120, 200);
+            this.lblHdrName.Location = new System.Drawing.Point(836, 185);
             this.lblHdrName.Name = "lblHdrName";
             this.lblHdrName.Size = new System.Drawing.Size(96, 23);
             this.lblHdrName.TabIndex = 99;
@@ -269,7 +269,7 @@
             this.lblHdrEmail.AutoSize = true;
             this.lblHdrEmail.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblHdrEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblHdrEmail.Location = new System.Drawing.Point(120, 250);
+            this.lblHdrEmail.Location = new System.Drawing.Point(836, 235);
             this.lblHdrEmail.Name = "lblHdrEmail";
             this.lblHdrEmail.Size = new System.Drawing.Size(59, 23);
             this.lblHdrEmail.TabIndex = 99;
@@ -280,7 +280,7 @@
             this.lblHdrPhone.AutoSize = true;
             this.lblHdrPhone.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblHdrPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblHdrPhone.Location = new System.Drawing.Point(120, 300);
+            this.lblHdrPhone.Location = new System.Drawing.Point(836, 285);
             this.lblHdrPhone.Name = "lblHdrPhone";
             this.lblHdrPhone.Size = new System.Drawing.Size(64, 23);
             this.lblHdrPhone.TabIndex = 99;
@@ -291,7 +291,7 @@
             this.lblHdrGender.AutoSize = true;
             this.lblHdrGender.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblHdrGender.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblHdrGender.Location = new System.Drawing.Point(120, 350);
+            this.lblHdrGender.Location = new System.Drawing.Point(836, 335);
             this.lblHdrGender.Name = "lblHdrGender";
             this.lblHdrGender.Size = new System.Drawing.Size(74, 23);
             this.lblHdrGender.TabIndex = 99;
@@ -302,7 +302,7 @@
             this.lblHdrBirth.AutoSize = true;
             this.lblHdrBirth.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblHdrBirth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblHdrBirth.Location = new System.Drawing.Point(120, 400);
+            this.lblHdrBirth.Location = new System.Drawing.Point(836, 385);
             this.lblHdrBirth.Name = "lblHdrBirth";
             this.lblHdrBirth.Size = new System.Drawing.Size(91, 23);
             this.lblHdrBirth.TabIndex = 99;
@@ -313,7 +313,7 @@
             this.lblHdrAddress.AutoSize = true;
             this.lblHdrAddress.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblHdrAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblHdrAddress.Location = new System.Drawing.Point(120, 450);
+            this.lblHdrAddress.Location = new System.Drawing.Point(813, 538);
             this.lblHdrAddress.Name = "lblHdrAddress";
             this.lblHdrAddress.Size = new System.Drawing.Size(79, 23);
             this.lblHdrAddress.TabIndex = 99;
@@ -324,7 +324,7 @@
             this.lblHdrCity.AutoSize = true;
             this.lblHdrCity.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblHdrCity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblHdrCity.Location = new System.Drawing.Point(120, 500);
+            this.lblHdrCity.Location = new System.Drawing.Point(813, 588);
             this.lblHdrCity.Name = "lblHdrCity";
             this.lblHdrCity.Size = new System.Drawing.Size(47, 23);
             this.lblHdrCity.TabIndex = 99;
@@ -335,7 +335,7 @@
             this.lblHdrProvince.AutoSize = true;
             this.lblHdrProvince.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblHdrProvince.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblHdrProvince.Location = new System.Drawing.Point(120, 550);
+            this.lblHdrProvince.Location = new System.Drawing.Point(813, 638);
             this.lblHdrProvince.Name = "lblHdrProvince";
             this.lblHdrProvince.Size = new System.Drawing.Size(83, 23);
             this.lblHdrProvince.TabIndex = 99;
@@ -346,7 +346,7 @@
             this.lblHdrZip.AutoSize = true;
             this.lblHdrZip.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblHdrZip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblHdrZip.Location = new System.Drawing.Point(120, 600);
+            this.lblHdrZip.Location = new System.Drawing.Point(813, 688);
             this.lblHdrZip.Name = "lblHdrZip";
             this.lblHdrZip.Size = new System.Drawing.Size(87, 23);
             this.lblHdrZip.TabIndex = 99;
@@ -357,7 +357,7 @@
             this.lblHdrSchool.AutoSize = true;
             this.lblHdrSchool.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblHdrSchool.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblHdrSchool.Location = new System.Drawing.Point(535, 200);
+            this.lblHdrSchool.Location = new System.Drawing.Point(1140, 192);
             this.lblHdrSchool.Name = "lblHdrSchool";
             this.lblHdrSchool.Size = new System.Drawing.Size(68, 23);
             this.lblHdrSchool.TabIndex = 99;
@@ -368,7 +368,7 @@
             this.lblHdrDegree.AutoSize = true;
             this.lblHdrDegree.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblHdrDegree.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblHdrDegree.Location = new System.Drawing.Point(535, 250);
+            this.lblHdrDegree.Location = new System.Drawing.Point(1140, 242);
             this.lblHdrDegree.Name = "lblHdrDegree";
             this.lblHdrDegree.Size = new System.Drawing.Size(73, 23);
             this.lblHdrDegree.TabIndex = 99;
@@ -379,7 +379,7 @@
             this.lblHdrYear.AutoSize = true;
             this.lblHdrYear.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblHdrYear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblHdrYear.Location = new System.Drawing.Point(535, 300);
+            this.lblHdrYear.Location = new System.Drawing.Point(1140, 292);
             this.lblHdrYear.Name = "lblHdrYear";
             this.lblHdrYear.Size = new System.Drawing.Size(92, 23);
             this.lblHdrYear.TabIndex = 99;
@@ -390,7 +390,7 @@
             this.lblHdrSkills.AutoSize = true;
             this.lblHdrSkills.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblHdrSkills.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblHdrSkills.Location = new System.Drawing.Point(535, 350);
+            this.lblHdrSkills.Location = new System.Drawing.Point(1140, 342);
             this.lblHdrSkills.Name = "lblHdrSkills";
             this.lblHdrSkills.Size = new System.Drawing.Size(57, 23);
             this.lblHdrSkills.TabIndex = 99;
@@ -401,7 +401,7 @@
             this.lblHdrCompany.AutoSize = true;
             this.lblHdrCompany.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblHdrCompany.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblHdrCompany.Location = new System.Drawing.Point(981, 200);
+            this.lblHdrCompany.Location = new System.Drawing.Point(1130, 532);
             this.lblHdrCompany.Name = "lblHdrCompany";
             this.lblHdrCompany.Size = new System.Drawing.Size(91, 23);
             this.lblHdrCompany.TabIndex = 99;
@@ -412,7 +412,7 @@
             this.lblHdrPos.AutoSize = true;
             this.lblHdrPos.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblHdrPos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblHdrPos.Location = new System.Drawing.Point(981, 250);
+            this.lblHdrPos.Location = new System.Drawing.Point(1130, 582);
             this.lblHdrPos.Name = "lblHdrPos";
             this.lblHdrPos.Size = new System.Drawing.Size(78, 23);
             this.lblHdrPos.TabIndex = 99;
@@ -423,7 +423,7 @@
             this.lblHdrDur.AutoSize = true;
             this.lblHdrDur.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblHdrDur.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblHdrDur.Location = new System.Drawing.Point(981, 300);
+            this.lblHdrDur.Location = new System.Drawing.Point(1130, 632);
             this.lblHdrDur.Name = "lblHdrDur";
             this.lblHdrDur.Size = new System.Drawing.Size(86, 23);
             this.lblHdrDur.TabIndex = 99;
@@ -434,7 +434,7 @@
             this.lblHdrStatus.AutoSize = true;
             this.lblHdrStatus.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblHdrStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblHdrStatus.Location = new System.Drawing.Point(981, 350);
+            this.lblHdrStatus.Location = new System.Drawing.Point(1130, 682);
             this.lblHdrStatus.Name = "lblHdrStatus";
             this.lblHdrStatus.Size = new System.Drawing.Size(65, 23);
             this.lblHdrStatus.TabIndex = 99;
@@ -445,7 +445,7 @@
             this.lblHdrCreated.AutoSize = true;
             this.lblHdrCreated.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblHdrCreated.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblHdrCreated.Location = new System.Drawing.Point(981, 400);
+            this.lblHdrCreated.Location = new System.Drawing.Point(1130, 732);
             this.lblHdrCreated.Name = "lblHdrCreated";
             this.lblHdrCreated.Size = new System.Drawing.Size(78, 23);
             this.lblHdrCreated.TabIndex = 99;
@@ -456,7 +456,7 @@
             this.lblSecPersonal.AutoSize = true;
             this.lblSecPersonal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.lblSecPersonal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
-            this.lblSecPersonal.Location = new System.Drawing.Point(60, 40);
+            this.lblSecPersonal.Location = new System.Drawing.Point(835, 119);
             this.lblSecPersonal.Name = "lblSecPersonal";
             this.lblSecPersonal.Size = new System.Drawing.Size(211, 28);
             this.lblSecPersonal.TabIndex = 99;
@@ -467,7 +467,7 @@
             this.lblSecEdu.AutoSize = true;
             this.lblSecEdu.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.lblSecEdu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
-            this.lblSecEdu.Location = new System.Drawing.Point(535, 40);
+            this.lblSecEdu.Location = new System.Drawing.Point(1139, 119);
             this.lblSecEdu.Name = "lblSecEdu";
             this.lblSecEdu.Size = new System.Drawing.Size(106, 28);
             this.lblSecEdu.TabIndex = 99;
@@ -478,7 +478,7 @@
             this.lblSecWork.AutoSize = true;
             this.lblSecWork.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.lblSecWork.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
-            this.lblSecWork.Location = new System.Drawing.Point(981, 40);
+            this.lblSecWork.Location = new System.Drawing.Point(1126, 459);
             this.lblSecWork.Name = "lblSecWork";
             this.lblSecWork.Size = new System.Drawing.Size(171, 28);
             this.lblSecWork.TabIndex = 99;
@@ -490,9 +490,9 @@
             this.btnViewDocuments.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewDocuments.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.btnViewDocuments.ForeColor = System.Drawing.Color.White;
-            this.btnViewDocuments.Location = new System.Drawing.Point(1504, 67);
+            this.btnViewDocuments.Location = new System.Drawing.Point(1398, 92);
             this.btnViewDocuments.Name = "btnViewDocuments";
-            this.btnViewDocuments.Size = new System.Drawing.Size(200, 44);
+            this.btnViewDocuments.Size = new System.Drawing.Size(176, 44);
             this.btnViewDocuments.TabIndex = 18;
             this.btnViewDocuments.Text = "View Documents";
             this.btnViewDocuments.UseVisualStyleBackColor = false;
@@ -503,16 +503,16 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.btnClose.Location = new System.Drawing.Point(1504, 127);
+            this.btnClose.Location = new System.Drawing.Point(1398, 155);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(200, 44);
+            this.btnClose.Size = new System.Drawing.Size(176, 44);
             this.btnClose.TabIndex = 19;
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // frmHRApplicantProfile
             // 
-            this.ClientSize = new System.Drawing.Size(1920, 1055);
+            this.ClientSize = new System.Drawing.Size(1902, 1033);
             this.Controls.Add(this.lblSecPersonal);
             this.Controls.Add(this.lblSecEdu);
             this.Controls.Add(this.lblSecWork);

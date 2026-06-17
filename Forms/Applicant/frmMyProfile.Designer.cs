@@ -74,7 +74,7 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
-            this.lblTitle.Location = new System.Drawing.Point(20, 10);
+            this.lblTitle.Location = new System.Drawing.Point(504, 51);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(184, 36);
             this.lblTitle.TabIndex = 0;
@@ -85,9 +85,9 @@
             this.lblSubtitle.AutoSize = true;
             this.lblSubtitle.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Italic);
             this.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            this.lblSubtitle.Location = new System.Drawing.Point(22, 52);
+            this.lblSubtitle.Location = new System.Drawing.Point(506, 93);
             this.lblSubtitle.Name = "lblSubtitle";
-            this.lblSubtitle.Size = new System.Drawing.Size(400, 20);
+            this.lblSubtitle.Size = new System.Drawing.Size(382, 20);
             this.lblSubtitle.TabIndex = 1;
             this.lblSubtitle.Text = "View and update your personal information";
             // 
@@ -96,7 +96,7 @@
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Verdana", 10F);
             this.btnEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.btnEdit.Location = new System.Drawing.Point(1255, 651);
+            this.btnEdit.Location = new System.Drawing.Point(1586, 694);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(130, 35);
             this.btnEdit.TabIndex = 100;
@@ -110,7 +110,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(1255, 696);
+            this.btnSave.Location = new System.Drawing.Point(1731, 694);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(130, 35);
             this.btnSave.TabIndex = 101;
@@ -123,7 +123,7 @@
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Verdana", 10F);
             this.btnBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.btnBack.Location = new System.Drawing.Point(1255, 741);
+            this.btnBack.Location = new System.Drawing.Point(1721, 51);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(130, 35);
             this.btnBack.TabIndex = 102;
@@ -136,7 +136,7 @@
             this.btnDocs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDocs.Font = new System.Drawing.Font("Verdana", 10F);
             this.btnDocs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.btnDocs.Location = new System.Drawing.Point(1004, 696);
+            this.btnDocs.Location = new System.Drawing.Point(1367, 694);
             this.btnDocs.Name = "btnDocs";
             this.btnDocs.Size = new System.Drawing.Size(198, 35);
             this.btnDocs.TabIndex = 103;
@@ -156,7 +156,7 @@
             this.groupBox1.Controls.Add(this.dtpBirthday);
             this.groupBox1.Font = new System.Drawing.Font("Verdana", 10F);
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBox1.Location = new System.Drawing.Point(65, 113);
+            this.groupBox1.Location = new System.Drawing.Point(549, 154);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(626, 149);
             this.groupBox1.TabIndex = 5;
@@ -257,7 +257,7 @@
             this.groupBox2.Controls.Add(this.txtZip);
             this.groupBox2.Font = new System.Drawing.Font("Verdana", 10F);
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBox2.Location = new System.Drawing.Point(65, 280);
+            this.groupBox2.Location = new System.Drawing.Point(549, 321);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(626, 152);
             this.groupBox2.TabIndex = 8;
@@ -353,7 +353,7 @@
             this.groupBox3.Controls.Add(this.txtEmail);
             this.groupBox3.Font = new System.Drawing.Font("Verdana", 10F);
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBox3.Location = new System.Drawing.Point(65, 460);
+            this.groupBox3.Location = new System.Drawing.Point(549, 501);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(626, 166);
             this.groupBox3.TabIndex = 11;
@@ -411,7 +411,7 @@
             this.groupBox4.Controls.Add(this.txtYearGrad);
             this.groupBox4.Font = new System.Drawing.Font("Verdana", 10F);
             this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBox4.Location = new System.Drawing.Point(798, 113);
+            this.groupBox4.Location = new System.Drawing.Point(1196, 164);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(665, 161);
             this.groupBox4.TabIndex = 13;
@@ -485,7 +485,7 @@
             this.groupBox5.Controls.Add(this.txtSkills);
             this.groupBox5.Font = new System.Drawing.Font("Verdana", 10F);
             this.groupBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBox5.Location = new System.Drawing.Point(798, 280);
+            this.groupBox5.Location = new System.Drawing.Point(1196, 331);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(665, 152);
             this.groupBox5.TabIndex = 15;
@@ -524,7 +524,7 @@
             this.groupBox6.Controls.Add(this.txtDuration);
             this.groupBox6.Font = new System.Drawing.Font("Verdana", 10F);
             this.groupBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBox6.Location = new System.Drawing.Point(798, 460);
+            this.groupBox6.Location = new System.Drawing.Point(1196, 511);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(665, 166);
             this.groupBox6.TabIndex = 17;
