@@ -11,18 +11,20 @@ namespace HRApplicantSystem.Forms.HR
     {
         private int _appId = -1;
 
-        // Tracks whether the current selection came from the "to schedule" grid.
-        private bool _selectedFromToSchedule = false;
+        
+        private int _schedInterviewerId = -1;
 
-        // Prevents the two grids' SelectionChanged events from firing each other
-        // in a loop when we call ClearSelection() on the opposite grid.
+        // NEW: safe way to pass data from Screening
+        public int AppId { get; set; } = -1;
+
+        private bool _selectedFromToSchedule = false;
         private bool _suppressSelectionEvents = false;
 
+        // DEFAULT CONSTRUCTOR (KEEP THIS)
         public frmInterviewSchedule()
         {
             InitializeComponent();
 
-            // Grid of screened applicants waiting to be scheduled
             dgvToSchedule.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvToSchedule.ReadOnly = true;
             dgvToSchedule.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -30,7 +32,6 @@ namespace HRApplicantSystem.Forms.HR
             dgvToSchedule.RowHeadersVisible = false;
             dgvToSchedule.SelectionChanged += Dgv_ToSchedule_SelectionChanged;
 
-            // Grid of existing/past schedules
             dgvSchedules.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvSchedules.ReadOnly = true;
             dgvSchedules.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -69,19 +70,18 @@ namespace HRApplicantSystem.Forms.HR
 
         private void Dgv_Schedules_SelectionChanged(object s, EventArgs e)
         {
-            // Guard: ignore if we triggered this by clearing the other grid
             if (_suppressSelectionEvents) return;
             if (dgvSchedules.SelectedRows.Count == 0) return;
 
             var row = dgvSchedules.SelectedRows[0];
             if (row.Cells["AppID"].Value == null) return;
 
-            // Deselect dgvToSchedule without triggering its SelectionChanged handler
             _suppressSelectionEvents = true;
             dgvToSchedule.ClearSelection();
             _suppressSelectionEvents = false;
 
             _appId = Convert.ToInt32(row.Cells["AppID"].Value);
+            _schedInterviewerId = Convert.ToInt32(row.Cells["InterviewerID"].Value);
             _selectedFromToSchedule = false;
 
             lblApplicantName.Text = row.Cells["Applicant"].Value?.ToString() ?? "";
@@ -91,20 +91,32 @@ namespace HRApplicantSystem.Forms.HR
             lblStatus.ForeColor = Color.DimGray;
 
             btnSchedule.Enabled = false;
-            btnComplete.Enabled = true;
-            btnCancel.Enabled = true;
+
+            // Only the assigned interviewer can mark as complete
+            bool isAssignedInterviewer = (_schedInterviewerId == SessionManager.CurrentUserID);
+            btnComplete.Enabled = isAssignedInterviewer;
+            btnCancel.Enabled = true; // anyone can cancel
+
+            if (!isAssignedInterviewer)
+                lblStatus.Text += " (You are not the assigned interviewer)";
         }
 
         private void frmInterviewSchedule_Load(object s, EventArgs e)
         {
-            // FIX: Start with Complete/Cancel disabled until an existing schedule is selected
             btnComplete.Enabled = false;
             btnCancel.Enabled = false;
+            dtpDate.MinDate = DateTime.Today;
 
             LoadTypes();
             LoadInterviewers();
             LoadToSchedule();
             LoadSchedules();
+
+            
+            if (AppId != -1)
+            {
+                _appId = AppId;
+            }
         }
 
         private void LoadTypes()
@@ -192,7 +204,7 @@ namespace HRApplicantSystem.Forms.HR
                 using (var conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
-                    string sql = @"SELECT s.schedule_id AS [SchedID], a.application_id AS [AppID],
+                    string sql = @"SELECT s.interviewer_id AS [InterviewerID], s.schedule_id AS [SchedID], a.application_id AS [AppID],
                         ap.full_name AS [Applicant], p.title AS [Position],
                         it.label AS [Type], s.scheduled_date AS [Date],
                         s.scheduled_time AS [Time], s.location AS [Location],
@@ -219,17 +231,35 @@ namespace HRApplicantSystem.Forms.HR
 
         private void btnSchedule_Click(object s, EventArgs e)
         {
-            // FIX 1: Block if no applicant selected at all
+            if (dtpDate.Value.Date < DateTime.Today)
+            {
+                MessageBox.Show("Interview date cannot be earlier than today.",
+                    "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (_appId == -1)
             {
                 MessageBox.Show("Select an applicant from the 'To Schedule' list first.");
                 return;
             }
 
-            // FIX 2: Block if the selected applicant came from the already-scheduled grid
             if (!_selectedFromToSchedule)
             {
-                MessageBox.Show("This applicant already has an interview scheduled. Use 'Complete Interview' or 'Cancel Interview' to update the existing schedule.");
+                MessageBox.Show("This applicant already has an interview scheduled.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtLocation.Text))
+            {
+                MessageBox.Show("Interview location is required.");
+                txtLocation.Focus();
+                return;
+            }
+
+            if (cmbMode.SelectedItem == null)
+            {
+                MessageBox.Show("Select an interview type.");
                 return;
             }
 
@@ -241,7 +271,6 @@ namespace HRApplicantSystem.Forms.HR
 
             try
             {
-                // FIX 3: DB-level duplicate check as a final safety net
                 using (var conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
@@ -253,8 +282,7 @@ namespace HRApplicantSystem.Forms.HR
                         int existing = (int)chk.ExecuteScalar();
                         if (existing > 0)
                         {
-                            MessageBox.Show("A schedule already exists for this applicant. Duplicate scheduling is not allowed.");
-                            // Refresh grids so UI matches DB state
+                            MessageBox.Show("A schedule already exists for this applicant.");
                             LoadToSchedule();
                             LoadSchedules();
                             return;
@@ -269,9 +297,9 @@ namespace HRApplicantSystem.Forms.HR
 
                     using (var cmd = new SqlCommand(
                         @"INSERT INTO interview_schedules
-                          (application_id, interviewer_id, interview_type_id,
-                           scheduled_date, scheduled_time, location, status, created_by, created_at)
-                          VALUES (@app, @iv, @typ, @dt, @tm, @loc, 'scheduled', @by, GETDATE())", conn))
+                  (application_id, interviewer_id, interview_type_id,
+                   scheduled_date, scheduled_time, location, status, created_by, created_at)
+                  VALUES (@app, @iv, @typ, @dt, @tm, @loc, 'scheduled', @by, GETDATE())", conn))
                     {
                         cmd.Parameters.AddWithValue("@app", _appId);
                         cmd.Parameters.AddWithValue("@iv", iviewerId);
@@ -290,7 +318,6 @@ namespace HRApplicantSystem.Forms.HR
                 lblStatus.Text = "Status: Scheduled";
                 lblStatus.ForeColor = Color.Blue;
 
-                // FIX 4: Reset state after successful schedule so double-click can't re-fire
                 _appId = -1;
                 _selectedFromToSchedule = false;
                 btnSchedule.Enabled = false;
@@ -313,12 +340,28 @@ namespace HRApplicantSystem.Forms.HR
                 using (var conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
-                    using (var cmd = new SqlCommand(
-                        "UPDATE interview_schedules SET status=@s WHERE application_id=@id", conn))
+
+                    // Update interview_schedules.status (was missing — this is why Cancel didn't work)
+                    using (var cmd1 = new SqlCommand(
+                        @"UPDATE interview_schedules
+                  SET status = @schedStatus
+                  WHERE application_id = @id
+                  AND status = 'scheduled'", conn))
                     {
-                        cmd.Parameters.AddWithValue("@s", schedStatus);
-                        cmd.Parameters.AddWithValue("@id", _appId);
-                        cmd.ExecuteNonQuery();
+                        cmd1.Parameters.AddWithValue("@schedStatus", schedStatus);
+                        cmd1.Parameters.AddWithValue("@id", _appId);
+                        cmd1.ExecuteNonQuery();
+                    }
+
+                    using (var cmd2 = new SqlCommand(
+                        @"UPDATE applications
+                  SET status=@appStatus,
+                      last_updated=GETDATE()
+                  WHERE application_id=@id", conn))
+                    {
+                        cmd2.Parameters.AddWithValue("@appStatus", appStatus);
+                        cmd2.Parameters.AddWithValue("@id", _appId);
+                        cmd2.ExecuteNonQuery();
                     }
                 }
                 StatusHistoryLogger.LogStatusChange(_appId, null, appStatus, SessionManager.CurrentUserID);
@@ -342,8 +385,16 @@ namespace HRApplicantSystem.Forms.HR
 
         private void btnComplete_Click(object s, EventArgs e) => UpdateSched("completed", "interviewed");
         private void btnCancel_Click(object s, EventArgs e) => UpdateSched("cancelled", "screened");
-        private void btnNext_Click(object s, EventArgs e) { new frmInterviewEvaluation().Show(); this.Hide(); }
-        private void btnBack_Click(object s, EventArgs e) { new frmScreening().Show(); this.Close(); }
+        private void btnNext_Click(object s, EventArgs e)
+        {
+            new frmInterviewEvaluation().Show();
+            this.Hide();
+        }
+        private void btnBack_Click(object s, EventArgs e)
+        {
+            new frmScreening().Show();
+            this.Hide();
+        }
 
         private void groupBox3_Enter(object sender, EventArgs e) { }
         private void groupBox2_Enter(object sender, EventArgs e) { }

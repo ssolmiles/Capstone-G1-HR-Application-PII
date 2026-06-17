@@ -77,25 +77,31 @@ namespace HRApplicantSystem.Forms.Applicant
                     }
 
                     // 2. Document count
+                    // 2. Missing document count
                     using (SqlCommand cmd = new SqlCommand(
                         @"SELECT COUNT(*) 
-                          FROM applicant_documents 
-                          WHERE applicant_id = 
-                          (SELECT applicant_id FROM applicants WHERE email = @Email)", conn))
+      FROM applicant_documents
+      WHERE applicant_id =
+      (SELECT applicant_id FROM applicants WHERE email = @Email)
+      AND status = 'submitted'", conn))
                     {
                         cmd.Parameters.AddWithValue("@Email", userEmail);
-                        int docCount = Convert.ToInt32(cmd.ExecuteScalar());
 
-                        if (docCount == 0)
-                        {
-                            lblMissingDocs.Text = "ALERT: Documents are missing!";
-                            lblMissingDocs.ForeColor = Color.Red;
-                        }
-                        else
-                        {
-                            lblMissingDocs.Text = "Documents Complete";
-                            lblMissingDocs.ForeColor = Color.Green;
-                        }
+                        int submittedDocs = Convert.ToInt32(cmd.ExecuteScalar());
+
+                        // Required documents:
+                        // Resume, Valid ID, Transcript of Records, Certificates
+                        int totalRequiredDocs = 4;
+
+                        int missingDocs = totalRequiredDocs - submittedDocs;
+
+                        if (missingDocs < 0)
+                            missingDocs = 0;
+
+                        lblMissingDocs.Text = $"Missing document count: {missingDocs}";
+
+                        lblMissingDocs.ForeColor =
+                            (missingDocs == 0) ? Color.Green : Color.Red;
                     }
 
                     // 3. Interview schedule

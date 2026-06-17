@@ -153,7 +153,7 @@
             this.lblMissingDocs.Name = "lblMissingDocs";
             this.lblMissingDocs.Size = new System.Drawing.Size(95, 20);
             this.lblMissingDocs.TabIndex = 0;
-            this.lblMissingDocs.Text = "Documents: --";
+            this.lblMissingDocs.Text = "Missing Document Count: --";
             this.lblMissingDocs.Click += new System.EventHandler(this.lblMissingDocs_Click);
             // 
             // groupBox3

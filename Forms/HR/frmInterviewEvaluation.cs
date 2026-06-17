@@ -4,12 +4,13 @@ using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+
 namespace HRApplicantSystem.Forms.HR
 {
     public partial class frmInterviewEvaluation : Form
     {
         private int _appId;
-        private int _schedId = -1;   // FIX: added missing field
+        private int _schedId = -1;
 
         public frmInterviewEvaluation()
         {
@@ -26,7 +27,9 @@ namespace HRApplicantSystem.Forms.HR
                 if (dgvInterviewed.SelectedRows.Count > 0)
                 {
                     var row = dgvInterviewed.SelectedRows[0];
-                    if (row.Cells["SchedID"].Value == null || row.Cells["AppID"].Value == null) return;
+
+                    if (row.Cells["SchedID"].Value == null || row.Cells["AppID"].Value == null)
+                        return;
 
                     _schedId = Convert.ToInt32(row.Cells["SchedID"].Value);
                     _appId = Convert.ToInt32(row.Cells["AppID"].Value);
@@ -41,9 +44,11 @@ namespace HRApplicantSystem.Forms.HR
         {
             _appId = appId;
         }
-        // FIX: removed stray "}" that prematurely closed the class here
 
-        private void frmInterviewEvaluation_Load(object s, EventArgs e) => LoadData();
+        private void frmInterviewEvaluation_Load(object sender, EventArgs e)
+        {
+            LoadData();
+        }
 
         private void LoadData()
         {
@@ -52,34 +57,52 @@ namespace HRApplicantSystem.Forms.HR
                 using (var conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
-                    string sql = @"SELECT s.schedule_id AS [SchedID], a.application_id AS [AppID],
-                                    ap.full_name AS [Applicant], p.title AS [Position],
-                                    it.label AS [Interview Type], s.scheduled_date AS [Date]
-                                    FROM interview_schedules s
-                                    INNER JOIN applications a ON s.application_id=a.application_id
-                                    INNER JOIN applicants ap ON a.applicant_id=ap.applicant_id
-                                    INNER JOIN job_vacancies v ON a.vacancy_id=v.vacancy_id
-                                    INNER JOIN positions p ON v.position_id=p.position_id
-                                    INNER JOIN interview_types it ON s.interview_type_id=it.interview_type_id
-                                    WHERE s.status='completed'
-                                    AND s.interviewer_id = @userId
-                                    ORDER BY s.scheduled_date DESC";
+
+                    string sql = @"
+                        SELECT s.schedule_id AS [SchedID],
+                               a.application_id AS [AppID],
+                               ap.full_name AS [Applicant],
+                               p.title AS [Position],
+                               it.label AS [Interview Type],
+                               s.scheduled_date AS [Date]
+                        FROM interview_schedules s
+                        INNER JOIN applications a ON s.application_id = a.application_id
+                        INNER JOIN applicants ap ON a.applicant_id = ap.applicant_id
+                        INNER JOIN job_vacancies v ON a.vacancy_id = v.vacancy_id
+                        INNER JOIN positions p ON v.position_id = p.position_id
+                        INNER JOIN interview_types it ON s.interview_type_id = it.interview_type_id
+                        WHERE s.status = 'completed'
+                          AND s.interviewer_id = @userId
+                          AND NOT EXISTS (
+                              SELECT 1
+                              FROM interview_evaluations ie
+                              WHERE ie.schedule_id = s.schedule_id
+                          )
+                        ORDER BY s.scheduled_date DESC";
 
                     var ada = new SqlDataAdapter(sql, conn);
-
-                    // THIS LINE IS REQUIRED
-                    ada.SelectCommand.Parameters.AddWithValue(
-                        "@userId",
-                        SessionManager.CurrentUserID);
+                    ada.SelectCommand.Parameters.AddWithValue("@userId", SessionManager.CurrentUserID);
 
                     var dt = new DataTable();
                     ada.Fill(dt);
+
                     dgvInterviewed.DataSource = dt;
-                    if (dgvInterviewed.Columns["SchedID"] != null) dgvInterviewed.Columns["SchedID"].Visible = false;
-                    if (dgvInterviewed.Columns["AppID"] != null) dgvInterviewed.Columns["AppID"].Visible = false;
+
+                    MessageBox.Show(
+                        "Rows Found: " + dt.Rows.Count +
+                        "\nCurrent User: " + SessionManager.CurrentUserID);
+
+                    if (dgvInterviewed.Columns["SchedID"] != null)
+                        dgvInterviewed.Columns["SchedID"].Visible = false;
+
+                    if (dgvInterviewed.Columns["AppID"] != null)
+                        dgvInterviewed.Columns["AppID"].Visible = false;
                 }
             }
-            catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
 
         private void Save()
@@ -96,10 +119,7 @@ namespace HRApplicantSystem.Forms.HR
                 return;
             }
 
-
             string result = score >= 75 ? "pass" : "fail";
-
-
 
             try
             {
@@ -107,10 +127,10 @@ namespace HRApplicantSystem.Forms.HR
                 {
                     conn.Open();
 
-                    using (var cmd = new SqlCommand(
-                        @"INSERT INTO interview_evaluations
-                  (schedule_id,application_id,score,remarks,result,recommendation,evaluated_by,evaluated_at)
-                  VALUES(@sid,@aid,@sc,@rm,@rs,@rec,@by,GETDATE())", conn))
+                    using (var cmd = new SqlCommand(@"
+                        INSERT INTO interview_evaluations
+                        (schedule_id, application_id, score, remarks, result, recommendation, evaluated_by, evaluated_at)
+                        VALUES (@sid, @aid, @sc, @rm, @rs, @rec, @by, GETDATE())", conn))
                     {
                         cmd.Parameters.AddWithValue("@sid", _schedId);
                         cmd.Parameters.AddWithValue("@aid", _appId);
@@ -124,23 +144,11 @@ namespace HRApplicantSystem.Forms.HR
                     }
                 }
 
-                string next = result == "pass"
-                                        ? "evaluated"
-                                        : "rejected";
-
-                StatusHistoryLogger.LogStatusChange(
-                    _appId,
-                    "interviewed",
-                    next,
-                    SessionManager.CurrentUserID,
-                    $"Evaluation: {result}, score {score}.");
-
                 lblResult.Text = $"Result: {result.ToUpper()}";
-                lblResult.ForeColor = result == "pass"
-                    ? Color.Green
-                    : Color.Red;
+                lblResult.ForeColor = result == "pass" ? Color.Green : Color.Red;
 
                 MessageBox.Show($"Applicant {result.ToUpper()}");
+
                 LoadData();
             }
             catch (Exception ex)
@@ -148,19 +156,24 @@ namespace HRApplicantSystem.Forms.HR
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
-        private void btnPass_Click(object s, EventArgs e) => Save();
-        private void btnFail_Click(object s, EventArgs e) => Save();
-        private void btnNext_Click(object s, EventArgs e) { new frmHiringDecision().Show(); this.Hide(); }
+
+        private void btnPass_Click(object sender, EventArgs e) => Save();
+        private void btnFail_Click(object sender, EventArgs e) => Save();
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            new frmHiringDecision().Show();
+            this.Hide();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            new frmInterviewSchedule().Show();
+            this.Hide();
+        }
 
         private void groupBox2_Enter(object sender, EventArgs e) { }
-
-        private void btnBack_Click(object s, EventArgs e) { new frmInterviewSchedule().Show(); this.Close(); }
-
+        private void groupBox3_Enter(object sender, EventArgs e) { }
         private void txtRemarks_TextChanged(object sender, EventArgs e) { }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
     }
 }

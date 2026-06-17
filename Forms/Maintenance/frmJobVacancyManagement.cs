@@ -241,5 +241,22 @@ namespace HRApplicantSystem.Forms.Maintenance
             new HRApplicantSystem.Forms.HR.frmHRDashboard().Show();
             this.Close();
         }
+
+        private void txtDescription_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtQualifications_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSlots_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }

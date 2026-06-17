@@ -34,6 +34,7 @@ namespace HRApplicantSystem.Forms.Applicant
         private void frmJobVacancies_Load(object sender, EventArgs e)
         {
             SetupListView();
+            LoadDepartments();
             LoadJobList();
         }
 
@@ -52,7 +53,7 @@ namespace HRApplicantSystem.Forms.Applicant
             listViewJobs.Columns.Add("Qualifications", 580);
         }
 
-        private void LoadJobList(string searchText = "")
+        private void LoadJobList(string searchText = "", string department = "")
         {
             try
             {
@@ -78,10 +79,22 @@ namespace HRApplicantSystem.Forms.Applicant
                     if (!string.IsNullOrEmpty(searchText))
                         query += " AND (p.title LIKE @Search OR d.name LIKE @Search)";
 
+                    if (!string.IsNullOrEmpty(department) &&
+                        department != "All Departments")
+                    {
+                        query += " AND d.name = @Department";
+                    }
+
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         if (!string.IsNullOrEmpty(searchText))
                             cmd.Parameters.AddWithValue("@Search", "%" + searchText + "%");
+
+                        if (!string.IsNullOrEmpty(department) &&
+                            department != "All Departments")
+                        {
+                            cmd.Parameters.AddWithValue("@Department", department);
+                        }
 
                         using (SqlDataReader dr = cmd.ExecuteReader())
                         {
@@ -131,7 +144,16 @@ namespace HRApplicantSystem.Forms.Applicant
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            LoadJobList(txtSearch.Text);
+            LoadJobList(
+                txtSearch.Text,
+                cboDepartment.Text);
+        }
+
+        private void cboDepartment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadJobList(
+                txtSearch.Text,
+                cboDepartment.Text);
         }
 
         private void btnViewDetails_Click(object sender, EventArgs e)
@@ -218,6 +240,39 @@ namespace HRApplicantSystem.Forms.Applicant
                     }
                     return true;
                 }
+            }
+        }
+
+
+        private void LoadDepartments()
+        {
+            try
+            {
+                using (SqlConnection conn = DatabaseHelper.GetConnection())
+                {
+                    conn.Open();
+
+                    cboDepartment.Items.Clear();
+                    cboDepartment.Items.Add("All Departments");
+
+                    using (SqlCommand cmd = new SqlCommand(
+                        "SELECT name FROM departments ORDER BY name", conn))
+                    {
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                cboDepartment.Items.Add(dr["name"].ToString());
+                            }
+                        }
+                    }
+
+                    cboDepartment.SelectedIndex = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading departments: " + ex.Message);
             }
         }
 

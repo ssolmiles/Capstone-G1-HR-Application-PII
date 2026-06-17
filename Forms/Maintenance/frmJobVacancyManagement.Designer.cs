@@ -23,8 +23,6 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnReopen = new System.Windows.Forms.Button();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVacancies)).BeginInit();
             this.SuspendLayout();
@@ -34,7 +32,7 @@
             this.cboDepartment.FormattingEnabled = true;
             this.cboDepartment.Location = new System.Drawing.Point(43, 41);
             this.cboDepartment.Name = "cboDepartment";
-            this.cboDepartment.Size = new System.Drawing.Size(123, 24);
+            this.cboDepartment.Size = new System.Drawing.Size(123, 21);
             this.cboDepartment.TabIndex = 0;
             this.cboDepartment.Text = "cboDepartment";
             this.cboDepartment.SelectedIndexChanged += new System.EventHandler(this.cboDepartment_SelectedIndexChanged);
@@ -44,7 +42,7 @@
             this.cboPosition.FormattingEnabled = true;
             this.cboPosition.Location = new System.Drawing.Point(43, 93);
             this.cboPosition.Name = "cboPosition";
-            this.cboPosition.Size = new System.Drawing.Size(123, 24);
+            this.cboPosition.Size = new System.Drawing.Size(123, 21);
             this.cboPosition.TabIndex = 1;
             this.cboPosition.Text = "cboPosition";
             // 
@@ -53,7 +51,7 @@
             this.cboEmploymentType.FormattingEnabled = true;
             this.cboEmploymentType.Location = new System.Drawing.Point(43, 146);
             this.cboEmploymentType.Name = "cboEmploymentType";
-            this.cboEmploymentType.Size = new System.Drawing.Size(123, 24);
+            this.cboEmploymentType.Size = new System.Drawing.Size(123, 21);
             this.cboEmploymentType.TabIndex = 2;
             this.cboEmploymentType.Text = "cboEmploymentType";
             // 
@@ -64,7 +62,8 @@
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(192, 28);
             this.txtDescription.TabIndex = 3;
-            this.txtDescription.Text = "txtDescription";
+            this.txtDescription.Text = "Job Description";
+            this.txtDescription.TextChanged += new System.EventHandler(this.txtDescription_TextChanged);
             // 
             // txtQualifications
             // 
@@ -73,21 +72,21 @@
             this.txtQualifications.Name = "txtQualifications";
             this.txtQualifications.Size = new System.Drawing.Size(192, 28);
             this.txtQualifications.TabIndex = 4;
-            this.txtQualifications.Text = "txtQualifications";
+            this.txtQualifications.Text = "Job Qualifications";
+            this.txtQualifications.TextChanged += new System.EventHandler(this.txtQualifications_TextChanged);
             // 
             // txtSlots
             // 
             this.txtSlots.Location = new System.Drawing.Point(43, 318);
             this.txtSlots.Name = "txtSlots";
-            this.txtSlots.Size = new System.Drawing.Size(102, 22);
+            this.txtSlots.Size = new System.Drawing.Size(192, 20);
             this.txtSlots.TabIndex = 5;
+            this.txtSlots.Text = "Slots Available";
+            this.txtSlots.TextChanged += new System.EventHandler(this.txtSlots_TextChanged);
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(43, 381);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(102, 22);
-            this.txtSearch.TabIndex = 6;
+            
             // 
             // dgvVacancies
             // 
@@ -129,26 +128,6 @@
             this.btnReopen.UseVisualStyleBackColor = true;
             this.btnReopen.Click += new System.EventHandler(this.btnReopen_Click);
             // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(257, 212);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(63, 28);
-            this.btnSearch.TabIndex = 11;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(335, 212);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 28);
-            this.btnClear.TabIndex = 12;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
             // btnBack
             // 
             this.btnBack.Location = new System.Drawing.Point(436, 567);
@@ -161,10 +140,8 @@
             // 
             // frmJobVacancyManagement
             // 
-            this.ClientSize = new System.Drawing.Size(1902, 1033);
+            this.ClientSize = new System.Drawing.Size(1902, 845);
             this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnReopen);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnAdd);
@@ -196,8 +173,7 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnReopen;
-        private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnBack;
+        
     }
 }

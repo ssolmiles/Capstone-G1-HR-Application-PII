@@ -266,6 +266,7 @@ namespace HRApplicantSystem.Forms.Applicant
         // Dashboard instance (that was causing duplicate windows to stack up).
         private void btnBack_Click(object sender, EventArgs e)
         {
+            new frmApplicantDashboard(userEmail).Show();
             this.Close();
         }
 

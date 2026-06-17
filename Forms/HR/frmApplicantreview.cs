@@ -113,7 +113,7 @@ namespace HRApplicantSystem.Forms.HR
                 return;
             }
 
-            new frmInterviewEvaluation(appId).Show();
+            new frmScreening(appId).Show();
             this.Hide();
         }
 

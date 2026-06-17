@@ -49,12 +49,12 @@ namespace HRApplicantSystem.Forms.HR
                     INNER JOIN positions p ON v.position_id=p.position_id
                     INNER JOIN departments d ON v.department_id=d.department_id
                     INNER JOIN interview_evaluations ie ON ie.application_id=a.application_id
-                    WHERE a.status='evaluated' AND ie.result='pass'
+                    WHERE a.status='evaluated' AND ie.result='pass'";
 
                     var ada = new SqlDataAdapter(sql, conn);
                     var dt = new DataTable();
                     ada.Fill(dt);
-                    dgvPassed.DataSource = dt;";
+                    dgvPassed.DataSource = dt;
                     if (dgvPassed.Columns["AppID"] != null)
                         dgvPassed.Columns["AppID"].Visible = false;
                     if (dgvPassed.Columns["IsAlreadyAccepted"] != null)
@@ -63,7 +63,8 @@ namespace HRApplicantSystem.Forms.HR
                     // Grey-out / lock rows where the applicant is already accepted elsewhere
                     foreach (DataGridViewRow row in dgvPassed.Rows)
                     {
-                        bool locked = row.Cells["IsAlreadyAccepted"].Value is true;
+                        bool locked = row.Cells["IsAlreadyAccepted"].Value != DBNull.Value &&
+                            Convert.ToBoolean(row.Cells["IsAlreadyAccepted"].Value);
                         if (locked)
                         {
                             row.DefaultCellStyle.BackColor = Color.FromArgb(220, 220, 220);

@@ -25,6 +25,7 @@
             this.listViewJobs = new System.Windows.Forms.ListView();
             this.btnViewDetails = new System.Windows.Forms.Button();
             this.btnApply = new System.Windows.Forms.Button();
+            this.cboDepartment = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -138,16 +139,25 @@
             this.Controls.Add(this.listViewJobs);
             this.Controls.Add(this.btnViewDetails);
             this.Controls.Add(this.btnApply);
+            this.Controls.Add(this.cboDepartment);
             this.Name = "frmJobVacancies";
             this.Text = "Job Vacancies";
             this.Load += new System.EventHandler(this.frmJobVacancies_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
+            this.cboDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDepartment.Font = new System.Drawing.Font("Verdana", 10F);
+            this.cboDepartment.Location = new System.Drawing.Point(500, 116);
+            this.cboDepartment.Name = "cboDepartment";
+            this.cboDepartment.Size = new System.Drawing.Size(220, 28);
+            this.cboDepartment.TabIndex = 2;
+            this.cboDepartment.SelectedIndexChanged += new System.EventHandler(this.cboDepartment_SelectedIndexChanged);
+
         }
 
         #endregion
-
+        private System.Windows.Forms.ComboBox cboDepartment;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblSubtitle;
         private System.Windows.Forms.Button btnBack;
