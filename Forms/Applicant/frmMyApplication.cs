@@ -207,18 +207,51 @@ namespace HRApplicantSystem.Forms.Applicant
             return true;
         }
 
-        // ── Helper: delete history rows then the application ─
-        // Must be called inside an open SqlConnection.
-        // Wraps everything in a transaction so it is atomic.
+        // ── Helper: log to audit_logs, then delete history, then delete application ──
+        //
+        // ORDER MATTERS:
+        //   1. Write to audit_logs FIRST (while application_id still exists).
+        //      audit_logs.target_id stores the application ID as a plain integer —
+        //      it has NO foreign key to applications, so it survives the deletion
+        //      and permanently records that this action happened.
+        //   2. Delete status_history rows (they DO have an FK to applications,
+        //      so they must go before the application row).
+        //   3. Delete the application row itself.
+        //
+        // Everything runs inside one transaction so either all three steps
+        // succeed or none of them do.
+        //
+        // Parameters:
+        //   action — human-readable description, e.g. "Deleted draft application"
+        //            or "Withdrew submitted application"
         private void DeleteApplicationWithHistory(
-            SqlConnection conn, int appId, int applicantId)
+            SqlConnection conn, int appId, int applicantId, string action)
         {
             using (SqlTransaction tx = conn.BeginTransaction())
             {
                 try
                 {
-                    // 1. Remove status_history rows that reference this application.
-                    //    (FK: status_history.application_id → applications.application_id)
+                    // STEP 1 — Permanently record this action in audit_logs.
+                    //          audit_logs has NO FK to applications, so this row
+                    //          stays in the database even after the application
+                    //          is gone. It is the permanent evidence that the
+                    //          applicant performed this action.
+                    using (SqlCommand cmd = new SqlCommand(
+                        @"INSERT INTO audit_logs
+                            (user_id, action, target, target_id, performed_at)
+                          VALUES
+                            (@UserId, @Action, 'applications', @TargetId, GETDATE())",
+                        conn, tx))
+                    {
+                        cmd.Parameters.AddWithValue("@UserId", applicantId);
+                        cmd.Parameters.AddWithValue("@Action", action);
+                        cmd.Parameters.AddWithValue("@TargetId", appId);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // STEP 2 — Remove status_history rows.
+                    //          These DO have an FK pointing to applications,
+                    //          so they must be deleted before the application row.
                     using (SqlCommand cmd = new SqlCommand(
                         "DELETE FROM status_history WHERE application_id = @AppId",
                         conn, tx))
@@ -227,7 +260,7 @@ namespace HRApplicantSystem.Forms.Applicant
                         cmd.ExecuteNonQuery();
                     }
 
-                    // 2. Now it is safe to delete the application row itself.
+                    // STEP 3 — Now safe to delete the application row itself.
                     using (SqlCommand cmd = new SqlCommand(
                         @"DELETE FROM applications
                           WHERE application_id = @AppId
@@ -514,7 +547,8 @@ namespace HRApplicantSystem.Forms.Applicant
                 using (SqlConnection conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
-                    DeleteApplicationWithHistory(conn, appId, applicantId);
+                    DeleteApplicationWithHistory(conn, appId, applicantId,
+                        $"Deleted draft application #{appId} for '{position}'.");
                 }
 
                 MessageBox.Show("Draft application deleted.",
@@ -579,7 +613,8 @@ namespace HRApplicantSystem.Forms.Applicant
                 using (SqlConnection conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
-                    DeleteApplicationWithHistory(conn, appId, applicantId);
+                    DeleteApplicationWithHistory(conn, appId, applicantId,
+                        $"Withdrew submitted application #{appId} for '{position}' ({department}).");
                 }
 
                 MessageBox.Show(

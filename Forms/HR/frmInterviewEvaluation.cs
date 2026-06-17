@@ -124,7 +124,9 @@ namespace HRApplicantSystem.Forms.HR
                     }
                 }
 
-                string next = result == "pass" ? "screened" : "rejected";
+                string next = result == "pass"
+                                        ? "evaluated"
+                                        : "rejected";
 
                 StatusHistoryLogger.LogStatusChange(
                     _appId,

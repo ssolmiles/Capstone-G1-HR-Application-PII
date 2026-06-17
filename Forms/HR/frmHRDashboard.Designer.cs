@@ -73,7 +73,7 @@ namespace HRApplicantSystem.Forms.HR
             // 
             this.textBox4.Location = new System.Drawing.Point(22, 334);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(280, 36);
+            this.textBox4.Size = new System.Drawing.Size(280, 30);
             this.textBox4.TabIndex = 9;
             this.textBox4.Text = "Rejected";
             // 
@@ -81,7 +81,7 @@ namespace HRApplicantSystem.Forms.HR
             // 
             this.textBox3.Location = new System.Drawing.Point(22, 241);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(280, 36);
+            this.textBox3.Size = new System.Drawing.Size(280, 30);
             this.textBox3.TabIndex = 8;
             this.textBox3.Text = "Accepted";
             // 
@@ -89,7 +89,7 @@ namespace HRApplicantSystem.Forms.HR
             // 
             this.textBox2.Location = new System.Drawing.Point(22, 145);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(280, 36);
+            this.textBox2.Size = new System.Drawing.Size(280, 30);
             this.textBox2.TabIndex = 7;
             this.textBox2.Text = "Interview Schedule";
             // 
@@ -97,9 +97,10 @@ namespace HRApplicantSystem.Forms.HR
             // 
             this.textBox1.Location = new System.Drawing.Point(22, 51);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(280, 36);
+            this.textBox1.Size = new System.Drawing.Size(280, 30);
             this.textBox1.TabIndex = 6;
             this.textBox1.Text = "Total Applicants:";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button1
             // 
@@ -170,7 +171,7 @@ namespace HRApplicantSystem.Forms.HR
             // frmHRDashboard
             // 
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.ClientSize = new System.Drawing.Size(1902, 1033);
+            this.ClientSize = new System.Drawing.Size(1902, 845);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
