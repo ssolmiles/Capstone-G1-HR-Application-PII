@@ -80,7 +80,7 @@
             this.lblTotalApplicants.AutoSize = true;
             this.lblTotalApplicants.Location = new System.Drawing.Point(476, 115);
             this.lblTotalApplicants.Name = "lblTotalApplicants";
-            this.lblTotalApplicants.Size = new System.Drawing.Size(104, 16);
+            this.lblTotalApplicants.Size = new System.Drawing.Size(83, 13);
             this.lblTotalApplicants.TabIndex = 5;
             this.lblTotalApplicants.Text = "Total Applicants";
             // 
@@ -89,7 +89,7 @@
             this.lblPending.AutoSize = true;
             this.lblPending.Location = new System.Drawing.Point(476, 172);
             this.lblPending.Name = "lblPending";
-            this.lblPending.Size = new System.Drawing.Size(57, 16);
+            this.lblPending.Size = new System.Drawing.Size(46, 13);
             this.lblPending.TabIndex = 6;
             this.lblPending.Text = "Pending";
             // 
@@ -98,7 +98,7 @@
             this.lblInterviewed.AutoSize = true;
             this.lblInterviewed.Location = new System.Drawing.Point(471, 231);
             this.lblInterviewed.Name = "lblInterviewed";
-            this.lblInterviewed.Size = new System.Drawing.Size(75, 16);
+            this.lblInterviewed.Size = new System.Drawing.Size(62, 13);
             this.lblInterviewed.TabIndex = 7;
             this.lblInterviewed.Text = "Interviewed";
             // 
@@ -107,7 +107,7 @@
             this.lblAccepted.AutoSize = true;
             this.lblAccepted.Location = new System.Drawing.Point(471, 284);
             this.lblAccepted.Name = "lblAccepted";
-            this.lblAccepted.Size = new System.Drawing.Size(65, 16);
+            this.lblAccepted.Size = new System.Drawing.Size(53, 13);
             this.lblAccepted.TabIndex = 8;
             this.lblAccepted.Text = "Accepted";
             // 
@@ -116,7 +116,7 @@
             this.lblRejected.AutoSize = true;
             this.lblRejected.Location = new System.Drawing.Point(474, 346);
             this.lblRejected.Name = "lblRejected";
-            this.lblRejected.Size = new System.Drawing.Size(62, 16);
+            this.lblRejected.Size = new System.Drawing.Size(50, 13);
             this.lblRejected.TabIndex = 9;
             this.lblRejected.Text = "Rejected";
             // 
@@ -169,7 +169,7 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(368, 109);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(84, 22);
+            this.textBox1.Size = new System.Drawing.Size(84, 20);
             this.textBox1.TabIndex = 17;
             this.textBox1.Text = "Applicants";
             // 
@@ -177,7 +177,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(364, 166);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(84, 22);
+            this.textBox2.Size = new System.Drawing.Size(84, 20);
             this.textBox2.TabIndex = 18;
             this.textBox2.Text = "Pending";
             // 
@@ -185,7 +185,7 @@
             // 
             this.textBox3.Location = new System.Drawing.Point(364, 225);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(84, 22);
+            this.textBox3.Size = new System.Drawing.Size(84, 20);
             this.textBox3.TabIndex = 19;
             this.textBox3.Text = "Interviewed";
             // 
@@ -193,7 +193,7 @@
             // 
             this.textBox4.Location = new System.Drawing.Point(368, 281);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(84, 22);
+            this.textBox4.Size = new System.Drawing.Size(84, 20);
             this.textBox4.TabIndex = 20;
             this.textBox4.Text = "Accepted";
             // 
@@ -201,13 +201,16 @@
             // 
             this.textBox5.Location = new System.Drawing.Point(368, 340);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(84, 22);
+            this.textBox5.Size = new System.Drawing.Size(84, 20);
             this.textBox5.TabIndex = 21;
             this.textBox5.Text = "Rejected";
             // 
             // frmReports
             // 
-            this.ClientSize = new System.Drawing.Size(1902, 1033);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.BackColor = System.Drawing.Color.OldLace;
+            this.ClientSize = new System.Drawing.Size(1368, 741);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
@@ -227,8 +230,10 @@
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnApplicants);
             this.Controls.Add(this.btnBack);
+            this.MinimizeBox = false;
             this.Name = "frmReports";
             this.Text = "Reports";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmReports_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvReports)).EndInit();
             this.ResumeLayout(false);

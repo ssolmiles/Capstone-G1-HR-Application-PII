@@ -45,9 +45,10 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
-            this.lblTitle.Location = new System.Drawing.Point(471, 44);
+            this.lblTitle.Location = new System.Drawing.Point(353, 36);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(263, 36);
+            this.lblTitle.Size = new System.Drawing.Size(210, 29);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "My Documents";
             // 
@@ -56,9 +57,10 @@
             this.lblSubtitle.AutoSize = true;
             this.lblSubtitle.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Italic);
             this.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            this.lblSubtitle.Location = new System.Drawing.Point(473, 86);
+            this.lblSubtitle.Location = new System.Drawing.Point(355, 70);
+            this.lblSubtitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSubtitle.Name = "lblSubtitle";
-            this.lblSubtitle.Size = new System.Drawing.Size(530, 20);
+            this.lblSubtitle.Size = new System.Drawing.Size(412, 16);
             this.lblSubtitle.TabIndex = 1;
             this.lblSubtitle.Text = "Upload the requirements needed to process your application";
             // 
@@ -66,9 +68,10 @@
             // 
             this.lblOverallStatus.AutoSize = true;
             this.lblOverallStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.lblOverallStatus.Location = new System.Drawing.Point(473, 134);
+            this.lblOverallStatus.Location = new System.Drawing.Point(355, 109);
+            this.lblOverallStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblOverallStatus.Name = "lblOverallStatus";
-            this.lblOverallStatus.Size = new System.Drawing.Size(172, 28);
+            this.lblOverallStatus.Size = new System.Drawing.Size(136, 21);
             this.lblOverallStatus.TabIndex = 2;
             this.lblOverallStatus.Text = "Overall Status: --";
             // 
@@ -77,9 +80,10 @@
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Verdana", 10F);
             this.btnBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.btnBack.Location = new System.Drawing.Point(1672, 25);
+            this.btnBack.Location = new System.Drawing.Point(1254, 20);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(200, 36);
+            this.btnBack.Size = new System.Drawing.Size(150, 29);
             this.btnBack.TabIndex = 3;
             this.btnBack.Text = "← Back to Profile";
             this.btnBack.UseVisualStyleBackColor = true;
@@ -105,9 +109,11 @@
             this.groupBoxChecklist.Controls.Add(this.btnRemoveCerts);
             this.groupBoxChecklist.Font = new System.Drawing.Font("Verdana", 10F);
             this.groupBoxChecklist.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBoxChecklist.Location = new System.Drawing.Point(471, 179);
+            this.groupBoxChecklist.Location = new System.Drawing.Point(353, 145);
+            this.groupBoxChecklist.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBoxChecklist.Name = "groupBoxChecklist";
-            this.groupBoxChecklist.Size = new System.Drawing.Size(700, 440);
+            this.groupBoxChecklist.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxChecklist.Size = new System.Drawing.Size(525, 358);
             this.groupBoxChecklist.TabIndex = 4;
             this.groupBoxChecklist.TabStop = false;
             this.groupBoxChecklist.Text = "Requirements Checklist";
@@ -116,9 +122,10 @@
             // 
             this.lblResumeLabel.AutoSize = true;
             this.lblResumeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblResumeLabel.Location = new System.Drawing.Point(20, 55);
+            this.lblResumeLabel.Location = new System.Drawing.Point(15, 45);
+            this.lblResumeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblResumeLabel.Name = "lblResumeLabel";
-            this.lblResumeLabel.Size = new System.Drawing.Size(86, 20);
+            this.lblResumeLabel.Size = new System.Drawing.Size(70, 17);
             this.lblResumeLabel.TabIndex = 0;
             this.lblResumeLabel.Text = "Resume:";
             // 
@@ -126,9 +133,10 @@
             // 
             this.lblResumeStatus.AutoSize = true;
             this.lblResumeStatus.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
-            this.lblResumeStatus.Location = new System.Drawing.Point(210, 55);
+            this.lblResumeStatus.Location = new System.Drawing.Point(158, 45);
+            this.lblResumeStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblResumeStatus.Name = "lblResumeStatus";
-            this.lblResumeStatus.Size = new System.Drawing.Size(81, 20);
+            this.lblResumeStatus.Size = new System.Drawing.Size(65, 17);
             this.lblResumeStatus.TabIndex = 1;
             this.lblResumeStatus.Text = "Missing";
             // 
@@ -138,9 +146,10 @@
             this.btnUploadResume.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUploadResume.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
             this.btnUploadResume.ForeColor = System.Drawing.Color.White;
-            this.btnUploadResume.Location = new System.Drawing.Point(370, 48);
+            this.btnUploadResume.Location = new System.Drawing.Point(278, 39);
+            this.btnUploadResume.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnUploadResume.Name = "btnUploadResume";
-            this.btnUploadResume.Size = new System.Drawing.Size(140, 34);
+            this.btnUploadResume.Size = new System.Drawing.Size(105, 28);
             this.btnUploadResume.TabIndex = 2;
             this.btnUploadResume.Text = "Upload";
             this.btnUploadResume.UseVisualStyleBackColor = false;
@@ -152,9 +161,10 @@
             this.btnRemoveResume.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemoveResume.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
             this.btnRemoveResume.ForeColor = System.Drawing.Color.White;
-            this.btnRemoveResume.Location = new System.Drawing.Point(525, 48);
+            this.btnRemoveResume.Location = new System.Drawing.Point(394, 39);
+            this.btnRemoveResume.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRemoveResume.Name = "btnRemoveResume";
-            this.btnRemoveResume.Size = new System.Drawing.Size(140, 34);
+            this.btnRemoveResume.Size = new System.Drawing.Size(105, 28);
             this.btnRemoveResume.TabIndex = 3;
             this.btnRemoveResume.Text = "Remove";
             this.btnRemoveResume.UseVisualStyleBackColor = false;
@@ -164,9 +174,10 @@
             // 
             this.lblIDLabel.AutoSize = true;
             this.lblIDLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblIDLabel.Location = new System.Drawing.Point(20, 145);
+            this.lblIDLabel.Location = new System.Drawing.Point(15, 118);
+            this.lblIDLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblIDLabel.Name = "lblIDLabel";
-            this.lblIDLabel.Size = new System.Drawing.Size(86, 20);
+            this.lblIDLabel.Size = new System.Drawing.Size(67, 17);
             this.lblIDLabel.TabIndex = 4;
             this.lblIDLabel.Text = "Valid ID:";
             // 
@@ -174,9 +185,10 @@
             // 
             this.lblIDStatus.AutoSize = true;
             this.lblIDStatus.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
-            this.lblIDStatus.Location = new System.Drawing.Point(210, 145);
+            this.lblIDStatus.Location = new System.Drawing.Point(158, 118);
+            this.lblIDStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblIDStatus.Name = "lblIDStatus";
-            this.lblIDStatus.Size = new System.Drawing.Size(81, 20);
+            this.lblIDStatus.Size = new System.Drawing.Size(65, 17);
             this.lblIDStatus.TabIndex = 5;
             this.lblIDStatus.Text = "Missing";
             // 
@@ -186,9 +198,10 @@
             this.btnUploadID.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUploadID.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
             this.btnUploadID.ForeColor = System.Drawing.Color.White;
-            this.btnUploadID.Location = new System.Drawing.Point(370, 138);
+            this.btnUploadID.Location = new System.Drawing.Point(278, 112);
+            this.btnUploadID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnUploadID.Name = "btnUploadID";
-            this.btnUploadID.Size = new System.Drawing.Size(140, 34);
+            this.btnUploadID.Size = new System.Drawing.Size(105, 28);
             this.btnUploadID.TabIndex = 6;
             this.btnUploadID.Text = "Upload";
             this.btnUploadID.UseVisualStyleBackColor = false;
@@ -200,9 +213,10 @@
             this.btnRemoveID.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemoveID.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
             this.btnRemoveID.ForeColor = System.Drawing.Color.White;
-            this.btnRemoveID.Location = new System.Drawing.Point(525, 138);
+            this.btnRemoveID.Location = new System.Drawing.Point(394, 112);
+            this.btnRemoveID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRemoveID.Name = "btnRemoveID";
-            this.btnRemoveID.Size = new System.Drawing.Size(140, 34);
+            this.btnRemoveID.Size = new System.Drawing.Size(105, 28);
             this.btnRemoveID.TabIndex = 7;
             this.btnRemoveID.Text = "Remove";
             this.btnRemoveID.UseVisualStyleBackColor = false;
@@ -212,9 +226,10 @@
             // 
             this.lblTranscriptLabel.AutoSize = true;
             this.lblTranscriptLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblTranscriptLabel.Location = new System.Drawing.Point(20, 235);
+            this.lblTranscriptLabel.Location = new System.Drawing.Point(15, 191);
+            this.lblTranscriptLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTranscriptLabel.Name = "lblTranscriptLabel";
-            this.lblTranscriptLabel.Size = new System.Drawing.Size(197, 20);
+            this.lblTranscriptLabel.Size = new System.Drawing.Size(165, 17);
             this.lblTranscriptLabel.TabIndex = 8;
             this.lblTranscriptLabel.Text = "Transcript of Records:";
             // 
@@ -222,9 +237,10 @@
             // 
             this.lblTranscriptStatus.AutoSize = true;
             this.lblTranscriptStatus.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
-            this.lblTranscriptStatus.Location = new System.Drawing.Point(210, 235);
+            this.lblTranscriptStatus.Location = new System.Drawing.Point(158, 191);
+            this.lblTranscriptStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTranscriptStatus.Name = "lblTranscriptStatus";
-            this.lblTranscriptStatus.Size = new System.Drawing.Size(81, 20);
+            this.lblTranscriptStatus.Size = new System.Drawing.Size(65, 17);
             this.lblTranscriptStatus.TabIndex = 9;
             this.lblTranscriptStatus.Text = "Missing";
             // 
@@ -234,9 +250,10 @@
             this.btnUploadTranscript.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUploadTranscript.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
             this.btnUploadTranscript.ForeColor = System.Drawing.Color.White;
-            this.btnUploadTranscript.Location = new System.Drawing.Point(370, 228);
+            this.btnUploadTranscript.Location = new System.Drawing.Point(278, 185);
+            this.btnUploadTranscript.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnUploadTranscript.Name = "btnUploadTranscript";
-            this.btnUploadTranscript.Size = new System.Drawing.Size(140, 34);
+            this.btnUploadTranscript.Size = new System.Drawing.Size(105, 28);
             this.btnUploadTranscript.TabIndex = 10;
             this.btnUploadTranscript.Text = "Upload";
             this.btnUploadTranscript.UseVisualStyleBackColor = false;
@@ -248,9 +265,10 @@
             this.btnRemoveTranscript.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemoveTranscript.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
             this.btnRemoveTranscript.ForeColor = System.Drawing.Color.White;
-            this.btnRemoveTranscript.Location = new System.Drawing.Point(525, 228);
+            this.btnRemoveTranscript.Location = new System.Drawing.Point(394, 185);
+            this.btnRemoveTranscript.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRemoveTranscript.Name = "btnRemoveTranscript";
-            this.btnRemoveTranscript.Size = new System.Drawing.Size(140, 34);
+            this.btnRemoveTranscript.Size = new System.Drawing.Size(105, 28);
             this.btnRemoveTranscript.TabIndex = 11;
             this.btnRemoveTranscript.Text = "Remove";
             this.btnRemoveTranscript.UseVisualStyleBackColor = false;
@@ -260,9 +278,10 @@
             // 
             this.lblCertLabel.AutoSize = true;
             this.lblCertLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblCertLabel.Location = new System.Drawing.Point(20, 325);
+            this.lblCertLabel.Location = new System.Drawing.Point(15, 264);
+            this.lblCertLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCertLabel.Name = "lblCertLabel";
-            this.lblCertLabel.Size = new System.Drawing.Size(114, 20);
+            this.lblCertLabel.Size = new System.Drawing.Size(92, 17);
             this.lblCertLabel.TabIndex = 12;
             this.lblCertLabel.Text = "Certificates:";
             // 
@@ -270,9 +289,10 @@
             // 
             this.lblCertStatus.AutoSize = true;
             this.lblCertStatus.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
-            this.lblCertStatus.Location = new System.Drawing.Point(210, 325);
+            this.lblCertStatus.Location = new System.Drawing.Point(158, 264);
+            this.lblCertStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCertStatus.Name = "lblCertStatus";
-            this.lblCertStatus.Size = new System.Drawing.Size(81, 20);
+            this.lblCertStatus.Size = new System.Drawing.Size(65, 17);
             this.lblCertStatus.TabIndex = 13;
             this.lblCertStatus.Text = "Missing";
             // 
@@ -282,9 +302,10 @@
             this.btnUploadCerts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUploadCerts.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
             this.btnUploadCerts.ForeColor = System.Drawing.Color.White;
-            this.btnUploadCerts.Location = new System.Drawing.Point(370, 318);
+            this.btnUploadCerts.Location = new System.Drawing.Point(278, 258);
+            this.btnUploadCerts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnUploadCerts.Name = "btnUploadCerts";
-            this.btnUploadCerts.Size = new System.Drawing.Size(140, 34);
+            this.btnUploadCerts.Size = new System.Drawing.Size(105, 28);
             this.btnUploadCerts.TabIndex = 14;
             this.btnUploadCerts.Text = "Upload";
             this.btnUploadCerts.UseVisualStyleBackColor = false;
@@ -296,9 +317,10 @@
             this.btnRemoveCerts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemoveCerts.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
             this.btnRemoveCerts.ForeColor = System.Drawing.Color.White;
-            this.btnRemoveCerts.Location = new System.Drawing.Point(525, 318);
+            this.btnRemoveCerts.Location = new System.Drawing.Point(394, 258);
+            this.btnRemoveCerts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRemoveCerts.Name = "btnRemoveCerts";
-            this.btnRemoveCerts.Size = new System.Drawing.Size(140, 34);
+            this.btnRemoveCerts.Size = new System.Drawing.Size(105, 28);
             this.btnRemoveCerts.TabIndex = 15;
             this.btnRemoveCerts.Text = "Remove";
             this.btnRemoveCerts.UseVisualStyleBackColor = false;
@@ -309,9 +331,11 @@
             this.groupBoxRemarks.Controls.Add(this.txtRemarks);
             this.groupBoxRemarks.Font = new System.Drawing.Font("Verdana", 10F);
             this.groupBoxRemarks.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBoxRemarks.Location = new System.Drawing.Point(1229, 190);
+            this.groupBoxRemarks.Location = new System.Drawing.Point(922, 154);
+            this.groupBoxRemarks.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBoxRemarks.Name = "groupBoxRemarks";
-            this.groupBoxRemarks.Size = new System.Drawing.Size(431, 235);
+            this.groupBoxRemarks.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxRemarks.Size = new System.Drawing.Size(323, 191);
             this.groupBoxRemarks.TabIndex = 5;
             this.groupBoxRemarks.TabStop = false;
             this.groupBoxRemarks.Text = "HR Remarks / Screening Feedback";
@@ -320,12 +344,13 @@
             // 
             this.txtRemarks.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRemarks.Font = new System.Drawing.Font("Verdana", 10F);
-            this.txtRemarks.Location = new System.Drawing.Point(19, 37);
+            this.txtRemarks.Location = new System.Drawing.Point(14, 30);
+            this.txtRemarks.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtRemarks.Multiline = true;
             this.txtRemarks.Name = "txtRemarks";
             this.txtRemarks.ReadOnly = true;
             this.txtRemarks.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtRemarks.Size = new System.Drawing.Size(391, 170);
+            this.txtRemarks.Size = new System.Drawing.Size(294, 138);
             this.txtRemarks.TabIndex = 0;
             // 
             // openFileDialog1
@@ -337,18 +362,21 @@
             // 
             // frmMyDocuments
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1902, 1033);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackColor = System.Drawing.Color.OldLace;
+            this.ClientSize = new System.Drawing.Size(1368, 741);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblSubtitle);
             this.Controls.Add(this.lblOverallStatus);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.groupBoxChecklist);
             this.Controls.Add(this.groupBoxRemarks);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MinimizeBox = false;
             this.Name = "frmMyDocuments";
             this.Text = "My Documents";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMyDocuments_Load_1);
             this.groupBoxChecklist.ResumeLayout(false);
             this.groupBoxChecklist.PerformLayout();

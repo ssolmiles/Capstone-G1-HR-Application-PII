@@ -71,9 +71,10 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
-            this.lblTitle.Location = new System.Drawing.Point(361, 28);
+            this.lblTitle.Location = new System.Drawing.Point(271, 23);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(282, 37);
+            this.lblTitle.Size = new System.Drawing.Size(226, 30);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Interview Evaluation";
             // 
@@ -82,9 +83,10 @@
             this.lblSubtitle.AutoSize = true;
             this.lblSubtitle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic);
             this.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            this.lblSubtitle.Location = new System.Drawing.Point(364, 63);
+            this.lblSubtitle.Location = new System.Drawing.Point(273, 51);
+            this.lblSubtitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSubtitle.Name = "lblSubtitle";
-            this.lblSubtitle.Size = new System.Drawing.Size(346, 20);
+            this.lblSubtitle.Size = new System.Drawing.Size(281, 15);
             this.lblSubtitle.TabIndex = 1;
             this.lblSubtitle.Text = "Score the interview and record your recommendation";
             // 
@@ -96,11 +98,11 @@
             this.groupBox1.Controls.Add(this.lblJobApplied);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBox1.Location = new System.Drawing.Point(361, 98);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Location = new System.Drawing.Point(271, 80);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(260, 167);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(195, 136);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Applicant Details";
@@ -110,9 +112,10 @@
             this.lblApplicantNameCaption.AutoSize = true;
             this.lblApplicantNameCaption.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblApplicantNameCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblApplicantNameCaption.Location = new System.Drawing.Point(15, 30);
+            this.lblApplicantNameCaption.Location = new System.Drawing.Point(11, 24);
+            this.lblApplicantNameCaption.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblApplicantNameCaption.Name = "lblApplicantNameCaption";
-            this.lblApplicantNameCaption.Size = new System.Drawing.Size(60, 23);
+            this.lblApplicantNameCaption.Size = new System.Drawing.Size(48, 19);
             this.lblApplicantNameCaption.TabIndex = 0;
             this.lblApplicantNameCaption.Text = "Name:";
             // 
@@ -120,9 +123,10 @@
             // 
             this.lblApplicantName.AutoSize = true;
             this.lblApplicantName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblApplicantName.Location = new System.Drawing.Point(15, 53);
+            this.lblApplicantName.Location = new System.Drawing.Point(11, 43);
+            this.lblApplicantName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblApplicantName.Name = "lblApplicantName";
-            this.lblApplicantName.Size = new System.Drawing.Size(102, 23);
+            this.lblApplicantName.Size = new System.Drawing.Size(85, 19);
             this.lblApplicantName.TabIndex = 1;
             this.lblApplicantName.Text = "(Loading...)";
             // 
@@ -131,9 +135,10 @@
             this.lblJobAppliedCaption.AutoSize = true;
             this.lblJobAppliedCaption.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblJobAppliedCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblJobAppliedCaption.Location = new System.Drawing.Point(15, 101);
+            this.lblJobAppliedCaption.Location = new System.Drawing.Point(11, 82);
+            this.lblJobAppliedCaption.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblJobAppliedCaption.Name = "lblJobAppliedCaption";
-            this.lblJobAppliedCaption.Size = new System.Drawing.Size(129, 23);
+            this.lblJobAppliedCaption.Size = new System.Drawing.Size(104, 19);
             this.lblJobAppliedCaption.TabIndex = 2;
             this.lblJobAppliedCaption.Text = "Job Applied for:";
             // 
@@ -141,9 +146,10 @@
             // 
             this.lblJobApplied.AutoSize = true;
             this.lblJobApplied.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblJobApplied.Location = new System.Drawing.Point(15, 124);
+            this.lblJobApplied.Location = new System.Drawing.Point(11, 101);
+            this.lblJobApplied.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblJobApplied.Name = "lblJobApplied";
-            this.lblJobApplied.Size = new System.Drawing.Size(102, 23);
+            this.lblJobApplied.Size = new System.Drawing.Size(85, 19);
             this.lblJobApplied.TabIndex = 3;
             this.lblJobApplied.Text = "(Loading...)";
             // 
@@ -157,11 +163,11 @@
             this.groupBox2.Controls.Add(this.txtRecommendation);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBox2.Location = new System.Drawing.Point(644, 98);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Location = new System.Drawing.Point(483, 80);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(420, 320);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Size = new System.Drawing.Size(315, 260);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Evaluation";
@@ -172,9 +178,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label1.Location = new System.Drawing.Point(20, 34);
+            this.label1.Location = new System.Drawing.Point(15, 28);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(124, 23);
+            this.label1.Size = new System.Drawing.Size(103, 19);
             this.label1.TabIndex = 0;
             this.label1.Text = "Score (0 - 100):";
             // 
@@ -182,10 +189,10 @@
             // 
             this.txtScore.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtScore.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtScore.Location = new System.Drawing.Point(189, 34);
-            this.txtScore.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtScore.Location = new System.Drawing.Point(142, 28);
+            this.txtScore.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtScore.Name = "txtScore";
-            this.txtScore.Size = new System.Drawing.Size(101, 30);
+            this.txtScore.Size = new System.Drawing.Size(76, 25);
             this.txtScore.TabIndex = 1;
             // 
             // label2
@@ -193,9 +200,10 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label2.Location = new System.Drawing.Point(20, 80);
+            this.label2.Location = new System.Drawing.Point(15, 65);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 23);
+            this.label2.Size = new System.Drawing.Size(64, 19);
             this.label2.TabIndex = 2;
             this.label2.Text = "Remarks:";
             // 
@@ -203,11 +211,11 @@
             // 
             this.txtRemarks.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRemarks.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtRemarks.Location = new System.Drawing.Point(20, 105);
-            this.txtRemarks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtRemarks.Location = new System.Drawing.Point(15, 85);
+            this.txtRemarks.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtRemarks.Multiline = true;
             this.txtRemarks.Name = "txtRemarks";
-            this.txtRemarks.Size = new System.Drawing.Size(381, 75);
+            this.txtRemarks.Size = new System.Drawing.Size(286, 61);
             this.txtRemarks.TabIndex = 3;
             this.txtRemarks.TextChanged += new System.EventHandler(this.txtRemarks_TextChanged);
             // 
@@ -216,9 +224,10 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label3.Location = new System.Drawing.Point(20, 194);
+            this.label3.Location = new System.Drawing.Point(15, 158);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(149, 23);
+            this.label3.Size = new System.Drawing.Size(119, 19);
             this.label3.TabIndex = 4;
             this.label3.Text = "Recommendation:";
             // 
@@ -226,11 +235,11 @@
             // 
             this.txtRecommendation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRecommendation.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtRecommendation.Location = new System.Drawing.Point(20, 220);
-            this.txtRecommendation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtRecommendation.Location = new System.Drawing.Point(15, 179);
+            this.txtRecommendation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtRecommendation.Multiline = true;
             this.txtRecommendation.Name = "txtRecommendation";
-            this.txtRecommendation.Size = new System.Drawing.Size(381, 75);
+            this.txtRecommendation.Size = new System.Drawing.Size(286, 61);
             this.txtRecommendation.TabIndex = 5;
             // 
             // groupBox3
@@ -238,11 +247,11 @@
             this.groupBox3.Controls.Add(this.lblResult);
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBox3.Location = new System.Drawing.Point(361, 271);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox3.Location = new System.Drawing.Point(271, 220);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Size = new System.Drawing.Size(260, 73);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Size = new System.Drawing.Size(195, 59);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Result";
@@ -253,9 +262,10 @@
             this.lblResult.AutoSize = true;
             this.lblResult.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblResult.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(122)))), ((int)(((byte)(0)))));
-            this.lblResult.Location = new System.Drawing.Point(15, 25);
+            this.lblResult.Location = new System.Drawing.Point(11, 20);
+            this.lblResult.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(150, 25);
+            this.lblResult.Size = new System.Drawing.Size(118, 20);
             this.lblResult.TabIndex = 0;
             this.lblResult.Text = "Result: Pending";
             // 
@@ -265,10 +275,10 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(361, 348);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Location = new System.Drawing.Point(271, 283);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 39);
+            this.button1.Size = new System.Drawing.Size(94, 32);
             this.button1.TabIndex = 5;
             this.button1.Text = "Pass";
             this.button1.UseVisualStyleBackColor = false;
@@ -280,10 +290,10 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(496, 348);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button2.Location = new System.Drawing.Point(372, 283);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(125, 39);
+            this.button2.Size = new System.Drawing.Size(94, 32);
             this.button2.TabIndex = 6;
             this.button2.Text = "Fail";
             this.button2.UseVisualStyleBackColor = false;
@@ -295,10 +305,10 @@
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnBack.ForeColor = System.Drawing.Color.White;
-            this.btnBack.Location = new System.Drawing.Point(361, 404);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnBack.Location = new System.Drawing.Point(271, 328);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(260, 39);
+            this.btnBack.Size = new System.Drawing.Size(195, 32);
             this.btnBack.TabIndex = 7;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = false;
@@ -310,10 +320,10 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(708, 425);
-            this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button4.Location = new System.Drawing.Point(531, 345);
+            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(251, 39);
+            this.button4.Size = new System.Drawing.Size(188, 32);
             this.button4.TabIndex = 8;
             this.button4.Text = "Proceed to Hiring Decision";
             this.button4.UseVisualStyleBackColor = false;
@@ -322,19 +332,21 @@
             // dgvInterviewed
             // 
             this.dgvInterviewed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvInterviewed.Location = new System.Drawing.Point(1083, 75);
-            this.dgvInterviewed.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvInterviewed.Location = new System.Drawing.Point(812, 61);
+            this.dgvInterviewed.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvInterviewed.Name = "dgvInterviewed";
             this.dgvInterviewed.RowHeadersWidth = 51;
             this.dgvInterviewed.RowTemplate.Height = 24;
-            this.dgvInterviewed.Size = new System.Drawing.Size(744, 358);
+            this.dgvInterviewed.Size = new System.Drawing.Size(558, 291);
             this.dgvInterviewed.TabIndex = 9;
             // 
             // frmInterviewEvaluation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1902, 1033);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackColor = System.Drawing.Color.OldLace;
+            this.ClientSize = new System.Drawing.Size(1368, 741);
             this.Controls.Add(this.dgvInterviewed);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblSubtitle);
@@ -345,9 +357,11 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.button4);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MinimizeBox = false;
             this.Name = "frmInterviewEvaluation";
             this.Text = "Interview Evaluation";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmInterviewEvaluation_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -33,7 +33,7 @@
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
             this.lblTitle.Location = new System.Drawing.Point(20, 20);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(300, 37);
+            this.lblTitle.Size = new System.Drawing.Size(240, 30);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Position Management";
             // 
@@ -44,7 +44,7 @@
             this.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
             this.lblSubtitle.Location = new System.Drawing.Point(22, 55);
             this.lblSubtitle.Name = "lblSubtitle";
-            this.lblSubtitle.Size = new System.Drawing.Size(217, 20);
+            this.lblSubtitle.Size = new System.Drawing.Size(179, 15);
             this.lblSubtitle.TabIndex = 1;
             this.lblSubtitle.Text = "Add, update, or remove positions";
             // 
@@ -55,7 +55,7 @@
             this.lblName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblName.Location = new System.Drawing.Point(20, 92);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(58, 23);
+            this.lblName.Size = new System.Drawing.Size(47, 19);
             this.lblName.TabIndex = 2;
             this.lblName.Text = "Title: *";
             // 
@@ -65,7 +65,7 @@
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtName.Location = new System.Drawing.Point(80, 89);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(220, 30);
+            this.txtName.Size = new System.Drawing.Size(220, 25);
             this.txtName.TabIndex = 3;
             // 
             // lblDept
@@ -75,7 +75,7 @@
             this.lblDept.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblDept.Location = new System.Drawing.Point(20, 132);
             this.lblDept.Name = "lblDept";
-            this.lblDept.Size = new System.Drawing.Size(63, 23);
+            this.lblDept.Size = new System.Drawing.Size(52, 19);
             this.lblDept.TabIndex = 10;
             this.lblDept.Text = "Dept: *";
             // 
@@ -86,7 +86,7 @@
             this.cboDepartment.FormattingEnabled = true;
             this.cboDepartment.Location = new System.Drawing.Point(80, 129);
             this.cboDepartment.Name = "cboDepartment";
-            this.cboDepartment.Size = new System.Drawing.Size(220, 31);
+            this.cboDepartment.Size = new System.Drawing.Size(220, 25);
             this.cboDepartment.TabIndex = 11;
             // 
             // btnAdd
@@ -162,7 +162,10 @@
             // 
             // frmPositions
             // 
-            this.ClientSize = new System.Drawing.Size(1902, 1033);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.BackColor = System.Drawing.Color.OldLace;
+            this.ClientSize = new System.Drawing.Size(1368, 741);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblSubtitle);
             this.Controls.Add(this.lblName);
@@ -174,8 +177,10 @@
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.dgvList);
+            this.MinimizeBox = false;
             this.Name = "frmPositions";
             this.Text = "Position Management";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmPositions_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             this.ResumeLayout(false);

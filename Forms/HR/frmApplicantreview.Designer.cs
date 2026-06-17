@@ -46,9 +46,10 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
-            this.lblTitle.Location = new System.Drawing.Point(341, 50);
+            this.lblTitle.Location = new System.Drawing.Point(256, 41);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(240, 37);
+            this.lblTitle.Size = new System.Drawing.Size(192, 30);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Applicant Review";
             // 
@@ -57,9 +58,10 @@
             this.lblSubtitle.AutoSize = true;
             this.lblSubtitle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic);
             this.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            this.lblSubtitle.Location = new System.Drawing.Point(343, 84);
+            this.lblSubtitle.Location = new System.Drawing.Point(257, 68);
+            this.lblSubtitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSubtitle.Name = "lblSubtitle";
-            this.lblSubtitle.Size = new System.Drawing.Size(331, 20);
+            this.lblSubtitle.Size = new System.Drawing.Size(275, 15);
             this.lblSubtitle.TabIndex = 1;
             this.lblSubtitle.Text = "Search, review, and manage applicant submissions";
             // 
@@ -68,9 +70,10 @@
             this.lblSearch.AutoSize = true;
             this.lblSearch.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblSearch.Location = new System.Drawing.Point(885, 82);
+            this.lblSearch.Location = new System.Drawing.Point(664, 67);
+            this.lblSearch.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(65, 23);
+            this.lblSearch.Size = new System.Drawing.Size(52, 19);
             this.lblSearch.TabIndex = 2;
             this.lblSearch.Text = "Search:";
             // 
@@ -78,9 +81,10 @@
             // 
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtSearch.Location = new System.Drawing.Point(956, 80);
+            this.txtSearch.Location = new System.Drawing.Point(717, 65);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(320, 30);
+            this.txtSearch.Size = new System.Drawing.Size(240, 25);
             this.txtSearch.TabIndex = 3;
             // 
             // btnSearch
@@ -89,9 +93,10 @@
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(1286, 79);
+            this.btnSearch.Location = new System.Drawing.Point(964, 64);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(90, 31);
+            this.btnSearch.Size = new System.Drawing.Size(68, 25);
             this.btnSearch.TabIndex = 4;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
@@ -102,14 +107,15 @@
             this.dgvApplications.AllowUserToAddRows = false;
             this.dgvApplications.AllowUserToDeleteRows = false;
             this.dgvApplications.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvApplications.Location = new System.Drawing.Point(347, 127);
+            this.dgvApplications.Location = new System.Drawing.Point(260, 103);
+            this.dgvApplications.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvApplications.MultiSelect = false;
             this.dgvApplications.Name = "dgvApplications";
             this.dgvApplications.ReadOnly = true;
             this.dgvApplications.RowHeadersWidth = 51;
             this.dgvApplications.RowTemplate.Height = 24;
             this.dgvApplications.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvApplications.Size = new System.Drawing.Size(1216, 564);
+            this.dgvApplications.Size = new System.Drawing.Size(912, 458);
             this.dgvApplications.TabIndex = 6;
             this.dgvApplications.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvApplicants_CellContentClick);
             // 
@@ -118,9 +124,10 @@
             this.btnViewProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewProfile.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnViewProfile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.btnViewProfile.Location = new System.Drawing.Point(1586, 84);
+            this.btnViewProfile.Location = new System.Drawing.Point(1190, 68);
+            this.btnViewProfile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnViewProfile.Name = "btnViewProfile";
-            this.btnViewProfile.Size = new System.Drawing.Size(174, 34);
+            this.btnViewProfile.Size = new System.Drawing.Size(130, 28);
             this.btnViewProfile.TabIndex = 8;
             this.btnViewProfile.Text = "View Profile";
             this.btnViewProfile.UseVisualStyleBackColor = true;
@@ -131,9 +138,10 @@
             this.btnViewDocuments.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewDocuments.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnViewDocuments.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.btnViewDocuments.Location = new System.Drawing.Point(1586, 127);
+            this.btnViewDocuments.Location = new System.Drawing.Point(1190, 103);
+            this.btnViewDocuments.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnViewDocuments.Name = "btnViewDocuments";
-            this.btnViewDocuments.Size = new System.Drawing.Size(174, 34);
+            this.btnViewDocuments.Size = new System.Drawing.Size(130, 28);
             this.btnViewDocuments.TabIndex = 9;
             this.btnViewDocuments.Text = "View Documents";
             this.btnViewDocuments.UseVisualStyleBackColor = true;
@@ -144,9 +152,10 @@
             this.btnLockReview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLockReview.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnLockReview.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.btnLockReview.Location = new System.Drawing.Point(1586, 170);
+            this.btnLockReview.Location = new System.Drawing.Point(1190, 138);
+            this.btnLockReview.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLockReview.Name = "btnLockReview";
-            this.btnLockReview.Size = new System.Drawing.Size(174, 34);
+            this.btnLockReview.Size = new System.Drawing.Size(130, 28);
             this.btnLockReview.TabIndex = 10;
             this.btnLockReview.Text = "Lock for Review";
             this.btnLockReview.UseVisualStyleBackColor = true;
@@ -158,9 +167,10 @@
             this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNext.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnNext.ForeColor = System.Drawing.Color.White;
-            this.btnNext.Location = new System.Drawing.Point(1586, 229);
+            this.btnNext.Location = new System.Drawing.Point(1190, 186);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(174, 40);
+            this.btnNext.Size = new System.Drawing.Size(130, 32);
             this.btnNext.TabIndex = 11;
             this.btnNext.Text = "Proceed to Screening";
             this.btnNext.UseVisualStyleBackColor = false;
@@ -171,9 +181,10 @@
             this.lblCount.AutoSize = true;
             this.lblCount.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblCount.Location = new System.Drawing.Point(1455, 90);
+            this.lblCount.Location = new System.Drawing.Point(1091, 73);
+            this.lblCount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCount.Name = "lblCount";
-            this.lblCount.Size = new System.Drawing.Size(99, 20);
+            this.lblCount.Size = new System.Drawing.Size(78, 15);
             this.lblCount.TabIndex = 7;
             this.lblCount.Text = "0 applicant(s)";
             // 
@@ -182,9 +193,10 @@
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.btnBack.Location = new System.Drawing.Point(1586, 284);
+            this.btnBack.Location = new System.Drawing.Point(1190, 231);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(174, 34);
+            this.btnBack.Size = new System.Drawing.Size(130, 28);
             this.btnBack.TabIndex = 12;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
@@ -192,10 +204,11 @@
             // 
             // frmApplicantReview
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1902, 1033);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackColor = System.Drawing.Color.OldLace;
+            this.ClientSize = new System.Drawing.Size(1368, 741);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblSubtitle);
@@ -208,8 +221,11 @@
             this.Controls.Add(this.btnViewDocuments);
             this.Controls.Add(this.btnLockReview);
             this.Controls.Add(this.btnNext);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MinimizeBox = false;
             this.Name = "frmApplicantReview";
             this.Text = "Applicant Review";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmApplicantReview_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvApplications)).EndInit();
             this.ResumeLayout(false);

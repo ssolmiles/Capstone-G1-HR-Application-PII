@@ -32,7 +32,8 @@
             this.dgvApplicants.AllowUserToAddRows = false;
             this.dgvApplicants.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvApplicants.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvApplicants.Location = new System.Drawing.Point(546, 95);
+            this.dgvApplicants.Location = new System.Drawing.Point(410, 77);
+            this.dgvApplicants.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvApplicants.MultiSelect = false;
             this.dgvApplicants.Name = "dgvApplicants";
             this.dgvApplicants.ReadOnly = true;
@@ -40,23 +41,25 @@
             this.dgvApplicants.RowHeadersWidth = 51;
             this.dgvApplicants.RowTemplate.Height = 24;
             this.dgvApplicants.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvApplicants.Size = new System.Drawing.Size(1028, 420);
+            this.dgvApplicants.Size = new System.Drawing.Size(771, 341);
             this.dgvApplicants.TabIndex = 0;
             this.dgvApplicants.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvApplicants_CellContentClick);
             this.dgvApplicants.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvApplicants_CellDoubleClick);
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(546, 59);
+            this.txtSearch.Location = new System.Drawing.Point(410, 48);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(320, 22);
+            this.txtSearch.Size = new System.Drawing.Size(241, 20);
             this.txtSearch.TabIndex = 1;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(876, 54);
+            this.btnSearch.Location = new System.Drawing.Point(657, 44);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(90, 32);
+            this.btnSearch.Size = new System.Drawing.Size(68, 26);
             this.btnSearch.TabIndex = 2;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -64,9 +67,10 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(976, 54);
+            this.btnClear.Location = new System.Drawing.Point(732, 44);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(90, 32);
+            this.btnClear.Size = new System.Drawing.Size(68, 26);
             this.btnClear.TabIndex = 3;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -74,9 +78,10 @@
             // 
             // btnViewProfile
             // 
-            this.btnViewProfile.Location = new System.Drawing.Point(1655, 70);
+            this.btnViewProfile.Location = new System.Drawing.Point(1241, 57);
+            this.btnViewProfile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnViewProfile.Name = "btnViewProfile";
-            this.btnViewProfile.Size = new System.Drawing.Size(174, 34);
+            this.btnViewProfile.Size = new System.Drawing.Size(130, 28);
             this.btnViewProfile.TabIndex = 4;
             this.btnViewProfile.Text = "View Profile";
             this.btnViewProfile.UseVisualStyleBackColor = true;
@@ -84,9 +89,10 @@
             // 
             // btnViewDocuments
             // 
-            this.btnViewDocuments.Location = new System.Drawing.Point(1655, 113);
+            this.btnViewDocuments.Location = new System.Drawing.Point(1241, 92);
+            this.btnViewDocuments.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnViewDocuments.Name = "btnViewDocuments";
-            this.btnViewDocuments.Size = new System.Drawing.Size(174, 34);
+            this.btnViewDocuments.Size = new System.Drawing.Size(130, 28);
             this.btnViewDocuments.TabIndex = 5;
             this.btnViewDocuments.Text = "View Documents";
             this.btnViewDocuments.UseVisualStyleBackColor = true;
@@ -94,9 +100,10 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(1655, 156);
+            this.btnBack.Location = new System.Drawing.Point(1241, 127);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(174, 34);
+            this.btnBack.Size = new System.Drawing.Size(130, 28);
             this.btnBack.TabIndex = 6;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
@@ -105,17 +112,20 @@
             // lblCount
             // 
             this.lblCount.AutoSize = true;
-            this.lblCount.Location = new System.Drawing.Point(543, 539);
+            this.lblCount.Location = new System.Drawing.Point(407, 438);
+            this.lblCount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCount.Name = "lblCount";
-            this.lblCount.Size = new System.Drawing.Size(124, 16);
+            this.lblCount.Size = new System.Drawing.Size(100, 13);
             this.lblCount.TabIndex = 7;
             this.lblCount.Text = "Total: 0 applicant(s)";
             // 
             // frmApplicantList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1902, 1033);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackColor = System.Drawing.Color.OldLace;
+            this.ClientSize = new System.Drawing.Size(1368, 741);
             this.Controls.Add(this.lblCount);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnViewDocuments);
@@ -124,8 +134,11 @@
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.dgvApplicants);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MinimizeBox = false;
             this.Name = "frmApplicantList";
             this.Text = "All Applicants";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmApplicantList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvApplicants)).EndInit();
             this.ResumeLayout(false);

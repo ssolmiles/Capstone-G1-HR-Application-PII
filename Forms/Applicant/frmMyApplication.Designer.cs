@@ -40,169 +40,155 @@ namespace HRApplicantSystem.Forms.Applicant
             this.lblPickJob = new System.Windows.Forms.Label();
             this.cboVacancy = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
-
-            // ── listViewApps ──────────────────────────────────
+            // 
+            // listViewApps
+            // 
             this.listViewApps.HideSelection = false;
-            this.listViewApps.Location = new System.Drawing.Point(20, 100);
-            this.listViewApps.Margin = new System.Windows.Forms.Padding(4);
+            this.listViewApps.Location = new System.Drawing.Point(15, 81);
             this.listViewApps.Name = "listViewApps";
-            this.listViewApps.Size = new System.Drawing.Size(860, 380);
+            this.listViewApps.Size = new System.Drawing.Size(646, 310);
             this.listViewApps.TabIndex = 0;
             this.listViewApps.UseCompatibleStateImageBehavior = false;
-            this.listViewApps.SelectedIndexChanged +=
-                new System.EventHandler(this.listViewApps_SelectedIndexChanged);
-
-            // ── lblPickJob ────────────────────────────────────
-            // Shown only when the applicant clicks Edit Position.
-            this.lblPickJob.AutoSize = true;
-            this.lblPickJob.Font = new System.Drawing.Font("Verdana", 9F,
-                                          System.Drawing.FontStyle.Italic);
-            this.lblPickJob.ForeColor = System.Drawing.Color.FromArgb(31, 92, 153);
-            this.lblPickJob.Location = new System.Drawing.Point(20, 492);
-            this.lblPickJob.Name = "lblPickJob";
-            this.lblPickJob.TabIndex = 20;
-            this.lblPickJob.Text = "Choose a new position, then click Save Draft:";
-            this.lblPickJob.Visible = false;
-
-            // ── cboVacancy ────────────────────────────────────
-            // Shown only when the applicant clicks Edit Position.
-            this.cboVacancy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboVacancy.Font = new System.Drawing.Font("Verdana", 10F);
-            this.cboVacancy.Location = new System.Drawing.Point(20, 518);
-            this.cboVacancy.Name = "cboVacancy";
-            this.cboVacancy.Size = new System.Drawing.Size(860, 28);
-            this.cboVacancy.TabIndex = 21;
-            this.cboVacancy.Visible = false;
-            this.cboVacancy.SelectedIndexChanged +=
-                new System.EventHandler(this.cboVacancy_SelectedIndexChanged);
-
-            // ── btnSaveDraft ──────────────────────────────────
-            // Persists the vacancy chosen in cboVacancy without submitting.
-            this.btnSaveDraft.BackColor = System.Drawing.Color.FromArgb(31, 92, 153);
+            this.listViewApps.SelectedIndexChanged += new System.EventHandler(this.listViewApps_SelectedIndexChanged);
+            // 
+            // btnSaveDraft
+            // 
+            this.btnSaveDraft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
             this.btnSaveDraft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSaveDraft.Font = new System.Drawing.Font("Verdana", 10F,
-                                            System.Drawing.FontStyle.Bold);
+            this.btnSaveDraft.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnSaveDraft.ForeColor = System.Drawing.Color.White;
-            this.btnSaveDraft.Location = new System.Drawing.Point(900, 100);
-            this.btnSaveDraft.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSaveDraft.Location = new System.Drawing.Point(675, 81);
             this.btnSaveDraft.Name = "btnSaveDraft";
-            this.btnSaveDraft.Size = new System.Drawing.Size(190, 44);
+            this.btnSaveDraft.Size = new System.Drawing.Size(142, 36);
             this.btnSaveDraft.TabIndex = 1;
             this.btnSaveDraft.Text = "Save Draft";
             this.btnSaveDraft.UseVisualStyleBackColor = false;
-            this.btnSaveDraft.Click +=
-                new System.EventHandler(this.btnSaveDraft_Click);
-
-            // ── btnSubmit ─────────────────────────────────────
-            // Promotes 'draft' → 'submitted'.
-            this.btnSubmit.BackColor = System.Drawing.Color.FromArgb(39, 174, 96);
+            this.btnSaveDraft.Click += new System.EventHandler(this.btnSaveDraft_Click);
+            // 
+            // btnSubmit
+            // 
+            this.btnSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
             this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSubmit.Font = new System.Drawing.Font("Verdana", 10F,
-                                         System.Drawing.FontStyle.Bold);
+            this.btnSubmit.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnSubmit.ForeColor = System.Drawing.Color.White;
-            this.btnSubmit.Location = new System.Drawing.Point(900, 156);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSubmit.Location = new System.Drawing.Point(675, 127);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(190, 44);
+            this.btnSubmit.Size = new System.Drawing.Size(142, 36);
             this.btnSubmit.TabIndex = 2;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = false;
-            this.btnSubmit.Click +=
-                new System.EventHandler(this.btnSubmit_Click);
-
-            // ── btnEdit ───────────────────────────────────────
-            // DRAFT only: reveals cboVacancy to change the position.
-            this.btnEdit.BackColor = System.Drawing.Color.FromArgb(243, 156, 18);
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(156)))), ((int)(((byte)(18)))));
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEdit.Font = new System.Drawing.Font("Verdana", 10F,
-                                       System.Drawing.FontStyle.Bold);
+            this.btnEdit.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnEdit.ForeColor = System.Drawing.Color.White;
-            this.btnEdit.Location = new System.Drawing.Point(900, 212);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEdit.Location = new System.Drawing.Point(675, 172);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(190, 44);
+            this.btnEdit.Size = new System.Drawing.Size(142, 36);
             this.btnEdit.TabIndex = 3;
             this.btnEdit.Text = "Edit Position";
             this.btnEdit.UseVisualStyleBackColor = false;
-            this.btnEdit.Click +=
-                new System.EventHandler(this.btnEdit_Click);
-
-            // ── btnWithdraw ───────────────────────────────────
-            // SUBMITTED only: removes the application before HR reviews it.
-            this.btnWithdraw.BackColor = System.Drawing.Color.FromArgb(142, 68, 173);
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnWithdraw
+            // 
+            this.btnWithdraw.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(68)))), ((int)(((byte)(173)))));
             this.btnWithdraw.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnWithdraw.Font = new System.Drawing.Font("Verdana", 10F,
-                                           System.Drawing.FontStyle.Bold);
+            this.btnWithdraw.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnWithdraw.ForeColor = System.Drawing.Color.White;
-            this.btnWithdraw.Location = new System.Drawing.Point(900, 268);
-            this.btnWithdraw.Margin = new System.Windows.Forms.Padding(4);
+            this.btnWithdraw.Location = new System.Drawing.Point(675, 218);
             this.btnWithdraw.Name = "btnWithdraw";
-            this.btnWithdraw.Size = new System.Drawing.Size(190, 44);
+            this.btnWithdraw.Size = new System.Drawing.Size(142, 36);
             this.btnWithdraw.TabIndex = 4;
             this.btnWithdraw.Text = "Withdraw";
             this.btnWithdraw.UseVisualStyleBackColor = false;
-            this.btnWithdraw.Click +=
-                new System.EventHandler(this.btnWithdraw_Click);
-
-            // ── btnDelete ─────────────────────────────────────
-            // DRAFT only: permanently removes a draft application.
-            // FIX: Click event was missing in the original file.
-            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(192, 57, 43);
+            this.btnWithdraw.Click += new System.EventHandler(this.btnWithdraw_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Font = new System.Drawing.Font("Verdana", 10F,
-                                         System.Drawing.FontStyle.Bold);
+            this.btnDelete.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(900, 324);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDelete.Location = new System.Drawing.Point(675, 263);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(190, 44);
+            this.btnDelete.Size = new System.Drawing.Size(142, 36);
             this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
-            this.btnDelete.Click +=
-                new System.EventHandler(this.btnDelete_Click);
-
-            // ── btnBack ───────────────────────────────────────
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnBack
+            // 
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBack.Font = new System.Drawing.Font("Verdana", 10F,
-                                       System.Drawing.FontStyle.Bold);
-            this.btnBack.ForeColor = System.Drawing.Color.FromArgb(85, 85, 85);
-            this.btnBack.Location = new System.Drawing.Point(900, 500);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBack.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
+            this.btnBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.btnBack.Location = new System.Drawing.Point(675, 406);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(190, 44);
+            this.btnBack.Size = new System.Drawing.Size(142, 36);
             this.btnBack.TabIndex = 6;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
-            this.btnBack.Click +=
-                new System.EventHandler(this.btnBack_Click);
-
-            // ── label2 ────────────────────────────────────────
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // label2
+            // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Verdana", 10F);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(136, 136, 136);
-            this.label2.Location = new System.Drawing.Point(20, 65);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.label2.Location = new System.Drawing.Point(15, 53);
             this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(694, 17);
             this.label2.TabIndex = 12;
-            this.label2.Text =
-                "Select an application to manage it. " +
-                "Drafts are created when you apply on the Job Vacancies page.";
-
-            // ── lblTitle ──────────────────────────────────────
+            this.label2.Text = "Select an application to manage it. Drafts are created when you apply on the Job " +
+    "Vacancies page.";
+            // 
+            // lblTitle
+            // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Verdana", 18F,
-                                        System.Drawing.FontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(31, 56, 100);
-            this.lblTitle.Location = new System.Drawing.Point(20, 20);
+            this.lblTitle.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
+            this.lblTitle.Location = new System.Drawing.Point(15, 16);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(211, 29);
             this.lblTitle.TabIndex = 11;
             this.lblTitle.Text = "My Application";
-
-            // ── frmMyApplication ──────────────────────────────
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            // 
+            // lblPickJob
+            // 
+            this.lblPickJob.AutoSize = true;
+            this.lblPickJob.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Italic);
+            this.lblPickJob.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
+            this.lblPickJob.Location = new System.Drawing.Point(15, 400);
+            this.lblPickJob.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPickJob.Name = "lblPickJob";
+            this.lblPickJob.Size = new System.Drawing.Size(279, 14);
+            this.lblPickJob.TabIndex = 20;
+            this.lblPickJob.Text = "Choose a new position, then click Save Draft:";
+            this.lblPickJob.Visible = false;
+            // 
+            // cboVacancy
+            // 
+            this.cboVacancy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboVacancy.Font = new System.Drawing.Font("Verdana", 10F);
+            this.cboVacancy.Location = new System.Drawing.Point(15, 421);
+            this.cboVacancy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboVacancy.Name = "cboVacancy";
+            this.cboVacancy.Size = new System.Drawing.Size(646, 24);
+            this.cboVacancy.TabIndex = 21;
+            this.cboVacancy.Visible = false;
+            this.cboVacancy.SelectedIndexChanged += new System.EventHandler(this.cboVacancy_SelectedIndexChanged);
+            // 
+            // frmMyApplication
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1140, 620);
+            this.BackColor = System.Drawing.Color.OldLace;
+            this.ClientSize = new System.Drawing.Size(1368, 741);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listViewApps);
@@ -214,15 +200,16 @@ namespace HRApplicantSystem.Forms.Applicant
             this.Controls.Add(this.btnWithdraw);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnBack);
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(1140, 620);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(859, 511);
             this.Name = "frmMyApplication";
-            this.StartPosition =
-                System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "My Application";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMyApplication_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion

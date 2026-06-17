@@ -33,7 +33,7 @@
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
             this.lblTitle.Location = new System.Drawing.Point(709, 159);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(258, 46);
+            this.lblTitle.Size = new System.Drawing.Size(209, 37);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "HR Staff Portal";
             // 
@@ -44,7 +44,7 @@
             this.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
             this.lblSubtitle.Location = new System.Drawing.Point(724, 205);
             this.lblSubtitle.Name = "lblSubtitle";
-            this.lblSubtitle.Size = new System.Drawing.Size(243, 23);
+            this.lblSubtitle.Size = new System.Drawing.Size(209, 19);
             this.lblSubtitle.TabIndex = 1;
             this.lblSubtitle.Text = "Sign in with your HR credentials";
             // 
@@ -55,7 +55,7 @@
             this.lblEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblEmail.Location = new System.Drawing.Point(684, 265);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(55, 23);
+            this.lblEmail.Size = new System.Drawing.Size(44, 19);
             this.lblEmail.TabIndex = 2;
             this.lblEmail.Text = "Email:";
             this.lblEmail.Click += new System.EventHandler(this.lblEmail_Click);
@@ -66,7 +66,7 @@
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.txtEmail.Location = new System.Drawing.Point(684, 288);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(310, 32);
+            this.txtEmail.Size = new System.Drawing.Size(310, 27);
             this.txtEmail.TabIndex = 3;
             // 
             // lblPassword
@@ -76,7 +76,7 @@
             this.lblPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblPassword.Location = new System.Drawing.Point(684, 330);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(84, 23);
+            this.lblPassword.Size = new System.Drawing.Size(70, 19);
             this.lblPassword.TabIndex = 4;
             this.lblPassword.Text = "Password:";
             this.lblPassword.Click += new System.EventHandler(this.lblPassword_Click);
@@ -88,7 +88,7 @@
             this.txtPassword.Location = new System.Drawing.Point(684, 353);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '●';
-            this.txtPassword.Size = new System.Drawing.Size(310, 32);
+            this.txtPassword.Size = new System.Drawing.Size(310, 27);
             this.txtPassword.TabIndex = 5;
             this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
@@ -99,7 +99,7 @@
             this.chkShowPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.chkShowPass.Location = new System.Drawing.Point(684, 392);
             this.chkShowPass.Name = "chkShowPass";
-            this.chkShowPass.Size = new System.Drawing.Size(132, 24);
+            this.chkShowPass.Size = new System.Drawing.Size(108, 19);
             this.chkShowPass.TabIndex = 6;
             this.chkShowPass.Text = "Show Password";
             this.chkShowPass.UseVisualStyleBackColor = true;
@@ -151,15 +151,15 @@
             this.lblCreateAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
             this.lblCreateAccount.Location = new System.Drawing.Point(684, 530);
             this.lblCreateAccount.Name = "lblCreateAccount";
-            this.lblCreateAccount.Size = new System.Drawing.Size(141, 20);
+            this.lblCreateAccount.Size = new System.Drawing.Size(113, 15);
             this.lblCreateAccount.TabIndex = 100;
             this.lblCreateAccount.Text = "Create HR Account";
             this.lblCreateAccount.Click += new System.EventHandler(this.lblCreateAccount_Click);
             // 
             // frmHRLogin
             // 
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1902, 1033);
+            this.BackColor = System.Drawing.Color.OldLace;
+            this.ClientSize = new System.Drawing.Size(1368, 741);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblSubtitle);
             this.Controls.Add(this.lblEmail);
@@ -172,10 +172,11 @@
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.lblCreateAccount);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmHRLogin";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HR Staff Login";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmHRLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

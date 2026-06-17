@@ -62,7 +62,7 @@
             this.lblFullName.ForeColor = System.Drawing.Color.Black;
             this.lblFullName.Location = new System.Drawing.Point(916, 185);
             this.lblFullName.Name = "lblFullName";
-            this.lblFullName.Size = new System.Drawing.Size(27, 23);
+            this.lblFullName.Size = new System.Drawing.Size(23, 19);
             this.lblFullName.TabIndex = 99;
             this.lblFullName.Text = "—";
             // 
@@ -73,7 +73,7 @@
             this.lblEmail.ForeColor = System.Drawing.Color.Black;
             this.lblEmail.Location = new System.Drawing.Point(916, 235);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(27, 23);
+            this.lblEmail.Size = new System.Drawing.Size(23, 19);
             this.lblEmail.TabIndex = 99;
             this.lblEmail.Text = "—";
             // 
@@ -84,7 +84,7 @@
             this.lblPhone.ForeColor = System.Drawing.Color.Black;
             this.lblPhone.Location = new System.Drawing.Point(916, 285);
             this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(27, 23);
+            this.lblPhone.Size = new System.Drawing.Size(23, 19);
             this.lblPhone.TabIndex = 99;
             this.lblPhone.Text = "—";
             // 
@@ -95,7 +95,7 @@
             this.lblGender.ForeColor = System.Drawing.Color.Black;
             this.lblGender.Location = new System.Drawing.Point(916, 335);
             this.lblGender.Name = "lblGender";
-            this.lblGender.Size = new System.Drawing.Size(27, 23);
+            this.lblGender.Size = new System.Drawing.Size(23, 19);
             this.lblGender.TabIndex = 99;
             this.lblGender.Text = "—";
             // 
@@ -106,7 +106,7 @@
             this.lblBirthdate.ForeColor = System.Drawing.Color.Black;
             this.lblBirthdate.Location = new System.Drawing.Point(916, 385);
             this.lblBirthdate.Name = "lblBirthdate";
-            this.lblBirthdate.Size = new System.Drawing.Size(27, 23);
+            this.lblBirthdate.Size = new System.Drawing.Size(23, 19);
             this.lblBirthdate.TabIndex = 99;
             this.lblBirthdate.Text = "—";
             // 
@@ -117,7 +117,7 @@
             this.lblAddress.ForeColor = System.Drawing.Color.Black;
             this.lblAddress.Location = new System.Drawing.Point(893, 538);
             this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(27, 23);
+            this.lblAddress.Size = new System.Drawing.Size(23, 19);
             this.lblAddress.TabIndex = 99;
             this.lblAddress.Text = "—";
             // 
@@ -128,7 +128,7 @@
             this.lblCity.ForeColor = System.Drawing.Color.Black;
             this.lblCity.Location = new System.Drawing.Point(893, 588);
             this.lblCity.Name = "lblCity";
-            this.lblCity.Size = new System.Drawing.Size(27, 23);
+            this.lblCity.Size = new System.Drawing.Size(23, 19);
             this.lblCity.TabIndex = 99;
             this.lblCity.Text = "—";
             // 
@@ -139,7 +139,7 @@
             this.lblProvince.ForeColor = System.Drawing.Color.Black;
             this.lblProvince.Location = new System.Drawing.Point(893, 638);
             this.lblProvince.Name = "lblProvince";
-            this.lblProvince.Size = new System.Drawing.Size(27, 23);
+            this.lblProvince.Size = new System.Drawing.Size(23, 19);
             this.lblProvince.TabIndex = 99;
             this.lblProvince.Text = "—";
             // 
@@ -150,7 +150,7 @@
             this.lblZip.ForeColor = System.Drawing.Color.Black;
             this.lblZip.Location = new System.Drawing.Point(893, 688);
             this.lblZip.Name = "lblZip";
-            this.lblZip.Size = new System.Drawing.Size(27, 23);
+            this.lblZip.Size = new System.Drawing.Size(23, 19);
             this.lblZip.TabIndex = 99;
             this.lblZip.Text = "—";
             // 
@@ -161,7 +161,7 @@
             this.lblSchool.ForeColor = System.Drawing.Color.Black;
             this.lblSchool.Location = new System.Drawing.Point(1280, 192);
             this.lblSchool.Name = "lblSchool";
-            this.lblSchool.Size = new System.Drawing.Size(27, 23);
+            this.lblSchool.Size = new System.Drawing.Size(23, 19);
             this.lblSchool.TabIndex = 99;
             this.lblSchool.Text = "—";
             // 
@@ -172,7 +172,7 @@
             this.lblDegree.ForeColor = System.Drawing.Color.Black;
             this.lblDegree.Location = new System.Drawing.Point(1280, 242);
             this.lblDegree.Name = "lblDegree";
-            this.lblDegree.Size = new System.Drawing.Size(27, 23);
+            this.lblDegree.Size = new System.Drawing.Size(23, 19);
             this.lblDegree.TabIndex = 99;
             this.lblDegree.Text = "—";
             // 
@@ -183,7 +183,7 @@
             this.lblYearGrad.ForeColor = System.Drawing.Color.Black;
             this.lblYearGrad.Location = new System.Drawing.Point(1280, 292);
             this.lblYearGrad.Name = "lblYearGrad";
-            this.lblYearGrad.Size = new System.Drawing.Size(27, 23);
+            this.lblYearGrad.Size = new System.Drawing.Size(23, 19);
             this.lblYearGrad.TabIndex = 99;
             this.lblYearGrad.Text = "—";
             // 
@@ -194,7 +194,7 @@
             this.lblSkills.ForeColor = System.Drawing.Color.Black;
             this.lblSkills.Location = new System.Drawing.Point(1280, 342);
             this.lblSkills.Name = "lblSkills";
-            this.lblSkills.Size = new System.Drawing.Size(27, 23);
+            this.lblSkills.Size = new System.Drawing.Size(23, 19);
             this.lblSkills.TabIndex = 99;
             this.lblSkills.Text = "—";
             // 
@@ -205,7 +205,7 @@
             this.lblCompany.ForeColor = System.Drawing.Color.Black;
             this.lblCompany.Location = new System.Drawing.Point(1270, 532);
             this.lblCompany.Name = "lblCompany";
-            this.lblCompany.Size = new System.Drawing.Size(27, 23);
+            this.lblCompany.Size = new System.Drawing.Size(23, 19);
             this.lblCompany.TabIndex = 99;
             this.lblCompany.Text = "—";
             // 
@@ -216,7 +216,7 @@
             this.lblPosition.ForeColor = System.Drawing.Color.Black;
             this.lblPosition.Location = new System.Drawing.Point(1270, 582);
             this.lblPosition.Name = "lblPosition";
-            this.lblPosition.Size = new System.Drawing.Size(27, 23);
+            this.lblPosition.Size = new System.Drawing.Size(23, 19);
             this.lblPosition.TabIndex = 99;
             this.lblPosition.Text = "—";
             // 
@@ -227,7 +227,7 @@
             this.lblDuration.ForeColor = System.Drawing.Color.Black;
             this.lblDuration.Location = new System.Drawing.Point(1270, 632);
             this.lblDuration.Name = "lblDuration";
-            this.lblDuration.Size = new System.Drawing.Size(27, 23);
+            this.lblDuration.Size = new System.Drawing.Size(23, 19);
             this.lblDuration.TabIndex = 99;
             this.lblDuration.Text = "—";
             // 
@@ -238,7 +238,7 @@
             this.lblCreatedAt.ForeColor = System.Drawing.Color.Black;
             this.lblCreatedAt.Location = new System.Drawing.Point(1270, 732);
             this.lblCreatedAt.Name = "lblCreatedAt";
-            this.lblCreatedAt.Size = new System.Drawing.Size(27, 23);
+            this.lblCreatedAt.Size = new System.Drawing.Size(23, 19);
             this.lblCreatedAt.TabIndex = 99;
             this.lblCreatedAt.Text = "—";
             // 
@@ -249,7 +249,7 @@
             this.lblStatus.ForeColor = System.Drawing.Color.Black;
             this.lblStatus.Location = new System.Drawing.Point(1270, 682);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(27, 23);
+            this.lblStatus.Size = new System.Drawing.Size(23, 19);
             this.lblStatus.TabIndex = 99;
             this.lblStatus.Text = "—";
             // 
@@ -260,7 +260,7 @@
             this.lblHdrName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblHdrName.Location = new System.Drawing.Point(836, 185);
             this.lblHdrName.Name = "lblHdrName";
-            this.lblHdrName.Size = new System.Drawing.Size(96, 23);
+            this.lblHdrName.Size = new System.Drawing.Size(80, 19);
             this.lblHdrName.TabIndex = 99;
             this.lblHdrName.Text = "Full Name:";
             // 
@@ -271,7 +271,7 @@
             this.lblHdrEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblHdrEmail.Location = new System.Drawing.Point(836, 235);
             this.lblHdrEmail.Name = "lblHdrEmail";
-            this.lblHdrEmail.Size = new System.Drawing.Size(59, 23);
+            this.lblHdrEmail.Size = new System.Drawing.Size(49, 19);
             this.lblHdrEmail.TabIndex = 99;
             this.lblHdrEmail.Text = "Email:";
             // 
@@ -282,7 +282,7 @@
             this.lblHdrPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblHdrPhone.Location = new System.Drawing.Point(836, 285);
             this.lblHdrPhone.Name = "lblHdrPhone";
-            this.lblHdrPhone.Size = new System.Drawing.Size(64, 23);
+            this.lblHdrPhone.Size = new System.Drawing.Size(55, 19);
             this.lblHdrPhone.TabIndex = 99;
             this.lblHdrPhone.Text = "Phone:";
             // 
@@ -293,7 +293,7 @@
             this.lblHdrGender.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblHdrGender.Location = new System.Drawing.Point(836, 335);
             this.lblHdrGender.Name = "lblHdrGender";
-            this.lblHdrGender.Size = new System.Drawing.Size(74, 23);
+            this.lblHdrGender.Size = new System.Drawing.Size(63, 19);
             this.lblHdrGender.TabIndex = 99;
             this.lblHdrGender.Text = "Gender:";
             // 
@@ -304,7 +304,7 @@
             this.lblHdrBirth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblHdrBirth.Location = new System.Drawing.Point(836, 385);
             this.lblHdrBirth.Name = "lblHdrBirth";
-            this.lblHdrBirth.Size = new System.Drawing.Size(91, 23);
+            this.lblHdrBirth.Size = new System.Drawing.Size(75, 19);
             this.lblHdrBirth.TabIndex = 99;
             this.lblHdrBirth.Text = "Birthdate:";
             // 
@@ -315,7 +315,7 @@
             this.lblHdrAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblHdrAddress.Location = new System.Drawing.Point(813, 538);
             this.lblHdrAddress.Name = "lblHdrAddress";
-            this.lblHdrAddress.Size = new System.Drawing.Size(79, 23);
+            this.lblHdrAddress.Size = new System.Drawing.Size(67, 19);
             this.lblHdrAddress.TabIndex = 99;
             this.lblHdrAddress.Text = "Address:";
             // 
@@ -326,7 +326,7 @@
             this.lblHdrCity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblHdrCity.Location = new System.Drawing.Point(813, 588);
             this.lblHdrCity.Name = "lblHdrCity";
-            this.lblHdrCity.Size = new System.Drawing.Size(47, 23);
+            this.lblHdrCity.Size = new System.Drawing.Size(39, 19);
             this.lblHdrCity.TabIndex = 99;
             this.lblHdrCity.Text = "City:";
             // 
@@ -337,7 +337,7 @@
             this.lblHdrProvince.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblHdrProvince.Location = new System.Drawing.Point(813, 638);
             this.lblHdrProvince.Name = "lblHdrProvince";
-            this.lblHdrProvince.Size = new System.Drawing.Size(83, 23);
+            this.lblHdrProvince.Size = new System.Drawing.Size(72, 19);
             this.lblHdrProvince.TabIndex = 99;
             this.lblHdrProvince.Text = "Province:";
             // 
@@ -348,7 +348,7 @@
             this.lblHdrZip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblHdrZip.Location = new System.Drawing.Point(813, 688);
             this.lblHdrZip.Name = "lblHdrZip";
-            this.lblHdrZip.Size = new System.Drawing.Size(87, 23);
+            this.lblHdrZip.Size = new System.Drawing.Size(74, 19);
             this.lblHdrZip.TabIndex = 99;
             this.lblHdrZip.Text = "Zip Code:";
             // 
@@ -359,7 +359,7 @@
             this.lblHdrSchool.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblHdrSchool.Location = new System.Drawing.Point(1140, 192);
             this.lblHdrSchool.Name = "lblHdrSchool";
-            this.lblHdrSchool.Size = new System.Drawing.Size(68, 23);
+            this.lblHdrSchool.Size = new System.Drawing.Size(58, 19);
             this.lblHdrSchool.TabIndex = 99;
             this.lblHdrSchool.Text = "School:";
             // 
@@ -370,7 +370,7 @@
             this.lblHdrDegree.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblHdrDegree.Location = new System.Drawing.Point(1140, 242);
             this.lblHdrDegree.Name = "lblHdrDegree";
-            this.lblHdrDegree.Size = new System.Drawing.Size(73, 23);
+            this.lblHdrDegree.Size = new System.Drawing.Size(62, 19);
             this.lblHdrDegree.TabIndex = 99;
             this.lblHdrDegree.Text = "Degree:";
             // 
@@ -381,7 +381,7 @@
             this.lblHdrYear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblHdrYear.Location = new System.Drawing.Point(1140, 292);
             this.lblHdrYear.Name = "lblHdrYear";
-            this.lblHdrYear.Size = new System.Drawing.Size(92, 23);
+            this.lblHdrYear.Size = new System.Drawing.Size(80, 19);
             this.lblHdrYear.TabIndex = 99;
             this.lblHdrYear.Text = "Year Grad:";
             // 
@@ -392,7 +392,7 @@
             this.lblHdrSkills.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblHdrSkills.Location = new System.Drawing.Point(1140, 342);
             this.lblHdrSkills.Name = "lblHdrSkills";
-            this.lblHdrSkills.Size = new System.Drawing.Size(57, 23);
+            this.lblHdrSkills.Size = new System.Drawing.Size(47, 19);
             this.lblHdrSkills.TabIndex = 99;
             this.lblHdrSkills.Text = "Skills:";
             // 
@@ -403,7 +403,7 @@
             this.lblHdrCompany.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblHdrCompany.Location = new System.Drawing.Point(1130, 532);
             this.lblHdrCompany.Name = "lblHdrCompany";
-            this.lblHdrCompany.Size = new System.Drawing.Size(91, 23);
+            this.lblHdrCompany.Size = new System.Drawing.Size(77, 19);
             this.lblHdrCompany.TabIndex = 99;
             this.lblHdrCompany.Text = "Company:";
             // 
@@ -414,7 +414,7 @@
             this.lblHdrPos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblHdrPos.Location = new System.Drawing.Point(1130, 582);
             this.lblHdrPos.Name = "lblHdrPos";
-            this.lblHdrPos.Size = new System.Drawing.Size(78, 23);
+            this.lblHdrPos.Size = new System.Drawing.Size(67, 19);
             this.lblHdrPos.TabIndex = 99;
             this.lblHdrPos.Text = "Position:";
             // 
@@ -425,7 +425,7 @@
             this.lblHdrDur.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblHdrDur.Location = new System.Drawing.Point(1130, 632);
             this.lblHdrDur.Name = "lblHdrDur";
-            this.lblHdrDur.Size = new System.Drawing.Size(86, 23);
+            this.lblHdrDur.Size = new System.Drawing.Size(71, 19);
             this.lblHdrDur.TabIndex = 99;
             this.lblHdrDur.Text = "Duration:";
             // 
@@ -436,7 +436,7 @@
             this.lblHdrStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblHdrStatus.Location = new System.Drawing.Point(1130, 682);
             this.lblHdrStatus.Name = "lblHdrStatus";
-            this.lblHdrStatus.Size = new System.Drawing.Size(65, 23);
+            this.lblHdrStatus.Size = new System.Drawing.Size(53, 19);
             this.lblHdrStatus.TabIndex = 99;
             this.lblHdrStatus.Text = "Status:";
             // 
@@ -447,7 +447,7 @@
             this.lblHdrCreated.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblHdrCreated.Location = new System.Drawing.Point(1130, 732);
             this.lblHdrCreated.Name = "lblHdrCreated";
-            this.lblHdrCreated.Size = new System.Drawing.Size(78, 23);
+            this.lblHdrCreated.Size = new System.Drawing.Size(66, 19);
             this.lblHdrCreated.TabIndex = 99;
             this.lblHdrCreated.Text = "Created:";
             // 
@@ -458,7 +458,7 @@
             this.lblSecPersonal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
             this.lblSecPersonal.Location = new System.Drawing.Point(835, 119);
             this.lblSecPersonal.Name = "lblSecPersonal";
-            this.lblSecPersonal.Size = new System.Drawing.Size(211, 28);
+            this.lblSecPersonal.Size = new System.Drawing.Size(172, 21);
             this.lblSecPersonal.TabIndex = 99;
             this.lblSecPersonal.Text = "Personal Information";
             // 
@@ -469,7 +469,7 @@
             this.lblSecEdu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
             this.lblSecEdu.Location = new System.Drawing.Point(1139, 119);
             this.lblSecEdu.Name = "lblSecEdu";
-            this.lblSecEdu.Size = new System.Drawing.Size(106, 28);
+            this.lblSecEdu.Size = new System.Drawing.Size(87, 21);
             this.lblSecEdu.TabIndex = 99;
             this.lblSecEdu.Text = "Education";
             // 
@@ -480,7 +480,7 @@
             this.lblSecWork.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
             this.lblSecWork.Location = new System.Drawing.Point(1126, 459);
             this.lblSecWork.Name = "lblSecWork";
-            this.lblSecWork.Size = new System.Drawing.Size(171, 28);
+            this.lblSecWork.Size = new System.Drawing.Size(139, 21);
             this.lblSecWork.TabIndex = 99;
             this.lblSecWork.Text = "Work Experience";
             // 
@@ -512,7 +512,9 @@
             // 
             // frmHRApplicantProfile
             // 
-            this.ClientSize = new System.Drawing.Size(1902, 1033);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackColor = System.Drawing.Color.OldLace;
+            this.ClientSize = new System.Drawing.Size(1368, 741);
             this.Controls.Add(this.lblSecPersonal);
             this.Controls.Add(this.lblSecEdu);
             this.Controls.Add(this.lblSecWork);
@@ -554,9 +556,11 @@
             this.Controls.Add(this.lblCreatedAt);
             this.Controls.Add(this.btnViewDocuments);
             this.Controls.Add(this.btnClose);
+            this.MinimizeBox = false;
             this.Name = "frmHRApplicantProfile";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Applicant Profile";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmHRApplicantProfile_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

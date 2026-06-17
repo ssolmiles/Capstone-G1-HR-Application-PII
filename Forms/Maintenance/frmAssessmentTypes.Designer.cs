@@ -31,7 +31,7 @@
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
             this.lblTitle.Location = new System.Drawing.Point(20, 20);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(413, 37);
+            this.lblTitle.Size = new System.Drawing.Size(334, 30);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Assessment Type Management";
             // 
@@ -42,7 +42,7 @@
             this.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
             this.lblSubtitle.Location = new System.Drawing.Point(22, 55);
             this.lblSubtitle.Name = "lblSubtitle";
-            this.lblSubtitle.Size = new System.Drawing.Size(269, 20);
+            this.lblSubtitle.Size = new System.Drawing.Size(224, 15);
             this.lblSubtitle.TabIndex = 1;
             this.lblSubtitle.Text = "Add, update, or remove assessment types";
             // 
@@ -53,7 +53,7 @@
             this.lblName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.lblName.Location = new System.Drawing.Point(20, 90);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(66, 23);
+            this.lblName.Size = new System.Drawing.Size(54, 19);
             this.lblName.TabIndex = 2;
             this.lblName.Text = "Label: *";
             // 
@@ -63,7 +63,7 @@
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtName.Location = new System.Drawing.Point(80, 87);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(260, 30);
+            this.txtName.Size = new System.Drawing.Size(260, 25);
             this.txtName.TabIndex = 3;
             // 
             // btnAdd
@@ -138,7 +138,10 @@
             // 
             // frmAssessmentTypes
             // 
-            this.ClientSize = new System.Drawing.Size(1902, 1033);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.BackColor = System.Drawing.Color.OldLace;
+            this.ClientSize = new System.Drawing.Size(1368, 741);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblSubtitle);
             this.Controls.Add(this.lblName);
@@ -148,8 +151,10 @@
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.dgvList);
+            this.MinimizeBox = false;
             this.Name = "frmAssessmentTypes";
             this.Text = "Assessment Type Management";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmAssessmentTypes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             this.ResumeLayout(false);

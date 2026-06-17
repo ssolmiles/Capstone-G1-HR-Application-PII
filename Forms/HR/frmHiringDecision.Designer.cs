@@ -109,9 +109,9 @@
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
             this.groupBox1.Location = new System.Drawing.Point(240, 108);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(225, 171);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
@@ -195,9 +195,9 @@
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
             this.groupBox2.Location = new System.Drawing.Point(482, 108);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(225, 171);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
@@ -235,7 +235,7 @@
             this.btnHire.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnHire.ForeColor = System.Drawing.Color.White;
             this.btnHire.Location = new System.Drawing.Point(15, 73);
-            this.btnHire.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnHire.Margin = new System.Windows.Forms.Padding(2);
             this.btnHire.Name = "btnHire";
             this.btnHire.Size = new System.Drawing.Size(195, 28);
             this.btnHire.TabIndex = 2;
@@ -250,7 +250,7 @@
             this.btnReject.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnReject.ForeColor = System.Drawing.Color.White;
             this.btnReject.Location = new System.Drawing.Point(15, 107);
-            this.btnReject.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnReject.Margin = new System.Windows.Forms.Padding(2);
             this.btnReject.Name = "btnReject";
             this.btnReject.Size = new System.Drawing.Size(195, 28);
             this.btnReject.TabIndex = 3;
@@ -265,9 +265,9 @@
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
             this.groupBox3.Location = new System.Drawing.Point(482, 302);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox3.Size = new System.Drawing.Size(225, 146);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
@@ -290,7 +290,7 @@
             this.txtFinalRemarks.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFinalRemarks.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtFinalRemarks.Location = new System.Drawing.Point(15, 45);
-            this.txtFinalRemarks.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFinalRemarks.Margin = new System.Windows.Forms.Padding(2);
             this.txtFinalRemarks.Multiline = true;
             this.txtFinalRemarks.Name = "txtFinalRemarks";
             this.txtFinalRemarks.Size = new System.Drawing.Size(196, 90);
@@ -301,7 +301,7 @@
             // 
             this.dgvPassed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPassed.Location = new System.Drawing.Point(746, 91);
-            this.dgvPassed.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvPassed.Margin = new System.Windows.Forms.Padding(2);
             this.dgvPassed.Name = "dgvPassed";
             this.dgvPassed.RowHeadersWidth = 51;
             this.dgvPassed.RowTemplate.Height = 24;
@@ -317,7 +317,7 @@
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnBack.ForeColor = System.Drawing.Color.White;
             this.btnBack.Location = new System.Drawing.Point(1245, 41);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(2);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(105, 32);
             this.btnBack.TabIndex = 8;
@@ -329,7 +329,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1426, 687);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackColor = System.Drawing.Color.OldLace;
+            this.ClientSize = new System.Drawing.Size(1368, 741);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.dgvPassed);
             this.Controls.Add(this.lblTitle);
@@ -338,9 +340,11 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimizeBox = false;
             this.Name = "frmHiringDecision";
             this.Text = "Final Hiring Decision";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmHiringDecision_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

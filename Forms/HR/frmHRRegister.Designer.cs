@@ -35,9 +35,10 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
-            this.lblTitle.Location = new System.Drawing.Point(670, 136);
+            this.lblTitle.Location = new System.Drawing.Point(502, 110);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(356, 46);
+            this.lblTitle.Size = new System.Drawing.Size(288, 37);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "HR Staff Registration";
             // 
@@ -46,9 +47,10 @@
             this.lblSubtitle.AutoSize = true;
             this.lblSubtitle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic);
             this.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            this.lblSubtitle.Location = new System.Drawing.Point(670, 176);
+            this.lblSubtitle.Location = new System.Drawing.Point(502, 143);
+            this.lblSubtitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSubtitle.Name = "lblSubtitle";
-            this.lblSubtitle.Size = new System.Drawing.Size(419, 20);
+            this.lblSubtitle.Size = new System.Drawing.Size(341, 15);
             this.lblSubtitle.TabIndex = 1;
             this.lblSubtitle.Text = "Your account will require Admin activation before you can log in";
             // 
@@ -57,9 +59,10 @@
             this.lblFullName.AutoSize = true;
             this.lblFullName.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblFullName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblFullName.Location = new System.Drawing.Point(670, 221);
+            this.lblFullName.Location = new System.Drawing.Point(502, 180);
+            this.lblFullName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFullName.Name = "lblFullName";
-            this.lblFullName.Size = new System.Drawing.Size(91, 23);
+            this.lblFullName.Size = new System.Drawing.Size(73, 19);
             this.lblFullName.TabIndex = 2;
             this.lblFullName.Text = "Full Name:";
             // 
@@ -67,9 +70,10 @@
             // 
             this.txtFullName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFullName.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtFullName.Location = new System.Drawing.Point(670, 244);
+            this.txtFullName.Location = new System.Drawing.Point(502, 198);
+            this.txtFullName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtFullName.Name = "txtFullName";
-            this.txtFullName.Size = new System.Drawing.Size(310, 32);
+            this.txtFullName.Size = new System.Drawing.Size(233, 27);
             this.txtFullName.TabIndex = 3;
             // 
             // lblEmail
@@ -77,9 +81,10 @@
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblEmail.Location = new System.Drawing.Point(670, 284);
+            this.lblEmail.Location = new System.Drawing.Point(502, 231);
+            this.lblEmail.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(55, 23);
+            this.lblEmail.Size = new System.Drawing.Size(44, 19);
             this.lblEmail.TabIndex = 4;
             this.lblEmail.Text = "Email:";
             // 
@@ -87,9 +92,10 @@
             // 
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtEmail.Location = new System.Drawing.Point(670, 307);
+            this.txtEmail.Location = new System.Drawing.Point(502, 249);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(310, 32);
+            this.txtEmail.Size = new System.Drawing.Size(233, 27);
             this.txtEmail.TabIndex = 5;
             // 
             // lblPassword
@@ -97,9 +103,10 @@
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblPassword.Location = new System.Drawing.Point(670, 347);
+            this.lblPassword.Location = new System.Drawing.Point(502, 282);
+            this.lblPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(84, 23);
+            this.lblPassword.Size = new System.Drawing.Size(70, 19);
             this.lblPassword.TabIndex = 6;
             this.lblPassword.Text = "Password:";
             // 
@@ -107,10 +114,11 @@
             // 
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtPassword.Location = new System.Drawing.Point(670, 370);
+            this.txtPassword.Location = new System.Drawing.Point(502, 301);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '●';
-            this.txtPassword.Size = new System.Drawing.Size(310, 32);
+            this.txtPassword.Size = new System.Drawing.Size(233, 27);
             this.txtPassword.TabIndex = 7;
             // 
             // lblConfirmPassword
@@ -118,9 +126,10 @@
             this.lblConfirmPassword.AutoSize = true;
             this.lblConfirmPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblConfirmPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblConfirmPassword.Location = new System.Drawing.Point(670, 410);
+            this.lblConfirmPassword.Location = new System.Drawing.Point(502, 333);
+            this.lblConfirmPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblConfirmPassword.Name = "lblConfirmPassword";
-            this.lblConfirmPassword.Size = new System.Drawing.Size(150, 23);
+            this.lblConfirmPassword.Size = new System.Drawing.Size(123, 19);
             this.lblConfirmPassword.TabIndex = 8;
             this.lblConfirmPassword.Text = "Confirm Password:";
             // 
@@ -128,10 +137,11 @@
             // 
             this.txtConfirmPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtConfirmPassword.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtConfirmPassword.Location = new System.Drawing.Point(670, 433);
+            this.txtConfirmPassword.Location = new System.Drawing.Point(502, 352);
+            this.txtConfirmPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtConfirmPassword.Name = "txtConfirmPassword";
             this.txtConfirmPassword.PasswordChar = '●';
-            this.txtConfirmPassword.Size = new System.Drawing.Size(310, 32);
+            this.txtConfirmPassword.Size = new System.Drawing.Size(233, 27);
             this.txtConfirmPassword.TabIndex = 9;
             // 
             // lblRole
@@ -139,9 +149,10 @@
             this.lblRole.AutoSize = true;
             this.lblRole.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lblRole.Location = new System.Drawing.Point(670, 506);
+            this.lblRole.Location = new System.Drawing.Point(502, 411);
+            this.lblRole.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRole.Name = "lblRole";
-            this.lblRole.Size = new System.Drawing.Size(132, 23);
+            this.lblRole.Size = new System.Drawing.Size(106, 19);
             this.lblRole.TabIndex = 11;
             this.lblRole.Text = "Requested Role:";
             // 
@@ -149,18 +160,20 @@
             // 
             this.cboRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboRole.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cboRole.Location = new System.Drawing.Point(670, 529);
+            this.cboRole.Location = new System.Drawing.Point(502, 430);
+            this.cboRole.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboRole.Name = "cboRole";
-            this.cboRole.Size = new System.Drawing.Size(310, 31);
+            this.cboRole.Size = new System.Drawing.Size(234, 25);
             this.cboRole.TabIndex = 12;
             // 
             // chkShowPassword
             // 
             this.chkShowPassword.AutoSize = true;
             this.chkShowPassword.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.chkShowPassword.Location = new System.Drawing.Point(670, 470);
+            this.chkShowPassword.Location = new System.Drawing.Point(502, 382);
+            this.chkShowPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chkShowPassword.Name = "chkShowPassword";
-            this.chkShowPassword.Size = new System.Drawing.Size(132, 24);
+            this.chkShowPassword.Size = new System.Drawing.Size(108, 19);
             this.chkShowPassword.TabIndex = 10;
             this.chkShowPassword.Text = "Show Password";
             this.chkShowPassword.CheckedChanged += new System.EventHandler(this.chkShowPassword_CheckedChanged);
@@ -173,9 +186,10 @@
             this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegister.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.btnRegister.ForeColor = System.Drawing.Color.White;
-            this.btnRegister.Location = new System.Drawing.Point(670, 576);
+            this.btnRegister.Location = new System.Drawing.Point(502, 468);
+            this.btnRegister.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(310, 42);
+            this.btnRegister.Size = new System.Drawing.Size(232, 34);
             this.btnRegister.TabIndex = 13;
             this.btnRegister.Text = "REGISTER";
             this.btnRegister.UseVisualStyleBackColor = false;
@@ -188,19 +202,21 @@
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.btnBack.Location = new System.Drawing.Point(670, 628);
+            this.btnBack.Location = new System.Drawing.Point(502, 510);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(200, 28);
+            this.btnBack.Size = new System.Drawing.Size(150, 23);
             this.btnBack.TabIndex = 14;
             this.btnBack.Text = "← Back to Login";
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // frmHRRegister
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1902, 1033);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackColor = System.Drawing.Color.OldLace;
+            this.ClientSize = new System.Drawing.Size(1368, 741);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblSubtitle);
             this.Controls.Add(this.lblFullName);
@@ -217,10 +233,13 @@
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.btnBack);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmHRRegister";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HR Staff Registration";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmHRRegister_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

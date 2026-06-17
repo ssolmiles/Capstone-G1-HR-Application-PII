@@ -92,9 +92,9 @@
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
             this.groupBox1.Location = new System.Drawing.Point(273, 73);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(315, 136);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
@@ -154,9 +154,9 @@
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
             this.groupBox2.Location = new System.Drawing.Point(603, 73);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(315, 136);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
@@ -181,7 +181,7 @@
             this.btnQualified.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnQualified.ForeColor = System.Drawing.Color.White;
             this.btnQualified.Location = new System.Drawing.Point(15, 61);
-            this.btnQualified.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnQualified.Margin = new System.Windows.Forms.Padding(2);
             this.btnQualified.Name = "btnQualified";
             this.btnQualified.Size = new System.Drawing.Size(112, 32);
             this.btnQualified.TabIndex = 1;
@@ -196,7 +196,7 @@
             this.btnNotQualified.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnNotQualified.ForeColor = System.Drawing.Color.White;
             this.btnNotQualified.Location = new System.Drawing.Point(146, 61);
-            this.btnNotQualified.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNotQualified.Margin = new System.Windows.Forms.Padding(2);
             this.btnNotQualified.Name = "btnNotQualified";
             this.btnNotQualified.Size = new System.Drawing.Size(112, 32);
             this.btnNotQualified.TabIndex = 2;
@@ -211,9 +211,9 @@
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
             this.groupBox3.Location = new System.Drawing.Point(278, 214);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox3.Size = new System.Drawing.Size(645, 130);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
@@ -237,7 +237,7 @@
             this.txtRemarks.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRemarks.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtRemarks.Location = new System.Drawing.Point(15, 49);
-            this.txtRemarks.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtRemarks.Margin = new System.Windows.Forms.Padding(2);
             this.txtRemarks.Multiline = true;
             this.txtRemarks.Name = "txtRemarks";
             this.txtRemarks.Size = new System.Drawing.Size(616, 69);
@@ -251,7 +251,7 @@
             this.btnNext.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnNext.ForeColor = System.Drawing.Color.White;
             this.btnNext.Location = new System.Drawing.Point(1190, 379);
-            this.btnNext.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(2);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(207, 37);
             this.btnNext.TabIndex = 5;
@@ -263,7 +263,7 @@
             // 
             this.dgvApplications.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvApplications.Location = new System.Drawing.Point(929, 73);
-            this.dgvApplications.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvApplications.Margin = new System.Windows.Forms.Padding(2);
             this.dgvApplications.Name = "dgvApplications";
             this.dgvApplications.RowHeadersWidth = 51;
             this.dgvApplications.RowTemplate.Height = 24;
@@ -278,7 +278,7 @@
             this.ViewDocuments.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.ViewDocuments.ForeColor = System.Drawing.Color.White;
             this.ViewDocuments.Location = new System.Drawing.Point(1064, 383);
-            this.ViewDocuments.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ViewDocuments.Margin = new System.Windows.Forms.Padding(2);
             this.ViewDocuments.Name = "ViewDocuments";
             this.ViewDocuments.Size = new System.Drawing.Size(112, 32);
             this.ViewDocuments.TabIndex = 3;
@@ -293,7 +293,7 @@
             this.button1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(1282, 17);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(135, 37);
             this.button1.TabIndex = 7;
@@ -317,7 +317,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1426, 687);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.BackColor = System.Drawing.Color.OldLace;
+            this.ClientSize = new System.Drawing.Size(1368, 741);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.ViewDocuments);
             this.Controls.Add(this.dgvApplications);
@@ -328,9 +331,11 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.lblSelectedApplicant);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimizeBox = false;
             this.Name = "frmScreening";
             this.Text = "Application Screening";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmScreening_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

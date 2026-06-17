@@ -86,7 +86,10 @@
             // 
             // txtSearch
             // 
-            
+            this.txtSearch.Location = new System.Drawing.Point(0, 0);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(100, 20);
+            this.txtSearch.TabIndex = 14;
             // 
             // dgvVacancies
             // 
@@ -140,7 +143,10 @@
             // 
             // frmJobVacancyManagement
             // 
-            this.ClientSize = new System.Drawing.Size(1902, 845);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.BackColor = System.Drawing.Color.OldLace;
+            this.ClientSize = new System.Drawing.Size(1368, 741);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnReopen);
             this.Controls.Add(this.btnClose);
@@ -153,8 +159,10 @@
             this.Controls.Add(this.cboEmploymentType);
             this.Controls.Add(this.cboPosition);
             this.Controls.Add(this.cboDepartment);
+            this.MinimizeBox = false;
             this.Name = "frmJobVacancyManagement";
             this.Text = "Job Vacancy Management";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmJobVacancyManagement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVacancies)).EndInit();
             this.ResumeLayout(false);

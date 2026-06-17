@@ -170,8 +170,9 @@ namespace HRApplicantSystem.Forms.HR
             // 
             // frmHRDashboard
             // 
-            this.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.ClientSize = new System.Drawing.Size(1902, 845);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackColor = System.Drawing.Color.OldLace;
+            this.ClientSize = new System.Drawing.Size(1368, 741);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -181,6 +182,7 @@ namespace HRApplicantSystem.Forms.HR
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.lblTitle);
+            this.MinimizeBox = false;
             this.Name = "frmHRDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HR Dashboard";

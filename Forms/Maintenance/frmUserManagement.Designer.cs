@@ -28,7 +28,7 @@
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
             this.lblTitle.Location = new System.Drawing.Point(20, 20);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(253, 37);
+            this.lblTitle.Size = new System.Drawing.Size(204, 30);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "User Management";
             // 
@@ -39,7 +39,7 @@
             this.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
             this.lblSubtitle.Location = new System.Drawing.Point(22, 55);
             this.lblSubtitle.Name = "lblSubtitle";
-            this.lblSubtitle.Size = new System.Drawing.Size(233, 20);
+            this.lblSubtitle.Size = new System.Drawing.Size(189, 15);
             this.lblSubtitle.TabIndex = 1;
             this.lblSubtitle.Text = "Activate or deactivate HR accounts";
             // 
@@ -102,15 +102,20 @@
             // 
             // frmUserManagement
             // 
-            this.ClientSize = new System.Drawing.Size(1902, 1033);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.BackColor = System.Drawing.Color.OldLace;
+            this.ClientSize = new System.Drawing.Size(1368, 741);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblSubtitle);
             this.Controls.Add(this.btnActivate);
             this.Controls.Add(this.btnDeactivate);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.dgvUsers);
+            this.MinimizeBox = false;
             this.Name = "frmUserManagement";
             this.Text = "User Management";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmUserManagement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
             this.ResumeLayout(false);

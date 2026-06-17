@@ -43,39 +43,43 @@
             this.dgvDocuments.AllowUserToAddRows = false;
             this.dgvDocuments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDocuments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDocuments.Location = new System.Drawing.Point(591, 92);
+            this.dgvDocuments.Location = new System.Drawing.Point(443, 75);
+            this.dgvDocuments.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvDocuments.Name = "dgvDocuments";
             this.dgvDocuments.ReadOnly = true;
             this.dgvDocuments.RowHeadersVisible = false;
             this.dgvDocuments.RowHeadersWidth = 51;
             this.dgvDocuments.RowTemplate.Height = 24;
             this.dgvDocuments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDocuments.Size = new System.Drawing.Size(700, 624);
+            this.dgvDocuments.Size = new System.Drawing.Size(525, 507);
             this.dgvDocuments.TabIndex = 0;
             // 
             // lblApplicantName
             // 
             this.lblApplicantName.AutoSize = true;
             this.lblApplicantName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.lblApplicantName.Location = new System.Drawing.Point(496, 68);
+            this.lblApplicantName.Location = new System.Drawing.Point(372, 55);
+            this.lblApplicantName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblApplicantName.Name = "lblApplicantName";
-            this.lblApplicantName.Size = new System.Drawing.Size(0, 28);
+            this.lblApplicantName.Size = new System.Drawing.Size(0, 21);
             this.lblApplicantName.TabIndex = 1;
             // 
             // lblDocCount
             // 
             this.lblDocCount.AutoSize = true;
-            this.lblDocCount.Location = new System.Drawing.Point(1158, 68);
+            this.lblDocCount.Location = new System.Drawing.Point(868, 55);
+            this.lblDocCount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDocCount.Name = "lblDocCount";
-            this.lblDocCount.Size = new System.Drawing.Size(133, 16);
+            this.lblDocCount.Size = new System.Drawing.Size(107, 13);
             this.lblDocCount.TabIndex = 2;
             this.lblDocCount.Text = "0 document record(s)";
             // 
             // btnOpen
             // 
-            this.btnOpen.Location = new System.Drawing.Point(1328, 167);
+            this.btnOpen.Location = new System.Drawing.Point(996, 136);
+            this.btnOpen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(184, 34);
+            this.btnOpen.Size = new System.Drawing.Size(138, 28);
             this.btnOpen.TabIndex = 3;
             this.btnOpen.Text = "Open File";
             this.btnOpen.UseVisualStyleBackColor = true;
@@ -83,9 +87,10 @@
             // 
             // btnRejectDoc
             // 
-            this.btnRejectDoc.Location = new System.Drawing.Point(1328, 223);
+            this.btnRejectDoc.Location = new System.Drawing.Point(996, 181);
+            this.btnRejectDoc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRejectDoc.Name = "btnRejectDoc";
-            this.btnRejectDoc.Size = new System.Drawing.Size(184, 34);
+            this.btnRejectDoc.Size = new System.Drawing.Size(138, 28);
             this.btnRejectDoc.TabIndex = 4;
             this.btnRejectDoc.Text = "Reject Document";
             this.btnRejectDoc.UseVisualStyleBackColor = true;
@@ -93,9 +98,10 @@
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(1328, 275);
+            this.btnRefresh.Location = new System.Drawing.Point(996, 223);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(184, 34);
+            this.btnRefresh.Size = new System.Drawing.Size(138, 28);
             this.btnRefresh.TabIndex = 5;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
@@ -103,9 +109,10 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(1328, 331);
+            this.btnClose.Location = new System.Drawing.Point(996, 269);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(184, 34);
+            this.btnClose.Size = new System.Drawing.Size(138, 28);
             this.btnClose.TabIndex = 6;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -113,9 +120,10 @@
             // 
             // frmHRViewDocuments
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1902, 1033);
+            this.BackColor = System.Drawing.Color.OldLace;
+            this.ClientSize = new System.Drawing.Size(1368, 741);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnRejectDoc);
@@ -123,8 +131,11 @@
             this.Controls.Add(this.lblDocCount);
             this.Controls.Add(this.lblApplicantName);
             this.Controls.Add(this.dgvDocuments);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MinimizeBox = false;
             this.Name = "frmHRViewDocuments";
             this.Text = "Applicant Documents";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmHRViewDocuments_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDocuments)).EndInit();
             this.ResumeLayout(false);

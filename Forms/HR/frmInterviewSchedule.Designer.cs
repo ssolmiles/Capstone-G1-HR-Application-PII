@@ -114,9 +114,9 @@
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
             this.groupBox1.Location = new System.Drawing.Point(245, 98);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(436, 115);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
@@ -184,9 +184,9 @@
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
             this.groupBox2.Location = new System.Drawing.Point(240, 327);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(474, 187);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
@@ -210,7 +210,7 @@
             this.dtpDate.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDate.Location = new System.Drawing.Point(127, 28);
-            this.dtpDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpDate.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(121, 25);
             this.dtpDate.TabIndex = 1;
@@ -232,7 +232,7 @@
             this.dtpTime.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.dtpTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dtpTime.Location = new System.Drawing.Point(335, 28);
-            this.dtpTime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpTime.Margin = new System.Windows.Forms.Padding(2);
             this.dtpTime.Name = "dtpTime";
             this.dtpTime.ShowUpDown = true;
             this.dtpTime.Size = new System.Drawing.Size(106, 25);
@@ -256,7 +256,7 @@
             this.cboInterviewer.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboInterviewer.FormattingEnabled = true;
             this.cboInterviewer.Location = new System.Drawing.Point(127, 65);
-            this.cboInterviewer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboInterviewer.Margin = new System.Windows.Forms.Padding(2);
             this.cboInterviewer.Name = "cboInterviewer";
             this.cboInterviewer.Size = new System.Drawing.Size(196, 25);
             this.cboInterviewer.TabIndex = 5;
@@ -278,7 +278,7 @@
             this.txtLocation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLocation.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtLocation.Location = new System.Drawing.Point(127, 138);
-            this.txtLocation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLocation.Margin = new System.Windows.Forms.Padding(2);
             this.txtLocation.Name = "txtLocation";
             this.txtLocation.Size = new System.Drawing.Size(136, 25);
             this.txtLocation.TabIndex = 9;
@@ -306,7 +306,7 @@
             "On-site",
             "Panel"});
             this.cmbMode.Location = new System.Drawing.Point(127, 99);
-            this.cmbMode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbMode.Margin = new System.Windows.Forms.Padding(2);
             this.cmbMode.Name = "cmbMode";
             this.cmbMode.Size = new System.Drawing.Size(196, 25);
             this.cmbMode.TabIndex = 7;
@@ -317,9 +317,9 @@
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
             this.groupBox3.Location = new System.Drawing.Point(245, 231);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox3.Size = new System.Drawing.Size(216, 81);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
@@ -345,7 +345,7 @@
             this.btnSchedule.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnSchedule.ForeColor = System.Drawing.Color.White;
             this.btnSchedule.Location = new System.Drawing.Point(900, 535);
-            this.btnSchedule.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSchedule.Margin = new System.Windows.Forms.Padding(2);
             this.btnSchedule.Name = "btnSchedule";
             this.btnSchedule.Size = new System.Drawing.Size(141, 32);
             this.btnSchedule.TabIndex = 5;
@@ -359,7 +359,7 @@
             this.btnComplete.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnComplete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(122)))), ((int)(((byte)(60)))));
             this.btnComplete.Location = new System.Drawing.Point(1046, 540);
-            this.btnComplete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnComplete.Margin = new System.Windows.Forms.Padding(2);
             this.btnComplete.Name = "btnComplete";
             this.btnComplete.Size = new System.Drawing.Size(141, 28);
             this.btnComplete.TabIndex = 6;
@@ -374,7 +374,7 @@
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnCancel.ForeColor = System.Drawing.Color.White;
             this.btnCancel.Location = new System.Drawing.Point(1201, 538);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(141, 28);
             this.btnCancel.TabIndex = 7;
@@ -389,7 +389,7 @@
             this.btnNext.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnNext.ForeColor = System.Drawing.Color.White;
             this.btnNext.Location = new System.Drawing.Point(240, 551);
-            this.btnNext.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(2);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(170, 37);
             this.btnNext.TabIndex = 8;
@@ -401,7 +401,7 @@
             // 
             this.dgvSchedules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSchedules.Location = new System.Drawing.Point(732, 298);
-            this.dgvSchedules.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvSchedules.Margin = new System.Windows.Forms.Padding(2);
             this.dgvSchedules.Name = "dgvSchedules";
             this.dgvSchedules.RowHeadersWidth = 51;
             this.dgvSchedules.RowTemplate.Height = 24;
@@ -413,7 +413,7 @@
             // 
             this.dgvToSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvToSchedule.Location = new System.Drawing.Point(732, 98);
-            this.dgvToSchedule.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvToSchedule.Margin = new System.Windows.Forms.Padding(2);
             this.dgvToSchedule.Name = "dgvToSchedule";
             this.dgvToSchedule.RowHeadersWidth = 51;
             this.dgvToSchedule.RowTemplate.Height = 24;
@@ -428,7 +428,7 @@
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnBack.ForeColor = System.Drawing.Color.White;
             this.btnBack.Location = new System.Drawing.Point(1314, 24);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(2);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(104, 37);
             this.btnBack.TabIndex = 10;
@@ -476,7 +476,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1426, 687);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackColor = System.Drawing.Color.OldLace;
+            this.ClientSize = new System.Drawing.Size(1368, 741);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnBack);
@@ -492,9 +494,11 @@
             this.Controls.Add(this.btnComplete);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnNext);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
             this.Name = "frmInterviewSchedule";
             this.Text = "s";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmInterviewSchedule_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
