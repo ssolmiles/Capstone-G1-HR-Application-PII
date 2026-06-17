@@ -12,12 +12,22 @@ namespace HRApplicantSystem.Forms.Maintenance
         {
             InitializeComponent();
         }
+        public class RequirementItem
+        {
+            public string Text { get; set; }
+            public int Value { get; set; }
 
+            public override string ToString()
+            {
+                return Text;
+            }
+        }
         private void frmJobVacancyManagement_Load(object sender, EventArgs e)
         {
             LoadDepartments();
             LoadPositions();
             LoadEmploymentTypes();
+            LoadRequirements();   
             LoadVacancies();
         }
 
@@ -116,34 +126,85 @@ namespace HRApplicantSystem.Forms.Maintenance
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (cboDepartment.SelectedIndex <= 0 || cboPosition.SelectedIndex <= 0 || cboEmploymentType.SelectedIndex <= 0)
-            { MessageBox.Show("Please select Department, Position, and Employment Type."); return; }
-            if (string.IsNullOrWhiteSpace(txtDescription.Text) || string.IsNullOrWhiteSpace(txtQualifications.Text))
-            { MessageBox.Show("Please fill in Description and Qualifications."); return; }
+            if (cboDepartment.SelectedIndex <= 0 ||
+                cboPosition.SelectedIndex <= 0 ||
+                cboEmploymentType.SelectedIndex <= 0)
+            {
+                MessageBox.Show("Please select Department, Position, and Employment Type.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtDescription.Text) ||
+                string.IsNullOrWhiteSpace(txtQualifications.Text))
+            {
+                MessageBox.Show("Please fill in Description and Qualifications.");
+                return;
+            }
+
+            if (checkedListBox1.CheckedItems.Count == 0)
+            {
+                MessageBox.Show("Please select at least 1 requirement.");
+                return;
+            }
+
             try
             {
                 dynamic dept = cboDepartment.SelectedItem;
                 dynamic pos = cboPosition.SelectedItem;
                 dynamic emp = cboEmploymentType.SelectedItem;
+
                 using (var conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
-                    var cmd = new SqlCommand(@"INSERT INTO job_vacancies
-                        (position_id, department_id, employment_type_id,
-                         description, qualifications, slots, status, posted_by, posted_at)
-                        VALUES (@pos, @dept, @emp, @desc, @qual, @slots, 'open', @postedBy, GETDATE())", conn);
-                    cmd.Parameters.AddWithValue("@pos", pos.Value);
-                    cmd.Parameters.AddWithValue("@dept", dept.Value);
-                    cmd.Parameters.AddWithValue("@emp", emp.Value);
-                    cmd.Parameters.AddWithValue("@desc", txtDescription.Text.Trim());
-                    cmd.Parameters.AddWithValue("@qual", txtQualifications.Text.Trim());
-                    cmd.Parameters.AddWithValue("@slots", string.IsNullOrEmpty(txtSlots.Text) ? 1 : int.Parse(txtSlots.Text));
-                    cmd.Parameters.AddWithValue("@postedBy", SessionManager.CurrentUser?.UserID ?? 1);
-                    cmd.ExecuteNonQuery();
+
+                   
+                    int jobId;
+
+                    using (var cmd = new SqlCommand(@"
+                INSERT INTO job_vacancies
+                (position_id, department_id, employment_type_id,
+                 description, qualifications, slots, status, posted_by, posted_at)
+                OUTPUT INSERTED.vacancy_id
+                VALUES
+                (@pos, @dept, @emp, @desc, @qual, @slots, 'open', @postedBy, GETDATE())", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@pos", pos.Value);
+                        cmd.Parameters.AddWithValue("@dept", dept.Value);
+                        cmd.Parameters.AddWithValue("@emp", emp.Value);
+                        cmd.Parameters.AddWithValue("@desc", txtDescription.Text.Trim());
+                        cmd.Parameters.AddWithValue("@qual", txtQualifications.Text.Trim());
+                        cmd.Parameters.AddWithValue("@slots", string.IsNullOrEmpty(txtSlots.Text) ? 1 : int.Parse(txtSlots.Text));
+                        cmd.Parameters.AddWithValue("@postedBy", SessionManager.CurrentUser?.UserID ?? 1);
+
+                        jobId = Convert.ToInt32(cmd.ExecuteScalar());
+                    }
+
+                    // =========================
+                    // STEP 2: INSERT REQUIREMENTS
+                    // =========================
+                    foreach (var item in checkedListBox1.CheckedItems)
+                    {
+                        int reqTypeId = ((RequirementItem)item).Value;
+
+                        using (var cmd2 = new SqlCommand(@"
+                    INSERT INTO job_requirements (job_id, req_type_id)
+                    VALUES (@job, @req)", conn))
+                        {
+                            cmd2.Parameters.AddWithValue("@job", jobId);
+                            cmd2.Parameters.AddWithValue("@req", reqTypeId);
+                            cmd2.ExecuteNonQuery();
+                        }
+                    }
                 }
-                MessageBox.Show("Vacancy added!"); ClearFields(); LoadVacancies();
+
+                MessageBox.Show("Vacancy added!");
+                ClearFields();
+                LoadVacancies();
             }
-            catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -242,6 +303,38 @@ namespace HRApplicantSystem.Forms.Maintenance
             this.Close();
         }
 
+        private void LoadRequirements()
+        {
+            try
+            {
+                using (var conn = DatabaseHelper.GetConnection())
+                {
+                    conn.Open();
+
+                    using (var cmd = new SqlCommand(
+                        "SELECT req_type_id, label FROM requirement_types ORDER BY label", conn))
+                    using (var dr = cmd.ExecuteReader())
+                    {
+                        checkedListBox1.Items.Clear();
+
+                        while (dr.Read())
+                        {
+                            checkedListBox1.Items.Add(new RequirementItem
+                            {
+                                Text = dr["label"].ToString(),
+                                Value = Convert.ToInt32(dr["req_type_id"])
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading requirements: " + ex.Message);
+            }
+        }
+
+
         private void txtDescription_TextChanged(object sender, EventArgs e)
         {
 
@@ -257,6 +350,11 @@ namespace HRApplicantSystem.Forms.Maintenance
 
         }
 
-       
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

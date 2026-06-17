@@ -2,6 +2,7 @@
 using Microsoft.Data.SqlClient;
 using System;
 using System.Drawing;
+using System.Data;
 using System.Windows.Forms;
 
 namespace HRApplicantSystem.Forms.Applicant
@@ -27,6 +28,7 @@ namespace HRApplicantSystem.Forms.Applicant
         {
             LoadDashboardData();
             LoadWelcomeName();
+            LoadAuditTrail();
         }
 
         private void LoadWelcomeName()
@@ -52,6 +54,54 @@ namespace HRApplicantSystem.Forms.Applicant
             }
         }
 
+        private void LoadAuditTrail()
+        {
+            try
+            {
+                using (SqlConnection conn = DatabaseHelper.GetConnection())
+                {
+                    conn.Open();
+
+                    using (SqlCommand cmd = new SqlCommand(
+                        @"SELECT
+                    al.performed_at AS [Date & Time],
+                    al.action       AS [Action],
+                    al.target       AS [Area],
+                    al.target_id    AS [Record ID]
+                  FROM audit_logs al
+                  INNER JOIN applicants ap
+                      ON al.user_id = ap.applicant_id
+                  WHERE ap.email = @Email
+                  ORDER BY al.performed_at DESC", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Email", userEmail);
+
+                        var dt = new System.Data.DataTable();
+                        new SqlDataAdapter(cmd).Fill(dt);
+                        dgvAuditTrail.DataSource = dt;
+
+                        // Color rows by action type
+                        foreach (DataGridViewRow row in dgvAuditTrail.Rows)
+                        {
+                            string action = row.Cells["Action"].Value?.ToString().ToLower() ?? "";
+
+                            if (action.Contains("submitted"))
+                                row.DefaultCellStyle.ForeColor = Color.Green;
+                            else if (action.Contains("deleted") || action.Contains("withdrew"))
+                                row.DefaultCellStyle.ForeColor = Color.Red;
+                            else if (action.Contains("uploaded"))
+                                row.DefaultCellStyle.ForeColor = Color.Blue;
+                            else if (action.Contains("draft"))
+                                row.DefaultCellStyle.ForeColor = Color.Gray;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading audit trail: " + ex.Message);
+            }
+        }
         private void LoadDashboardData()
         {
             try
@@ -60,19 +110,42 @@ namespace HRApplicantSystem.Forms.Applicant
                 {
                     conn.Open();
 
-                    // 1. Applicant status
+                    // 1. Latest application status
                     using (SqlCommand cmd = new SqlCommand(
-                        "SELECT is_active FROM applicants WHERE email = @Email", conn))
+                        @"SELECT TOP 1 a.status
+      FROM applications a
+      INNER JOIN applicants ap ON ap.applicant_id = a.applicant_id
+      WHERE ap.email = @Email
+      ORDER BY a.last_updated DESC", conn))
                     {
                         cmd.Parameters.AddWithValue("@Email", userEmail);
-                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null)
                         {
-                            if (dr.Read())
+                            string appStatus = result.ToString();
+                            lblStatus.Text = "Application: " + appStatus;
+                            switch (appStatus)
                             {
-                                bool isActive = dr["is_active"] != DBNull.Value && (bool)dr["is_active"];
-                                lblStatus.Text = "Status: " + (isActive ? "Active" : "Inactive");
-                                lblStatus.ForeColor = isActive ? Color.Green : Color.Red;
+                                case "accepted":
+                                    lblStatus.ForeColor = Color.Green; break;
+                                case "rejected":
+                                    lblStatus.ForeColor = Color.Red; break;
+                                case "draft":
+                                    lblStatus.ForeColor = Color.Gray; break;
+                                case "under_review":
+                                case "screened":
+                                case "interview_scheduled":
+                                case "interviewed":
+                                    lblStatus.ForeColor = Color.Blue; break;
+                                default:
+                                    lblStatus.ForeColor = Color.DarkOrange; break;
                             }
+                        }
+                        else
+                        {
+                            lblStatus.Text = "Application: None yet";
+                            lblStatus.ForeColor = Color.Gray;
                         }
                     }
 
@@ -158,6 +231,7 @@ namespace HRApplicantSystem.Forms.Applicant
         {
             frmMyProfile profile = new frmMyProfile(userEmail);
             profile.ShowDialog();
+            LoadAuditTrail();
         }
 
         private void btnChangePass_Click(object sender, EventArgs e)
@@ -188,14 +262,12 @@ namespace HRApplicantSystem.Forms.Applicant
 
         private void btnMyApplication_Click(object sender, EventArgs e)
         {
-            // FIX: Use ShowDialog so the dashboard stays open underneath,
-            // and refresh dashboard data when the user returns.
             using (frmMyApplication myApp = new frmMyApplication(userEmail))
             {
                 myApp.ShowDialog(this);
             }
-            // Refresh dashboard after returning from My Application
             LoadDashboardData();
+            LoadAuditTrail();
         }
 
 

@@ -24,6 +24,7 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnReopen = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVacancies)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,7 +87,10 @@
             // 
             // txtSearch
             // 
-            
+            this.txtSearch.Location = new System.Drawing.Point(0, 0);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(100, 20);
+            this.txtSearch.TabIndex = 14;
             // 
             // dgvVacancies
             // 
@@ -138,9 +142,20 @@
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            
+            this.checkedListBox1.Location = new System.Drawing.Point(344, 201);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(175, 109);
+            this.checkedListBox1.TabIndex = 15;
+            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
+            // 
             // frmJobVacancyManagement
             // 
             this.ClientSize = new System.Drawing.Size(1902, 845);
+            this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnReopen);
             this.Controls.Add(this.btnClose);
@@ -174,6 +189,6 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnReopen;
         private System.Windows.Forms.Button btnBack;
-        
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
     }
 }
