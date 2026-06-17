@@ -66,6 +66,9 @@ namespace HRApplicantSystem.Forms.HR
             btnSchedule.Enabled = true;
             btnComplete.Enabled = false;
             btnCancel.Enabled = false;
+            btnReschedule.Enabled = false;
+            dtpDate.MinDate = DateTime.Today;
+
         }
 
         private void Dgv_Schedules_SelectionChanged(object s, EventArgs e)
@@ -84,18 +87,22 @@ namespace HRApplicantSystem.Forms.HR
             _schedInterviewerId = Convert.ToInt32(row.Cells["InterviewerID"].Value);
             _selectedFromToSchedule = false;
 
+            string schedStatus = row.Cells["Sched Status"].Value?.ToString() ?? "";
+
             lblApplicantName.Text = row.Cells["Applicant"].Value?.ToString() ?? "";
             lblJobApplied.Text = row.Cells["Position"].Value?.ToString() ?? "";
             lblSelectedApplicant.Text = "Selected: " + row.Cells["Applicant"].Value;
-            lblStatus.Text = "Status: " + row.Cells["Sched Status"].Value;
+            lblStatus.Text = "Status: " + schedStatus;
             lblStatus.ForeColor = Color.DimGray;
 
             btnSchedule.Enabled = false;
 
-            // Only the assigned interviewer can mark as complete
             bool isAssignedInterviewer = (_schedInterviewerId == SessionManager.CurrentUserID);
-            btnComplete.Enabled = isAssignedInterviewer;
-            btnCancel.Enabled = true; // anyone can cancel
+            bool isActiveSchedule = string.Equals(schedStatus, "scheduled", StringComparison.OrdinalIgnoreCase);
+
+            btnComplete.Enabled = isAssignedInterviewer && isActiveSchedule;
+            btnCancel.Enabled = isActiveSchedule;
+            btnReschedule.Enabled = isActiveSchedule;
 
             if (!isAssignedInterviewer)
                 lblStatus.Text += " (You are not the assigned interviewer)";
@@ -335,13 +342,18 @@ namespace HRApplicantSystem.Forms.HR
         private void UpdateSched(string schedStatus, string appStatus)
         {
             if (_appId == -1) { MessageBox.Show("Select a schedule first."); return; }
+
+            btnComplete.Enabled = false;
+            btnCancel.Enabled = false;
+            btnReschedule.Enabled = false;
+
             try
             {
+                int rowsAffected;
                 using (var conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
 
-                    // Update interview_schedules.status (was missing — this is why Cancel didn't work)
                     using (var cmd1 = new SqlCommand(
                         @"UPDATE interview_schedules
                   SET status = @schedStatus
@@ -350,31 +362,41 @@ namespace HRApplicantSystem.Forms.HR
                     {
                         cmd1.Parameters.AddWithValue("@schedStatus", schedStatus);
                         cmd1.Parameters.AddWithValue("@id", _appId);
-                        cmd1.ExecuteNonQuery();
+                        rowsAffected = cmd1.ExecuteNonQuery();
                     }
 
-                    using (var cmd2 = new SqlCommand(
-                        @"UPDATE applications
+                    if (rowsAffected > 0)
+                    {
+                        using (var cmd2 = new SqlCommand(
+                            @"UPDATE applications
                   SET status=@appStatus,
                       last_updated=GETDATE()
                   WHERE application_id=@id", conn))
-                    {
-                        cmd2.Parameters.AddWithValue("@appStatus", appStatus);
-                        cmd2.Parameters.AddWithValue("@id", _appId);
-                        cmd2.ExecuteNonQuery();
+                        {
+                            cmd2.Parameters.AddWithValue("@appStatus", appStatus);
+                            cmd2.Parameters.AddWithValue("@id", _appId);
+                            cmd2.ExecuteNonQuery();
+                        }
                     }
                 }
-                StatusHistoryLogger.LogStatusChange(_appId, null, appStatus, SessionManager.CurrentUserID);
 
-                lblStatus.Text = $"Status: {schedStatus}";
-                MessageBox.Show($"Marked as {schedStatus}.");
+                if (rowsAffected == 0)
+                {
+                    MessageBox.Show("This schedule was already updated (possibly by a duplicate click). No changes made.");
+                }
+                else
+                {
+                    StatusHistoryLogger.LogStatusChange(_appId, null, appStatus, SessionManager.CurrentUserID);
+                    lblStatus.Text = $"Status: {schedStatus}";
+                    MessageBox.Show($"Marked as {schedStatus}.");
+                }
 
-                // FIX: Reset state after update
                 _appId = -1;
                 _selectedFromToSchedule = false;
                 btnSchedule.Enabled = false;
                 btnComplete.Enabled = false;
                 btnCancel.Enabled = false;
+                btnReschedule.Enabled = false;
                 lblSelectedApplicant.Text = "Selected: (none)";
 
                 LoadToSchedule();
@@ -385,21 +407,120 @@ namespace HRApplicantSystem.Forms.HR
 
         private void btnComplete_Click(object s, EventArgs e) => UpdateSched("completed", "interviewed");
         private void btnCancel_Click(object s, EventArgs e) => UpdateSched("cancelled", "screened");
+
+        private void btnReschedule_Click(object s, EventArgs e)
+        {
+            if (_appId == -1) { MessageBox.Show("Select a schedule first."); return; }
+
+            if (dtpDate.Value.Date < DateTime.Today)
+            {
+                MessageBox.Show("Interview date cannot be earlier than today.",
+                    "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtLocation.Text))
+            {
+                MessageBox.Show("Interview location is required.");
+                txtLocation.Focus();
+                return;
+            }
+
+            if (cmbMode.SelectedItem == null)
+            {
+                MessageBox.Show("Select an interview type.");
+                return;
+            }
+
+            if (cboInterviewer.SelectedItem == null)
+            {
+                MessageBox.Show("Select an interviewer.");
+                return;
+            }
+
+            btnComplete.Enabled = false;
+            btnCancel.Enabled = false;
+            btnReschedule.Enabled = false;
+
+            try
+            {
+                dynamic selType = (dynamic)cmbMode.SelectedItem;
+                int typeId = selType != null ? selType.Value : 1;
+
+                dynamic selInt = (dynamic)cboInterviewer.SelectedItem;
+                int iviewerId = selInt != null ? selInt.Value : SessionManager.CurrentUserID;
+
+                int rowsAffected;
+                using (var conn = DatabaseHelper.GetConnection())
+                {
+                    conn.Open();
+                    using (var cmd = new SqlCommand(
+                        @"UPDATE interview_schedules
+                          SET interviewer_id = @iv,
+                              interview_type_id = @typ,
+                              scheduled_date = @dt,
+                              scheduled_time = @tm,
+                              location = @loc
+                          WHERE application_id = @id
+                          AND status = 'scheduled'", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@iv", iviewerId);
+                        cmd.Parameters.AddWithValue("@typ", typeId);
+                        cmd.Parameters.AddWithValue("@dt", dtpDate.Value.Date);
+                        cmd.Parameters.AddWithValue("@tm", dtpTime.Value.TimeOfDay);
+                        cmd.Parameters.AddWithValue("@loc", txtLocation.Text.Trim());
+                        cmd.Parameters.AddWithValue("@id", _appId);
+                        rowsAffected = cmd.ExecuteNonQuery();
+                    }
+                }
+
+                if (rowsAffected == 0)
+                {
+                    MessageBox.Show("This schedule is no longer active (it may have just been cancelled or completed). No changes made.");
+                }
+                else
+                {
+                    AuditLogger.LogAction(SessionManager.CurrentUserID,
+                        "Rescheduled interview", "interview_schedules", _appId);
+                    MessageBox.Show("Interview rescheduled successfully!");
+                }
+
+                _appId = -1;
+                _selectedFromToSchedule = false;
+                btnSchedule.Enabled = false;
+                btnComplete.Enabled = false;
+                btnCancel.Enabled = false;
+                btnReschedule.Enabled = false;
+                lblSelectedApplicant.Text = "Selected: (none)";
+
+                LoadToSchedule();
+                LoadSchedules();
+            }
+            catch (Exception ex) { MessageBox.Show("Error rescheduling interview: " + ex.Message); }
+        }
+
         private void btnNext_Click(object s, EventArgs e)
         {
-            new frmInterviewEvaluation().Show();
-            this.Hide();
-        }
-        private void btnBack_Click(object s, EventArgs e)
-        {
-            new frmScreening().Show();
-            this.Hide();
+
+            if (_appId == -1)
+            {
+                MessageBox.Show("Please select a scheduled interview first.",
+                    "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            frmInterviewEvaluation evalForm = new frmInterviewEvaluation(_appId);
+            evalForm.Show();
+            this.Close();
         }
 
         private void groupBox3_Enter(object sender, EventArgs e) { }
         private void groupBox2_Enter(object sender, EventArgs e) { }
         private void groupBox1_Enter(object sender, EventArgs e) { }
-
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
         private void dgvSchedules_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
         private void dgvToSchedule_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
     }

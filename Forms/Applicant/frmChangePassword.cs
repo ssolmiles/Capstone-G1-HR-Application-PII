@@ -82,6 +82,10 @@ namespace HRApplicantSystem.Forms.Applicant
                 }
 
                 MessageBox.Show("Password Changed Successfully!");
+
+                AuditLogger.LogActionByEmail(currentUserEmail,
+                    "Changed password", "applicants");
+
                 this.Close();
             }
             catch (Exception ex)
@@ -101,6 +105,8 @@ namespace HRApplicantSystem.Forms.Applicant
         }
 
         private void txtNewPass_TextChanged(object sender, EventArgs e) { }
+
+        private void txtCurrentPass_TextChanged(object sender, EventArgs e) { }
 
         // This form is opened with ShowDialog() from the Dashboard, which
         // stays visible underneath. Close returns control there directly.

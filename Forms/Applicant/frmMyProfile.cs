@@ -204,6 +204,9 @@ namespace HRApplicantSystem.Forms.Applicant
                 SetReadOnly(true);
                 btnSave.Enabled = false;
 
+                AuditLogger.LogActionByEmail(userEmail,
+                    "Updated profile", "applicants");
+
                 // The saved values are now the new baseline.
                 originalSnapshot = BuildSnapshot();
             }
@@ -266,7 +269,8 @@ namespace HRApplicantSystem.Forms.Applicant
         // Dashboard instance (that was causing duplicate windows to stack up).
         private void btnBack_Click(object sender, EventArgs e)
         {
-            new frmApplicantDashboard(userEmail).Show();
+            frmApplicantDashboard dashboard = new frmApplicantDashboard(userEmail);
+            dashboard.Show();
             this.Close();
         }
 
@@ -281,5 +285,7 @@ namespace HRApplicantSystem.Forms.Applicant
                 frm.ShowDialog();
             }
         }
+
+        private void groupBox2_Enter(object sender, EventArgs e) { }
     }
 }

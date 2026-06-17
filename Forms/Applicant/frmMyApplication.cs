@@ -494,13 +494,31 @@ namespace HRApplicantSystem.Forms.Applicant
                     }
                 }
 
-                
+
                 StatusHistoryLogger.LogStatusChange(
-                    appId,
-                    previousStatus: "draft",
-                    newStatus: "submitted",
-                    changedByUserId: applicantId,
-                    remarks: "Applicant submitted application.");
+    appId,
+    previousStatus: "draft",
+    newStatus: "submitted",
+    changedByUserId: applicantId,
+    remarks: "Applicant submitted application.");
+
+                // Deduct vacancy slot on submission
+                using (var slotConn = DatabaseHelper.GetConnection())
+                {
+                    slotConn.Open();
+                    using (var slotCmd = new SqlCommand(
+                        @"UPDATE job_vacancies
+          SET slots = slots - 1,
+              status = CASE WHEN slots - 1 <= 0 THEN 'closed' ELSE status END
+          WHERE vacancy_id = (
+              SELECT vacancy_id FROM applications WHERE application_id = @appId
+          )
+          AND slots > 0", slotConn))
+                    {
+                        slotCmd.Parameters.AddWithValue("@appId", appId);
+                        slotCmd.ExecuteNonQuery();
+                    }
+                }
 
                 MessageBox.Show("Application submitted successfully!",
                     "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

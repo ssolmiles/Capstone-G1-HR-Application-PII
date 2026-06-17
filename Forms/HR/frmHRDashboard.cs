@@ -110,6 +110,12 @@ namespace HRApplicantSystem.Forms.HR
         {
 
         }
+        private void btnScreening_Click(object sender, EventArgs e)
+        {
+            frmScreening screeningForm = new frmScreening();
+            screeningForm.Show();
+            this.Hide();
+        }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
