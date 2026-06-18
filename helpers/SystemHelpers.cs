@@ -165,7 +165,7 @@ namespace HRApplicantSystem.Helpers
         }
 
         public static void LogAction(int userId, string action,
-            string target, int? targetId = null)
+    string target, int? targetId = null)
         {
             try
             {
@@ -189,9 +189,9 @@ namespace HRApplicantSystem.Helpers
                     }
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                throw new InvalidOperationException("Database operation failed.", ex);
+                // Audit failures should never block login or any other action
             }
         }
 

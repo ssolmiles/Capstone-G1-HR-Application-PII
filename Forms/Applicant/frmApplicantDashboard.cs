@@ -157,7 +157,7 @@ namespace HRApplicantSystem.Forms.Applicant
                     // 2. Missing document count
                     // 2. Missing document count — based on actual job requirements
                     using (SqlCommand cmd = new SqlCommand(
-                        @"SELECT 
+    @"SELECT 
         COUNT(jr.req_type_id) AS total_required,
         SUM(CASE WHEN ad.status = 'submitted' AND ad.file_path IS NOT NULL 
                  THEN 1 ELSE 0 END) AS total_submitted
@@ -168,7 +168,12 @@ namespace HRApplicantSystem.Forms.Applicant
           ON ad.req_type_id = jr.req_type_id 
           AND ad.applicant_id = ap.applicant_id
       WHERE ap.email = @Email
-      ORDER BY a.last_updated DESC", conn))
+      AND a.last_updated = (
+          SELECT MAX(a2.last_updated) 
+          FROM applications a2 
+          INNER JOIN applicants ap2 ON ap2.applicant_id = a2.applicant_id
+          WHERE ap2.email = @Email
+      )", conn))
                     {
                         cmd.Parameters.AddWithValue("@Email", userEmail);
 

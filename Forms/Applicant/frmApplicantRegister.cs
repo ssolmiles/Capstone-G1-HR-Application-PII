@@ -123,10 +123,10 @@ namespace HRApplicantSystem.Forms.Applicant
                     }
                 }
 
-                MessageBox.Show("Registration Successful!");
-                frmMyProfile profile = new frmMyProfile(txtEmail.Text.Trim());
-                profile.Show();
-                this.Hide();
+                MessageBox.Show("Registration Successful! Please complete your profile.");
+                frmApplicantDashboard dashboard = new frmApplicantDashboard(txtEmail.Text.Trim());
+                dashboard.Show();
+                this.Close();
             }
             catch (Exception ex)
             {

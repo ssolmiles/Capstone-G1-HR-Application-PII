@@ -519,6 +519,8 @@ namespace HRApplicantSystem.Forms.HR
         private void groupBox1_Enter(object sender, EventArgs e) { }
         private void btnBack_Click(object sender, EventArgs e)
         {
+            frmHRDashboard dashboard = new frmHRDashboard();
+            dashboard.Show();
             this.Close();
         }
         private void dgvSchedules_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
