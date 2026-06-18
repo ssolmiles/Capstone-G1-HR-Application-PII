@@ -31,7 +31,7 @@
             this.lblSubtitle.Name = "lblSubtitle";
             this.lblSubtitle.Size = new System.Drawing.Size(777, 44);
             this.lblSubtitle.TabIndex = 1;
-            this.lblSubtitle.Text = "Please select how you want to continue";
+            this.lblSubtitle.Text = "Select how you want to continue";
             this.lblSubtitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lblSubtitle.Click += new System.EventHandler(this.lblSubtitle_Click);
             // 
@@ -136,7 +136,6 @@
             this.Name = "frmRoleSelection";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "HR Applicant System";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmRoleSelection_Load);
             this.ResumeLayout(false);

@@ -108,5 +108,43 @@ namespace HRApplicantSystem.Forms.Applicant
         {
             this.Close();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmChangePassword cp = new frmChangePassword(currentUserEmail);
+            cp.ShowDialog();
+        }
+
+        private void btnViewStatus_Click(object sender, EventArgs e)
+        {
+            frmApplicationStatus statusForm = new frmApplicationStatus(currentUserEmail);
+            statusForm.Show();
+        }
+
+        private void btnProfile_Click(object sender, EventArgs e)
+        {
+            frmMyProfile profile = new frmMyProfile(currentUserEmail);
+            profile.ShowDialog();
+        }
+
+        private void btnMyApplication_Click(object sender, EventArgs e)
+        {
+            using (frmMyApplication myApp = new frmMyApplication(currentUserEmail))
+            {
+                myApp.ShowDialog(this);
+            }
+        }
+
+        private void btnJobVacancies_Click(object sender, EventArgs e)
+        {
+            frmJobVacancies jobForm = new frmJobVacancies(currentUserEmail);
+            jobForm.Show();
+            this.Hide();
+        }
+
+        private void lblTime_Click(object sender, EventArgs e)
+        {
+            lblTime.Text = DateTime.Now.ToString("MMMM dd, yyyy hh:mm:ss tt");
+        }
     }
 }

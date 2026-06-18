@@ -106,5 +106,10 @@ namespace HRApplicantSystem.Forms.Applicant
         }
 
         private void dtpBirthday_ValueChanged(object sender, EventArgs e) { }
+
+        private void lblCountry_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

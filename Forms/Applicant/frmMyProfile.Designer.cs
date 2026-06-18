@@ -61,12 +61,24 @@
             this.txtPosition = new System.Windows.Forms.TextBox();
             this.lblDuration = new System.Windows.Forms.Label();
             this.txtDuration = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lblTime = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnChangePass = new System.Windows.Forms.Button();
+            this.btnViewStatus = new System.Windows.Forms.Button();
+            this.btnProfile = new System.Windows.Forms.Button();
+            this.btnMyApplication = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnJobVacancies = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -74,7 +86,7 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
-            this.lblTitle.Location = new System.Drawing.Point(378, 41);
+            this.lblTitle.Location = new System.Drawing.Point(14, 146);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(148, 29);
@@ -86,7 +98,7 @@
             this.lblSubtitle.AutoSize = true;
             this.lblSubtitle.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Italic);
             this.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            this.lblSubtitle.Location = new System.Drawing.Point(380, 76);
+            this.lblSubtitle.Location = new System.Drawing.Point(16, 181);
             this.lblSubtitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSubtitle.Name = "lblSubtitle";
             this.lblSubtitle.Size = new System.Drawing.Size(295, 16);
@@ -98,8 +110,8 @@
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Verdana", 10F);
             this.btnEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.btnEdit.Location = new System.Drawing.Point(1190, 564);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEdit.Location = new System.Drawing.Point(826, 669);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(98, 28);
             this.btnEdit.TabIndex = 100;
@@ -113,8 +125,8 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(1298, 564);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSave.Location = new System.Drawing.Point(934, 669);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(98, 28);
             this.btnSave.TabIndex = 101;
@@ -127,8 +139,8 @@
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Verdana", 10F);
             this.btnBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.btnBack.Location = new System.Drawing.Point(1291, 41);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBack.Location = new System.Drawing.Point(927, 146);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(2);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(98, 28);
             this.btnBack.TabIndex = 102;
@@ -141,8 +153,8 @@
             this.btnDocs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDocs.Font = new System.Drawing.Font("Verdana", 10F);
             this.btnDocs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.btnDocs.Location = new System.Drawing.Point(1025, 564);
-            this.btnDocs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDocs.Location = new System.Drawing.Point(661, 669);
+            this.btnDocs.Margin = new System.Windows.Forms.Padding(2);
             this.btnDocs.Name = "btnDocs";
             this.btnDocs.Size = new System.Drawing.Size(148, 28);
             this.btnDocs.TabIndex = 103;
@@ -162,10 +174,10 @@
             this.groupBox1.Controls.Add(this.dtpBirthday);
             this.groupBox1.Font = new System.Drawing.Font("Verdana", 10F);
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBox1.Location = new System.Drawing.Point(412, 125);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Location = new System.Drawing.Point(48, 230);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(470, 121);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
@@ -188,7 +200,7 @@
             this.txtFN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFN.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtFN.Location = new System.Drawing.Point(82, 18);
-            this.txtFN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFN.Margin = new System.Windows.Forms.Padding(2);
             this.txtFN.Name = "txtFN";
             this.txtFN.Size = new System.Drawing.Size(120, 24);
             this.txtFN.TabIndex = 1;
@@ -210,7 +222,7 @@
             this.txtMI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMI.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtMI.Location = new System.Drawing.Point(244, 18);
-            this.txtMI.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtMI.Margin = new System.Windows.Forms.Padding(2);
             this.txtMI.MaxLength = 5;
             this.txtMI.Name = "txtMI";
             this.txtMI.Size = new System.Drawing.Size(38, 24);
@@ -233,7 +245,7 @@
             this.txtLN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLN.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtLN.Location = new System.Drawing.Point(82, 45);
-            this.txtLN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLN.Margin = new System.Windows.Forms.Padding(2);
             this.txtLN.Name = "txtLN";
             this.txtLN.Size = new System.Drawing.Size(120, 24);
             this.txtLN.TabIndex = 3;
@@ -256,7 +268,7 @@
             this.dtpBirthday.Font = new System.Drawing.Font("Verdana", 9F);
             this.dtpBirthday.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpBirthday.Location = new System.Drawing.Point(262, 46);
-            this.dtpBirthday.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpBirthday.Margin = new System.Windows.Forms.Padding(2);
             this.dtpBirthday.Name = "dtpBirthday";
             this.dtpBirthday.Size = new System.Drawing.Size(136, 22);
             this.dtpBirthday.TabIndex = 4;
@@ -273,10 +285,10 @@
             this.groupBox2.Controls.Add(this.txtZip);
             this.groupBox2.Font = new System.Drawing.Font("Verdana", 10F);
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBox2.Location = new System.Drawing.Point(412, 261);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Location = new System.Drawing.Point(48, 366);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(470, 124);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
@@ -299,7 +311,7 @@
             this.txtAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAddress.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtAddress.Location = new System.Drawing.Point(60, 18);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(2);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(398, 24);
             this.txtAddress.TabIndex = 6;
@@ -321,7 +333,7 @@
             this.txtCity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCity.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtCity.Location = new System.Drawing.Point(60, 45);
-            this.txtCity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCity.Margin = new System.Windows.Forms.Padding(2);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(150, 24);
             this.txtCity.TabIndex = 7;
@@ -343,7 +355,7 @@
             this.txtProvince.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtProvince.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtProvince.Location = new System.Drawing.Point(297, 45);
-            this.txtProvince.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtProvince.Margin = new System.Windows.Forms.Padding(2);
             this.txtProvince.Name = "txtProvince";
             this.txtProvince.Size = new System.Drawing.Size(161, 24);
             this.txtProvince.TabIndex = 9;
@@ -365,7 +377,7 @@
             this.txtZip.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtZip.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtZip.Location = new System.Drawing.Point(60, 72);
-            this.txtZip.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtZip.Margin = new System.Windows.Forms.Padding(2);
             this.txtZip.MaxLength = 10;
             this.txtZip.Name = "txtZip";
             this.txtZip.Size = new System.Drawing.Size(90, 24);
@@ -379,10 +391,10 @@
             this.groupBox3.Controls.Add(this.txtEmail);
             this.groupBox3.Font = new System.Drawing.Font("Verdana", 10F);
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBox3.Location = new System.Drawing.Point(412, 407);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Location = new System.Drawing.Point(48, 512);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox3.Size = new System.Drawing.Size(470, 135);
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
@@ -405,7 +417,7 @@
             this.txtPhone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhone.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtPhone.Location = new System.Drawing.Point(60, 18);
-            this.txtPhone.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPhone.Margin = new System.Windows.Forms.Padding(2);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(150, 24);
             this.txtPhone.TabIndex = 9;
@@ -427,7 +439,7 @@
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEmail.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtEmail.Location = new System.Drawing.Point(60, 45);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.ReadOnly = true;
             this.txtEmail.Size = new System.Drawing.Size(226, 24);
@@ -443,10 +455,10 @@
             this.groupBox4.Controls.Add(this.txtYearGrad);
             this.groupBox4.Font = new System.Drawing.Font("Verdana", 10F);
             this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBox4.Location = new System.Drawing.Point(897, 133);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Location = new System.Drawing.Point(533, 238);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox4.Size = new System.Drawing.Size(499, 131);
             this.groupBox4.TabIndex = 13;
             this.groupBox4.TabStop = false;
@@ -469,7 +481,7 @@
             this.txtEducation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEducation.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtEducation.Location = new System.Drawing.Point(71, 20);
-            this.txtEducation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEducation.Margin = new System.Windows.Forms.Padding(2);
             this.txtEducation.Name = "txtEducation";
             this.txtEducation.Size = new System.Drawing.Size(413, 24);
             this.txtEducation.TabIndex = 12;
@@ -491,7 +503,7 @@
             this.txtDegree.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDegree.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtDegree.Location = new System.Drawing.Point(71, 50);
-            this.txtDegree.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDegree.Margin = new System.Windows.Forms.Padding(2);
             this.txtDegree.Name = "txtDegree";
             this.txtDegree.Size = new System.Drawing.Size(413, 24);
             this.txtDegree.TabIndex = 14;
@@ -513,7 +525,7 @@
             this.txtYearGrad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtYearGrad.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtYearGrad.Location = new System.Drawing.Point(116, 79);
-            this.txtYearGrad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtYearGrad.Margin = new System.Windows.Forms.Padding(2);
             this.txtYearGrad.MaxLength = 4;
             this.txtYearGrad.Name = "txtYearGrad";
             this.txtYearGrad.Size = new System.Drawing.Size(76, 24);
@@ -525,10 +537,10 @@
             this.groupBox5.Controls.Add(this.txtSkills);
             this.groupBox5.Font = new System.Drawing.Font("Verdana", 10F);
             this.groupBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBox5.Location = new System.Drawing.Point(897, 269);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox5.Location = new System.Drawing.Point(533, 374);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox5.Size = new System.Drawing.Size(499, 124);
             this.groupBox5.TabIndex = 15;
             this.groupBox5.TabStop = false;
@@ -551,7 +563,7 @@
             this.txtSkills.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSkills.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtSkills.Location = new System.Drawing.Point(71, 18);
-            this.txtSkills.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSkills.Margin = new System.Windows.Forms.Padding(2);
             this.txtSkills.Multiline = true;
             this.txtSkills.Name = "txtSkills";
             this.txtSkills.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -568,10 +580,10 @@
             this.groupBox6.Controls.Add(this.txtDuration);
             this.groupBox6.Font = new System.Drawing.Font("Verdana", 10F);
             this.groupBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
-            this.groupBox6.Location = new System.Drawing.Point(897, 415);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox6.Location = new System.Drawing.Point(533, 520);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox6.Size = new System.Drawing.Size(499, 135);
             this.groupBox6.TabIndex = 17;
             this.groupBox6.TabStop = false;
@@ -594,7 +606,7 @@
             this.txtWorkExp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtWorkExp.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtWorkExp.Location = new System.Drawing.Point(94, 20);
-            this.txtWorkExp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtWorkExp.Margin = new System.Windows.Forms.Padding(2);
             this.txtWorkExp.Name = "txtWorkExp";
             this.txtWorkExp.Size = new System.Drawing.Size(398, 24);
             this.txtWorkExp.TabIndex = 16;
@@ -616,7 +628,7 @@
             this.txtPosition.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPosition.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtPosition.Location = new System.Drawing.Point(94, 50);
-            this.txtPosition.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPosition.Margin = new System.Windows.Forms.Padding(2);
             this.txtPosition.Name = "txtPosition";
             this.txtPosition.Size = new System.Drawing.Size(398, 24);
             this.txtPosition.TabIndex = 18;
@@ -638,10 +650,147 @@
             this.txtDuration.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDuration.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtDuration.Location = new System.Drawing.Point(94, 79);
-            this.txtDuration.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDuration.Margin = new System.Windows.Forms.Padding(2);
             this.txtDuration.Name = "txtDuration";
             this.txtDuration.Size = new System.Drawing.Size(398, 24);
             this.txtDuration.TabIndex = 20;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.OldLace;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Chelsea Market", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(13, 4);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(328, 31);
+            this.textBox1.TabIndex = 106;
+            // 
+            // lblTime
+            // 
+            this.lblTime.AutoSize = true;
+            this.lblTime.Font = new System.Drawing.Font("Playfair Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime.Location = new System.Drawing.Point(1087, 11);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(118, 23);
+            this.lblTime.TabIndex = 105;
+            this.lblTime.Text = "Time and Date";
+            this.lblTime.Click += new System.EventHandler(this.lblTime_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Sienna;
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Location = new System.Drawing.Point(3, 38);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1365, 57);
+            this.panel1.TabIndex = 104;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.btnChangePass);
+            this.panel2.Controls.Add(this.btnViewStatus);
+            this.panel2.Controls.Add(this.btnProfile);
+            this.panel2.Controls.Add(this.btnMyApplication);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.btnJobVacancies);
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1359, 50);
+            this.panel2.TabIndex = 14;
+            // 
+            // btnChangePass
+            // 
+            this.btnChangePass.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btnChangePass.FlatAppearance.BorderSize = 0;
+            this.btnChangePass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChangePass.Font = new System.Drawing.Font("Chelsea Market", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChangePass.ForeColor = System.Drawing.Color.White;
+            this.btnChangePass.Location = new System.Drawing.Point(1129, 0);
+            this.btnChangePass.Margin = new System.Windows.Forms.Padding(2);
+            this.btnChangePass.Name = "btnChangePass";
+            this.btnChangePass.Size = new System.Drawing.Size(232, 51);
+            this.btnChangePass.TabIndex = 3;
+            this.btnChangePass.Text = "Change Password";
+            this.btnChangePass.UseVisualStyleBackColor = false;
+            this.btnChangePass.Click += new System.EventHandler(this.btnChangePass_Click);
+            // 
+            // btnViewStatus
+            // 
+            this.btnViewStatus.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btnViewStatus.FlatAppearance.BorderSize = 0;
+            this.btnViewStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewStatus.Font = new System.Drawing.Font("Chelsea Market", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViewStatus.ForeColor = System.Drawing.Color.White;
+            this.btnViewStatus.Location = new System.Drawing.Point(853, -1);
+            this.btnViewStatus.Margin = new System.Windows.Forms.Padding(2);
+            this.btnViewStatus.Name = "btnViewStatus";
+            this.btnViewStatus.Size = new System.Drawing.Size(286, 50);
+            this.btnViewStatus.TabIndex = 1;
+            this.btnViewStatus.Text = "View Application Status";
+            this.btnViewStatus.UseVisualStyleBackColor = false;
+            this.btnViewStatus.Click += new System.EventHandler(this.btnViewStatus_Click);
+            // 
+            // btnProfile
+            // 
+            this.btnProfile.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btnProfile.FlatAppearance.BorderSize = 0;
+            this.btnProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProfile.Font = new System.Drawing.Font("Chelsea Market", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProfile.ForeColor = System.Drawing.Color.White;
+            this.btnProfile.Location = new System.Drawing.Point(686, 1);
+            this.btnProfile.Margin = new System.Windows.Forms.Padding(2);
+            this.btnProfile.Name = "btnProfile";
+            this.btnProfile.Size = new System.Drawing.Size(179, 48);
+            this.btnProfile.TabIndex = 2;
+            this.btnProfile.Text = "My Profile";
+            this.btnProfile.UseVisualStyleBackColor = false;
+            this.btnProfile.Click += new System.EventHandler(this.btnProfile_Click);
+            // 
+            // btnMyApplication
+            // 
+            this.btnMyApplication.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btnMyApplication.FlatAppearance.BorderSize = 0;
+            this.btnMyApplication.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMyApplication.Font = new System.Drawing.Font("Chelsea Market", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMyApplication.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnMyApplication.Location = new System.Drawing.Point(484, 0);
+            this.btnMyApplication.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMyApplication.Name = "btnMyApplication";
+            this.btnMyApplication.Size = new System.Drawing.Size(225, 49);
+            this.btnMyApplication.TabIndex = 11;
+            this.btnMyApplication.Text = "My Application";
+            this.btnMyApplication.UseVisualStyleBackColor = false;
+            this.btnMyApplication.Click += new System.EventHandler(this.btnMyApplication_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Chelsea Market", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(10, 8);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(200, 30);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "My Dashboard";
+            // 
+            // btnJobVacancies
+            // 
+            this.btnJobVacancies.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btnJobVacancies.FlatAppearance.BorderSize = 0;
+            this.btnJobVacancies.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnJobVacancies.Font = new System.Drawing.Font("Chelsea Market", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJobVacancies.ForeColor = System.Drawing.Color.White;
+            this.btnJobVacancies.Location = new System.Drawing.Point(285, -2);
+            this.btnJobVacancies.Margin = new System.Windows.Forms.Padding(2);
+            this.btnJobVacancies.Name = "btnJobVacancies";
+            this.btnJobVacancies.Size = new System.Drawing.Size(216, 50);
+            this.btnJobVacancies.TabIndex = 10;
+            this.btnJobVacancies.Text = "Job Vacancies";
+            this.btnJobVacancies.UseVisualStyleBackColor = false;
+            this.btnJobVacancies.Click += new System.EventHandler(this.btnJobVacancies_Click);
             // 
             // frmMyProfile
             // 
@@ -649,6 +798,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.OldLace;
             this.ClientSize = new System.Drawing.Size(1368, 741);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.lblTime);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnDocs);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblSubtitle);
@@ -678,6 +830,9 @@
             this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -737,5 +892,15 @@
         private System.Windows.Forms.TextBox txtWorkExp;
         private System.Windows.Forms.TextBox txtPosition;
         private System.Windows.Forms.TextBox txtDuration;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lblTime;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btnChangePass;
+        private System.Windows.Forms.Button btnViewStatus;
+        private System.Windows.Forms.Button btnProfile;
+        private System.Windows.Forms.Button btnMyApplication;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnJobVacancies;
     }
 }
