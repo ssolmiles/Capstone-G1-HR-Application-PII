@@ -158,7 +158,7 @@ namespace HRApplicantSystem.Forms.HR
                             rejectOthers.ExecuteNonQuery();
                         }
 
-                        DeductVacancySlot(conn, _appId);
+                        
                     }
 
                     using (var cmd = new SqlCommand(
@@ -245,6 +245,8 @@ namespace HRApplicantSystem.Forms.HR
         private void btnReject_Click(object s, EventArgs e) => Decide("rejected");
         private void btnBack_Click(object s, EventArgs e)
         {
+            frmHRDashboard dashboard = new frmHRDashboard();
+            dashboard.Show();
             this.Close();
         }
 

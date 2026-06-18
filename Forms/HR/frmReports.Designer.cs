@@ -16,6 +16,7 @@
 
         private void InitializeComponent()
         {
+            this.lblReportTitle = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnApplicants = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
@@ -30,6 +31,7 @@
             this.btnAccepted = new System.Windows.Forms.Button();
             this.btnRejected = new System.Windows.Forms.Button();
             this.btnMissing = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -37,6 +39,16 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReports)).BeginInit();
             this.SuspendLayout();
+            // 
+            // lblReportTitle
+            // 
+            this.lblReportTitle.AutoSize = true;
+            this.lblReportTitle.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Bold);
+            this.lblReportTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
+            this.lblReportTitle.Location = new System.Drawing.Point(20, 10);
+            this.lblReportTitle.Name = "lblReportTitle";
+            this.lblReportTitle.Size = new System.Drawing.Size(100, 23);
+            this.lblReportTitle.TabIndex = 0;
             // 
             // lblTitle
             // 
@@ -165,6 +177,20 @@
             this.btnMissing.Text = "Missing Requirements";
             this.btnMissing.Click += new System.EventHandler(this.btnMissing_Click);
             // 
+            // btnExport
+            // 
+            this.btnExport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
+            this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExport.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
+            this.btnExport.ForeColor = System.Drawing.Color.White;
+            this.btnExport.Location = new System.Drawing.Point(908, 445);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(160, 36);
+            this.btnExport.TabIndex = 22;
+            this.btnExport.Text = "Generate Report";
+            this.btnExport.UseVisualStyleBackColor = false;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(368, 109);
@@ -211,6 +237,7 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.OldLace;
             this.ClientSize = new System.Drawing.Size(1368, 741);
+            this.ClientSize = new System.Drawing.Size(1902, 845);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
@@ -228,6 +255,7 @@
             this.Controls.Add(this.lblTotalApplicants);
             this.Controls.Add(this.dgvReports);
             this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.btnApplicants);
             this.Controls.Add(this.btnBack);
             this.MinimizeBox = false;
@@ -257,5 +285,7 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label lblReportTitle;
+        private System.Windows.Forms.Button btnExport;
     }
 }

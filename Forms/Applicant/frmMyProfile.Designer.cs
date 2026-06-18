@@ -87,6 +87,7 @@
             this.lblTitle.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
             this.lblTitle.Location = new System.Drawing.Point(14, 146);
+            this.lblTitle.Location = new System.Drawing.Point(378, 41);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(148, 29);
@@ -99,6 +100,7 @@
             this.lblSubtitle.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Italic);
             this.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
             this.lblSubtitle.Location = new System.Drawing.Point(16, 181);
+            this.lblSubtitle.Location = new System.Drawing.Point(380, 76);
             this.lblSubtitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSubtitle.Name = "lblSubtitle";
             this.lblSubtitle.Size = new System.Drawing.Size(295, 16);
@@ -112,6 +114,8 @@
             this.btnEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.btnEdit.Location = new System.Drawing.Point(826, 669);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEdit.Location = new System.Drawing.Point(1190, 564);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(98, 28);
             this.btnEdit.TabIndex = 100;
@@ -127,6 +131,8 @@
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(934, 669);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSave.Location = new System.Drawing.Point(1298, 564);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(98, 28);
             this.btnSave.TabIndex = 101;
@@ -141,6 +147,8 @@
             this.btnBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.btnBack.Location = new System.Drawing.Point(927, 146);
             this.btnBack.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBack.Location = new System.Drawing.Point(1291, 41);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(98, 28);
             this.btnBack.TabIndex = 102;
@@ -155,6 +163,8 @@
             this.btnDocs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.btnDocs.Location = new System.Drawing.Point(661, 669);
             this.btnDocs.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDocs.Location = new System.Drawing.Point(1025, 564);
+            this.btnDocs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDocs.Name = "btnDocs";
             this.btnDocs.Size = new System.Drawing.Size(148, 28);
             this.btnDocs.TabIndex = 103;
@@ -178,6 +188,10 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Location = new System.Drawing.Point(412, 125);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Size = new System.Drawing.Size(470, 121);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
@@ -201,6 +215,7 @@
             this.txtFN.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtFN.Location = new System.Drawing.Point(82, 18);
             this.txtFN.Margin = new System.Windows.Forms.Padding(2);
+            this.txtFN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtFN.Name = "txtFN";
             this.txtFN.Size = new System.Drawing.Size(120, 24);
             this.txtFN.TabIndex = 1;
@@ -223,6 +238,7 @@
             this.txtMI.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtMI.Location = new System.Drawing.Point(244, 18);
             this.txtMI.Margin = new System.Windows.Forms.Padding(2);
+            this.txtMI.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtMI.MaxLength = 5;
             this.txtMI.Name = "txtMI";
             this.txtMI.Size = new System.Drawing.Size(38, 24);
@@ -246,6 +262,7 @@
             this.txtLN.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtLN.Location = new System.Drawing.Point(82, 45);
             this.txtLN.Margin = new System.Windows.Forms.Padding(2);
+            this.txtLN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtLN.Name = "txtLN";
             this.txtLN.Size = new System.Drawing.Size(120, 24);
             this.txtLN.TabIndex = 3;
@@ -269,6 +286,7 @@
             this.dtpBirthday.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpBirthday.Location = new System.Drawing.Point(262, 46);
             this.dtpBirthday.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpBirthday.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpBirthday.Name = "dtpBirthday";
             this.dtpBirthday.Size = new System.Drawing.Size(136, 22);
             this.dtpBirthday.TabIndex = 4;
@@ -289,10 +307,15 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox2.Location = new System.Drawing.Point(412, 261);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox2.Size = new System.Drawing.Size(470, 124);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Address";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // lblAddress
             // 
@@ -312,6 +335,7 @@
             this.txtAddress.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtAddress.Location = new System.Drawing.Point(60, 18);
             this.txtAddress.Margin = new System.Windows.Forms.Padding(2);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(398, 24);
             this.txtAddress.TabIndex = 6;
@@ -334,6 +358,7 @@
             this.txtCity.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtCity.Location = new System.Drawing.Point(60, 45);
             this.txtCity.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(150, 24);
             this.txtCity.TabIndex = 7;
@@ -356,6 +381,7 @@
             this.txtProvince.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtProvince.Location = new System.Drawing.Point(297, 45);
             this.txtProvince.Margin = new System.Windows.Forms.Padding(2);
+            this.txtProvince.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtProvince.Name = "txtProvince";
             this.txtProvince.Size = new System.Drawing.Size(161, 24);
             this.txtProvince.TabIndex = 9;
@@ -378,6 +404,7 @@
             this.txtZip.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtZip.Location = new System.Drawing.Point(60, 72);
             this.txtZip.Margin = new System.Windows.Forms.Padding(2);
+            this.txtZip.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtZip.MaxLength = 10;
             this.txtZip.Name = "txtZip";
             this.txtZip.Size = new System.Drawing.Size(90, 24);
@@ -395,6 +422,10 @@
             this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox3.Location = new System.Drawing.Point(412, 407);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox3.Size = new System.Drawing.Size(470, 135);
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
@@ -418,6 +449,7 @@
             this.txtPhone.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtPhone.Location = new System.Drawing.Point(60, 18);
             this.txtPhone.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPhone.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(150, 24);
             this.txtPhone.TabIndex = 9;
@@ -440,6 +472,7 @@
             this.txtEmail.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtEmail.Location = new System.Drawing.Point(60, 45);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(2);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.ReadOnly = true;
             this.txtEmail.Size = new System.Drawing.Size(226, 24);
@@ -459,6 +492,10 @@
             this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox4.Location = new System.Drawing.Point(897, 133);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox4.Size = new System.Drawing.Size(499, 131);
             this.groupBox4.TabIndex = 13;
             this.groupBox4.TabStop = false;
@@ -482,6 +519,7 @@
             this.txtEducation.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtEducation.Location = new System.Drawing.Point(71, 20);
             this.txtEducation.Margin = new System.Windows.Forms.Padding(2);
+            this.txtEducation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtEducation.Name = "txtEducation";
             this.txtEducation.Size = new System.Drawing.Size(413, 24);
             this.txtEducation.TabIndex = 12;
@@ -504,6 +542,7 @@
             this.txtDegree.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtDegree.Location = new System.Drawing.Point(71, 50);
             this.txtDegree.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDegree.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtDegree.Name = "txtDegree";
             this.txtDegree.Size = new System.Drawing.Size(413, 24);
             this.txtDegree.TabIndex = 14;
@@ -526,6 +565,7 @@
             this.txtYearGrad.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtYearGrad.Location = new System.Drawing.Point(116, 79);
             this.txtYearGrad.Margin = new System.Windows.Forms.Padding(2);
+            this.txtYearGrad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtYearGrad.MaxLength = 4;
             this.txtYearGrad.Name = "txtYearGrad";
             this.txtYearGrad.Size = new System.Drawing.Size(76, 24);
@@ -541,6 +581,10 @@
             this.groupBox5.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox5.Location = new System.Drawing.Point(897, 269);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox5.Size = new System.Drawing.Size(499, 124);
             this.groupBox5.TabIndex = 15;
             this.groupBox5.TabStop = false;
@@ -564,6 +608,7 @@
             this.txtSkills.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtSkills.Location = new System.Drawing.Point(71, 18);
             this.txtSkills.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSkills.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtSkills.Multiline = true;
             this.txtSkills.Name = "txtSkills";
             this.txtSkills.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -584,6 +629,10 @@
             this.groupBox6.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox6.Location = new System.Drawing.Point(897, 415);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox6.Size = new System.Drawing.Size(499, 135);
             this.groupBox6.TabIndex = 17;
             this.groupBox6.TabStop = false;
@@ -607,6 +656,7 @@
             this.txtWorkExp.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtWorkExp.Location = new System.Drawing.Point(94, 20);
             this.txtWorkExp.Margin = new System.Windows.Forms.Padding(2);
+            this.txtWorkExp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtWorkExp.Name = "txtWorkExp";
             this.txtWorkExp.Size = new System.Drawing.Size(398, 24);
             this.txtWorkExp.TabIndex = 16;
@@ -629,6 +679,7 @@
             this.txtPosition.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtPosition.Location = new System.Drawing.Point(94, 50);
             this.txtPosition.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPosition.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPosition.Name = "txtPosition";
             this.txtPosition.Size = new System.Drawing.Size(398, 24);
             this.txtPosition.TabIndex = 18;
@@ -651,6 +702,7 @@
             this.txtDuration.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtDuration.Location = new System.Drawing.Point(94, 79);
             this.txtDuration.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDuration.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtDuration.Name = "txtDuration";
             this.txtDuration.Size = new System.Drawing.Size(398, 24);
             this.txtDuration.TabIndex = 20;
@@ -801,6 +853,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(1426, 687);
             this.Controls.Add(this.btnDocs);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblSubtitle);

@@ -134,8 +134,38 @@ namespace HRApplicantSystem.Helpers
     // ─────────────────────────────────────────
     public static class AuditLogger
     {
+        // The audit trail on the dashboard joins audit_logs.user_id to
+        // applicants.applicant_id, so every applicant-side log call needs
+        // the applicant_id (not a users.user_id) passed in as userId.
+        // This looks that up from the email the form already has on hand.
+        public static int? GetApplicantIdByEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email)) return null;
+
+            try
+            {
+                using (var conn = DatabaseHelper.GetConnection())
+                {
+                    conn.Open();
+                    using (var cmd = new SqlCommand(
+                        "SELECT applicant_id FROM applicants WHERE email = @Email", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Email", email.Trim());
+                        object result = cmd.ExecuteScalar();
+                        return result == null ? (int?)null : Convert.ToInt32(result);
+                    }
+                }
+            }
+            catch
+            {
+                // Swallow lookup failures: a missing audit log entry should
+                // never block the actual action (save, password change, etc).
+                return null;
+            }
+        }
+
         public static void LogAction(int userId, string action,
-            string target, int? targetId = null)
+    string target, int? targetId = null)
         {
             try
             {
@@ -159,9 +189,23 @@ namespace HRApplicantSystem.Helpers
                     }
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                throw new InvalidOperationException("Database operation failed.", ex);
+                // Audit failures should never block login or any other action
+            }
+        }
+
+        // Convenience overload for applicant-side forms, which only carry
+        // the applicant's email around (not their applicant_id). Resolves
+        // the ID first, then logs. If the lookup fails, the action itself
+        // still isn't blocked -- we just skip the audit entry.
+        public static void LogActionByEmail(string applicantEmail, string action,
+            string target, int? targetId = null)
+        {
+            int? applicantId = GetApplicantIdByEmail(applicantEmail);
+            if (applicantId.HasValue)
+            {
+                LogAction(applicantId.Value, action, target, targetId);
             }
         }
     }

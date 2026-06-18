@@ -389,6 +389,7 @@ namespace HRApplicantSystem.Forms.Applicant
                     }
 
                     // 6. INSERT as DRAFT — applicant must submit from My Application.
+                    // 6. INSERT as DRAFT — applicant must submit from My Application.
                     int newAppId;
                     using (SqlCommand cmd = new SqlCommand(
                         @"INSERT INTO applications
@@ -402,7 +403,27 @@ namespace HRApplicantSystem.Forms.Applicant
                         newAppId = Convert.ToInt32(cmd.ExecuteScalar());
                     }
 
-                    // 7. Log the draft creation in status_history.
+                    // 7. Seed applicant_documents from this vacancy's job_requirements.
+                    //    Creates one 'missing' row per required document type so that
+                    //    frmMyDocuments shows exactly what this job needs — no hardcoding.
+                    //    NOT EXISTS prevents duplicates if the applicant somehow applies twice.
+                    using (SqlCommand cmd = new SqlCommand(
+                        @"INSERT INTO applicant_documents (applicant_id, req_type_id, status)
+                          SELECT @ApplicantId, req_type_id, 'missing'
+                          FROM   job_requirements
+                          WHERE  job_id = @VacancyId
+                            AND  NOT EXISTS (
+                                SELECT 1 FROM applicant_documents
+                                WHERE  applicant_id = @ApplicantId
+                                  AND  req_type_id  = job_requirements.req_type_id
+                            )", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@ApplicantId", applicantId);
+                        cmd.Parameters.AddWithValue("@VacancyId", vacancyId);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // 8. Log the draft creation in status_history.
                     StatusHistoryLogger.LogStatusChange(
                         newAppId,
                         previousStatus: null,
@@ -419,19 +440,13 @@ namespace HRApplicantSystem.Forms.Applicant
                     LoadJobList(txtSearch.Text);
                 }
             }
-            catch (SqlException ex) when (ex.Number == 547)
-            {
-                MessageBox.Show(
-                    "Error: The job vacancy or your account is no longer valid.",
-                    "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             catch (Exception ex)
             {
-                MessageBox.Show("Unexpected error: " + ex.Message,
+                MessageBox.Show("Error applying for job: " + ex.Message,
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
 
+        }
         private void btnBack_Click(object sender, EventArgs e)
         {
             foreach (Form f in Application.OpenForms)

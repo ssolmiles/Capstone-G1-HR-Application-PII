@@ -21,6 +21,7 @@ namespace HRApplicantSystem.Forms.HR
 
         private void InitializeComponent()
         {
+            this.button7 = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -54,6 +55,16 @@ namespace HRApplicantSystem.Forms.HR
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 4;
             // 
+
+            // button7
+            this.button7.Font = new System.Drawing.Font("Verdana", 14F);
+            this.button7.Location = new System.Drawing.Point(917, 450);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(203, 41);
+            this.button7.TabIndex = 13;
+            this.button7.Text = "Screening";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.btnScreening_Click);
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.textBox4);
@@ -179,6 +190,7 @@ namespace HRApplicantSystem.Forms.HR
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.lblTitle);
@@ -208,5 +220,6 @@ namespace HRApplicantSystem.Forms.HR
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
     }
 }

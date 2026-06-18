@@ -35,6 +35,7 @@ namespace HRApplicantSystem.Forms.Applicant
             this.btnWithdraw = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.btnUploadDocs = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblPickJob = new System.Windows.Forms.Label();
@@ -108,6 +109,27 @@ namespace HRApplicantSystem.Forms.Applicant
             // btnWithdraw
             // 
             this.btnWithdraw.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(68)))), ((int)(((byte)(173)))));
+            this.btnEdit.Click +=
+                new System.EventHandler(this.btnEdit_Click);
+
+
+            // ── btnUploadDocs ─────────────────────────────────
+            this.btnUploadDocs.BackColor = System.Drawing.Color.FromArgb(22, 160, 133);
+            this.btnUploadDocs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUploadDocs.Font = new System.Drawing.Font("Verdana", 10F,
+                                           System.Drawing.FontStyle.Bold);
+            this.btnUploadDocs.ForeColor = System.Drawing.Color.White;
+            this.btnUploadDocs.Location = new System.Drawing.Point(900, 380);
+            this.btnUploadDocs.Name = "btnUploadDocs";
+            this.btnUploadDocs.Size = new System.Drawing.Size(190, 44);
+            this.btnUploadDocs.TabIndex = 7;
+            this.btnUploadDocs.Text = "Upload Documents";
+            this.btnUploadDocs.UseVisualStyleBackColor = false;
+            this.btnUploadDocs.Click += new System.EventHandler(this.btnUploadDocs_Click);
+
+            // ── btnWithdraw ───────────────────────────────────
+            // SUBMITTED only: removes the application before HR reviews it.
+            this.btnWithdraw.BackColor = System.Drawing.Color.FromArgb(142, 68, 173);
             this.btnWithdraw.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnWithdraw.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
             this.btnWithdraw.ForeColor = System.Drawing.Color.White;
@@ -351,6 +373,7 @@ namespace HRApplicantSystem.Forms.Applicant
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnWithdraw);
             this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnUploadDocs);
             this.Controls.Add(this.btnBack);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(859, 511);
@@ -390,5 +413,6 @@ namespace HRApplicantSystem.Forms.Applicant
         private System.Windows.Forms.Button btnMyApplication;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnJobVacancies;
+        private System.Windows.Forms.Button btnUploadDocs;
     }
 }

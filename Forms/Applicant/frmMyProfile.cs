@@ -10,9 +10,6 @@ namespace HRApplicantSystem.Forms.Applicant
     {
         private string userEmail;
 
-        // Snapshot of all editable field values, taken right after loading
-        // (and again right after a successful save). Used to detect whether
-        // the user actually changed anything before hitting Save.
         private string originalSnapshot;
 
         public frmMyProfile(string email)
@@ -23,6 +20,7 @@ namespace HRApplicantSystem.Forms.Applicant
 
         private void frmMyProfile_Load_1(object sender, EventArgs e)
         {
+            dtpBirthday.MaxDate = DateTime.Today;
             LoadProfileData();
             SetReadOnly(true);
             btnSave.Enabled = false;
@@ -101,9 +99,6 @@ namespace HRApplicantSystem.Forms.Applicant
             }
         }
 
-        // Builds a single string representing the current state of every
-        // editable field. Comparing two snapshots tells us whether anything
-        // actually changed.
         private string BuildSnapshot()
         {
             return string.Join("|", new[]
@@ -142,8 +137,6 @@ namespace HRApplicantSystem.Forms.Applicant
                 return;
             }
 
-            // Nothing was actually edited: tell the user, exit edit mode,
-            // but don't treat it as an error and don't hit the database.
             if (BuildSnapshot() == originalSnapshot)
             {
                 MessageBox.Show("No changes committed!", "Profile",
@@ -204,7 +197,12 @@ namespace HRApplicantSystem.Forms.Applicant
                 SetReadOnly(true);
                 btnSave.Enabled = false;
 
-                // The saved values are now the new baseline.
+                try
+                {
+                    AuditLogger.LogActionByEmail(userEmail, "Updated profile", "applicants");
+                }
+                catch { /* audit failure should not block the user */ }
+
                 originalSnapshot = BuildSnapshot();
             }
             catch (Exception ex)
@@ -226,7 +224,6 @@ namespace HRApplicantSystem.Forms.Applicant
             txtZip.ReadOnly = isReadOnly;
 
             txtPhone.ReadOnly = isReadOnly;
-            // txtEmail stays read-only always (login identifier)
 
             txtEducation.ReadOnly = isReadOnly;
             txtDegree.ReadOnly = isReadOnly;
@@ -261,19 +258,13 @@ namespace HRApplicantSystem.Forms.Applicant
             txtDuration.BackColor = c;
         }
 
-        // This form is opened with ShowDialog() from the Dashboard, which
-        // remains visible underneath. Just close — do NOT create another
-        // Dashboard instance (that was causing duplicate windows to stack up).
         private void btnBack_Click(object sender, EventArgs e)
         {
-            new frmApplicantDashboard(userEmail).Show();
+            frmApplicantDashboard dashboard = new frmApplicantDashboard(userEmail);
+            dashboard.Show();
             this.Close();
         }
 
-        // FIX: previously opened frmMyDocuments TWICE (two separate
-        // ShowDialog() calls), which is what caused extra windows to pile up
-        // every time the user went back from My Documents. Now it's a single
-        // modal instance.
         private void btnDocs_Click(object sender, EventArgs e)
         {
             using (var frm = new frmMyDocuments(userEmail))
@@ -319,5 +310,6 @@ namespace HRApplicantSystem.Forms.Applicant
         {
             lblTime.Text = DateTime.Now.ToString("MMMM dd, yyyy hh:mm:ss tt");
         }
+        private void groupBox2_Enter(object sender, EventArgs e) { }
     }
 }

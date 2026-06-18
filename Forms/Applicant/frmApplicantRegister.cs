@@ -14,10 +14,7 @@ namespace HRApplicantSystem.Forms.Applicant
 
         private void frmApplicantRegister_Load_1(object sender, EventArgs e)
         {
-            txtFN.Text = "e.g. Cj";
-            txtMI.Text = "e.g.  []";
-            txtLN.Text = "e.g. Zamora";
-            txtEmail.ReadOnly = false;
+            dtpBirthday.MaxDate = DateTime.Today;
 
             cboCountry.Items.Add("Philippines (+63)");
             cboCountry.Items.Add("United States (+1)");
@@ -42,9 +39,33 @@ namespace HRApplicantSystem.Forms.Applicant
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(txtFN.Text) || string.IsNullOrWhiteSpace(txtLN.Text))
+            if (string.IsNullOrWhiteSpace(txtFN.Text))
             {
-                MessageBox.Show("Please enter your first and last name.");
+                MessageBox.Show("Please enter your first name.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtLN.Text))
+            {
+                MessageBox.Show("Please enter your last name.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                MessageBox.Show("Please enter your email.");
+                return;
+            }
+
+            if (!ValidationHelper.IsEmailValid(txtEmail.Text.Trim()))
+            {
+                MessageBox.Show("Please enter a valid email address.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtPassword.Text) || txtPassword.Text.Length < 6)
+            {
+                MessageBox.Show("Password must be at least 6 characters.");
                 return;
             }
 
@@ -54,7 +75,16 @@ namespace HRApplicantSystem.Forms.Applicant
                 return;
             }
 
-            string fullName = $"{txtFN.Text.Trim()} {txtMI.Text.Trim()} {txtLN.Text.Trim()}";
+            if (dtpBirthday.Value.Date >= DateTime.Today)
+            {
+                MessageBox.Show("Please enter a valid birthdate.");
+                return;
+            }
+
+            string mi = txtMI.Text.Trim();
+            string fullName = string.IsNullOrEmpty(mi)
+                ? $"{txtFN.Text.Trim()} {txtLN.Text.Trim()}"
+                : $"{txtFN.Text.Trim()} {mi} {txtLN.Text.Trim()}";
 
             try
             {
@@ -78,9 +108,9 @@ namespace HRApplicantSystem.Forms.Applicant
                     // Insert new applicant
                     using (SqlCommand insertCmd = new SqlCommand(
                         @"INSERT INTO applicants 
-                            (full_name, email, password, phone, birthdate, gender, is_active) 
+                            (full_name, email, password, phone, birthdate, gender) 
                           VALUES 
-                            (@FullName, @Email, @Password, @Phone, @Bday, @Gender, @IsActive)",
+                            (@FullName, @Email, @Password, @Phone, @Bday, @Gender)",
                         conn))
                     {
                         insertCmd.Parameters.AddWithValue("@FullName", fullName);
@@ -89,15 +119,14 @@ namespace HRApplicantSystem.Forms.Applicant
                         insertCmd.Parameters.AddWithValue("@Phone", txtPhone.Text.Trim());
                         insertCmd.Parameters.AddWithValue("@Bday", dtpBirthday.Value.Date);
                         insertCmd.Parameters.AddWithValue("@Gender", cboGender.Text.Trim());
-                        insertCmd.Parameters.AddWithValue("@IsActive", true);
                         insertCmd.ExecuteNonQuery();
                     }
                 }
 
-                MessageBox.Show("Registration Successful!");
-                frmMyProfile profile = new frmMyProfile(txtEmail.Text.Trim());
-                profile.Show();
-                this.Hide();
+                MessageBox.Show("Registration Successful! Please complete your profile.");
+                frmApplicantDashboard dashboard = new frmApplicantDashboard(txtEmail.Text.Trim());
+                dashboard.Show();
+                this.Close();
             }
             catch (Exception ex)
             {

@@ -74,6 +74,99 @@ namespace HRApplicantSystem.Forms.Applicant
             lblPickJob.Visible = false;
         }
 
+        // Opens frmMyDocuments as a dialog so the applicant can upload
+        // required documents without leaving this form.
+        // After they close it, we re-check doc completeness and
+        // enable/disable Submit accordingly.
+        private void btnUploadDocs_Click(object sender, EventArgs e)
+        {
+            if (!TryGetSelection(out int appId, out string status)) return;
+
+            using (var docsForm = new frmMyDocuments(userEmail))
+            {
+                docsForm.ShowDialog(this);
+            }
+
+            // Re-evaluate submit eligibility after they return
+            RefreshSubmitButton();
+        }
+
+        // Checks whether all required documents for the selected draft
+        // have been submitted. Enables/disables btnSubmit accordingly.
+        private void RefreshSubmitButton()
+        {
+            if (listViewApps.SelectedItems.Count == 0 ||
+                listViewApps.SelectedItems[0].Text == "—")
+            {
+                btnSubmit.Enabled = false;
+                return;
+            }
+
+            if (!int.TryParse(listViewApps.SelectedItems[0].Text, out int appId))
+            {
+                btnSubmit.Enabled = false;
+                return;
+            }
+
+            string status = listViewApps.SelectedItems[0].SubItems[3].Text;
+            if (status != "draft")
+            {
+                // Non-draft rows: Submit doesn't apply, leave it as-is
+                btnSubmit.Enabled = false;
+                return;
+            }
+
+            try
+            {
+                using (var conn = DatabaseHelper.GetConnection())
+                {
+                    conn.Open();
+                    int applicantId = GetApplicantId(conn);
+                    if (applicantId == -1) { btnSubmit.Enabled = false; return; }
+
+                    // Count how many required docs exist vs how many are submitted
+                    using (var cmd = new SqlCommand(
+                        @"SELECT
+                    COUNT(*)                                        AS total,
+                    SUM(CASE WHEN ad.status = 'submitted'
+                                  AND ad.file_path IS NOT NULL
+                             THEN 1 ELSE 0 END)                    AS done
+                  FROM applications a
+                  INNER JOIN job_requirements jr
+                      ON jr.job_id = a.vacancy_id
+                  LEFT JOIN applicant_documents ad
+                      ON ad.req_type_id  = jr.req_type_id
+                     AND ad.applicant_id = @aid
+                  WHERE a.application_id = @appId", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@aid", applicantId);
+                        cmd.Parameters.AddWithValue("@appId", appId);
+
+                        using (var dr = cmd.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                int total = Convert.ToInt32(dr["total"]);
+                                int done = Convert.ToInt32(dr["done"]);
+
+                                // Allow submit only when every required doc is uploaded
+                                btnSubmit.Enabled = total > 0 && done == total;
+
+                                // Give the applicant a clear hint
+                                btnSubmit.Text = btnSubmit.Enabled
+                                    ? "Submit"
+                                    : $"Submit ({done}/{total} docs)";
+                            }
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                btnSubmit.Enabled = false;
+            }
+        }
+
         // ── Form Load ────────────────────────────────────────
         private void frmMyApplication_Load(object sender, EventArgs e)
         {
@@ -162,6 +255,8 @@ namespace HRApplicantSystem.Forms.Applicant
                 MessageBox.Show("Error loading applications: " + ex.Message,
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            RefreshSubmitButton();
         }
 
         // ── Helper: get applicant_id for the logged-in user ──
@@ -385,14 +480,45 @@ namespace HRApplicantSystem.Forms.Applicant
                     return;
                 }
 
-                // StatusHistoryLogger handles the status_history INSERT
-                // and the applications UPDATE in one transaction.
+                
+                using (var conn2 = DatabaseHelper.GetConnection())
+                {
+                    conn2.Open();
+                    using (var cmd = new SqlCommand(
+                        @"UPDATE applications
+          SET submitted_at = GETDATE()
+          WHERE application_id = @appId", conn2))
+                    {
+                        cmd.Parameters.AddWithValue("@appId", appId);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+
                 StatusHistoryLogger.LogStatusChange(
-                    appId,
-                    previousStatus: "draft",
-                    newStatus: "submitted",
-                    changedByUserId: applicantId,
-                    remarks: "Applicant submitted application.");
+    appId,
+    previousStatus: "draft",
+    newStatus: "submitted",
+    changedByUserId: applicantId,
+    remarks: "Applicant submitted application.");
+
+                // Deduct vacancy slot on submission
+                using (var slotConn = DatabaseHelper.GetConnection())
+                {
+                    slotConn.Open();
+                    using (var slotCmd = new SqlCommand(
+                        @"UPDATE job_vacancies
+          SET slots = slots - 1,
+              status = CASE WHEN slots - 1 <= 0 THEN 'closed' ELSE status END
+          WHERE vacancy_id = (
+              SELECT vacancy_id FROM applications WHERE application_id = @appId
+          )
+          AND slots > 0", slotConn))
+                    {
+                        slotCmd.Parameters.AddWithValue("@appId", appId);
+                        slotCmd.ExecuteNonQuery();
+                    }
+                }
 
                 MessageBox.Show("Application submitted successfully!",
                     "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -406,10 +532,7 @@ namespace HRApplicantSystem.Forms.Applicant
             }
         }
 
-        // ── Edit ─────────────────────────────────────────────
-        // DRAFT only: shows a combo box with all open vacancies
-        // so the applicant can change their position choice.
-        // After picking a job, they click Save Draft to persist it.
+        
         private void btnEdit_Click(object sender, EventArgs e)
         {
             if (!TryGetSelection(out int appId, out string status)) return;
@@ -647,8 +770,8 @@ namespace HRApplicantSystem.Forms.Applicant
 
         private void listViewApps_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Hide the edit panel when the user clicks a different row.
             HideEditPanel();
+            RefreshSubmitButton(); // re-check docs every time they click a row
         }
 
         private void btnChangePass_Click(object sender, EventArgs e)

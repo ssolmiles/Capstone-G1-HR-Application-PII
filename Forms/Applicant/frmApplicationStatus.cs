@@ -119,16 +119,34 @@ namespace HRApplicantSystem.Forms.Applicant
                                     : "Remarks: " + remarks;
 
                                 // 3. INTERVIEW SCHEDULE
-                                if (dr["scheduled_date"] != DBNull.Value)
+                                // 3. INTERVIEW SCHEDULE — hide if accepted or rejected
+                                if (currentStatus == "accepted")
+                                {
+                                    lblSchedule.Text = "Schedule: N/A (Accepted)";
+                                    lblSchedule.ForeColor = Color.Green;
+                                }
+                                else if (currentStatus == "rejected")
+                                {
+                                    lblSchedule.Text = "Schedule: N/A (Rejected)";
+                                    lblSchedule.ForeColor = Color.Red;
+                                }
+                                else if (currentStatus == "interview_cancelled")
+                                {
+                                    lblSchedule.Text = "Schedule: Interview was cancelled.";
+                                    lblSchedule.ForeColor = Color.OrangeRed;
+                                }
+                                else if (dr["scheduled_date"] != DBNull.Value)
                                 {
                                     string date = Convert.ToDateTime(dr["scheduled_date"]).ToString("MMMM dd, yyyy");
                                     string time = dr["scheduled_time"].ToString();
                                     string venue = dr["location"].ToString();
                                     lblSchedule.Text = $"Schedule: {date}\n Time: {time}\n Where: {venue}";
+                                    lblSchedule.ForeColor = Color.Black;
                                 }
                                 else
                                 {
                                     lblSchedule.Text = "Schedule: Not yet scheduled";
+                                    lblSchedule.ForeColor = Color.Black;
                                 }
 
                                 // 4. FINAL RESULT

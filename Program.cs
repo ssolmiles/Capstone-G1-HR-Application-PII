@@ -34,7 +34,7 @@ namespace HRApplicantSystem
                 return;
             }
 
-            Application.Run(new frmRoleSelection());
+                Application.Run(new frmRoleSelection());
         }
     }
 }

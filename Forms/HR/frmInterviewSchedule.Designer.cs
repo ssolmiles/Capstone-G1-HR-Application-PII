@@ -31,6 +31,7 @@
         private System.Windows.Forms.Button btnSchedule;
         private System.Windows.Forms.Button btnComplete;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnReschedule;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.DataGridView dgvToSchedule;
 
@@ -44,6 +45,7 @@
         #region Windows Form Designer generated code
         private void InitializeComponent()
         {
+            this.btnReschedule = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblSubtitle = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -382,6 +384,22 @@
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // btnReschedule
+            // 
+            this.btnReschedule.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(160)))), ((int)(((byte)(20)))));
+            this.btnReschedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReschedule.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnReschedule.ForeColor = System.Drawing.Color.White;
+            this.btnReschedule.Location = new System.Drawing.Point(1046, 576);
+            this.btnReschedule.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnReschedule.Name = "btnReschedule";
+            this.btnReschedule.Size = new System.Drawing.Size(141, 28);
+            this.btnReschedule.TabIndex = 15;
+            this.btnReschedule.Text = "Reschedule";
+            this.btnReschedule.UseVisualStyleBackColor = false;
+            this.btnReschedule.Enabled = false;
+            this.btnReschedule.Click += new System.EventHandler(this.btnReschedule_Click);
+            // 
             // btnNext
             // 
             this.btnNext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
@@ -493,6 +511,8 @@
             this.Controls.Add(this.btnSchedule);
             this.Controls.Add(this.btnComplete);
             this.Controls.Add(this.btnCancel);
+
+            this.Controls.Add(this.btnReschedule);
             this.Controls.Add(this.btnNext);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
@@ -513,11 +533,11 @@
 
         }
         #endregion
-
         private System.Windows.Forms.DataGridView dgvSchedules;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Label lblSelectedApplicant;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+
     }
 }

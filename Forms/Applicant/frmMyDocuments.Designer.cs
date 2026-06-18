@@ -17,22 +17,7 @@
             this.lblOverallStatus = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
             this.groupBoxChecklist = new System.Windows.Forms.GroupBox();
-            this.lblResumeLabel = new System.Windows.Forms.Label();
-            this.lblResumeStatus = new System.Windows.Forms.Label();
-            this.btnUploadResume = new System.Windows.Forms.Button();
-            this.btnRemoveResume = new System.Windows.Forms.Button();
-            this.lblIDLabel = new System.Windows.Forms.Label();
-            this.lblIDStatus = new System.Windows.Forms.Label();
-            this.btnUploadID = new System.Windows.Forms.Button();
-            this.btnRemoveID = new System.Windows.Forms.Button();
-            this.lblTranscriptLabel = new System.Windows.Forms.Label();
-            this.lblTranscriptStatus = new System.Windows.Forms.Label();
-            this.btnUploadTranscript = new System.Windows.Forms.Button();
-            this.btnRemoveTranscript = new System.Windows.Forms.Button();
-            this.lblCertLabel = new System.Windows.Forms.Label();
-            this.lblCertStatus = new System.Windows.Forms.Label();
-            this.btnUploadCerts = new System.Windows.Forms.Button();
-            this.btnRemoveCerts = new System.Windows.Forms.Button();
+            this.flpDocuments = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBoxRemarks = new System.Windows.Forms.GroupBox();
             this.txtRemarks = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -51,9 +36,8 @@
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
+
             // lblTitle
-            // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
@@ -61,11 +45,13 @@
             this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(210, 29);
+            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(31, 56, 100);
+            this.lblTitle.Location = new System.Drawing.Point(471, 44);
+            this.lblTitle.Name = "lblTitle";
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "My Documents";
-            // 
+
             // lblSubtitle
-            // 
             this.lblSubtitle.AutoSize = true;
             this.lblSubtitle.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Italic);
             this.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
@@ -73,11 +59,13 @@
             this.lblSubtitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSubtitle.Name = "lblSubtitle";
             this.lblSubtitle.Size = new System.Drawing.Size(412, 16);
+            this.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(136, 136, 136);
+            this.lblSubtitle.Location = new System.Drawing.Point(473, 86);
+            this.lblSubtitle.Name = "lblSubtitle";
             this.lblSubtitle.TabIndex = 1;
             this.lblSubtitle.Text = "Upload the requirements needed to process your application";
-            // 
+
             // lblOverallStatus
-            // 
             this.lblOverallStatus.AutoSize = true;
             this.lblOverallStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.lblOverallStatus.Location = new System.Drawing.Point(271, 280);
@@ -86,39 +74,32 @@
             this.lblOverallStatus.Size = new System.Drawing.Size(136, 21);
             this.lblOverallStatus.TabIndex = 2;
             this.lblOverallStatus.Text = "Overall Status: --";
-            // 
+
             // btnBack
-            // 
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Verdana", 10F);
             this.btnBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.btnBack.Location = new System.Drawing.Point(1207, 207);
             this.btnBack.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBack.ForeColor = System.Drawing.Color.FromArgb(85, 85, 85);
+            this.btnBack.Location = new System.Drawing.Point(1672, 25);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(150, 29);
             this.btnBack.TabIndex = 3;
             this.btnBack.Text = "← Back to Profile";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            // 
+
+            // flpDocuments — this is the dynamic panel that replaces all hardcoded rows
+            this.flpDocuments.AutoScroll = true;
+            this.flpDocuments.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpDocuments.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flpDocuments.Name = "flpDocuments";
+            this.flpDocuments.Padding = new System.Windows.Forms.Padding(10);
+            this.flpDocuments.WrapContents = false;
+
             // groupBoxChecklist
-            // 
-            this.groupBoxChecklist.Controls.Add(this.lblResumeLabel);
-            this.groupBoxChecklist.Controls.Add(this.lblResumeStatus);
-            this.groupBoxChecklist.Controls.Add(this.btnUploadResume);
-            this.groupBoxChecklist.Controls.Add(this.btnRemoveResume);
-            this.groupBoxChecklist.Controls.Add(this.lblIDLabel);
-            this.groupBoxChecklist.Controls.Add(this.lblIDStatus);
-            this.groupBoxChecklist.Controls.Add(this.btnUploadID);
-            this.groupBoxChecklist.Controls.Add(this.btnRemoveID);
-            this.groupBoxChecklist.Controls.Add(this.lblTranscriptLabel);
-            this.groupBoxChecklist.Controls.Add(this.lblTranscriptStatus);
-            this.groupBoxChecklist.Controls.Add(this.btnUploadTranscript);
-            this.groupBoxChecklist.Controls.Add(this.btnRemoveTranscript);
-            this.groupBoxChecklist.Controls.Add(this.lblCertLabel);
-            this.groupBoxChecklist.Controls.Add(this.lblCertStatus);
-            this.groupBoxChecklist.Controls.Add(this.btnUploadCerts);
-            this.groupBoxChecklist.Controls.Add(this.btnRemoveCerts);
+            this.groupBoxChecklist.Controls.Add(this.flpDocuments);
             this.groupBoxChecklist.Font = new System.Drawing.Font("Verdana", 10F);
             this.groupBoxChecklist.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
             this.groupBoxChecklist.Location = new System.Drawing.Point(269, 316);
@@ -338,22 +319,30 @@
             this.btnRemoveCerts.UseVisualStyleBackColor = false;
             this.btnRemoveCerts.Click += new System.EventHandler(this.btnRemoveCerts_Click);
             // 
+            this.groupBoxChecklist.ForeColor = System.Drawing.Color.FromArgb(31, 92, 153);
+            this.groupBoxChecklist.Location = new System.Drawing.Point(471, 179);
+            this.groupBoxChecklist.Name = "groupBoxChecklist";
+            this.groupBoxChecklist.Size = new System.Drawing.Size(700, 600);
+            this.groupBoxChecklist.TabIndex = 4;
+            this.groupBoxChecklist.TabStop = false;
+            this.groupBoxChecklist.Text = "Requirements Checklist";
+
             // groupBoxRemarks
-            // 
             this.groupBoxRemarks.Controls.Add(this.txtRemarks);
             this.groupBoxRemarks.Font = new System.Drawing.Font("Verdana", 10F);
             this.groupBoxRemarks.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
             this.groupBoxRemarks.Location = new System.Drawing.Point(838, 325);
             this.groupBoxRemarks.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBoxRemarks.ForeColor = System.Drawing.Color.FromArgb(31, 92, 153);
+            this.groupBoxRemarks.Location = new System.Drawing.Point(1229, 190);
             this.groupBoxRemarks.Name = "groupBoxRemarks";
             this.groupBoxRemarks.Padding = new System.Windows.Forms.Padding(2);
             this.groupBoxRemarks.Size = new System.Drawing.Size(323, 191);
             this.groupBoxRemarks.TabIndex = 5;
             this.groupBoxRemarks.TabStop = false;
             this.groupBoxRemarks.Text = "HR Remarks / Screening Feedback";
-            // 
+
             // txtRemarks
-            // 
             this.txtRemarks.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRemarks.Font = new System.Drawing.Font("Verdana", 10F);
             this.txtRemarks.Location = new System.Drawing.Point(14, 30);
@@ -364,12 +353,12 @@
             this.txtRemarks.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtRemarks.Size = new System.Drawing.Size(294, 138);
             this.txtRemarks.TabIndex = 0;
-            // 
+
             // openFileDialog1
-            // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.Filter = "All Files (*.*)|*.*|PDF Files (*.pdf)|*.pdf|Word Documents (*.doc;*.docx)|*.doc;*" +
-    ".docx|Images (*.jpg;*.png)|*.jpg;*.png";
+            this.openFileDialog1.Filter =
+                "All Files (*.*)|*.*|PDF Files (*.pdf)|*.pdf|" +
+                "Word Documents (*.doc;*.docx)|*.doc;*.docx|Images (*.jpg;*.png)|*.jpg;*.png";
             this.openFileDialog1.Title = "Select Document to Upload";
             // 
             // textBox1
@@ -512,6 +501,9 @@
             // frmMyDocuments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+
+            // frmMyDocuments
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.OldLace;
@@ -531,7 +523,6 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMyDocuments_Load_1);
             this.groupBoxChecklist.ResumeLayout(false);
-            this.groupBoxChecklist.PerformLayout();
             this.groupBoxRemarks.ResumeLayout(false);
             this.groupBoxRemarks.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -539,7 +530,6 @@
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         private System.Windows.Forms.Label lblTitle;
@@ -548,25 +538,13 @@
         private System.Windows.Forms.Button btnBack;
 
         private System.Windows.Forms.GroupBox groupBoxChecklist;
-        private System.Windows.Forms.Label lblResumeLabel;
-        private System.Windows.Forms.Label lblResumeStatus;
-        private System.Windows.Forms.Button btnUploadResume;
-        private System.Windows.Forms.Button btnRemoveResume;
 
-        private System.Windows.Forms.Label lblIDLabel;
-        private System.Windows.Forms.Label lblIDStatus;
-        private System.Windows.Forms.Button btnUploadID;
-        private System.Windows.Forms.Button btnRemoveID;
 
-        private System.Windows.Forms.Label lblTranscriptLabel;
-        private System.Windows.Forms.Label lblTranscriptStatus;
-        private System.Windows.Forms.Button btnUploadTranscript;
-        private System.Windows.Forms.Button btnRemoveTranscript;
 
-        private System.Windows.Forms.Label lblCertLabel;
-        private System.Windows.Forms.Label lblCertStatus;
-        private System.Windows.Forms.Button btnUploadCerts;
-        private System.Windows.Forms.Button btnRemoveCerts;
+
+        private System.Windows.Forms.FlowLayoutPanel flpDocuments;
+
+
 
         private System.Windows.Forms.GroupBox groupBoxRemarks;
         private System.Windows.Forms.TextBox txtRemarks;

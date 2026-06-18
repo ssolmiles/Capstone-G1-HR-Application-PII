@@ -11,6 +11,7 @@ namespace HRApplicantSystem.Forms.HR
     {
         private int _appId;
         private int _schedId = -1;
+        public int AppId { get; set; } = -1;
 
         public frmInterviewEvaluation()
         {
@@ -88,9 +89,7 @@ namespace HRApplicantSystem.Forms.HR
 
                     dgvInterviewed.DataSource = dt;
 
-                    MessageBox.Show(
-                        "Rows Found: " + dt.Rows.Count +
-                        "\nCurrent User: " + SessionManager.CurrentUserID);
+                    
 
                     if (dgvInterviewed.Columns["SchedID"] != null)
                         dgvInterviewed.Columns["SchedID"].Visible = false;
@@ -141,6 +140,16 @@ namespace HRApplicantSystem.Forms.HR
                         cmd.Parameters.AddWithValue("@by", SessionManager.CurrentUserID);
 
                         cmd.ExecuteNonQuery();
+
+                        // Update application status to 'evaluated'
+                        using (var statusCmd = new SqlCommand(
+                            @"UPDATE applications 
+      SET status = 'evaluated', last_updated = GETDATE()
+      WHERE application_id = @appId", conn))
+                        {
+                            statusCmd.Parameters.AddWithValue("@appId", _appId);
+                            statusCmd.ExecuteNonQuery();
+                        }
                     }
                 }
 

@@ -46,6 +46,7 @@ namespace HRApplicantSystem.Forms.Applicant
 
                             string hash = dr["password"].ToString();
                             string name = dr["full_name"].ToString();
+                            int applicantId = Convert.ToInt32(dr["applicant_id"]);
                             dr.Close();
 
                             bool ok = BCrypt.Net.BCrypt.Verify(txtPassword.Text.Trim(), hash);
@@ -56,6 +57,11 @@ namespace HRApplicantSystem.Forms.Applicant
                                 Email = txtEmail.Text.Trim(),
                                 FullName = name
                             });
+
+                            // Already have applicant_id from the row above, so log
+                            // directly instead of going through LogActionByEmail
+                            // (which would re-query applicants by email).
+                            AuditLogger.LogAction(applicantId, "Logged in", "applicants");
 
                             new frmApplicantDashboard(txtEmail.Text.Trim()).Show();
                             this.Hide();
@@ -110,5 +116,6 @@ namespace HRApplicantSystem.Forms.Applicant
         {
 
         }
+        private void lblTitle_Click(object sender, EventArgs e) { }
     }
 }

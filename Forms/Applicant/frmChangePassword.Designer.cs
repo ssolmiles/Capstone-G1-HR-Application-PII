@@ -63,6 +63,7 @@
             this.lblTitle.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
             this.lblTitle.Location = new System.Drawing.Point(317, 141);
+            this.lblTitle.Location = new System.Drawing.Point(324, 81);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(252, 29);
@@ -75,6 +76,7 @@
             this.lblSubtitle.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Italic);
             this.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
             this.lblSubtitle.Location = new System.Drawing.Point(319, 175);
+            this.lblSubtitle.Location = new System.Drawing.Point(326, 115);
             this.lblSubtitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSubtitle.Name = "lblSubtitle";
             this.lblSubtitle.Size = new System.Drawing.Size(267, 16);
@@ -88,6 +90,8 @@
             this.btnBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.btnBack.Location = new System.Drawing.Point(1178, 175);
             this.btnBack.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBack.Location = new System.Drawing.Point(1254, 20);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(150, 29);
             this.btnBack.TabIndex = 12;
@@ -110,6 +114,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Verdana", 10F);
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(92)))), ((int)(((byte)(153)))));
             this.groupBox1.Location = new System.Drawing.Point(315, 215);
+            this.groupBox1.Location = new System.Drawing.Point(322, 155);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(687, 311);
             this.groupBox1.TabIndex = 0;
@@ -168,6 +173,7 @@
             this.txtCurrentPass.PasswordChar = '•';
             this.txtCurrentPass.Size = new System.Drawing.Size(230, 29);
             this.txtCurrentPass.TabIndex = 5;
+            this.txtCurrentPass.TextChanged += new System.EventHandler(this.txtCurrentPass_TextChanged);
             // 
             // txtEmail
             // 
@@ -364,6 +370,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(1426, 687);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblSubtitle);
             this.Controls.Add(this.btnBack);
