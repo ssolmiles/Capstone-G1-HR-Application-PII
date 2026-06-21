@@ -6,3 +6,8 @@ AI used:
 ChatGPT
 Claude
 Gemini
+
+
+
+
+<img width="640" height="360" alt="Image" src="https://github.com/user-attachments/assets/5c6a19f7-28f8-47c3-982a-b4bcd239ec29" />
